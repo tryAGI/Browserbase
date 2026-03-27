@@ -1,0 +1,29 @@
+#nullable enable
+
+namespace Browserbase
+{
+    public partial interface IBrowserbaseClient
+    {
+        /// <summary>
+        /// Upload an Extension
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Browserbase.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Browserbase.Extension> ExtensionsUploadAsync(
+
+            global::Browserbase.ExtensionsUploadRequest request,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Upload an Extension
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="filename"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        global::System.Threading.Tasks.Task<global::Browserbase.Extension> ExtensionsUploadAsync(
+            byte[] file,
+            string filename,
+            global::System.Threading.CancellationToken cancellationToken = default);
+    }
+}
