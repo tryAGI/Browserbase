@@ -6,7 +6,11 @@
 
   <PropertyGroup Label="Nuget">
     <Description>C# SDK based on Browserbase OpenAPI specification.</Description>
-    <PackageTags>api;client;sdk;dotnet;swagger;openapi;specification;generated;nswag</PackageTags>
+    <PackageTags>api;client;sdk;dotnet;openapi;browserbase;browser-automation;ai-agents</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.AI" Version="10.4.1" />
+  </ItemGroup>
 
 </Project>
