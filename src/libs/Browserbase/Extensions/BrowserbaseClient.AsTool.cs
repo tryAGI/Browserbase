@@ -1,4 +1,3 @@
-#pragma warning disable CS3002 // Return type is not CLS-compliant
 using System.Text.Json;
 using Microsoft.Extensions.AI;
 
@@ -15,6 +14,7 @@ public static class BrowserbaseToolExtensions
     /// <param name="client">The Browserbase client.</param>
     /// <param name="numResults">Number of results to return (1-25, default: 10).</param>
     /// <returns>An AIFunction that can be passed to ChatOptions.Tools.</returns>
+    [CLSCompliant(false)]
     public static AIFunction AsSearchWebTool(
         this BrowserbaseClient client,
         int numResults = 10)
@@ -49,6 +49,7 @@ public static class BrowserbaseToolExtensions
     /// </summary>
     /// <param name="client">The Browserbase client.</param>
     /// <returns>An AIFunction that can be passed to ChatOptions.Tools.</returns>
+    [CLSCompliant(false)]
     public static AIFunction AsFetchPageTool(this BrowserbaseClient client)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -80,6 +81,7 @@ public static class BrowserbaseToolExtensions
     /// </summary>
     /// <param name="client">The Browserbase client.</param>
     /// <returns>An AIFunction that can be passed to ChatOptions.Tools.</returns>
+    [CLSCompliant(false)]
     public static AIFunction AsCreateSessionTool(this BrowserbaseClient client)
     {
         ArgumentNullException.ThrowIfNull(client);
@@ -108,6 +110,7 @@ public static class BrowserbaseToolExtensions
     /// </summary>
     /// <param name="client">The Browserbase client.</param>
     /// <returns>An AIFunction that can be passed to ChatOptions.Tools.</returns>
+    [CLSCompliant(false)]
     public static AIFunction AsListSessionsTool(this BrowserbaseClient client)
     {
         ArgumentNullException.ThrowIfNull(client);
