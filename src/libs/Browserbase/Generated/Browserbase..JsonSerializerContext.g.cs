@@ -14,85 +14,45 @@ namespace Browserbase
         Converters = new global::System.Type[]
         {
             typeof(global::Browserbase.JsonConverters.BrowserbaseProxyConfigTypeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.BrowserbaseProxyConfigTypeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.ExternalProxyConfigTypeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.ExternalProxyConfigTypeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionBuildStatusJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionBuildStatusNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionBuildCauseCodeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionBuildCauseCodeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.InvocationStatusJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.InvocationStatusNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.NoneProxyConfigTypeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.NoneProxyConfigTypeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionStatusJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionStatusNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionRegionJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionRegionNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsOsJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsOsNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestRegionJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestRegionNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsUpdateRequestStatusJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsUpdateRequestStatusNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsListStatusJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.SessionsListStatusNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.InvocationsGetResponseCauseCodeJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.InvocationsGetResponseCauseCodeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>),
-
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
-
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>),
-
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
-
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>),
-
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Invocation, global::Browserbase.InvocationsGetResponse2>),
-
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>),
-
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>),
-
             typeof(global::Browserbase.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.JsonSerializerContextTypes))]
