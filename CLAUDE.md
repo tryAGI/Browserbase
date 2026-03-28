@@ -23,7 +23,7 @@ var client = new BrowserbaseClient(apiKey); // BROWSERBASE_API_KEY env var
 ## Key Files
 
 - `src/libs/Browserbase/openapi.yaml` — OpenAPI spec (downloaded from Browserbase docs)
-- `src/libs/Browserbase/generate.sh` — Downloads spec, converts apiKey to http/bearer, runs autosdk
+- `src/libs/Browserbase/generate.sh` — Downloads spec, runs autosdk with `--security-scheme Http:Header:Bearer`
 - `src/libs/Browserbase/Generated/` — **Never edit** — auto-generated code (~280 files)
 - `src/tests/IntegrationTests/Tests.cs` — Test helper with bearer auth
 - `src/tests/IntegrationTests/Examples/` — Example tests (also generate docs)
@@ -31,7 +31,7 @@ var client = new BrowserbaseClient(apiKey); // BROWSERBASE_API_KEY env var
 ## Spec Notes
 
 - Browserbase uses `X-BB-API-Key` header auth natively
-- `generate.sh` replaces `apiKey` security scheme with `http/bearer` via `yq` and adds top-level `security` array
+- `--security-scheme Http:Header:Bearer` overrides the spec's apiKey auth at generation time (no yq spec patching needed)
 - Uses `--exclude-deprecated-operations` flag
 
 ## API Endpoints

@@ -1,19 +1,15 @@
-dotnet tool install --global autosdk.cli --prerelease
+#!/usr/bin/env bash
+set -euo pipefail
+
+dotnet tool update --global autosdk.cli --prerelease || dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
 curl -o openapi.yaml https://docs.browserbase.com/reference/api/openapi.v1.yaml
 
-# Convert apiKey auth (X-BB-API-Key header) to http/bearer for AutoSDK
-yq -i '
-  .components.securitySchemes.BrowserbaseAuth = {
-    "type": "http",
-    "scheme": "bearer"
-  } |
-  .security = [{"BrowserbaseAuth": []}]
-' openapi.yaml
-
+# Auth: --security-scheme overrides the spec's X-BB-API-Key header auth with standard HTTP bearer.
 autosdk generate openapi.yaml \
   --namespace Browserbase \
   --clientClassName BrowserbaseClient \
   --targetFramework net10.0 \
   --output Generated \
-  --exclude-deprecated-operations
+  --exclude-deprecated-operations \
+  --security-scheme Http:Header:Bearer
