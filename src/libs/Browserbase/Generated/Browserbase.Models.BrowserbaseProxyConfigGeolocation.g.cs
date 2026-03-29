@@ -36,14 +36,14 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="BrowserbaseProxyConfigGeolocation" /> class.
         /// </summary>
+        /// <param name="country">
+        /// Country code in ISO 3166-1 alpha-2 format
+        /// </param>
         /// <param name="city">
         /// Name of the city. Use spaces for multi-word city names. Optional.
         /// </param>
         /// <param name="state">
         /// US state code (2 characters). Must also specify US as the country. Optional.
-        /// </param>
-        /// <param name="country">
-        /// Country code in ISO 3166-1 alpha-2 format
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -53,9 +53,9 @@ namespace Browserbase
             string? city,
             string? state)
         {
-            this.Country = country ?? throw new global::System.ArgumentNullException(nameof(country));
             this.City = city;
             this.State = state;
+            this.Country = country ?? throw new global::System.ArgumentNullException(nameof(country));
         }
 
         /// <summary>

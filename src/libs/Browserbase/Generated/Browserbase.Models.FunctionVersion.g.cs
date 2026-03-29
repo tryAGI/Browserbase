@@ -75,14 +75,14 @@ namespace Browserbase
         /// <param name="projectId"></param>
         /// <param name="functionId"></param>
         /// <param name="functionBuildId"></param>
+        /// <param name="createdAt"></param>
+        /// <param name="updatedAt"></param>
         /// <param name="sessionCreateParams">
         /// JSON object that can be stored in a JSONB column
         /// </param>
         /// <param name="userParamsSchema">
         /// JSON object that can be stored in a JSONB column
         /// </param>
-        /// <param name="createdAt"></param>
-        /// <param name="updatedAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -100,10 +100,10 @@ namespace Browserbase
             this.ProjectId = projectId;
             this.FunctionId = functionId;
             this.FunctionBuildId = functionBuildId;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
             this.SessionCreateParams = sessionCreateParams;
             this.UserParamsSchema = userParamsSchema;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
         }
 
         /// <summary>

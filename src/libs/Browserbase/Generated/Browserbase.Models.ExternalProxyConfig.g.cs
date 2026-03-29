@@ -49,11 +49,11 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="ExternalProxyConfig" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of proxy. Always 'external' for this config.
-        /// </param>
         /// <param name="server">
         /// Server URL for external proxy. Required.
+        /// </param>
+        /// <param name="type">
+        /// Type of proxy. Always 'external' for this config.
         /// </param>
         /// <param name="domainPattern">
         /// Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional.
@@ -74,8 +74,8 @@ namespace Browserbase
             string? username,
             string? password)
         {
-            this.Server = server ?? throw new global::System.ArgumentNullException(nameof(server));
             this.Type = type;
+            this.Server = server ?? throw new global::System.ArgumentNullException(nameof(server));
             this.DomainPattern = domainPattern;
             this.Username = username;
             this.Password = password;
