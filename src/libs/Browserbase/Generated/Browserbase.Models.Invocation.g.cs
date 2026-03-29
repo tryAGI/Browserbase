@@ -117,19 +117,19 @@ namespace Browserbase
         /// <param name="functionId"></param>
         /// <param name="versionId"></param>
         /// <param name="sessionId"></param>
+        /// <param name="status"></param>
+        /// <param name="createdAt"></param>
+        /// <param name="updatedAt"></param>
+        /// <param name="startedAt"></param>
+        /// <param name="expiresAt"></param>
         /// <param name="region"></param>
         /// <param name="params">
         /// JSON object that can be stored in a JSONB column
         /// </param>
-        /// <param name="status"></param>
         /// <param name="results">
         /// JSON object that can be stored in a JSONB column
         /// </param>
-        /// <param name="createdAt"></param>
-        /// <param name="updatedAt"></param>
-        /// <param name="startedAt"></param>
         /// <param name="endedAt"></param>
-        /// <param name="expiresAt"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -154,15 +154,15 @@ namespace Browserbase
             this.FunctionId = functionId;
             this.VersionId = versionId;
             this.SessionId = sessionId;
+            this.Region = region;
+            this.Params = @params;
             this.Status = status;
+            this.Results = results;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.StartedAt = startedAt;
-            this.ExpiresAt = expiresAt;
-            this.Region = region;
-            this.Params = @params;
-            this.Results = results;
             this.EndedAt = endedAt;
+            this.ExpiresAt = expiresAt;
         }
 
         /// <summary>

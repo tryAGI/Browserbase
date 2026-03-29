@@ -99,8 +99,8 @@ namespace Browserbase
         /// <param name="createdAt"></param>
         /// <param name="updatedAt"></param>
         /// <param name="startedAt"></param>
-        /// <param name="endedAt"></param>
         /// <param name="expiresAt"></param>
+        /// <param name="endedAt"></param>
         /// <param name="builtFunctions"></param>
         /// <param name="cause"></param>
 #if NET7_0_OR_GREATER
@@ -126,8 +126,8 @@ namespace Browserbase
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.StartedAt = startedAt;
-            this.ExpiresAt = expiresAt;
             this.EndedAt = endedAt;
+            this.ExpiresAt = expiresAt;
             this.BuiltFunctions = builtFunctions;
             this.Cause = cause;
         }

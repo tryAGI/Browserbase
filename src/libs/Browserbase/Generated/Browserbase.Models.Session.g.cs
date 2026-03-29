@@ -114,7 +114,6 @@ namespace Browserbase
         /// The Project ID linked to the Session.
         /// </param>
         /// <param name="startedAt"></param>
-        /// <param name="endedAt"></param>
         /// <param name="expiresAt"></param>
         /// <param name="status"></param>
         /// <param name="proxyBytes">
@@ -123,11 +122,12 @@ namespace Browserbase
         /// <param name="keepAlive">
         /// Indicates if the Session was created to be kept alive upon disconnections
         /// </param>
-        /// <param name="contextId">
-        /// Optional. The Context linked to the Session.
-        /// </param>
         /// <param name="region">
         /// The region where the Session is running.
+        /// </param>
+        /// <param name="endedAt"></param>
+        /// <param name="contextId">
+        /// Optional. The Context linked to the Session.
         /// </param>
         /// <param name="userMetadata">
         /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
@@ -155,13 +155,13 @@ namespace Browserbase
             this.UpdatedAt = updatedAt;
             this.ProjectId = projectId ?? throw new global::System.ArgumentNullException(nameof(projectId));
             this.StartedAt = startedAt;
+            this.EndedAt = endedAt;
             this.ExpiresAt = expiresAt;
             this.Status = status;
             this.ProxyBytes = proxyBytes;
             this.KeepAlive = keepAlive;
-            this.Region = region;
-            this.EndedAt = endedAt;
             this.ContextId = contextId;
+            this.Region = region;
             this.UserMetadata = userMetadata;
         }
 

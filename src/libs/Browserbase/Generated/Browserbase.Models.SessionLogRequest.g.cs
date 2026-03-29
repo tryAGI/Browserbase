@@ -37,11 +37,11 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionLogRequest" /> class.
         /// </summary>
+        /// <param name="params"></param>
+        /// <param name="rawBody"></param>
         /// <param name="timestamp">
         /// milliseconds that have elapsed since the UNIX epoch
         /// </param>
-        /// <param name="params"></param>
-        /// <param name="rawBody"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -50,9 +50,9 @@ namespace Browserbase
             string rawBody,
             long? timestamp)
         {
+            this.Timestamp = timestamp;
             this.Params = @params ?? throw new global::System.ArgumentNullException(nameof(@params));
             this.RawBody = rawBody ?? throw new global::System.ArgumentNullException(nameof(rawBody));
-            this.Timestamp = timestamp;
         }
 
         /// <summary>
