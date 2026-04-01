@@ -360,6 +360,7 @@ namespace Browserbase
             bool? proxies = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+
             var __request = new global::Browserbase.FetchCreateRequest
             {
                 Url = url,
