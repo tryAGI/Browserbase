@@ -203,7 +203,6 @@ namespace Browserbase
             global::Browserbase.SessionsUpdateRequestStatus status = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::Browserbase.SessionsUpdateRequest
             {
                 ProjectId = projectId,
