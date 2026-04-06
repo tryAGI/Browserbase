@@ -712,6 +712,9 @@ paths:
                         advancedStealth:
                           description: Advanced Browser Stealth Mode
                           type: boolean
+                        verified:
+                          description: Verified Browser Mode
+                          type: boolean
                         captchaImageSelector:
                           description: >-
                             Custom selector for captcha image. See [Custom
@@ -1101,6 +1104,9 @@ paths:
                       type: boolean
                     advancedStealth:
                       description: Advanced Browser Stealth Mode
+                      type: boolean
+                    verified:
+                      description: Verified Browser Mode
                       type: boolean
                     captchaImageSelector:
                       description: >-

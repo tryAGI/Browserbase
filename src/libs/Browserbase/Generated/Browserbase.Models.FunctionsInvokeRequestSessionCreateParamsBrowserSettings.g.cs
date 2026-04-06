@@ -57,6 +57,12 @@ namespace Browserbase
         public bool? AdvancedStealth { get; set; }
 
         /// <summary>
+        /// Verified Browser Mode
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("verified")]
+        public bool? Verified { get; set; }
+
+        /// <summary>
         /// Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("captchaImageSelector")]
@@ -144,6 +150,9 @@ namespace Browserbase
         /// <param name="advancedStealth">
         /// Advanced Browser Stealth Mode
         /// </param>
+        /// <param name="verified">
+        /// Verified Browser Mode
+        /// </param>
         /// <param name="captchaImageSelector">
         /// Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
         /// </param>
@@ -186,6 +195,7 @@ namespace Browserbase
             bool? recordSession,
             bool? logSession,
             bool? advancedStealth,
+            bool? verified,
             string? captchaImageSelector,
             string? captchaInputSelector,
             global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs? os,
@@ -204,6 +214,7 @@ namespace Browserbase
             this.RecordSession = recordSession;
             this.LogSession = logSession;
             this.AdvancedStealth = advancedStealth;
+            this.Verified = verified;
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;
             this.Os = os;
