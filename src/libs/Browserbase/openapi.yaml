@@ -823,7 +823,7 @@ paths:
                       description: >-
                         Arbitrary user metadata to attach to the session. To
                         learn more about user metadata, see [User
-                        Metadata](/features/sessions#user-metadata).
+                        Metadata](/platform/browser/core-features/session-metadata).
                       type: object
                       additionalProperties: true
                       properties: {}
@@ -1013,6 +1013,7 @@ paths:
           schema:
             type: string
             enum:
+              - PENDING
               - RUNNING
               - ERROR
               - TIMED_OUT
@@ -1021,8 +1022,8 @@ paths:
           in: query
           description: >-
             Query sessions by user metadata. See [Querying Sessions by User
-            Metadata](/features/sessions#querying-sessions-by-user-metadata) for
-            the schema of this query.
+            Metadata](/platform/browser/core-features/session-metadata#query-sessions-by-metadata)
+            for the schema of this query.
           required: false
           schema:
             type: string
@@ -1167,7 +1168,7 @@ paths:
                   description: >-
                     Arbitrary user metadata to attach to the session. To learn
                     more about user metadata, see [User
-                    Metadata](/features/sessions#user-metadata).
+                    Metadata](/platform/browser/core-features/session-metadata).
                   type: object
                   additionalProperties: true
                   properties: {}
@@ -1415,7 +1416,17 @@ paths:
   /v1/sessions/{id}/recording:
     get:
       operationId: Sessions_getRecording
-      summary: Session Recording
+      summary: Session Replay
+      deprecated: true
+      description: |
+        <Warning>
+          **Deprecated:** The rrweb-based Session Recording API is being deprecated. If you need to use rrweb recordings, please contact [support@browserbase.com](mailto:support@browserbase.com).
+        </Warning>
+      x-mint:
+        content: |
+          <Warning>
+            **Deprecated:** The rrweb-based Session Recording API is being deprecated. If you need to use rrweb recordings, please contact [support@browserbase.com](mailto:support@browserbase.com).
+          </Warning>
       parameters:
         - name: id
           in: path
@@ -1430,7 +1441,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SessionRecording'
+                  $ref: '#/components/schemas/SessionReplay'
   /v1/sessions/{id}/uploads:
     post:
       operationId: Sessions_uploadFile
@@ -1887,6 +1898,7 @@ components:
         status:
           type: string
           enum:
+            - PENDING
             - RUNNING
             - ERROR
             - TIMED_OUT
@@ -1916,7 +1928,7 @@ components:
           description: >-
             Arbitrary user metadata to attach to the session. To learn more
             about user metadata, see [User
-            Metadata](/features/sessions#user-metadata).
+            Metadata](/platform/browser/core-features/session-metadata).
           type: object
           additionalProperties: true
           properties: {}
@@ -2026,12 +2038,15 @@ components:
         - method
         - pageId
         - sessionId
-    SessionRecording:
+    SessionReplay:
       type: object
+      description: >-
+        Deprecated: rrweb-based session recording data. Contact
+        support@browserbase.com if you need to use this.
       properties:
         data:
           description: >-
-            See [rrweb
+            Deprecated. See [rrweb
             documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
           type: object
           additionalProperties: true

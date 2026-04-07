@@ -40,7 +40,7 @@ namespace Browserbase
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? ProxySettings { get; set; }
 
         /// <summary>
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userMetadata")]
         public object? UserMetadata { get; set; }
@@ -68,7 +68,7 @@ namespace Browserbase
         /// [NOT IN DOCS] Supplementary proxy settings. Optional.
         /// </param>
         /// <param name="userMetadata">
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
