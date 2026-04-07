@@ -4,9 +4,9 @@
 namespace Browserbase
 {
     /// <summary>
-    /// See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
+    /// Deprecated. See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
     /// </summary>
-    public sealed partial class SessionRecordingData
+    public sealed partial class SessionReplayData
     {
 
         /// <summary>

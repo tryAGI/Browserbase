@@ -19,6 +19,10 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
+        Pending,
+        /// <summary>
+        /// 
+        /// </summary>
         Running,
         /// <summary>
         /// 
@@ -40,6 +44,7 @@ namespace Browserbase
             {
                 SessionStatus.Completed => "COMPLETED",
                 SessionStatus.Error => "ERROR",
+                SessionStatus.Pending => "PENDING",
                 SessionStatus.Running => "RUNNING",
                 SessionStatus.TimedOut => "TIMED_OUT",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -54,6 +59,7 @@ namespace Browserbase
             {
                 "COMPLETED" => SessionStatus.Completed,
                 "ERROR" => SessionStatus.Error,
+                "PENDING" => SessionStatus.Pending,
                 "RUNNING" => SessionStatus.Running,
                 "TIMED_OUT" => SessionStatus.TimedOut,
                 _ => null,
