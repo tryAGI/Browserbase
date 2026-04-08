@@ -102,12 +102,6 @@ namespace Browserbase
         public bool? EnablePdfViewer { get; set; }
 
         /// <summary>
-        /// [NOT IN DOCS] Enable or disable headful mode. Defaults to `false`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("headful")]
-        public bool? Headful { get; set; }
-
-        /// <summary>
         /// [NOT IN DOCS] List of pre-installed extension names and custom extension ids to enable on the browser<br/>
         /// Default Value: []
         /// </summary>
@@ -172,9 +166,6 @@ namespace Browserbase
         /// <param name="enablePdfViewer">
         /// [NOT IN DOCS] Enable PDF viewer. This gives support a break-glass option to enable the viewer when users want to view PDFs in-browser.
         /// </param>
-        /// <param name="headful">
-        /// [NOT IN DOCS] Enable or disable headful mode. Defaults to `false`.
-        /// </param>
         /// <param name="extensions">
         /// [NOT IN DOCS] List of pre-installed extension names and custom extension ids to enable on the browser<br/>
         /// Default Value: []
@@ -202,7 +193,6 @@ namespace Browserbase
             global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize? size,
             bool? enableNativeSelectPolyfill,
             bool? enablePdfViewer,
-            bool? headful,
             global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? extensions,
             global::System.Collections.Generic.IList<string>? allowedDomains)
         {
@@ -221,7 +211,6 @@ namespace Browserbase
             this.Size = size;
             this.EnableNativeSelectPolyfill = enableNativeSelectPolyfill;
             this.EnablePdfViewer = enablePdfViewer;
-            this.Headful = headful;
             this.Extensions = extensions;
             this.AllowedDomains = allowedDomains;
         }
