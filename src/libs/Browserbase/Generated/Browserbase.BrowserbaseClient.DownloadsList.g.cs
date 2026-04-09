@@ -5,6 +5,25 @@ namespace Browserbase
 {
     public partial class BrowserbaseClient
     {
+
+
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_DownloadsListSecurityRequirement0 =
+            new global::Browserbase.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
+                {                    new global::Browserbase.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_DownloadsListSecurityRequirements =
+            new global::Browserbase.EndPointSecurityRequirement[]
+            {                s_DownloadsListSecurityRequirement0,
+            };
         partial void PrepareDownloadsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string sessionId,
@@ -82,6 +101,12 @@ namespace Browserbase
                 limit: ref limit,
                 offset: ref offset);
 
+
+            var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_DownloadsListSecurityRequirements,
+                operationName: "DownloadsListAsync");
+
             var __pathBuilder = new global::Browserbase.PathBuilder(
                 path: "/v1/downloads",
                 baseUri: HttpClient.BaseAddress); 
@@ -95,7 +120,7 @@ namespace Browserbase
                 .AddOptionalParameter("createdBefore", createdBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("offset", offset?.ToString()) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -105,7 +130,7 @@ namespace Browserbase
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
