@@ -5,6 +5,25 @@ namespace Browserbase
 {
     public partial class BrowserbaseClient
     {
+
+
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_ContextsUpdateSecurityRequirement0 =
+            new global::Browserbase.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
+                {                    new global::Browserbase.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_ContextsUpdateSecurityRequirements =
+            new global::Browserbase.EndPointSecurityRequirement[]
+            {                s_ContextsUpdateSecurityRequirement0,
+            };
         partial void PrepareContextsUpdateArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string id);
@@ -37,9 +56,15 @@ namespace Browserbase
                 httpClient: HttpClient,
                 id: ref id);
 
+
+            var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ContextsUpdateSecurityRequirements,
+                operationName: "ContextsUpdateAsync");
+
             var __pathBuilder = new global::Browserbase.PathBuilder(
                 path: $"/v1/contexts/{id}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Put,
@@ -49,7 +74,7 @@ namespace Browserbase
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -13,7 +13,7 @@ namespace Browserbase
         /// <summary>
         /// Public endpoint
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.browserbase.com";
+        public const string DefaultBaseUrl = "https://api.browserbase.com/";
 
         private bool _disposeHttpClient = true;
 

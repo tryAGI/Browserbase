@@ -5,6 +5,25 @@ namespace Browserbase
 {
     public partial class BrowserbaseClient
     {
+
+
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_SessionsListSecurityRequirement0 =
+            new global::Browserbase.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
+                {                    new global::Browserbase.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_SessionsListSecurityRequirements =
+            new global::Browserbase.EndPointSecurityRequirement[]
+            {                s_SessionsListSecurityRequirement0,
+            };
         partial void PrepareSessionsListArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref global::Browserbase.SessionsListStatus? status,
@@ -42,13 +61,19 @@ namespace Browserbase
                 status: ref status,
                 q: ref q);
 
+
+            var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_SessionsListSecurityRequirements,
+                operationName: "SessionsListAsync");
+
             var __pathBuilder = new global::Browserbase.PathBuilder(
                 path: "/v1/sessions",
                 baseUri: HttpClient.BaseAddress); 
             __pathBuilder
                 .AddOptionalParameter("status", status?.ToValueString())
                 .AddOptionalParameter("q", q) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -58,7 +83,7 @@ namespace Browserbase
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
