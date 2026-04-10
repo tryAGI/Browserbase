@@ -9,11 +9,13 @@ namespace Browserbase
         /// Fetch a page and return its content, headers, and metadata.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Browserbase.FetchCreateResponse> FetchCreateAsync(
 
             global::Browserbase.FetchCreateRequest request,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Fetch a Page<br/>
@@ -34,6 +36,7 @@ namespace Browserbase
         /// Whether to enable proxy support for the request<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Browserbase.FetchCreateResponse> FetchCreateAsync(
@@ -41,6 +44,7 @@ namespace Browserbase
             bool? allowRedirects = default,
             bool? allowInsecureSsl = default,
             bool? proxies = default,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

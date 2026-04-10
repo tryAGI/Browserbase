@@ -9,12 +9,14 @@ namespace Browserbase
         /// </summary>
         /// <param name="id"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Browserbase.Invocation> FunctionsInvokeAsync(
             global::System.Guid id,
 
             global::Browserbase.FunctionsInvokeRequest request,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Invoke a Function
@@ -24,12 +26,14 @@ namespace Browserbase
         /// JSON object that can be stored in a JSONB column
         /// </param>
         /// <param name="sessionCreateParams"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Browserbase.Invocation> FunctionsInvokeAsync(
             global::System.Guid id,
             object? @params = default,
             global::Browserbase.FunctionsInvokeRequestSessionCreateParams? sessionCreateParams = default,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
