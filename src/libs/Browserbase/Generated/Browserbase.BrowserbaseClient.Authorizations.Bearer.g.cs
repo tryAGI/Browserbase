@@ -25,6 +25,7 @@ namespace Browserbase
             Authorizations.Add(new global::Browserbase.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

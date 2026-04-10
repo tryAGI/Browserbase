@@ -8,6 +8,7 @@ namespace Browserbase
         /// Create a Session
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         /// <remarks>
@@ -20,6 +21,7 @@ namespace Browserbase
         global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>> SessionsCreateAsync(
 
             global::Browserbase.SessionsCreateRequest request,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a Session
@@ -47,6 +49,7 @@ namespace Browserbase
         /// <param name="userMetadata">
         /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>> SessionsCreateAsync(
@@ -58,6 +61,7 @@ namespace Browserbase
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies = default,
             global::Browserbase.SessionsCreateRequestRegion? region = default,
             object? userMetadata = default,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
