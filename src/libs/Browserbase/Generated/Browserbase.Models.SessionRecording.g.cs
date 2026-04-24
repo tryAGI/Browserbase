@@ -4,12 +4,12 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Deprecated: rrweb-based session recording data. Contact support@browserbase.com if you need to use this.
+    /// 
     /// </summary>
-    public sealed partial class SessionReplay
+    public sealed partial class SessionRecording
     {
         /// <summary>
-        /// Deprecated. See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
+        /// See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("data")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -43,10 +43,10 @@ namespace Browserbase
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SessionReplay" /> class.
+        /// Initializes a new instance of the <see cref="SessionRecording" /> class.
         /// </summary>
         /// <param name="data">
-        /// Deprecated. See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
+        /// See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
         /// </param>
         /// <param name="sessionId"></param>
         /// <param name="timestamp">
@@ -56,7 +56,7 @@ namespace Browserbase
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public SessionReplay(
+        public SessionRecording(
             object data,
             string sessionId,
             long timestamp,
@@ -69,9 +69,9 @@ namespace Browserbase
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SessionReplay" /> class.
+        /// Initializes a new instance of the <see cref="SessionRecording" /> class.
         /// </summary>
-        public SessionReplay()
+        public SessionRecording()
         {
         }
     }

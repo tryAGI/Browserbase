@@ -47,7 +47,7 @@ namespace Browserbase
         /// Default Value: us-west-2
         /// </param>
         /// <param name="userMetadata">
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -21,12 +21,6 @@ namespace Browserbase
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettings? BrowserSettings { get; set; }
 
         /// <summary>
-        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
-        public int? Timeout { get; set; }
-
-        /// <summary>
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxies")]
@@ -40,10 +34,17 @@ namespace Browserbase
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? ProxySettings { get; set; }
 
         /// <summary>
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userMetadata")]
         public object? UserMetadata { get; set; }
+
+        /// <summary>
+        /// Duration in seconds after which the function invocation will automatically end. Defaults to 900 (15 minutes).<br/>
+        /// Default Value: 900
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
+        public int? Timeout { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -58,9 +59,6 @@ namespace Browserbase
         /// The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
         /// </param>
         /// <param name="browserSettings"></param>
-        /// <param name="timeout">
-        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
-        /// </param>
         /// <param name="proxies">
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
@@ -68,7 +66,11 @@ namespace Browserbase
         /// [NOT IN DOCS] Supplementary proxy settings. Optional.
         /// </param>
         /// <param name="userMetadata">
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
+        /// </param>
+        /// <param name="timeout">
+        /// Duration in seconds after which the function invocation will automatically end. Defaults to 900 (15 minutes).<br/>
+        /// Default Value: 900
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -76,17 +78,17 @@ namespace Browserbase
         public FunctionsInvokeRequestSessionCreateParams(
             string? extensionId,
             global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettings? browserSettings,
-            int? timeout,
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies,
             global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? proxySettings,
-            object? userMetadata)
+            object? userMetadata,
+            int? timeout)
         {
             this.ExtensionId = extensionId;
             this.BrowserSettings = browserSettings;
-            this.Timeout = timeout;
             this.Proxies = proxies;
             this.ProxySettings = proxySettings;
             this.UserMetadata = userMetadata;
+            this.Timeout = timeout;
         }
 
         /// <summary>

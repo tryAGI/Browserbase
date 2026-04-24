@@ -93,7 +93,7 @@ namespace Browserbase
         public required global::Browserbase.SessionRegion Region { get; set; }
 
         /// <summary>
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("userMetadata")]
         public object? UserMetadata { get; set; }
@@ -130,7 +130,7 @@ namespace Browserbase
         /// Optional. The Context linked to the Session.
         /// </param>
         /// <param name="userMetadata">
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

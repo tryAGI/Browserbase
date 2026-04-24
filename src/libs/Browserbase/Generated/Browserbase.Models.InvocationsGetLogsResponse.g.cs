@@ -20,7 +20,7 @@ namespace Browserbase
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Total { get; set; }
+        public required int Total { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -38,7 +38,7 @@ namespace Browserbase
 #endif
         public InvocationsGetLogsResponse(
             global::System.Collections.Generic.IList<global::Browserbase.InvocationLog> logs,
-            double total)
+            int total)
         {
             this.Logs = logs ?? throw new global::System.ArgumentNullException(nameof(logs));
             this.Total = total;

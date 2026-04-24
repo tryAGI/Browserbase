@@ -4,7 +4,7 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/platform/browser/core-features/session-metadata).
+    /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
     /// </summary>
     public sealed partial class SessionsCreateRequestUserMetadata
     {

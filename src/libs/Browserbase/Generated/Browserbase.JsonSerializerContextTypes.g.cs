@@ -200,7 +200,7 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionReplay? Type43 { get; set; }
+        public global::Browserbase.SessionRecording? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -476,7 +476,7 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionReplay>? Type112 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -557,6 +557,6 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::Browserbase.SessionReplay>? ListType18 { get; set; }
+        public global::System.Collections.Generic.List<global::Browserbase.SessionRecording>? ListType18 { get; set; }
     }
 }
