@@ -7,7 +7,7 @@ namespace Browserbase
     {
 
 
-        private static readonly global::Browserbase.EndPointSecurityRequirement s_SessionsCreateSecurityRequirement0 =
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_SessionsGetRecordingSecurityRequirement0 =
             new global::Browserbase.EndPointSecurityRequirement
             {
                 Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
@@ -21,59 +21,49 @@ namespace Browserbase
                     },
                 },
             };
-        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_SessionsCreateSecurityRequirements =
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_SessionsGetRecordingSecurityRequirements =
             new global::Browserbase.EndPointSecurityRequirement[]
-            {                s_SessionsCreateSecurityRequirement0,
+            {                s_SessionsGetRecordingSecurityRequirement0,
             };
-        partial void PrepareSessionsCreateArguments(
+        partial void PrepareSessionsGetRecordingArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Browserbase.SessionsCreateRequest request);
-        partial void PrepareSessionsCreateRequest(
+            ref string id);
+        partial void PrepareSessionsGetRecordingRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Browserbase.SessionsCreateRequest request);
-        partial void ProcessSessionsCreateResponse(
+            string id);
+        partial void ProcessSessionsGetRecordingResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessSessionsCreateResponseContent(
+        partial void ProcessSessionsGetRecordingResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Create a Session
+        /// Session Recording
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        /// <remarks>
-        /// curl --request POST \<br/>
-        ///   --url https://api.browserbase.com/v1/sessions \<br/>
-        ///   --header 'Content-Type: application/json' \<br/>
-        ///   --header 'X-BB-API-Key: &lt;api-key&gt;' \<br/>
-        ///   --data '{}'
-        /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>> SessionsCreateAsync(
-
-            global::Browserbase.SessionsCreateRequest request,
+        public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>> SessionsGetRecordingAsync(
+            string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareSessionsCreateArguments(
+            PrepareSessionsGetRecordingArguments(
                 httpClient: HttpClient,
-                request: request);
+                id: ref id);
 
 
             var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_SessionsCreateSecurityRequirements,
-                operationName: "SessionsCreateAsync");
+                securityRequirements: s_SessionsGetRecordingSecurityRequirements,
+                operationName: "SessionsGetRecordingAsync");
 
             using var __timeoutCancellationTokenSource = global::Browserbase.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -92,7 +82,7 @@ namespace Browserbase
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
                             var __pathBuilder = new global::Browserbase.PathBuilder(
-                                path: "/v1/sessions",
+                                path: $"/v1/sessions/{id}/recording",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -100,7 +90,7 @@ namespace Browserbase
                     clientParameters: Options.QueryParameters,
                     requestParameters: requestOptions?.QueryParameters);
                 var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
-                    method: global::System.Net.Http.HttpMethod.Post,
+                    method: global::System.Net.Http.HttpMethod.Get,
                     requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
 #if NET6_0_OR_GREATER
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
@@ -123,12 +113,6 @@ namespace Browserbase
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::Browserbase.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -137,10 +121,10 @@ namespace Browserbase
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareSessionsCreateRequest(
+                PrepareSessionsGetRecordingRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    id: id);
 
                 return __httpRequest;
             }
@@ -157,10 +141,10 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsCreate",
-                                methodName: "SessionsCreateAsync",
-                                pathTemplate: "\"/v1/sessions\"",
-                                httpMethod: "POST",
+                                operationId: "SessionsGetRecording",
+                                methodName: "SessionsGetRecordingAsync",
+                                pathTemplate: "$\"/v1/sessions/{id}/recording\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -184,10 +168,10 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsCreate",
-                                methodName: "SessionsCreateAsync",
-                                pathTemplate: "\"/v1/sessions\"",
-                                httpMethod: "POST",
+                                operationId: "SessionsGetRecording",
+                                methodName: "SessionsGetRecordingAsync",
+                                pathTemplate: "$\"/v1/sessions/{id}/recording\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: null,
@@ -219,10 +203,10 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsCreate",
-                                methodName: "SessionsCreateAsync",
-                                pathTemplate: "\"/v1/sessions\"",
-                                httpMethod: "POST",
+                                operationId: "SessionsGetRecording",
+                                methodName: "SessionsGetRecordingAsync",
+                                pathTemplate: "$\"/v1/sessions/{id}/recording\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -258,7 +242,7 @@ namespace Browserbase
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessSessionsCreateResponse(
+                ProcessSessionsGetRecordingResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -266,10 +250,10 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsCreate",
-                                methodName: "SessionsCreateAsync",
-                                pathTemplate: "\"/v1/sessions\"",
-                                httpMethod: "POST",
+                                operationId: "SessionsGetRecording",
+                                methodName: "SessionsGetRecordingAsync",
+                                pathTemplate: "$\"/v1/sessions/{id}/recording\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -286,10 +270,10 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsCreate",
-                                methodName: "SessionsCreateAsync",
-                                pathTemplate: "\"/v1/sessions\"",
-                                httpMethod: "POST",
+                                operationId: "SessionsGetRecording",
+                                methodName: "SessionsGetRecordingAsync",
+                                pathTemplate: "$\"/v1/sessions/{id}/recording\"",
+                                httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
                                 response: __response,
@@ -314,7 +298,7 @@ namespace Browserbase
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessSessionsCreateResponseContent(
+                                ProcessSessionsGetRecordingResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -324,7 +308,7 @@ namespace Browserbase
                                     __response.EnsureSuccessStatusCode();
 
                                     return
-                                        global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>.FromJson(__content, JsonSerializerContext) ??
+                                        (global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>?)global::System.Text.Json.JsonSerializer.Deserialize(__content, typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>), JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
                                 }
                                 catch (global::System.Exception __ex)
@@ -354,7 +338,7 @@ namespace Browserbase
                                     ).ConfigureAwait(false);
 
                                     return
-                                        await global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                        (global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>?)await global::System.Text.Json.JsonSerializer.DeserializeAsync(__content, typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>), JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
                                 }
                                 catch (global::System.Exception __ex)
@@ -392,64 +376,6 @@ namespace Browserbase
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Create a Session
-        /// </summary>
-        /// <param name="projectId">
-        /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
-        /// </param>
-        /// <param name="extensionId">
-        /// The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
-        /// </param>
-        /// <param name="browserSettings"></param>
-        /// <param name="timeout">
-        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
-        /// </param>
-        /// <param name="keepAlive">
-        /// Set to true to keep the session alive even after disconnections. Available on the Hobby Plan and above.
-        /// </param>
-        /// <param name="proxies">
-        /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
-        /// </param>
-        /// <param name="region">
-        /// The region where the Session should run.<br/>
-        /// Default Value: us-west-2
-        /// </param>
-        /// <param name="userMetadata">
-        /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>> SessionsCreateAsync(
-            string? projectId = default,
-            string? extensionId = default,
-            global::Browserbase.SessionsCreateRequestBrowserSettings? browserSettings = default,
-            int? timeout = default,
-            bool? keepAlive = default,
-            global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies = default,
-            global::Browserbase.SessionsCreateRequestRegion? region = default,
-            object? userMetadata = default,
-            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::Browserbase.SessionsCreateRequest
-            {
-                ProjectId = projectId,
-                ExtensionId = extensionId,
-                BrowserSettings = browserSettings,
-                Timeout = timeout,
-                KeepAlive = keepAlive,
-                Proxies = proxies,
-                Region = region,
-                UserMetadata = userMetadata,
-            };
-
-            return await SessionsCreateAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

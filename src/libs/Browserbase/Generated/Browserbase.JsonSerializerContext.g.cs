@@ -139,7 +139,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLog))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionReplay))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionRecording))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ContextsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ExtensionsUploadRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
@@ -208,7 +208,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>), TypeInfoPropertyName = "AllOfSessionSessionsGetResponse22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsGetResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionLog>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionReplay>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUploadFileResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AllOf<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>>))]
@@ -228,7 +228,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SearchWebResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Session>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLog>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionReplay>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionRecording>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

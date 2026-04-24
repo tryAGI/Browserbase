@@ -82,6 +82,12 @@ namespace Browserbase
         public global::Browserbase.SessionsCreateRequestBrowserSettingsOs? Os { get; set; }
 
         /// <summary>
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
+        public bool? IgnoreCertificateErrors { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -122,6 +128,9 @@ namespace Browserbase
         /// <param name="os">
         /// Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet
         /// </param>
+        /// <param name="ignoreCertificateErrors">
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -137,7 +146,8 @@ namespace Browserbase
             bool? verified,
             string? captchaImageSelector,
             string? captchaInputSelector,
-            global::Browserbase.SessionsCreateRequestBrowserSettingsOs? os)
+            global::Browserbase.SessionsCreateRequestBrowserSettingsOs? os,
+            bool? ignoreCertificateErrors)
         {
             this.Context = context;
             this.ExtensionId = extensionId;
@@ -151,6 +161,7 @@ namespace Browserbase
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;
             this.Os = os;
+            this.IgnoreCertificateErrors = ignoreCertificateErrors;
         }
 
         /// <summary>

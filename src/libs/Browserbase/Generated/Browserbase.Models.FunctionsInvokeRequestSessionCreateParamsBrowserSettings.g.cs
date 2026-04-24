@@ -116,6 +116,12 @@ namespace Browserbase
         public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
 
         /// <summary>
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
+        public bool? IgnoreCertificateErrors { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -174,6 +180,9 @@ namespace Browserbase
         /// An optional list of allowed domains for the session. If provided, navigation will be restricted to these domains.<br/>
         /// Default Value: []
         /// </param>
+        /// <param name="ignoreCertificateErrors">
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -194,7 +203,8 @@ namespace Browserbase
             bool? enableNativeSelectPolyfill,
             bool? enablePdfViewer,
             global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? extensions,
-            global::System.Collections.Generic.IList<string>? allowedDomains)
+            global::System.Collections.Generic.IList<string>? allowedDomains,
+            bool? ignoreCertificateErrors)
         {
             this.Context = context;
             this.ExtensionId = extensionId;
@@ -213,6 +223,7 @@ namespace Browserbase
             this.EnablePdfViewer = enablePdfViewer;
             this.Extensions = extensions;
             this.AllowedDomains = allowedDomains;
+            this.IgnoreCertificateErrors = ignoreCertificateErrors;
         }
 
         /// <summary>
