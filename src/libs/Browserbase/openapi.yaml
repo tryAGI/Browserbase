@@ -4,7 +4,7 @@ info:
   description: Browserbase API for 3rd party developers
   version: v1
 servers:
-  - url: "https://api.browserbase.com"
+  - url: https://api.browserbase.com
     description: Public endpoint
     variables: {}
 paths:
@@ -19,11 +19,17 @@ paths:
               type: object
               properties:
                 projectId:
-                  description: "The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key."
+                  description: >-
+                    The Project ID. Can be found in
+                    [Settings](https://www.browserbase.com/settings). Optional -
+                    if not provided, the project will be inferred from the API
+                    key.
                   type: string
       responses:
-        "201":
-          description: The request has succeeded and a new resource has been created as a result.
+        '201':
+          description: >-
+            The request has succeeded and a new resource has been created as a
+            result.
           content:
             application/json:
               schema:
@@ -39,10 +45,16 @@ paths:
                     description: The public key to encrypt the user-data-directory.
                     type: string
                   cipherAlgorithm:
-                    description: The cipher algorithm used to encrypt the user-data-directory. AES-256-CBC is currently the only supported algorithm.
+                    description: >-
+                      The cipher algorithm used to encrypt the
+                      user-data-directory. AES-256-CBC is currently the only
+                      supported algorithm.
                     type: string
                   initializationVectorSize:
-                    description: "The initialization vector size used to encrypt the user-data-directory. [Read more about how to use it](/features/contexts)."
+                    description: >-
+                      The initialization vector size used to encrypt the
+                      user-data-directory. [Read more about how to use
+                      it](/features/contexts).
                     type: integer
                     format: uint8
                 required:
@@ -51,7 +63,7 @@ paths:
                   - publicKey
                   - cipherAlgorithm
                   - initializationVectorSize
-  "/v1/contexts/{id}":
+  /v1/contexts/{id}:
     get:
       operationId: Contexts_get
       summary: Get a Context
@@ -62,12 +74,12 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Context"
+                $ref: '#/components/schemas/Context'
     put:
       operationId: Contexts_update
       summary: Update a Context
@@ -78,7 +90,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -95,10 +107,16 @@ paths:
                     description: The public key to encrypt the user-data-directory.
                     type: string
                   cipherAlgorithm:
-                    description: The cipher algorithm used to encrypt the user-data-directory. AES-256-CBC is currently the only supported algorithm.
+                    description: >-
+                      The cipher algorithm used to encrypt the
+                      user-data-directory. AES-256-CBC is currently the only
+                      supported algorithm.
                     type: string
                   initializationVectorSize:
-                    description: "The initialization vector size used to encrypt the user-data-directory. [Read more about how to use it](/features/contexts)."
+                    description: >-
+                      The initialization vector size used to encrypt the
+                      user-data-directory. [Read more about how to use
+                      it](/features/contexts).
                     type: integer
                     format: uint8
                 required:
@@ -117,8 +135,10 @@ paths:
           schema:
             type: string
       responses:
-        "204":
-          description: "There is no content to send for this request, but the headers may be useful."
+        '204':
+          description: >-
+            There is no content to send for this request, but the headers may be
+            useful.
   /v1/downloads:
     get:
       operationId: Downloads_list
@@ -191,7 +211,7 @@ paths:
             default: 0
             minimum: 0
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -245,11 +265,13 @@ paths:
                   - total
                   - limit
                   - offset
-  "/v1/downloads/{id}":
+  /v1/downloads/{id}:
     get:
       operationId: Downloads_get
       summary: Get a Download
-      description: "Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream)."
+      description: >-
+        Get download metadata (Accept: application/json) or file content
+        (Accept: application/octet-stream).
       parameters:
         - name: id
           in: path
@@ -258,7 +280,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -311,7 +333,7 @@ paths:
           schema:
             type: string
       responses:
-        "204":
+        '204':
           description: There is no content to send for this request.
   /v1/extensions:
     post:
@@ -330,13 +352,13 @@ paths:
               required:
                 - file
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Extension"
-  "/v1/extensions/{id}":
+                $ref: '#/components/schemas/Extension'
+  /v1/extensions/{id}:
     get:
       operationId: Extensions_get
       summary: Get an Extension
@@ -347,12 +369,12 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Extension"
+                $ref: '#/components/schemas/Extension'
     delete:
       operationId: Extensions_delete
       summary: Delete an Extension
@@ -363,13 +385,15 @@ paths:
           schema:
             type: string
       responses:
-        "204":
-          description: "There is no content to send for this request, but the headers may be useful."
+        '204':
+          description: >-
+            There is no content to send for this request, but the headers may be
+            useful.
   /v1/fetch:
     post:
       operationId: Fetch_create
       summary: Fetch a Page
-      description: "Fetch a page and return its content, headers, and metadata."
+      description: Fetch a page and return its content, headers, and metadata.
       requestBody:
         required: true
         content:
@@ -396,7 +420,7 @@ paths:
               required:
                 - url
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -430,7 +454,7 @@ paths:
                   - content
                   - contentType
                   - encoding
-        "400":
+        '400':
           description: Invalid request body.
           content:
             application/json:
@@ -453,7 +477,7 @@ paths:
                   - statusCode
                   - error
                   - message
-        "429":
+        '429':
           description: Concurrent fetch request limit exceeded.
           content:
             application/json:
@@ -476,8 +500,10 @@ paths:
                   - statusCode
                   - error
                   - message
-        "502":
-          description: The fetched response was too large or TLS certificate verification failed.
+        '502':
+          description: >-
+            The fetched response was too large or TLS certificate verification
+            failed.
           content:
             application/json:
               schema:
@@ -500,7 +526,7 @@ paths:
                   - error
                   - message
                   - id
-        "504":
+        '504':
           description: The fetch request timed out.
           content:
             application/json:
@@ -545,7 +571,7 @@ paths:
             maximum: 100
             minimum: 1
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -555,7 +581,7 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Function"
+                      $ref: '#/components/schemas/Function'
                   total:
                     type: integer
                     minimum: 0
@@ -588,7 +614,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -598,14 +624,14 @@ paths:
                   data:
                     type: array
                     items:
-                      $ref: "#/components/schemas/FunctionBuild"
+                      $ref: '#/components/schemas/FunctionBuild'
                   total:
                     type: integer
                     minimum: 0
                 required:
                   - data
                   - total
-  "/v1/functions/builds/{id}":
+  /v1/functions/builds/{id}:
     get:
       operationId: FunctionBuilds_get
       summary: Get a Function Build
@@ -617,13 +643,13 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/FunctionBuild"
-  "/v1/functions/builds/{id}/logs":
+                $ref: '#/components/schemas/FunctionBuild'
+  /v1/functions/builds/{id}/logs:
     get:
       operationId: FunctionBuilds_getLogs
       summary: Get Function Build Logs
@@ -635,7 +661,7 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -645,14 +671,14 @@ paths:
                   logs:
                     type: array
                     items:
-                      $ref: "#/components/schemas/FunctionBuildLog"
+                      $ref: '#/components/schemas/FunctionBuildLog'
                   total:
                     type: integer
                     minimum: 0
                 required:
                   - logs
                   - total
-  "/v1/functions/invocations/{id}":
+  /v1/functions/invocations/{id}:
     get:
       operationId: Invocations_get
       summary: Get an Invocation
@@ -664,13 +690,13 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: "#/components/schemas/Invocation"
+                  - $ref: '#/components/schemas/Invocation'
                   - type: object
                     properties:
                       cause:
@@ -687,7 +713,7 @@ paths:
                             minLength: 1
                         required:
                           - code
-  "/v1/functions/invocations/{id}/logs":
+  /v1/functions/invocations/{id}/logs:
     get:
       operationId: Invocations_getLogs
       summary: Get Invocation Logs
@@ -699,7 +725,7 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -709,14 +735,14 @@ paths:
                   logs:
                     type: array
                     items:
-                      $ref: "#/components/schemas/InvocationLog"
+                      $ref: '#/components/schemas/InvocationLog'
                   total:
                     type: integer
                     minimum: 0
                 required:
                   - logs
                   - total
-  "/v1/functions/versions/{id}":
+  /v1/functions/versions/{id}:
     get:
       operationId: FunctionVersions_get
       summary: Get a Function Version
@@ -728,13 +754,13 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/FunctionVersion"
-  "/v1/functions/versions/{id}/invocations":
+                $ref: '#/components/schemas/FunctionVersion'
+  /v1/functions/versions/{id}/invocations:
     get:
       operationId: FunctionVersions_listInvocations
       summary: List Invocations for a Function Version
@@ -766,7 +792,7 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -776,14 +802,14 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Invocation"
+                      $ref: '#/components/schemas/Invocation'
                   total:
                     type: integer
                     minimum: 0
                 required:
                   - results
                   - total
-  "/v1/functions/{id}":
+  /v1/functions/{id}:
     get:
       operationId: Functions_get
       summary: Get a Function
@@ -795,13 +821,13 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Function"
-  "/v1/functions/{id}/invoke":
+                $ref: '#/components/schemas/Function'
+  /v1/functions/{id}/invoke:
     post:
       operationId: Functions_invoke
       summary: Invoke a Function
@@ -827,7 +853,9 @@ paths:
                   type: object
                   properties:
                     extensionId:
-                      description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                      description: >-
+                        The uploaded Extension ID. See [Upload
+                        Extension](/reference/api/upload-an-extension).
                       type: string
                     browserSettings:
                       type: object
@@ -839,12 +867,16 @@ paths:
                               description: The Context ID.
                               type: string
                             persist:
-                              description: Whether or not to persist the context after browsing. Defaults to `false`.
+                              description: >-
+                                Whether or not to persist the context after
+                                browsing. Defaults to `false`.
                               type: boolean
                           required:
                             - id
                         extensionId:
-                          description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                          description: >-
+                            The uploaded Extension ID. See [Upload
+                            Extension](/reference/api/upload-an-extension).
                           type: string
                         viewport:
                           type: object
@@ -856,16 +888,24 @@ paths:
                               description: The height of the browser.
                               type: integer
                         blockAds:
-                          description: Enable or disable ad blocking in the browser. Defaults to `false`.
+                          description: >-
+                            Enable or disable ad blocking in the browser.
+                            Defaults to `false`.
                           type: boolean
                         solveCaptchas:
-                          description: Enable or disable captcha solving in the browser. Defaults to `true`.
+                          description: >-
+                            Enable or disable captcha solving in the browser.
+                            Defaults to `true`.
                           type: boolean
                         recordSession:
-                          description: Enable or disable session recording. Defaults to `true`.
+                          description: >-
+                            Enable or disable session recording. Defaults to
+                            `true`.
                           type: boolean
                         logSession:
-                          description: Enable or disable session logging. Defaults to `true`.
+                          description: >-
+                            Enable or disable session logging. Defaults to
+                            `true`.
                           type: boolean
                         advancedStealth:
                           description: Advanced Browser Stealth Mode
@@ -874,13 +914,21 @@ paths:
                           description: Verified Browser Mode
                           type: boolean
                         captchaImageSelector:
-                          description: "Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                          description: >-
+                            Custom selector for captcha image. See [Custom
+                            Captcha
+                            Solving](/features/stealth-mode#custom-captcha-solving)
                           type: string
                         captchaInputSelector:
-                          description: "Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                          description: >-
+                            Custom selector for captcha input. See [Custom
+                            Captcha
+                            Solving](/features/stealth-mode#custom-captcha-solving)
                           type: string
                         os:
-                          description: "Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet"
+                          description: >-
+                            Operating system for stealth mode. Valid values:
+                            windows, mac, linux, mobile, tablet
                           type: string
                           enum:
                             - windows
@@ -889,7 +937,7 @@ paths:
                             - mobile
                             - tablet
                         size:
-                          description: "[NOT IN DOCS] Resource size of the browser."
+                          description: '[NOT IN DOCS] Resource size of the browser.'
                           type: string
                           default: small
                           enum:
@@ -897,13 +945,21 @@ paths:
                             - medium
                             - large
                         enableNativeSelectPolyfill:
-                          description: "[NOT IN DOCS] Enable native select polyfill. This gives support a break-glass option to disable the polyfill."
+                          description: >-
+                            [NOT IN DOCS] Enable native select polyfill. This
+                            gives support a break-glass option to disable the
+                            polyfill.
                           type: boolean
                         enablePdfViewer:
-                          description: "[NOT IN DOCS] Enable PDF viewer. This gives support a break-glass option to enable the viewer when users want to view PDFs in-browser."
+                          description: >-
+                            [NOT IN DOCS] Enable PDF viewer. This gives support
+                            a break-glass option to enable the viewer when users
+                            want to view PDFs in-browser.
                           type: boolean
                         extensions:
-                          description: "[NOT IN DOCS] List of pre-installed extension names and custom extension ids to enable on the browser"
+                          description: >-
+                            [NOT IN DOCS] List of pre-installed extension names
+                            and custom extension ids to enable on the browser
                           type: array
                           items:
                             type: string
@@ -912,57 +968,73 @@ paths:
                               - browser-events
                           default: []
                         allowedDomains:
-                          description: "An optional list of allowed domains for the session. If provided, navigation will be restricted to these domains."
+                          description: >-
+                            An optional list of allowed domains for the session.
+                            If provided, navigation will be restricted to these
+                            domains.
                           type: array
                           items:
                             type: string
                           default: []
                         ignoreCertificateErrors:
-                          description: Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+                          description: >-
+                            Enable or disable ignoring of certificate errors in
+                            the browser. Defaults to `true`.
                           type: boolean
                     proxies:
-                      description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                      description: >-
+                        Proxy configuration. Can be true for default proxy, or
+                        an array of proxy configurations.
                       anyOf:
                         - type: array
                           items:
                             anyOf:
-                              - $ref: "#/components/schemas/BrowserbaseProxyConfig"
-                              - $ref: "#/components/schemas/ExternalProxyConfig"
-                              - $ref: "#/components/schemas/NoneProxyConfig"
+                              - $ref: '#/components/schemas/BrowserbaseProxyConfig'
+                              - $ref: '#/components/schemas/ExternalProxyConfig'
+                              - $ref: '#/components/schemas/NoneProxyConfig'
                         - type: boolean
                     proxySettings:
-                      description: "[NOT IN DOCS] Supplementary proxy settings. Optional."
+                      description: '[NOT IN DOCS] Supplementary proxy settings. Optional.'
                       type: object
                       properties:
                         caCertificates:
-                          description: "[NOT IN DOCS] The TLS certificate IDs to trust. Optional."
+                          description: >-
+                            [NOT IN DOCS] The TLS certificate IDs to trust.
+                            Optional.
                           type: array
                           items:
                             format: uuid
-                            description: "[NOT IN DOCS] The TLS certificate ID to trust."
+                            description: '[NOT IN DOCS] The TLS certificate ID to trust.'
                             type: string
                           default: []
                       required:
                         - caCertificates
                     userMetadata:
-                      description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+                      description: >-
+                        Arbitrary user metadata to attach to the session. To
+                        learn more about user metadata, see [User
+                        Metadata](/features/sessions#user-metadata).
                       type: object
                       additionalProperties: true
                       properties: {}
                     timeout:
-                      description: Duration in seconds after which the function invocation will automatically end. Defaults to 900 (15 minutes).
+                      description: >-
+                        Duration in seconds after which the function invocation
+                        will automatically end. Defaults to 900 (15 minutes).
                       type: integer
                       default: 900
                       maximum: 900
                       minimum: 60
       responses:
-        "202":
-          description: "The request has been accepted for processing, but processing has not yet completed."
+        '202':
+          description: >-
+            The request has been accepted for processing, but processing has not
+            yet completed.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Invocation"
-  "/v1/functions/{id}/versions":
+                $ref: '#/components/schemas/Invocation'
+  /v1/functions/{id}/versions:
     get:
       operationId: Functions_listVersions
       summary: List Function Versions
@@ -989,7 +1061,7 @@ paths:
             type: string
             format: uuid
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -999,7 +1071,7 @@ paths:
                   results:
                     type: array
                     items:
-                      $ref: "#/components/schemas/FunctionVersion"
+                      $ref: '#/components/schemas/FunctionVersion'
                   total:
                     type: integer
                     minimum: 0
@@ -1011,15 +1083,15 @@ paths:
       operationId: Projects_list
       summary: List Projects
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Project"
-  "/v1/projects/{id}":
+                  $ref: '#/components/schemas/Project'
+  /v1/projects/{id}:
     get:
       operationId: Projects_get
       summary: Get a Project
@@ -1030,13 +1102,13 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Project"
-  "/v1/projects/{id}/usage":
+                $ref: '#/components/schemas/Project'
+  /v1/projects/{id}/usage:
     get:
       operationId: Projects_usage
       summary: Get Project Usage
@@ -1047,12 +1119,12 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ProjectUsage"
+                $ref: '#/components/schemas/ProjectUsage'
   /v1/search:
     post:
       operationId: Search_web
@@ -1079,7 +1151,7 @@ paths:
               required:
                 - query
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -1146,19 +1218,22 @@ paths:
               - COMPLETED
         - name: q
           in: query
-          description: "Query sessions by user metadata. See [Querying Sessions by User Metadata](/features/sessions#querying-sessions-by-user-metadata) for the schema of this query."
+          description: >-
+            Query sessions by user metadata. See [Querying Sessions by User
+            Metadata](/features/sessions#querying-sessions-by-user-metadata) for
+            the schema of this query.
           required: false
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Session"
+                  $ref: '#/components/schemas/Session'
     post:
       operationId: Sessions_create
       summary: Create a Session
@@ -1169,10 +1244,16 @@ paths:
               type: object
               properties:
                 projectId:
-                  description: "The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key."
+                  description: >-
+                    The Project ID. Can be found in
+                    [Settings](https://www.browserbase.com/settings). Optional -
+                    if not provided, the project will be inferred from the API
+                    key.
                   type: string
                 extensionId:
-                  description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                  description: >-
+                    The uploaded Extension ID. See [Upload
+                    Extension](/reference/api/upload-an-extension).
                   type: string
                 browserSettings:
                   type: object
@@ -1184,12 +1265,16 @@ paths:
                           description: The Context ID.
                           type: string
                         persist:
-                          description: Whether or not to persist the context after browsing. Defaults to `false`.
+                          description: >-
+                            Whether or not to persist the context after
+                            browsing. Defaults to `false`.
                           type: boolean
                       required:
                         - id
                     extensionId:
-                      description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                      description: >-
+                        The uploaded Extension ID. See [Upload
+                        Extension](/reference/api/upload-an-extension).
                       type: string
                     viewport:
                       type: object
@@ -1201,10 +1286,14 @@ paths:
                           description: The height of the browser.
                           type: integer
                     blockAds:
-                      description: Enable or disable ad blocking in the browser. Defaults to `false`.
+                      description: >-
+                        Enable or disable ad blocking in the browser. Defaults
+                        to `false`.
                       type: boolean
                     solveCaptchas:
-                      description: Enable or disable captcha solving in the browser. Defaults to `true`.
+                      description: >-
+                        Enable or disable captcha solving in the browser.
+                        Defaults to `true`.
                       type: boolean
                     recordSession:
                       description: Enable or disable session recording. Defaults to `true`.
@@ -1219,13 +1308,19 @@ paths:
                       description: Verified Browser Mode
                       type: boolean
                     captchaImageSelector:
-                      description: "Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                      description: >-
+                        Custom selector for captcha image. See [Custom Captcha
+                        Solving](/features/stealth-mode#custom-captcha-solving)
                       type: string
                     captchaInputSelector:
-                      description: "Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                      description: >-
+                        Custom selector for captcha input. See [Custom Captcha
+                        Solving](/features/stealth-mode#custom-captcha-solving)
                       type: string
                     os:
-                      description: "Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet"
+                      description: >-
+                        Operating system for stealth mode. Valid values:
+                        windows, mac, linux, mobile, tablet
                       type: string
                       enum:
                         - windows
@@ -1234,25 +1329,34 @@ paths:
                         - mobile
                         - tablet
                     ignoreCertificateErrors:
-                      description: Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+                      description: >-
+                        Enable or disable ignoring of certificate errors in the
+                        browser. Defaults to `true`.
                       type: boolean
                 timeout:
-                  description: Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
+                  description: >-
+                    Duration in seconds after which the session will
+                    automatically end. Defaults to the Project's
+                    `defaultTimeout`.
                   type: integer
                   maximum: 21600
                   minimum: 60
                 keepAlive:
-                  description: Set to true to keep the session alive even after disconnections. Available on the Hobby Plan and above.
+                  description: >-
+                    Set to true to keep the session alive even after
+                    disconnections. Available on the Hobby Plan and above.
                   type: boolean
                 proxies:
-                  description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                  description: >-
+                    Proxy configuration. Can be true for default proxy, or an
+                    array of proxy configurations.
                   anyOf:
                     - type: array
                       items:
                         anyOf:
-                          - $ref: "#/components/schemas/BrowserbaseProxyConfig"
-                          - $ref: "#/components/schemas/ExternalProxyConfig"
-                          - $ref: "#/components/schemas/NoneProxyConfig"
+                          - $ref: '#/components/schemas/BrowserbaseProxyConfig'
+                          - $ref: '#/components/schemas/ExternalProxyConfig'
+                          - $ref: '#/components/schemas/NoneProxyConfig'
                     - type: boolean
                 region:
                   description: The region where the Session should run.
@@ -1264,18 +1368,23 @@ paths:
                     - eu-central-1
                     - ap-southeast-1
                 userMetadata:
-                  description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+                  description: >-
+                    Arbitrary user metadata to attach to the session. To learn
+                    more about user metadata, see [User
+                    Metadata](/features/sessions#user-metadata).
                   type: object
                   additionalProperties: true
                   properties: {}
       responses:
-        "201":
-          description: The request has succeeded and a new resource has been created as a result.
+        '201':
+          description: >-
+            The request has succeeded and a new resource has been created as a
+            result.
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: "#/components/schemas/Session"
+                  - $ref: '#/components/schemas/Session'
                   - type: object
                     properties:
                       connectUrl:
@@ -1287,7 +1396,9 @@ paths:
                         type: string
                         format: uri
                       signingKey:
-                        description: Signing key to use when connecting to the Session via HTTP.
+                        description: >-
+                          Signing key to use when connecting to the Session via
+                          HTTP.
                         type: string
                     required:
                       - connectUrl
@@ -1312,17 +1423,23 @@ paths:
               body: JSON.stringify({})
             })
         - lang: Python
-          source: |-
+          source: >-
             import requests
+
             url = "https://api.browserbase.com/v1/sessions"
+
             payload = {}
+
             headers = {
 
 
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
-            response = requests.request("POST", url, json=payload, headers=headers)
+
+            response = requests.request("POST", url, json=payload,
+            headers=headers)
+
             print(response.text)
         - lang: PHP
           source: |-
@@ -1353,15 +1470,16 @@ paths:
         - lang: Go
           source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://api.browserbase.com/v1/sessions\"\n\n\tpayload := strings.NewReader(\"{}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"X-BB-API-Key\", \"<api-key>\")\n\treq.Header.Add(\"Content-Type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
         - lang: Java
-          source: |-
-            HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
+          source: >-
+            HttpResponse<String> response =
+            Unirest.post("https://api.browserbase.com/v1/sessions")
 
 
               .header("X-BB-API-Key", "<api-key>")
               .header("Content-Type", "application/json")
               .body("{}")
               .asString();
-  "/v1/sessions/{id}":
+  /v1/sessions/{id}:
     get:
       operationId: Sessions_get
       summary: Get a Session
@@ -1372,13 +1490,13 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 allOf:
-                  - $ref: "#/components/schemas/Session"
+                  - $ref: '#/components/schemas/Session'
                   - type: object
                     properties:
                       connectUrl:
@@ -1390,7 +1508,9 @@ paths:
                         type: string
                         format: uri
                       signingKey:
-                        description: Signing key to use when connecting to the Session via HTTP.
+                        description: >-
+                          Signing key to use when connecting to the Session via
+                          HTTP.
                         type: string
     post:
       operationId: Sessions_update
@@ -1409,23 +1529,30 @@ paths:
               type: object
               properties:
                 projectId:
-                  description: "The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key."
+                  description: >-
+                    The Project ID. Can be found in
+                    [Settings](https://www.browserbase.com/settings). Optional -
+                    if not provided, the project will be inferred from the API
+                    key.
                   type: string
                 status:
-                  description: Set to `REQUEST_RELEASE` to request that the session complete. Use before session's timeout to avoid additional charges.
+                  description: >-
+                    Set to `REQUEST_RELEASE` to request that the session
+                    complete. Use before session's timeout to avoid additional
+                    charges.
                   type: string
                   enum:
                     - REQUEST_RELEASE
               required:
                 - status
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Session"
-  "/v1/sessions/{id}/debug":
+                $ref: '#/components/schemas/Session'
+  /v1/sessions/{id}/debug:
     get:
       operationId: Sessions_getDebug
       summary: Session Live URLs
@@ -1436,13 +1563,13 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SessionLiveUrls"
-  "/v1/sessions/{id}/logs":
+                $ref: '#/components/schemas/SessionLiveUrls'
+  /v1/sessions/{id}/logs:
     get:
       operationId: Sessions_getLogs
       summary: Session Logs
@@ -1453,15 +1580,15 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/SessionLog"
-  "/v1/sessions/{id}/recording":
+                  $ref: '#/components/schemas/SessionLog'
+  /v1/sessions/{id}/recording:
     get:
       operationId: Sessions_getRecording
       summary: Session Recording
@@ -1472,15 +1599,15 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/SessionRecording"
-  "/v1/sessions/{id}/uploads":
+                  $ref: '#/components/schemas/SessionRecording'
+  /v1/sessions/{id}/uploads:
     post:
       operationId: Sessions_uploadFile
       summary: Create Session Uploads
@@ -1503,7 +1630,7 @@ paths:
               required:
                 - file
       responses:
-        "200":
+        '200':
           description: The request has succeeded.
           content:
             application/json:
@@ -1520,7 +1647,9 @@ components:
       type: object
       properties:
         type:
-          description: Type of proxy. Always use 'browserbase' for the Browserbase managed proxy network.
+          description: >-
+            Type of proxy. Always use 'browserbase' for the Browserbase managed
+            proxy network.
           type: string
           enum:
             - browserbase
@@ -1529,10 +1658,14 @@ components:
           type: object
           properties:
             city:
-              description: Name of the city. Use spaces for multi-word city names. Optional.
+              description: >-
+                Name of the city. Use spaces for multi-word city names.
+                Optional.
               type: string
             state:
-              description: US state code (2 characters). Must also specify US as the country. Optional.
+              description: >-
+                US state code (2 characters). Must also specify US as the
+                country. Optional.
               type: string
               maxLength: 2
               minLength: 2
@@ -1544,7 +1677,9 @@ components:
           required:
             - country
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: >-
+            Domain pattern for which this proxy should be used. If omitted,
+            defaults to all domains. Optional.
           type: string
       required:
         - type
@@ -1602,7 +1737,9 @@ components:
           description: Server URL for external proxy. Required.
           type: string
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: >-
+            Domain pattern for which this proxy should be used. If omitted,
+            defaults to all domains. Optional.
           type: string
         username:
           description: Username for external proxy authentication. Optional.
@@ -1685,11 +1822,11 @@ components:
           type: array
           items:
             allOf:
-              - $ref: "#/components/schemas/Function"
+              - $ref: '#/components/schemas/Function'
               - type: object
                 properties:
                   createdVersion:
-                    $ref: "#/components/schemas/FunctionVersion"
+                    $ref: '#/components/schemas/FunctionVersion'
                 required:
                   - createdVersion
         cause:
@@ -1848,7 +1985,9 @@ components:
           enum:
             - none
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: >-
+            Domain pattern for which this proxy should be used. If omitted,
+            defaults to all domains. Optional.
           type: string
       required:
         - type
@@ -1873,7 +2012,9 @@ components:
           maximum: 21600
           minimum: 60
         concurrency:
-          description: The maximum number of sessions that this project can run concurrently.
+          description: >-
+            The maximum number of sessions that this project can run
+            concurrently.
           type: integer
           minimum: 1
       required:
@@ -1928,10 +2069,14 @@ components:
             - TIMED_OUT
             - COMPLETED
         proxyBytes:
-          description: "Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)"
+          description: >-
+            Bytes used via the
+            [Proxy](/features/stealth-mode#proxies-and-residential-ips)
           type: integer
         keepAlive:
-          description: Indicates if the Session was created to be kept alive upon disconnections
+          description: >-
+            Indicates if the Session was created to be kept alive upon
+            disconnections
           type: boolean
         contextId:
           description: Optional. The Context linked to the Session.
@@ -1945,7 +2090,10 @@ components:
             - eu-central-1
             - ap-southeast-1
         userMetadata:
-          description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+          description: >-
+            Arbitrary user metadata to attach to the session. To learn more
+            about user metadata, see [User
+            Metadata](/features/sessions#user-metadata).
           type: object
           additionalProperties: true
           properties: {}
@@ -2059,7 +2207,9 @@ components:
       type: object
       properties:
         data:
-          description: "See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md)."
+          description: >-
+            See [rrweb
+            documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md).
           type: object
           additionalProperties: true
           properties: {}
@@ -2080,7 +2230,7 @@ components:
       type: apiKey
       in: header
       name: X-BB-API-Key
-      description: "Your [Browserbase API Key](https://www.browserbase.com/settings)."
+      description: Your [Browserbase API Key](https://www.browserbase.com/settings).
 tags: []
 security:
   - BrowserbaseAuth: []
