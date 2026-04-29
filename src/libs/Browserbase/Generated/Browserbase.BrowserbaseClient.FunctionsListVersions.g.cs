@@ -144,7 +144,7 @@ namespace Browserbase
                     httpRequestMessage: __httpRequest,
                     offset: offset,
                     limit: limit,
-                    id: id);
+                    id: id!);
 
                 return __httpRequest;
             }
