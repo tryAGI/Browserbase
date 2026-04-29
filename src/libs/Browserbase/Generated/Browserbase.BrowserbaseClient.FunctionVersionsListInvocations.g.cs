@@ -151,7 +151,7 @@ namespace Browserbase
                     offset: offset,
                     limit: limit,
                     status: status,
-                    id: id);
+                    id: id!);
 
                 return __httpRequest;
             }
