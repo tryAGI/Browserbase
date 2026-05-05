@@ -90,6 +90,55 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
+            var __response = await DownloadsListAsResponseAsync(
+                sessionId: sessionId,
+                filename: filename,
+                mimeType: mimeType,
+                minSize: minSize,
+                maxSize: maxSize,
+                createdAfter: createdAfter,
+                createdBefore: createdBefore,
+                limit: limit,
+                offset: offset,
+                requestOptions: requestOptions,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return __response.Body;
+        }
+        /// <summary>
+        /// List Downloads<br/>
+        /// List all downloads for a session with optional filtering and pagination.
+        /// </summary>
+        /// <param name="sessionId"></param>
+        /// <param name="filename"></param>
+        /// <param name="mimeType"></param>
+        /// <param name="minSize"></param>
+        /// <param name="maxSize"></param>
+        /// <param name="createdAfter"></param>
+        /// <param name="createdBefore"></param>
+        /// <param name="limit">
+        /// Default Value: 20
+        /// </param>
+        /// <param name="offset">
+        /// Default Value: 0
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Browserbase.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsListResponse>> DownloadsListAsResponseAsync(
+            string sessionId,
+            string? filename = default,
+            string? mimeType = default,
+            double? minSize = default,
+            double? maxSize = default,
+            global::System.DateTime? createdAfter = default,
+            global::System.DateTime? createdBefore = default,
+            double? limit = default,
+            double? offset = default,
+            global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
             PrepareArguments(
                 client: HttpClient);
             PrepareDownloadsListArguments(
@@ -126,9 +175,10 @@ namespace Browserbase
 
             global::System.Net.Http.HttpRequestMessage __CreateHttpRequest()
             {
+
                             var __pathBuilder = new global::Browserbase.PathBuilder(
                                 path: "/v1/downloads",
-                                baseUri: HttpClient.BaseAddress); 
+                                baseUri: HttpClient.BaseAddress);
                             __pathBuilder
                                 .AddRequiredParameter("sessionId", sessionId)
                                 .AddOptionalParameter("filename", filename)
@@ -138,7 +188,7 @@ namespace Browserbase
                                 .AddOptionalParameter("createdAfter", createdAfter?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("createdBefore", createdBefore?.ToString("yyyy-MM-ddTHH:mm:ssZ"))
                                 .AddOptionalParameter("limit", limit?.ToString())
-                                .AddOptionalParameter("offset", offset?.ToString()) 
+                                .AddOptionalParameter("offset", offset?.ToString())
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -218,6 +268,8 @@ namespace Browserbase
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                     try
                     {
@@ -228,6 +280,11 @@ namespace Browserbase
                     }
                     catch (global::System.Net.Http.HttpRequestException __exception)
                     {
+                        var __retryDelay = global::Browserbase.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: null,
+                            attempt: __attempt);
                         var __willRetry = __attempt < __maxAttempts && !__effectiveCancellationToken.IsCancellationRequested;
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
@@ -245,6 +302,8 @@ namespace Browserbase
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: __willRetry,
+                                retryDelay: __willRetry ? __retryDelay : (global::System.TimeSpan?)null,
+                                retryReason: "exception",
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         if (!__willRetry)
                         {
@@ -254,8 +313,7 @@ namespace Browserbase
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Browserbase.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -264,6 +322,11 @@ namespace Browserbase
                         __attempt < __maxAttempts &&
                         global::Browserbase.AutoSDKRequestOptionsSupport.ShouldRetryStatusCode(__response.StatusCode))
                     {
+                        var __retryDelay = global::Browserbase.AutoSDKRequestOptionsSupport.GetRetryDelay(
+                            clientOptions: Options,
+                            requestOptions: requestOptions,
+                            response: __response,
+                            attempt: __attempt);
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
@@ -280,14 +343,15 @@ namespace Browserbase
                                 attempt: __attempt,
                                 maxAttempts: __maxAttempts,
                                 willRetry: true,
+                                retryDelay: __retryDelay,
+                                retryReason: "status:" + ((int)__response.StatusCode).ToString(global::System.Globalization.CultureInfo.InvariantCulture),
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                         __response.Dispose();
                         __response = null;
                         __httpRequest.Dispose();
                         __httpRequest = null;
                         await global::Browserbase.AutoSDKRequestOptionsSupport.DelayBeforeRetryAsync(
-                            clientOptions: Options,
-                            requestOptions: requestOptions,
+                            retryDelay: __retryDelay,
                             cancellationToken: __effectiveCancellationToken).ConfigureAwait(false);
                         continue;
                     }
@@ -327,6 +391,8 @@ namespace Browserbase
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
                 else
@@ -347,6 +413,8 @@ namespace Browserbase
                                 attempt: __attemptNumber,
                                 maxAttempts: __maxAttempts,
                                 willRetry: false,
+                                retryDelay: null,
+                                retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
 
@@ -371,9 +439,13 @@ namespace Browserbase
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    return
-                                        global::Browserbase.DownloadsListResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Browserbase.DownloadsListResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsListResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Browserbase.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
@@ -401,9 +473,13 @@ namespace Browserbase
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    return
-                                        await global::Browserbase.DownloadsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Browserbase.DownloadsListResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
+                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsListResponse>(
+                                        statusCode: __response.StatusCode,
+                                        headers: global::Browserbase.AutoSDKHttpResponse.CreateHeaders(__response),
+                                        requestUri: __response.RequestMessage?.RequestUri,
+                                        body: __value);
                                 }
                                 catch (global::System.Exception __ex)
                                 {
