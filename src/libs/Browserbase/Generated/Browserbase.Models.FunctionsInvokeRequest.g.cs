@@ -50,5 +50,6 @@ namespace Browserbase
         public FunctionsInvokeRequest()
         {
         }
+
     }
 }

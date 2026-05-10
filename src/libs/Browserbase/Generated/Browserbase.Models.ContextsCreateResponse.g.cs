@@ -88,5 +88,6 @@ namespace Browserbase
         public ContextsCreateResponse()
         {
         }
+
     }
 }

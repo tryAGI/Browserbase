@@ -72,5 +72,6 @@ namespace Browserbase
         public DownloadsListResponse()
         {
         }
+
     }
 }

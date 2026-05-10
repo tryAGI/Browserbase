@@ -61,5 +61,6 @@ namespace Browserbase
         public SessionLogResponse()
         {
         }
+
     }
 }

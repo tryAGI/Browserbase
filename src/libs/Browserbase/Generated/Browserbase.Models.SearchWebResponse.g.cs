@@ -66,5 +66,6 @@ namespace Browserbase
         public SearchWebResponse()
         {
         }
+
     }
 }

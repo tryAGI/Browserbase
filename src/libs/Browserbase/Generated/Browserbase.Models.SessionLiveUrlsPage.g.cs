@@ -90,5 +90,6 @@ namespace Browserbase
         public SessionLiveUrlsPage()
         {
         }
+
     }
 }

@@ -64,5 +64,6 @@ namespace Browserbase
         public BrowserbaseProxyConfig()
         {
         }
+
     }
 }

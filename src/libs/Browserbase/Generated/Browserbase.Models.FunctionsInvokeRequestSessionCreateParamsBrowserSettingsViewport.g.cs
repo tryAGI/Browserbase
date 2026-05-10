@@ -52,5 +52,6 @@ namespace Browserbase
         public FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport()
         {
         }
+
     }
 }

@@ -39,5 +39,6 @@ namespace Browserbase
         public InvocationsGetResponse2()
         {
         }
+
     }
 }

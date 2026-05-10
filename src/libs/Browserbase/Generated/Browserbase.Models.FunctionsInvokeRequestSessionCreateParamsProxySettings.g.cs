@@ -44,5 +44,6 @@ namespace Browserbase
         public FunctionsInvokeRequestSessionCreateParamsProxySettings()
         {
         }
+
     }
 }
