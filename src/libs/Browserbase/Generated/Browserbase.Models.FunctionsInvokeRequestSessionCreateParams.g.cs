@@ -97,5 +97,6 @@ namespace Browserbase
         public FunctionsInvokeRequestSessionCreateParams()
         {
         }
+
     }
 }

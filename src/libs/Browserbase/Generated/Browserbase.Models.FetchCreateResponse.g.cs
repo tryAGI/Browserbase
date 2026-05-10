@@ -102,5 +102,6 @@ namespace Browserbase
         public FetchCreateResponse()
         {
         }
+
     }
 }

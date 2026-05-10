@@ -232,5 +232,6 @@ namespace Browserbase
         public FunctionsInvokeRequestSessionCreateParamsBrowserSettings()
         {
         }
+
     }
 }

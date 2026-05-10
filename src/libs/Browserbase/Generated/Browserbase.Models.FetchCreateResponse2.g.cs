@@ -77,5 +77,6 @@ namespace Browserbase
         public FetchCreateResponse2()
         {
         }
+
     }
 }

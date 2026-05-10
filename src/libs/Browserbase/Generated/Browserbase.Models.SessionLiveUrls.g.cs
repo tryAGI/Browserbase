@@ -70,5 +70,6 @@ namespace Browserbase
         public SessionLiveUrls()
         {
         }
+
     }
 }

@@ -110,5 +110,6 @@ namespace Browserbase
         public SearchWebResponseResult()
         {
         }
+
     }
 }

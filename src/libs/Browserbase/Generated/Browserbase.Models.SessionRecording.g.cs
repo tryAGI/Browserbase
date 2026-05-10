@@ -74,5 +74,6 @@ namespace Browserbase
         public SessionRecording()
         {
         }
+
     }
 }

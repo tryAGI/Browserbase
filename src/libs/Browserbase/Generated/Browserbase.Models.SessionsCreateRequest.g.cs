@@ -120,5 +120,6 @@ namespace Browserbase
         public SessionsCreateRequest()
         {
         }
+
     }
 }
