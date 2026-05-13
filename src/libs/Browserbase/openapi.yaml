@@ -2106,9 +2106,9 @@ components:
         url:
           type: string
         startTimeMs:
-          type: number
+          type: integer
         endTimeMs:
-          type: number
+          type: integer
       required:
         - pageId
         - url
