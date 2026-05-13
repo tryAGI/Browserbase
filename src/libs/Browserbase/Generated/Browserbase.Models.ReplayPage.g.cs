@@ -27,14 +27,14 @@ namespace Browserbase
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("startTimeMs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double StartTimeMs { get; set; }
+        public required int StartTimeMs { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endTimeMs")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required double EndTimeMs { get; set; }
+        public required int EndTimeMs { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -55,8 +55,8 @@ namespace Browserbase
         public ReplayPage(
             string pageId,
             string url,
-            double startTimeMs,
-            double endTimeMs)
+            int startTimeMs,
+            int endTimeMs)
         {
             this.PageId = pageId ?? throw new global::System.ArgumentNullException(nameof(pageId));
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
