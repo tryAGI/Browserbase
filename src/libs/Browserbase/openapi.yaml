@@ -1607,6 +1607,67 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SessionRecording'
+  /v1/sessions/{id}/replays:
+    get:
+      operationId: Sessions_getReplay
+      summary: Get Session Replay
+      description: >-
+        Returns page metadata for a session replay, including timing information
+        and the URL of each page's HLS playlist.
+      parameters:
+        - name: id
+          in: path
+          description: Session ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pages:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReplayPage'
+                  pageCount:
+                    type: integer
+                required:
+                  - pages
+                  - pageCount
+  /v1/sessions/{id}/replays/{pageId}:
+    get:
+      operationId: Sessions_getReplayPage
+      summary: Get Replay Page
+      description: >-
+        Returns an HLS VOD media playlist (.m3u8) for a specific page of a
+        session replay.
+      parameters:
+        - name: id
+          in: path
+          description: Session ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: pageId
+          in: path
+          required: true
+          schema:
+            type: string
+            maxLength: 3
+            pattern: ^\d+$
+      responses:
+        '200':
+          description: The request has succeeded.
+          content:
+            application/vnd.apple.mpegurl:
+              schema:
+                type: string
   /v1/sessions/{id}/uploads:
     post:
       operationId: Sessions_uploadFile
@@ -2037,6 +2098,22 @@ components:
       required:
         - browserMinutes
         - proxyBytes
+    ReplayPage:
+      type: object
+      properties:
+        pageId:
+          type: string
+        url:
+          type: string
+        startTimeMs:
+          type: number
+        endTimeMs:
+          type: number
+      required:
+        - pageId
+        - url
+        - startTimeMs
+        - endTimeMs
     Session:
       type: object
       properties:
