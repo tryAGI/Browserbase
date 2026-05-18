@@ -30,11 +30,12 @@ namespace Browserbase
         public required global::System.Collections.Generic.Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
-        /// The response body content
+        /// The response body content. A string for `raw` and `markdown` formats; a structured object for `json` format (the schema-extracted result).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("content")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, object>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Content { get; set; }
+        public required global::Browserbase.AnyOf<string, object> Content { get; set; }
 
         /// <summary>
         /// The MIME type of the response
@@ -69,7 +70,7 @@ namespace Browserbase
         /// Response headers as key-value pairs
         /// </param>
         /// <param name="content">
-        /// The response body content
+        /// The response body content. A string for `raw` and `markdown` formats; a structured object for `json` format (the schema-extracted result).
         /// </param>
         /// <param name="contentType">
         /// The MIME type of the response
@@ -84,14 +85,14 @@ namespace Browserbase
             string id,
             int statusCode,
             global::System.Collections.Generic.Dictionary<string, string> headers,
-            string content,
+            global::Browserbase.AnyOf<string, object> content,
             string contentType,
             string encoding)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.StatusCode = statusCode;
             this.Headers = headers ?? throw new global::System.ArgumentNullException(nameof(headers));
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
+            this.Content = content;
             this.ContentType = contentType ?? throw new global::System.ArgumentNullException(nameof(contentType));
             this.Encoding = encoding ?? throw new global::System.ArgumentNullException(nameof(encoding));
         }

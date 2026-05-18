@@ -87,6 +87,8 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>),
 
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, object>),
+
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Invocation, global::Browserbase.InvocationsGetResponse2>),
 
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>),
@@ -179,6 +181,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.DownloadsGetResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, object>), TypeInfoPropertyName = "AnyOfStringObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse4))]
