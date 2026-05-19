@@ -49,6 +49,13 @@ namespace Browserbase
         /// Whether to enable proxy support for the request<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="format">
+        /// Output format for the response content. `raw` (default) returns the response body unchanged; `json` returns structured data (requires `schema`); `markdown` returns the page as markdown.<br/>
+        /// Default Value: raw
+        /// </param>
+        /// <param name="schema">
+        /// JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -57,6 +64,8 @@ namespace Browserbase
             bool? allowRedirects = default,
             bool? allowInsecureSsl = default,
             bool? proxies = default,
+            global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? format = default,
+            object? schema = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

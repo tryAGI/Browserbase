@@ -4,9 +4,9 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Project is not enabled for the requested format. Only `raw` is available without enablement.
+    /// 
     /// </summary>
-    public sealed partial class FetchCreateResponse4
+    public sealed partial class FetchCreateRequestSchema2
     {
 
         /// <summary>

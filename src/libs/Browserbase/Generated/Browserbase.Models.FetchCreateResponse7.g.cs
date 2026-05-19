@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class FetchCreateResponse5
+    public sealed partial class FetchCreateResponse7
     {
         /// <summary>
         /// HTTP status code
@@ -33,7 +33,8 @@ namespace Browserbase
         /// Unique identifier for the fetch request
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        public string? Id { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Id { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,7 +43,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FetchCreateResponse5" /> class.
+        /// Initializes a new instance of the <see cref="FetchCreateResponse7" /> class.
         /// </summary>
         /// <param name="statusCode">
         /// HTTP status code
@@ -59,22 +60,22 @@ namespace Browserbase
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public FetchCreateResponse5(
+        public FetchCreateResponse7(
             int statusCode,
             string error,
             string message,
-            string? id)
+            string id)
         {
             this.StatusCode = statusCode;
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
-            this.Id = id;
+            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FetchCreateResponse5" /> class.
+        /// Initializes a new instance of the <see cref="FetchCreateResponse7" /> class.
         /// </summary>
-        public FetchCreateResponse5()
+        public FetchCreateResponse7()
         {
         }
 

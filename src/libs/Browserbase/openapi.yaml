@@ -393,6 +393,23 @@ paths:
                   description: Whether to enable proxy support for the request
                   type: boolean
                   default: false
+                format:
+                  description: Output format for the response content. `raw` (default) returns the response body unchanged; `json` returns structured data (requires `schema`); `markdown` returns the page as markdown.
+                  default: raw
+                  anyOf:
+                    - type: string
+                      enum:
+                        - raw
+                    - type: string
+                      enum:
+                        - json
+                    - type: string
+                      enum:
+                        - markdown
+                schema:
+                  description: JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
+                  type: object
+                  additionalProperties: {}
               required:
                 - url
       responses:
@@ -456,6 +473,18 @@ paths:
                   - statusCode
                   - error
                   - message
+        "402":
+          description: Free plan fetch request quota exceeded.
+          content:
+            application/json:
+              schema:
+                description: Free plan fetch request quota exceeded.
+        "403":
+          description: Project is not enabled for the requested format. Only `raw` is available without enablement.
+          content:
+            application/json:
+              schema:
+                description: Project is not enabled for the requested format. Only `raw` is available without enablement.
         "429":
           description: Concurrent fetch request limit exceeded.
           content:

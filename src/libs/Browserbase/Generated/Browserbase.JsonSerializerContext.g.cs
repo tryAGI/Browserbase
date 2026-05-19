@@ -45,6 +45,18 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.SessionRegionNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant1JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant1NullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant2JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant2NullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant3JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant3NullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsNullableJsonConverter),
@@ -78,6 +90,8 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.InvocationsGetResponseCauseCodeNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>),
+
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>),
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
 
@@ -147,6 +161,10 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ExtensionsUploadRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>), TypeInfoPropertyName = "AnyOfFetchCreateRequestFormatVariant1FetchCreateRequestFormatVariant2FetchCreateRequestFormatVariant32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateRequestFormatVariant1), TypeInfoPropertyName = "FetchCreateRequestFormatVariant12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateRequestFormatVariant2), TypeInfoPropertyName = "FetchCreateRequestFormatVariant22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateRequestFormatVariant3), TypeInfoPropertyName = "FetchCreateRequestFormatVariant32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParams))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettings))]
@@ -183,9 +201,9 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, object>), TypeInfoPropertyName = "AnyOfStringObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse4))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse6))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse7))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Function>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionBuildsListResponse))]
