@@ -4,9 +4,9 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Project is not enabled for the requested format. Only `raw` is available without enablement.
+    /// JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
     /// </summary>
-    public sealed partial class FetchCreateResponse4
+    public sealed partial class FetchCreateRequestSchema
     {
 
         /// <summary>
