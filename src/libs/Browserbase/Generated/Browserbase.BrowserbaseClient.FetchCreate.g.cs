@@ -337,7 +337,7 @@ namespace Browserbase
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request body.
+                            // Invalid request body, or the requested `format` is not supported for the fetched response's content type.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
