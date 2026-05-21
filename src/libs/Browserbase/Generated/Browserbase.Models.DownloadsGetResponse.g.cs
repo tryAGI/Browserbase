@@ -114,5 +114,6 @@ namespace Browserbase
         public DownloadsGetResponse()
         {
         }
+
     }
 }

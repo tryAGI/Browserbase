@@ -337,7 +337,7 @@ namespace Browserbase
                                 retryReason: global::System.String.Empty,
                                 cancellationToken: __effectiveCancellationToken)).ConfigureAwait(false);
                 }
-                            // Invalid request body.
+                            // Invalid request body, or the requested `format` is not supported for the fetched response's content type.
                             if ((int)__response.StatusCode == 400)
                             {
                                 string? __content_400 = null;
@@ -375,24 +375,100 @@ namespace Browserbase
                                         h => h.Value),
                                 };
                             }
+                            // Free plan fetch request quota exceeded.
+                            if ((int)__response.StatusCode == 402)
+                            {
+                                string? __content_402 = null;
+                                global::System.Exception? __exception_402 = null;
+                                string? __value_402 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_402 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_402, typeof(string), JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_402 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_402, typeof(string), JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_402 = __ex;
+                                }
+
+                                throw new global::Browserbase.ApiException<string>(
+                                    message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_402,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_402,
+                                    ResponseObject = __value_402,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
+                            // Project is not enabled for the requested format. Only `raw` is available without enablement.
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                string? __value_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_403, typeof(string), JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_403 = (string?)global::System.Text.Json.JsonSerializer.Deserialize(__content_403, typeof(string), JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+                                throw new global::Browserbase.ApiException<string>(
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_403,
+                                    ResponseObject = __value_403,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
                             // Concurrent fetch request limit exceeded.
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Browserbase.FetchCreateResponse3? __value_429 = null;
+                                global::Browserbase.FetchCreateResponse5? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Browserbase.FetchCreateResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Browserbase.FetchCreateResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Browserbase.FetchCreateResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Browserbase.FetchCreateResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -400,7 +476,7 @@ namespace Browserbase
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse3>(
+                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse5>(
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
                                     statusCode: __response.StatusCode)
@@ -418,19 +494,19 @@ namespace Browserbase
                             {
                                 string? __content_502 = null;
                                 global::System.Exception? __exception_502 = null;
-                                global::Browserbase.FetchCreateResponse4? __value_502 = null;
+                                global::Browserbase.FetchCreateResponse6? __value_502 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_502 = global::Browserbase.FetchCreateResponse4.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = global::Browserbase.FetchCreateResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_502 = global::Browserbase.FetchCreateResponse4.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = global::Browserbase.FetchCreateResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -438,7 +514,7 @@ namespace Browserbase
                                     __exception_502 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse4>(
+                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse6>(
                                     message: __content_502 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_502,
                                     statusCode: __response.StatusCode)
@@ -456,19 +532,19 @@ namespace Browserbase
                             {
                                 string? __content_504 = null;
                                 global::System.Exception? __exception_504 = null;
-                                global::Browserbase.FetchCreateResponse5? __value_504 = null;
+                                global::Browserbase.FetchCreateResponse7? __value_504 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_504 = global::Browserbase.FetchCreateResponse5.FromJson(__content_504, JsonSerializerContext);
+                                        __value_504 = global::Browserbase.FetchCreateResponse7.FromJson(__content_504, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_504 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_504 = global::Browserbase.FetchCreateResponse5.FromJson(__content_504, JsonSerializerContext);
+                                        __value_504 = global::Browserbase.FetchCreateResponse7.FromJson(__content_504, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -476,7 +552,7 @@ namespace Browserbase
                                     __exception_504 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse5>(
+                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse7>(
                                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_504,
                                     statusCode: __response.StatusCode)
@@ -608,6 +684,13 @@ namespace Browserbase
         /// Whether to enable proxy support for the request<br/>
         /// Default Value: false
         /// </param>
+        /// <param name="format">
+        /// Output format for the response content. `raw` (default) returns the response body unchanged; `json` returns structured data (requires `schema`); `markdown` returns the page as markdown.<br/>
+        /// Default Value: raw
+        /// </param>
+        /// <param name="schema">
+        /// JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -616,6 +699,8 @@ namespace Browserbase
             bool? allowRedirects = default,
             bool? allowInsecureSsl = default,
             bool? proxies = default,
+            global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? format = default,
+            object? schema = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -625,6 +710,8 @@ namespace Browserbase
                 AllowRedirects = allowRedirects,
                 AllowInsecureSsl = allowInsecureSsl,
                 Proxies = proxies,
+                Format = format,
+                Schema = schema,
             };
 
             return await FetchCreateAsync(

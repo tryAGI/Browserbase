@@ -63,5 +63,6 @@ namespace Browserbase
         public SessionsGetResponse2()
         {
         }
+
     }
 }

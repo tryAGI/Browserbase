@@ -55,5 +55,6 @@ namespace Browserbase
         public SearchWebRequest()
         {
         }
+
     }
 }

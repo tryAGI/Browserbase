@@ -82,5 +82,6 @@ namespace Browserbase
         public Extension()
         {
         }
+
     }
 }

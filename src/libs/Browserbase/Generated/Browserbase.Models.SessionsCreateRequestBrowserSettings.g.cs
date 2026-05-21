@@ -170,5 +170,6 @@ namespace Browserbase
         public SessionsCreateRequestBrowserSettings()
         {
         }
+
     }
 }

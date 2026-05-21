@@ -33,8 +33,7 @@ namespace Browserbase
         /// Unique identifier for the fetch request
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Id { get; set; }
+        public string? Id { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -64,12 +63,12 @@ namespace Browserbase
             int statusCode,
             string error,
             string message,
-            string id)
+            string? id)
         {
             this.StatusCode = statusCode;
             this.Error = error ?? throw new global::System.ArgumentNullException(nameof(error));
             this.Message = message ?? throw new global::System.ArgumentNullException(nameof(message));
-            this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
+            this.Id = id;
         }
 
         /// <summary>
@@ -78,5 +77,6 @@ namespace Browserbase
         public FetchCreateResponse5()
         {
         }
+
     }
 }

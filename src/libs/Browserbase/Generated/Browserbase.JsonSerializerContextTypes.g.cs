@@ -160,327 +160,359 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.Session? Type33 { get; set; }
+        public global::Browserbase.ReplayPage? Type33 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionStatus? Type34 { get; set; }
+        public global::Browserbase.Session? Type34 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public bool? Type35 { get; set; }
+        public global::Browserbase.SessionStatus? Type35 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionRegion? Type36 { get; set; }
+        public bool? Type36 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionLiveUrls? Type37 { get; set; }
+        public global::Browserbase.SessionRegion? Type37 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionLiveUrlsPage>? Type38 { get; set; }
+        public global::Browserbase.SessionLiveUrls? Type38 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionLiveUrlsPage? Type39 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionLiveUrlsPage>? Type39 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionLog? Type40 { get; set; }
+        public global::Browserbase.SessionLiveUrlsPage? Type40 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionLogRequest? Type41 { get; set; }
+        public global::Browserbase.SessionLog? Type41 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionLogResponse? Type42 { get; set; }
+        public global::Browserbase.SessionLogRequest? Type42 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionRecording? Type43 { get; set; }
+        public global::Browserbase.SessionLogResponse? Type43 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.ContextsCreateRequest? Type44 { get; set; }
+        public global::Browserbase.SessionRecording? Type44 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.ExtensionsUploadRequest? Type45 { get; set; }
+        public global::Browserbase.ContextsCreateRequest? Type45 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte[]? Type46 { get; set; }
+        public global::Browserbase.ExtensionsUploadRequest? Type46 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateRequest? Type47 { get; set; }
+        public byte[]? Type47 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequest? Type48 { get; set; }
+        public global::Browserbase.FetchCreateRequest? Type48 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParams? Type49 { get; set; }
+        public global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? Type49 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettings? Type50 { get; set; }
+        public global::Browserbase.FetchCreateRequestFormatVariant1? Type50 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsContext? Type51 { get; set; }
+        public global::Browserbase.FetchCreateRequestFormatVariant2? Type51 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport? Type52 { get; set; }
+        public global::Browserbase.FetchCreateRequestFormatVariant3? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs? Type53 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequest? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize? Type54 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParams? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? Type55 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettings? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension? Type56 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsContext? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Type57 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>? Type58 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>? Type59 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? Type60 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::System.Guid>? Type61 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SearchWebRequest? Type62 { get; set; }
+        public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequest? Type63 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequestBrowserSettings? Type64 { get; set; }
+        public global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequestBrowserSettingsContext? Type65 { get; set; }
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequestBrowserSettingsViewport? Type66 { get; set; }
+        public global::System.Collections.Generic.IList<global::System.Guid>? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequestBrowserSettingsOs? Type67 { get; set; }
+        public global::Browserbase.SearchWebRequest? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateRequestRegion? Type68 { get; set; }
+        public global::Browserbase.SessionsCreateRequest? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsUpdateRequest? Type69 { get; set; }
+        public global::Browserbase.SessionsCreateRequestBrowserSettings? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsUpdateRequestStatus? Type70 { get; set; }
+        public global::Browserbase.SessionsCreateRequestBrowserSettingsContext? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsUploadFileRequest? Type71 { get; set; }
+        public global::Browserbase.SessionsCreateRequestBrowserSettingsViewport? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListStatus? Type72 { get; set; }
+        public global::Browserbase.SessionsCreateRequestBrowserSettingsOs? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.ContextsCreateResponse? Type73 { get; set; }
+        public global::Browserbase.SessionsCreateRequestRegion? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public byte? Type74 { get; set; }
+        public global::Browserbase.SessionsUpdateRequest? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.ContextsUpdateResponse? Type75 { get; set; }
+        public global::Browserbase.SessionsUpdateRequestStatus? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.DownloadsListResponse? Type76 { get; set; }
+        public global::Browserbase.SessionsUploadFileRequest? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.DownloadsListResponseDownload>? Type77 { get; set; }
+        public global::Browserbase.SessionsListStatus? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.DownloadsListResponseDownload? Type78 { get; set; }
+        public global::Browserbase.ContextsCreateResponse? Type78 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.DownloadsGetResponse? Type79 { get; set; }
+        public byte? Type79 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateResponse? Type80 { get; set; }
+        public global::Browserbase.ContextsUpdateResponse? Type80 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.Dictionary<string, string>? Type81 { get; set; }
+        public global::Browserbase.DownloadsListResponse? Type81 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateResponse2? Type82 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.DownloadsListResponseDownload>? Type82 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateResponse3? Type83 { get; set; }
+        public global::Browserbase.DownloadsListResponseDownload? Type83 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateResponse4? Type84 { get; set; }
+        public global::Browserbase.DownloadsGetResponse? Type84 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FetchCreateResponse5? Type85 { get; set; }
+        public global::Browserbase.FetchCreateResponse? Type85 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsListResponse? Type86 { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? Type86 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Function>? Type87 { get; set; }
+        public global::Browserbase.AnyOf<string, object>? Type87 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionBuildsListResponse? Type88 { get; set; }
+        public global::Browserbase.FetchCreateResponse2? Type88 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.FunctionBuild>? Type89 { get; set; }
+        public global::Browserbase.FetchCreateResponse5? Type89 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionBuildsGetLogsResponse? Type90 { get; set; }
+        public global::Browserbase.FetchCreateResponse6? Type90 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.FunctionBuildLog>? Type91 { get; set; }
+        public global::Browserbase.FetchCreateResponse7? Type91 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Invocation, global::Browserbase.InvocationsGetResponse2>? Type92 { get; set; }
+        public global::Browserbase.FunctionsListResponse? Type92 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.InvocationsGetResponse2? Type93 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Function>? Type93 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.InvocationsGetResponseCause? Type94 { get; set; }
+        public global::Browserbase.FunctionBuildsListResponse? Type94 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.InvocationsGetResponseCauseCode? Type95 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.FunctionBuild>? Type95 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.InvocationsGetLogsResponse? Type96 { get; set; }
+        public global::Browserbase.FunctionBuildsGetLogsResponse? Type96 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.InvocationLog>? Type97 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.FunctionBuildLog>? Type97 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionVersionsListInvocationsResponse? Type98 { get; set; }
+        public global::Browserbase.AllOf<global::Browserbase.Invocation, global::Browserbase.InvocationsGetResponse2>? Type98 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Invocation>? Type99 { get; set; }
+        public global::Browserbase.InvocationsGetResponse2? Type99 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.FunctionsListVersionsResponse? Type100 { get; set; }
+        public global::Browserbase.InvocationsGetResponseCause? Type100 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.FunctionVersion>? Type101 { get; set; }
+        public global::Browserbase.InvocationsGetResponseCauseCode? Type101 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Project>? Type102 { get; set; }
+        public global::Browserbase.InvocationsGetLogsResponse? Type102 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SearchWebResponse? Type103 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.InvocationLog>? Type103 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>? Type104 { get; set; }
+        public global::Browserbase.FunctionVersionsListInvocationsResponse? Type104 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SearchWebResponseResult? Type105 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Invocation>? Type105 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Session>? Type106 { get; set; }
+        public global::Browserbase.FunctionsListVersionsResponse? Type106 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>? Type107 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.FunctionVersion>? Type107 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsCreateResponse2? Type108 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Project>? Type108 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>? Type109 { get; set; }
+        public global::Browserbase.SearchWebResponse? Type109 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsGetResponse2? Type110 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>? Type110 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionLog>? Type111 { get; set; }
+        public global::Browserbase.SearchWebResponseResult? Type111 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>? Type112 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Session>? Type112 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsUploadFileResponse? Type113 { get; set; }
+        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>? Type113 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.SessionsCreateResponse2? Type114 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>? Type115 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.SessionsGetResponse2? Type116 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionLog>? Type117 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>? Type118 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.SessionsGetReplayResponse? Type119 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>? Type120 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.SessionsUploadFileResponse? Type121 { get; set; }
 
         /// <summary>
         /// 
@@ -558,5 +590,9 @@ namespace Browserbase
         /// 
         /// </summary>
         public global::System.Collections.Generic.List<global::Browserbase.SessionRecording>? ListType18 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.List<global::Browserbase.ReplayPage>? ListType19 { get; set; }
     }
 }
