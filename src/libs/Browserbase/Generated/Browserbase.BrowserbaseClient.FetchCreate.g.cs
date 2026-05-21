@@ -375,7 +375,7 @@ namespace Browserbase
                                         h => h.Value),
                                 };
                             }
-                            // Free plan fetch request quota exceeded.
+                            // Free plan quota exceeded for the requested format.
                             if ((int)__response.StatusCode == 402)
                             {
                                 string? __content_402 = null;

@@ -509,11 +509,11 @@ paths:
                   - error
                   - message
         '402':
-          description: Free plan fetch request quota exceeded.
+          description: Free plan quota exceeded for the requested format.
           content:
             application/json:
               schema:
-                description: Free plan fetch request quota exceeded.
+                description: Free plan quota exceeded for the requested format.
         '403':
           description: >-
             Project is not enabled for the requested format. Only `raw` is
