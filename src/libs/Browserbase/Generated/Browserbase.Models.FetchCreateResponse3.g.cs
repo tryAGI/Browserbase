@@ -4,7 +4,7 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Free plan fetch request quota exceeded.
+    /// Free plan quota exceeded for the requested format.
     /// </summary>
     public sealed partial class FetchCreateResponse3
     {
