@@ -362,18 +362,17 @@ namespace Browserbase
                                     __exception_400 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse2>(
+
+                                throw global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse2>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_400,
-                                    ResponseObject = __value_400,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_400,
+                                    responseObject: __value_400,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Free plan quota exceeded for the requested format.
                             if ((int)__response.StatusCode == 402)
@@ -400,18 +399,17 @@ namespace Browserbase
                                     __exception_402 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<string>(
+
+                                throw global::Browserbase.ApiException<string>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_402,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_402,
-                                    ResponseObject = __value_402,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_402,
+                                    responseObject: __value_402,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Project is not enabled for the requested format. Only `raw` is available without enablement.
                             if ((int)__response.StatusCode == 403)
@@ -438,18 +436,17 @@ namespace Browserbase
                                     __exception_403 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<string>(
+
+                                throw global::Browserbase.ApiException<string>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_403,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_403,
-                                    ResponseObject = __value_403,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // Concurrent fetch request limit exceeded.
                             if ((int)__response.StatusCode == 429)
@@ -476,18 +473,17 @@ namespace Browserbase
                                     __exception_429 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse5>(
+
+                                throw global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse5>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_429,
-                                    ResponseObject = __value_429,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_429,
+                                    responseObject: __value_429,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // The fetched response was too large or TLS certificate verification failed.
                             if ((int)__response.StatusCode == 502)
@@ -514,18 +510,17 @@ namespace Browserbase
                                     __exception_502 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse6>(
+
+                                throw global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse6>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_502 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_502,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_502,
-                                    ResponseObject = __value_502,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_502,
+                                    responseObject: __value_502,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
                             // The fetch request timed out.
                             if ((int)__response.StatusCode == 504)
@@ -552,18 +547,17 @@ namespace Browserbase
                                     __exception_504 = __ex;
                                 }
 
-                                throw new global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse7>(
+
+                                throw global::Browserbase.ApiException<global::Browserbase.FetchCreateResponse7>.Create(
+                                    statusCode: __response.StatusCode,
                                     message: __content_504 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_504,
-                                    statusCode: __response.StatusCode)
-                                {
-                                    ResponseBody = __content_504,
-                                    ResponseObject = __value_504,
-                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                    responseBody: __content_504,
+                                    responseObject: __value_504,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
-                                        h => h.Value),
-                                };
+                                        h => h.Value));
                             }
 
                             if (__effectiveReadResponseAsString)
@@ -597,17 +591,15 @@ namespace Browserbase
                                 }
                                 catch (global::System.Exception __ex)
                                 {
-                                    throw new global::Browserbase.ApiException(
+                                    throw global::Browserbase.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
                             else
@@ -644,17 +636,15 @@ namespace Browserbase
                                     {
                                     }
 
-                                    throw new global::Browserbase.ApiException(
+                                    throw global::Browserbase.ApiException.Create(
+                                        statusCode: __response.StatusCode,
                                         message: __content ?? __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
-                                        statusCode: __response.StatusCode)
-                                    {
-                                        ResponseBody = __content,
-                                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        responseBody: __content,
+                                        responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                             __response.Headers,
                                             h => h.Key,
-                                            h => h.Value),
-                                    };
+                                            h => h.Value));
                                 }
                             }
 
