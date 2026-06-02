@@ -9,12 +9,6 @@ namespace Browserbase
     public sealed partial class SessionsUpdateRequest
     {
         /// <summary>
-        /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("projectId")]
-        public string? ProjectId { get; set; }
-
-        /// <summary>
         /// Set to `REQUEST_RELEASE` to request that the session complete. Use before session's timeout to avoid additional charges.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
@@ -30,9 +24,6 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionsUpdateRequest" /> class.
         /// </summary>
-        /// <param name="projectId">
-        /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
-        /// </param>
         /// <param name="status">
         /// Set to `REQUEST_RELEASE` to request that the session complete. Use before session's timeout to avoid additional charges.
         /// </param>
@@ -40,10 +31,8 @@ namespace Browserbase
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SessionsUpdateRequest(
-            string? projectId,
             global::Browserbase.SessionsUpdateRequestStatus status)
         {
-            this.ProjectId = projectId;
             this.Status = status;
         }
 
