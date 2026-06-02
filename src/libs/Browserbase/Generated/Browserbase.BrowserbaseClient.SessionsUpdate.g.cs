@@ -444,9 +444,6 @@ namespace Browserbase
         /// Update a Session
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="projectId">
-        /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
-        /// </param>
         /// <param name="status">
         /// Set to `REQUEST_RELEASE` to request that the session complete. Use before session's timeout to avoid additional charges.
         /// </param>
@@ -455,14 +452,12 @@ namespace Browserbase
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.Session> SessionsUpdateAsync(
             string id,
-            string? projectId = default,
             global::Browserbase.SessionsUpdateRequestStatus status = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __request = new global::Browserbase.SessionsUpdateRequest
             {
-                ProjectId = projectId,
                 Status = status,
             };
 
