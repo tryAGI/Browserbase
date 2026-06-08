@@ -464,6 +464,9 @@ namespace Browserbase
         /// <param name="proxies">
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
+        /// <param name="proxySettings">
+        /// Supplementary proxy settings. Optional.
+        /// </param>
         /// <param name="region">
         /// The region where the Session should run.<br/>
         /// Default Value: us-west-2
@@ -481,6 +484,7 @@ namespace Browserbase
             int? timeout = default,
             bool? keepAlive = default,
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies = default,
+            global::Browserbase.SessionsCreateRequestProxySettings? proxySettings = default,
             global::Browserbase.SessionsCreateRequestRegion? region = default,
             object? userMetadata = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
@@ -494,6 +498,7 @@ namespace Browserbase
                 Timeout = timeout,
                 KeepAlive = keepAlive,
                 Proxies = proxies,
+                ProxySettings = proxySettings,
                 Region = region,
                 UserMetadata = userMetadata,
             };

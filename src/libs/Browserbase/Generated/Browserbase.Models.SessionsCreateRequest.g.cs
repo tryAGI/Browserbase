@@ -46,6 +46,12 @@ namespace Browserbase
         public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Proxies { get; set; }
 
         /// <summary>
+        /// Supplementary proxy settings. Optional.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("proxySettings")]
+        public global::Browserbase.SessionsCreateRequestProxySettings? ProxySettings { get; set; }
+
+        /// <summary>
         /// The region where the Session should run.<br/>
         /// Default Value: us-west-2
         /// </summary>
@@ -84,6 +90,9 @@ namespace Browserbase
         /// <param name="proxies">
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
+        /// <param name="proxySettings">
+        /// Supplementary proxy settings. Optional.
+        /// </param>
         /// <param name="region">
         /// The region where the Session should run.<br/>
         /// Default Value: us-west-2
@@ -101,6 +110,7 @@ namespace Browserbase
             int? timeout,
             bool? keepAlive,
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies,
+            global::Browserbase.SessionsCreateRequestProxySettings? proxySettings,
             global::Browserbase.SessionsCreateRequestRegion? region,
             object? userMetadata)
         {
@@ -110,6 +120,7 @@ namespace Browserbase
             this.Timeout = timeout;
             this.KeepAlive = keepAlive;
             this.Proxies = proxies;
+            this.ProxySettings = proxySettings;
             this.Region = region;
             this.UserMetadata = userMetadata;
         }
