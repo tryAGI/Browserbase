@@ -28,7 +28,7 @@ namespace Browserbase
         public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Proxies { get; set; }
 
         /// <summary>
-        /// [NOT IN DOCS] Supplementary proxy settings. Optional.
+        /// Supplementary proxy settings. Optional.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxySettings")]
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings? ProxySettings { get; set; }
@@ -63,7 +63,7 @@ namespace Browserbase
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
         /// <param name="proxySettings">
-        /// [NOT IN DOCS] Supplementary proxy settings. Optional.
+        /// Supplementary proxy settings. Optional.
         /// </param>
         /// <param name="userMetadata">
         /// Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).

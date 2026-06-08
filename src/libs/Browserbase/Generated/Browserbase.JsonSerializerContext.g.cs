@@ -187,6 +187,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsViewport))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsOs), TypeInfoPropertyName = "SessionsCreateRequestBrowserSettingsOs2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestProxySettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestRegion), TypeInfoPropertyName = "SessionsCreateRequestRegion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequestStatus), TypeInfoPropertyName = "SessionsUpdateRequestStatus2")]

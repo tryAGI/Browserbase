@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     /// Supplementary proxy settings. Optional.
     /// </summary>
-    public sealed partial class FunctionsInvokeRequestSessionCreateParamsProxySettings
+    public sealed partial class SessionsCreateRequestProxySettings
     {
         /// <summary>
         /// The TLS certificate IDs to trust. Optional.<br/>
@@ -22,7 +22,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FunctionsInvokeRequestSessionCreateParamsProxySettings" /> class.
+        /// Initializes a new instance of the <see cref="SessionsCreateRequestProxySettings" /> class.
         /// </summary>
         /// <param name="caCertificates">
         /// The TLS certificate IDs to trust. Optional.<br/>
@@ -31,16 +31,16 @@ namespace Browserbase
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public FunctionsInvokeRequestSessionCreateParamsProxySettings(
+        public SessionsCreateRequestProxySettings(
             global::System.Collections.Generic.IList<global::System.Guid>? caCertificates)
         {
             this.CaCertificates = caCertificates;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FunctionsInvokeRequestSessionCreateParamsProxySettings" /> class.
+        /// Initializes a new instance of the <see cref="SessionsCreateRequestProxySettings" /> class.
         /// </summary>
-        public FunctionsInvokeRequestSessionCreateParamsProxySettings()
+        public SessionsCreateRequestProxySettings()
         {
         }
 
