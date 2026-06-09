@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class InvocationResults
+    public sealed partial class InvocationResult
     {
 
         /// <summary>
