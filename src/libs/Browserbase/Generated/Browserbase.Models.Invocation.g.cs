@@ -67,8 +67,8 @@ namespace Browserbase
         /// Any JSON-serializable value that can be stored in a JSONB column
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, double?, bool?, object, global::System.Collections.Generic.IList<object>, object>))]
-        public global::Browserbase.AnyOf<string, double?, bool?, object, global::System.Collections.Generic.IList<object>, object>? Results { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>))]
+        public global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>? Results { get; set; }
 
         /// <summary>
         /// 
@@ -147,7 +147,7 @@ namespace Browserbase
             global::System.DateTime expiresAt,
             string? region,
             object? @params,
-            global::Browserbase.AnyOf<string, double?, bool?, object, global::System.Collections.Generic.IList<object>, object>? results,
+            global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>? results,
             global::System.DateTime? endedAt)
         {
             this.Id = id;
