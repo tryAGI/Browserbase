@@ -136,7 +136,7 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AnyOf<string, double?, bool?, object, global::System.Collections.Generic.IList<object>, object>? Type27 { get; set; }
+        public global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>? Type27 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -549,7 +549,7 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.AnyOf<string, double?, bool?, object, global::System.Collections.Generic.List<object>, object>? ListType2 { get; set; }
+        public global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.List<object>, object>? ListType2 { get; set; }
         /// <summary>
         /// 
         /// </summary>
