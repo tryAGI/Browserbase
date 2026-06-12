@@ -82,6 +82,13 @@ namespace Browserbase
         public global::Browserbase.SessionsCreateRequestBrowserSettingsOs? Os { get; set; }
 
         /// <summary>
+        /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
+        /// Default Value: []
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowedDomains")]
+        public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
+
+        /// <summary>
         /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
@@ -128,6 +135,10 @@ namespace Browserbase
         /// <param name="os">
         /// Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet
         /// </param>
+        /// <param name="allowedDomains">
+        /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
+        /// Default Value: []
+        /// </param>
         /// <param name="ignoreCertificateErrors">
         /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
         /// </param>
@@ -147,6 +158,7 @@ namespace Browserbase
             string? captchaImageSelector,
             string? captchaInputSelector,
             global::Browserbase.SessionsCreateRequestBrowserSettingsOs? os,
+            global::System.Collections.Generic.IList<string>? allowedDomains,
             bool? ignoreCertificateErrors)
         {
             this.Context = context;
@@ -161,6 +173,7 @@ namespace Browserbase
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;
             this.Os = os;
+            this.AllowedDomains = allowedDomains;
             this.IgnoreCertificateErrors = ignoreCertificateErrors;
         }
 

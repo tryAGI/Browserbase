@@ -109,7 +109,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? Extensions { get; set; }
 
         /// <summary>
-        /// An optional list of allowed domains for the session. If provided, navigation will be restricted to these domains.<br/>
+        /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
         /// Default Value: []
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("allowedDomains")]
@@ -177,7 +177,7 @@ namespace Browserbase
         /// Default Value: []
         /// </param>
         /// <param name="allowedDomains">
-        /// An optional list of allowed domains for the session. If provided, navigation will be restricted to these domains.<br/>
+        /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
         /// Default Value: []
         /// </param>
         /// <param name="ignoreCertificateErrors">
