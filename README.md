@@ -19,6 +19,13 @@ using Browserbase;
 using var client = new BrowserbaseClient(apiKey);
 ```
 
+### CLI
+
+```bash
+dotnet tool install --global Browserbase.CLI --prerelease
+browserbase api --help
+```
+
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
 

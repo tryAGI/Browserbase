@@ -15,3 +15,21 @@ autosdk generate openapi.yaml \
   --output Generated \
   --exclude-deprecated-operations \
   --security-scheme Http:Header:Bearer
+
+rm -rf ../../cli/Browserbase.CLI
+
+autosdk cli-project openapi.yaml \
+  --output ../../cli/Browserbase.CLI \
+  --sdk-project ../../libs/Browserbase/Browserbase.csproj \
+  --targetFramework net10.0 \
+  --namespace Browserbase \
+  --clientClassName BrowserbaseClient \
+  --package-id Browserbase.CLI \
+  --tool-command-name browserbase \
+  --user-secrets-id Browserbase.CLI \
+  --api-key-env-var BROWSERBASE_API_KEY \
+  --base-url-env-var BROWSERBASE_BASE_URL \
+  --cli-credential-file \
+  --cli-keep-api-group \
+  --exclude-deprecated-operations \
+  --security-scheme Http:Header:Bearer
