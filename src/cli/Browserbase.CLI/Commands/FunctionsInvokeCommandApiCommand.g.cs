@@ -93,7 +93,7 @@ internal static partial class FunctionsInvokeCommandApiCommand
                             global::Browserbase.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var id = parseResult.GetRequiredValue(Id);
-                        var @params = CliRuntime.WasSpecified(parseResult, Params) ? parseResult.GetValue(Params) : (__requestBase is { } __@paramsBaseValue ? __@paramsBaseValue.Params : default);
+                        var @params = CliRuntime.WasSpecified(parseResult, Params) ? parseResult.GetValue(Params) : (__requestBase is { } __ParamsBaseValue ? __ParamsBaseValue.Params : default);
                         var sessionCreateParams = CliRuntime.WasSpecified(parseResult, SessionCreateParams) ? parseResult.GetValue(SessionCreateParams) : (__requestBase is { } __SessionCreateParamsBaseValue ? __SessionCreateParamsBaseValue.SessionCreateParams : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
