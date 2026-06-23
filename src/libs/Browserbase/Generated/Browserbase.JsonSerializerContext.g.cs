@@ -212,6 +212,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse6))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse7))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FetchCreateResponse8))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Function>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionBuildsListResponse))]
