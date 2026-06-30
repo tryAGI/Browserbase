@@ -9,6 +9,15 @@ internal static class DefaultApiGroupCommand
     public static Command Create()
     {
         var command = new Command(@"default", @"default endpoint commands.");
+                         command.Subcommands.Add(AgentRunsCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentRunsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentRunsListCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentRunsMessagesCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentsCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentsDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentsListCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(CertificatesDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(CertificatesGetCommandApiCommand.Create());
                          command.Subcommands.Add(CertificatesListCommandApiCommand.Create());

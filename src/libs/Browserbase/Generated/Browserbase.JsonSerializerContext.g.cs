@@ -13,6 +13,10 @@ namespace Browserbase
         DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
         Converters = new global::System.Type[]
         {
+            typeof(global::Browserbase.JsonConverters.AgentRunStatusJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.AgentRunStatusNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.BrowserbaseProxyConfigTypeJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.BrowserbaseProxyConfigTypeNullableJsonConverter),
@@ -81,9 +85,17 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.SessionsUpdateRequestStatusNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.AgentRunsListStatusJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.AgentRunsListStatusNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.SessionsListStatusJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionsListStatusNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.AgentRunsMessagesResponseDataItemMessageRoleJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.AgentRunsMessagesResponseDataItemMessageRoleNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.InvocationsGetResponseCauseCodeJsonConverter),
 
@@ -103,6 +115,8 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>),
 
+            typeof(global::Browserbase.JsonConverters.OneOfJsonConverter<string, global::System.Collections.Generic.IList<global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item>>),
+
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, object>),
 
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Invocation, global::Browserbase.InvocationsGetResponse2>),
@@ -114,12 +128,17 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Agent))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRun))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunStatus), TypeInfoPropertyName = "AgentRunStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunCause))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.BrowserbaseProxyConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.BrowserbaseProxyConfigType), TypeInfoPropertyName = "BrowserbaseProxyConfigType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.BrowserbaseProxyConfigGeolocation))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(string))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Certificate))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.DateTime))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Context))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Extension))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ExternalProxyConfig))]
@@ -138,7 +157,6 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionBuildCauseCode), TypeInfoPropertyName = "FunctionBuildCauseCode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionBuildLog))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(double))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(object))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Invocation))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.InvocationStatus), TypeInfoPropertyName = "InvocationStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>), TypeInfoPropertyName = "AnyOfStringDoubleBooleanIListObjectObject2")]
@@ -162,6 +180,13 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionRecording))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestBrowserSettings))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsCreateRequestVariables2>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestVariables2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsUpdateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.CertificatesUploadRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte[]))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ContextsCreateRequest))]
@@ -196,7 +221,20 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequestStatus), TypeInfoPropertyName = "SessionsUpdateRequestStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUploadFileRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsListStatus), TypeInfoPropertyName = "AgentRunsListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListStatus), TypeInfoPropertyName = "SessionsListStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsListResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Agent>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsListResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.AgentRun>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsMessagesResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.AgentRunsMessagesResponseDataItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsMessagesResponseDataItem))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsMessagesResponseDataItemMessage))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsMessagesResponseDataItemMessageRole), TypeInfoPropertyName = "AgentRunsMessagesResponseDataItemMessageRole2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.OneOf<string, global::System.Collections.Generic.IList<global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item>>), TypeInfoPropertyName = "OneOfStringIListAgentRunsMessagesResponseDataItemMessageContentVariant2Item2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Certificate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ContextsCreateResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte))]
@@ -252,6 +290,11 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Guid>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Agent>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRun>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRunsMessagesResponseDataItem>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.OneOf<string, global::System.Collections.Generic.List<global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRunsMessagesResponseDataItemMessageContentVariant2Item>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Certificate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.DownloadsListResponseDownload>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Function>))]
