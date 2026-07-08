@@ -13,6 +13,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(AgentRunsGetCommandApiCommand.Create());
                          command.Subcommands.Add(AgentRunsListCommandApiCommand.Create());
                          command.Subcommands.Add(AgentRunsMessagesCommandApiCommand.Create());
+                         command.Subcommands.Add(AgentRunsStopCommandApiCommand.Create());
                          command.Subcommands.Add(AgentsCreateCommandApiCommand.Create());
                          command.Subcommands.Add(AgentsDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(AgentsGetCommandApiCommand.Create());
