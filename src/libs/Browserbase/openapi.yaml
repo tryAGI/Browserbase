@@ -476,6 +476,30 @@ paths:
                 required:
                   - data
                   - nextSince
+  /v1/agents/runs/{runId}/stop:
+    post:
+      operationId: AgentRuns_stop
+      summary: Stop a Run
+      description: >-
+        Request that an in-progress run stop. The run winds down and transitions
+        to `STOPPED`. Stopping a run that has already finished returns a
+        conflict.
+      parameters:
+        - name: runId
+          in: path
+          description: The run ID.
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: >-
+            The stop has been requested. Poll the run until its status is
+            `STOPPED` to confirm it wound down.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRun'
   /v1/agents/{agentId}:
     get:
       operationId: Agents_get
