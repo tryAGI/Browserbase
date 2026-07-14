@@ -50,6 +50,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(ProjectsUsageCommandApiCommand.Create());
                          command.Subcommands.Add(SearchWebCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(SessionsCreateRecordingDownloadsCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetDebugCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetLogsCommandApiCommand.Create());
@@ -57,6 +58,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(SessionsGetReplayCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetReplayPageCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsListCommandApiCommand.Create());
+                         command.Subcommands.Add(SessionsListRecordingDownloadsCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUploadFileCommandApiCommand.Create());
         return command;
