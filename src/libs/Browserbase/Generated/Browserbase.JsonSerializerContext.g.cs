@@ -41,6 +41,10 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.NoneProxyConfigTypeNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.RecordingDownloadStatusJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.RecordingDownloadStatusNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.SessionStatusJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionStatusNullableJsonConverter),
@@ -169,6 +173,8 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ProjectUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(long))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.RecordingDownload))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.RecordingDownloadStatus), TypeInfoPropertyName = "RecordingDownloadStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ReplayPage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Session))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionStatus), TypeInfoPropertyName = "SessionStatus2")]
@@ -278,6 +284,17 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsGetResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionRecording>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRecordingDownloadsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.RecordingDownload>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRecordingDownloadsResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRecordingDownloadsResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRecordingDownloadsResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRecordingDownloadsResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListRecordingDownloadsResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListRecordingDownloadsResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListRecordingDownloadsResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListRecordingDownloadsResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListRecordingDownloadsResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsGetReplayResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUploadFileResponse))]
@@ -308,6 +325,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Session>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionRecording>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.RecordingDownload>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.ReplayPage>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
