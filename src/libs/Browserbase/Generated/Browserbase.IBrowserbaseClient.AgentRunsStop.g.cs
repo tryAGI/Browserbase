@@ -12,6 +12,11 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        ///   --url https://api.browserbase.com/v1/agents/runs/run-id/stop \<br/>
+        ///   --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Browserbase.AgentRun> AgentRunsStopAsync(
             string runId,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
@@ -24,6 +29,11 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
+        /// <remarks>
+        /// curl --request POST \<br/>
+        ///   --url https://api.browserbase.com/v1/agents/runs/run-id/stop \<br/>
+        ///   --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.AgentRun>> AgentRunsStopAsResponseAsync(
             string runId,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,

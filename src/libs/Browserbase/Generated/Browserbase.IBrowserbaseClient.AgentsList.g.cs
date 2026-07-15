@@ -17,6 +17,14 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
+        /// <remarks>
+        /// import Browserbase from "@browserbasehq/sdk";<br/>
+        /// const bb = new Browserbase({<br/>
+        ///   apiKey: process.env.BROWSERBASE_API_KEY,<br/>
+        /// });<br/>
+        /// const agents = await bb.agents.list({ limit: 20 });<br/>
+        /// console.log(agents);
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Browserbase.AgentsListResponse> AgentsListAsync(
             global::System.DateTime? startAt = default,
             global::System.DateTime? endAt = default,
@@ -37,6 +45,14 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
+        /// <remarks>
+        /// import Browserbase from "@browserbasehq/sdk";<br/>
+        /// const bb = new Browserbase({<br/>
+        ///   apiKey: process.env.BROWSERBASE_API_KEY,<br/>
+        /// });<br/>
+        /// const agents = await bb.agents.list({ limit: 20 });<br/>
+        /// console.log(agents);
+        /// </remarks>
         global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.AgentsListResponse>> AgentsListAsResponseAsync(
             global::System.DateTime? startAt = default,
             global::System.DateTime? endAt = default,
