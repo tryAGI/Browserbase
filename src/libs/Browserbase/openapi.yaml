@@ -2147,6 +2147,7 @@ paths:
                   type: integer
                   maximum: 21600
                   minimum: 60
+                  x-stainless-param: api_timeout
                 keepAlive:
                   description: Set to true to keep the session alive even after disconnections. Available on the Hobby Plan and above.
                   type: boolean
@@ -2238,6 +2239,7 @@ paths:
 
 
 
+
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
@@ -2274,6 +2276,7 @@ paths:
         - lang: Java
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
+
 
 
 
@@ -2484,6 +2487,26 @@ paths:
                   - statusCode
                   - error
                   - message
+        "422":
+          description: "Recording was disabled for this session (`recordSession: false`), so there is nothing to assemble."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
         "502":
           description: Failed to reach the recording service. Retry the request.
           content:
@@ -2572,6 +2595,26 @@ paths:
                   - message
         "410":
           description: The session's recording has aged out of its retention window and can no longer be assembled.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "422":
+          description: "Recording was disabled for this session (`recordSession: false`), so there is nothing to download."
           content:
             application/json:
               schema:

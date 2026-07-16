@@ -437,24 +437,61 @@ namespace Browserbase
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Recording was disabled for this session (`recordSession: false`), so there is nothing to download.
+                            if ((int)__response.StatusCode == 422)
+                            {
+                                string? __content_422 = null;
+                                global::System.Exception? __exception_422 = null;
+                                global::Browserbase.SessionsListRecordingDownloadsResponse5? __value_422 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_422 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_422 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_422 = __ex;
+                                }
+
+
+                                throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse5>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_422,
+                                    responseBody: __content_422,
+                                    responseObject: __value_422,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Failed to reach the recording service. Retry the request.
                             if ((int)__response.StatusCode == 502)
                             {
                                 string? __content_502 = null;
                                 global::System.Exception? __exception_502 = null;
-                                global::Browserbase.SessionsListRecordingDownloadsResponse5? __value_502 = null;
+                                global::Browserbase.SessionsListRecordingDownloadsResponse6? __value_502 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -463,7 +500,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse5>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse6>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_502 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_502,
