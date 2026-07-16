@@ -660,35 +660,43 @@ namespace Browserbase
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse? Type158 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse6? Type158 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse2? Type159 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse? Type159 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse3? Type160 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse2? Type160 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse4? Type161 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse3? Type161 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse5? Type162 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse4? Type162 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsGetReplayResponse? Type163 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse5? Type163 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>? Type164 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse6? Type164 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Browserbase.SessionsUploadFileResponse? Type165 { get; set; }
+        public global::Browserbase.SessionsGetReplayResponse? Type165 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>? Type166 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Browserbase.SessionsUploadFileResponse? Type167 { get; set; }
 
         /// <summary>
         /// 
