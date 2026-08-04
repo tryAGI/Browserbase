@@ -15,10 +15,11 @@ namespace Browserbase
         public global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext? Context { get; set; }
 
         /// <summary>
-        /// Set true to route the agent's browser session through the default proxy.
+        /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxies")]
-        public bool? Proxies { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>))]
+        public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Proxies { get; set; }
 
         /// <summary>
         /// Set true to enable Browserbase Verified for the session.
@@ -37,7 +38,7 @@ namespace Browserbase
         /// </summary>
         /// <param name="context"></param>
         /// <param name="proxies">
-        /// Set true to route the agent's browser session through the default proxy.
+        /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
         /// <param name="verified">
         /// Set true to enable Browserbase Verified for the session.
@@ -47,7 +48,7 @@ namespace Browserbase
 #endif
         public AgentRunsCreateRequestBrowserSettings(
             global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext? context,
-            bool? proxies,
+            global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies,
             bool? verified)
         {
             this.Context = context;
