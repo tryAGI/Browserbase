@@ -218,8 +218,15 @@ paths:
                       required:
                         - id
                     proxies:
-                      description: Set true to route the agent's browser session through the default proxy.
-                      type: boolean
+                      description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                      anyOf:
+                        - type: array
+                          items:
+                            anyOf:
+                              - $ref: "#/components/schemas/BrowserbaseProxyConfig"
+                              - $ref: "#/components/schemas/ExternalProxyConfig"
+                              - $ref: "#/components/schemas/NoneProxyConfig"
+                        - type: boolean
                     verified:
                       description: Set true to enable Browserbase Verified for the session.
                       type: boolean

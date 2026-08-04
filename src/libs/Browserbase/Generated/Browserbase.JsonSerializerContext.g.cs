@@ -109,6 +109,10 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>),
 
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
+
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>),
+
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>),
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
@@ -190,6 +194,9 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestBrowserSettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>), TypeInfoPropertyName = "AnyOfIListAnyOfBrowserbaseProxyConfigExternalProxyConfigNoneProxyConfigBoolean2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>), TypeInfoPropertyName = "AnyOfBrowserbaseProxyConfigExternalProxyConfigNoneProxyConfig2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsCreateRequestVariables2>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestVariables2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsUpdateRequest))]
@@ -211,9 +218,6 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>), TypeInfoPropertyName = "AnyOfIListAnyOfBrowserbaseProxyConfigExternalProxyConfigNoneProxyConfigBoolean2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>), TypeInfoPropertyName = "AnyOfBrowserbaseProxyConfigExternalProxyConfigNoneProxyConfig2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Guid>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequest))]
@@ -305,9 +309,9 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.List<object>, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLiveUrlsPage>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Guid>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Agent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRun>))]
