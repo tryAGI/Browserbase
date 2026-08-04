@@ -37,6 +37,12 @@ namespace Browserbase
         public required string ProjectId { get; set; }
 
         /// <summary>
+        /// Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -51,6 +57,9 @@ namespace Browserbase
         /// <param name="projectId">
         /// The Project ID linked to the uploaded Context.
         /// </param>
+        /// <param name="name">
+        /// Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -58,12 +67,14 @@ namespace Browserbase
             string id,
             global::System.DateTime createdAt,
             global::System.DateTime updatedAt,
-            string projectId)
+            string projectId,
+            string? name)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ProjectId = projectId ?? throw new global::System.ArgumentNullException(nameof(projectId));
+            this.Name = name;
         }
 
         /// <summary>

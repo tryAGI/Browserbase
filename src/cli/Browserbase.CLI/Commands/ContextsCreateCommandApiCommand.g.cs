@@ -12,6 +12,12 @@ internal static partial class ContextsCreateCommandApiCommand
     {
         Description = @"The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.",
     };
+
+    private static Option<string?> NameOption { get; } = new(
+        name: @"--name")
+    {
+        Description = @"Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -53,6 +59,7 @@ internal static partial class ContextsCreateCommandApiCommand
     {
         var command = new Command(@"contexts-create", @"Create a Context");
                         command.Options.Add(ProjectId);
+                        command.Options.Add(NameOption);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -79,11 +86,13 @@ internal static partial class ContextsCreateCommandApiCommand
                             global::Browserbase.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
                         var projectId = CliRuntime.WasSpecified(parseResult, ProjectId) ? parseResult.GetValue(ProjectId) : (__requestBase is { } __ProjectIdBaseValue ? __ProjectIdBaseValue.ProjectId : default);
+                        var name = CliRuntime.WasSpecified(parseResult, NameOption) ? parseResult.GetValue(NameOption) : (__requestBase is { } __NameBaseValue ? __NameBaseValue.Name : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.ContextsCreateAsync(
                                     projectId: projectId,
+                                    name: name,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
