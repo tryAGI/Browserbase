@@ -16,13 +16,6 @@ namespace Browserbase
         public required string Id { get; set; }
 
         /// <summary>
-        /// An upload URL to upload a custom user-data-directory.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("uploadUrl")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string UploadUrl { get; set; }
-
-        /// <summary>
         /// The public key to encrypt the user-data-directory.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publicKey")]
@@ -53,9 +46,6 @@ namespace Browserbase
         /// Initializes a new instance of the <see cref="ContextsCreateResponse" /> class.
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="uploadUrl">
-        /// An upload URL to upload a custom user-data-directory.
-        /// </param>
         /// <param name="publicKey">
         /// The public key to encrypt the user-data-directory.
         /// </param>
@@ -70,13 +60,11 @@ namespace Browserbase
 #endif
         public ContextsCreateResponse(
             string id,
-            string uploadUrl,
             string publicKey,
             string cipherAlgorithm,
             byte initializationVectorSize)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
-            this.UploadUrl = uploadUrl ?? throw new global::System.ArgumentNullException(nameof(uploadUrl));
             this.PublicKey = publicKey ?? throw new global::System.ArgumentNullException(nameof(publicKey));
             this.CipherAlgorithm = cipherAlgorithm ?? throw new global::System.ArgumentNullException(nameof(cipherAlgorithm));
             this.InitializationVectorSize = initializationVectorSize;

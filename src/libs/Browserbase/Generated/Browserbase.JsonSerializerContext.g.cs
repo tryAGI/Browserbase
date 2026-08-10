@@ -248,7 +248,6 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Certificate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ContextsCreateResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(byte))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.ContextsUpdateResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.DownloadsListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.DownloadsListResponseDownload>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.DownloadsListResponseDownload))]
