@@ -1008,10 +1008,6 @@ paths:
                 properties:
                   id:
                     type: string
-                  uploadUrl:
-                    description: An upload URL to upload a custom user-data-directory.
-                    type: string
-                    minLength: 1
                   publicKey:
                     description: The public key to encrypt the user-data-directory.
                     type: string
@@ -1030,7 +1026,6 @@ paths:
                     format: uint8
                 required:
                   - id
-                  - uploadUrl
                   - publicKey
                   - cipherAlgorithm
                   - initializationVectorSize
@@ -1051,51 +1046,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Context'
-    put:
-      operationId: Contexts_update
-      summary: Update a Context
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: string
-                  uploadUrl:
-                    description: An upload URL to upload a custom user-data-directory.
-                    type: string
-                    minLength: 1
-                  publicKey:
-                    description: The public key to encrypt the user-data-directory.
-                    type: string
-                  cipherAlgorithm:
-                    description: >-
-                      The cipher algorithm used to encrypt the
-                      user-data-directory. AES-256-CBC is currently the only
-                      supported algorithm.
-                    type: string
-                  initializationVectorSize:
-                    description: >-
-                      The initialization vector size used to encrypt the
-                      user-data-directory. [Read more about how to use
-                      it](/features/contexts).
-                    type: integer
-                    format: uint8
-                required:
-                  - id
-                  - uploadUrl
-                  - publicKey
-                  - cipherAlgorithm
-                  - initializationVectorSize
     delete:
       operationId: Contexts_delete
       summary: Delete a Context
