@@ -27,7 +27,7 @@ namespace Browserbase
         public global::Browserbase.SessionsCreateRequestBrowserSettings? BrowserSettings { get; set; }
 
         /// <summary>
-        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
+        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeout")]
         public int? Timeout { get; set; }
@@ -82,7 +82,7 @@ namespace Browserbase
         /// </param>
         /// <param name="browserSettings"></param>
         /// <param name="timeout">
-        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
+        /// Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours).
         /// </param>
         /// <param name="keepAlive">
         /// Set to true to keep the session alive even after disconnections. Available on the Hobby Plan and above.

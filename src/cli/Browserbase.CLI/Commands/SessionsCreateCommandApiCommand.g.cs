@@ -28,7 +28,7 @@ internal static partial class SessionsCreateCommandApiCommand
     private static Option<int?> Timeout { get; } = new(
         name: @"--timeout")
     {
-        Description = @"Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.",
+        Description = @"Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours).",
     };
 
     private static Option<bool?> KeepAlive { get; } = CliRuntime.CreateNullableBoolOption(
