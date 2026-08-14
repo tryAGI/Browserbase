@@ -2111,7 +2111,7 @@ paths:
                       description: Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
                       type: boolean
                 timeout:
-                  description: Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`.
+                  description: "Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours)."
                   type: integer
                   maximum: 21600
                   minimum: 60
