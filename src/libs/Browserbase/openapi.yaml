@@ -2318,6 +2318,14 @@ paths:
       operationId: Sessions_getDebug
       summary: Session Live URLs
       parameters:
+        - name: expiresIn
+          in: query
+          description: "Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs expire with the session, up to a maximum of 21600 seconds (6 hours)."
+          required: false
+          schema:
+            type: integer
+            maximum: 21600
+            minimum: 60
         - name: id
           in: path
           required: true
