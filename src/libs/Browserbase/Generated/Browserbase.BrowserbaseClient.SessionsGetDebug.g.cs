@@ -27,10 +27,12 @@ namespace Browserbase
             };
         partial void PrepareSessionsGetDebugArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref int? expiresIn,
             ref string id);
         partial void PrepareSessionsGetDebugRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            int? expiresIn,
             string id);
         partial void ProcessSessionsGetDebugResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -44,17 +46,20 @@ namespace Browserbase
         /// <summary>
         /// Session Live URLs
         /// </summary>
+        /// <param name="expiresIn"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.SessionLiveUrls> SessionsGetDebugAsync(
             string id,
+            int? expiresIn = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await SessionsGetDebugAsResponseAsync(
                 id: id,
+                expiresIn: expiresIn,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -64,12 +69,14 @@ namespace Browserbase
         /// <summary>
         /// Session Live URLs
         /// </summary>
+        /// <param name="expiresIn"></param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.SessionLiveUrls>> SessionsGetDebugAsResponseAsync(
             string id,
+            int? expiresIn = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -77,6 +84,7 @@ namespace Browserbase
                 client: HttpClient);
             PrepareSessionsGetDebugArguments(
                 httpClient: HttpClient,
+                expiresIn: ref expiresIn,
                 id: ref id);
 
 
@@ -105,6 +113,9 @@ namespace Browserbase
                             var __pathBuilder = new global::Browserbase.PathBuilder(
                                 path: $"/v1/sessions/{id}/debug",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("expiresIn", expiresIn?.ToString())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -145,6 +156,7 @@ namespace Browserbase
                 PrepareSessionsGetDebugRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    expiresIn: expiresIn,
                     id: id!);
 
                 return __httpRequest;
