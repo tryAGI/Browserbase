@@ -7,7 +7,7 @@ namespace Browserbase
     {
 
 
-        private static readonly global::Browserbase.EndPointSecurityRequirement s_SessionsGetReplayPageSecurityRequirement0 =
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_DownloadsGetAsBytesSecurityRequirement0 =
             new global::Browserbase.EndPointSecurityRequirement
             {
                 Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
@@ -21,46 +21,41 @@ namespace Browserbase
                     },
                 },
             };
-        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_SessionsGetReplayPageSecurityRequirements =
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_DownloadsGetAsBytesSecurityRequirements =
             new global::Browserbase.EndPointSecurityRequirement[]
-            {                s_SessionsGetReplayPageSecurityRequirement0,
+            {                s_DownloadsGetAsBytesSecurityRequirement0,
             };
-        partial void PrepareSessionsGetReplayPageArguments(
+        partial void PrepareDownloadsGetAsBytesArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref global::System.Guid id,
-            ref string pageId);
-        partial void PrepareSessionsGetReplayPageRequest(
+            ref string id);
+        partial void PrepareDownloadsGetAsBytesRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::System.Guid id,
-            string pageId);
-        partial void ProcessSessionsGetReplayPageResponse(
+            string id);
+        partial void ProcessDownloadsGetAsBytesResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessSessionsGetReplayPageResponseContent(
+        partial void ProcessDownloadsGetAsBytesResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref byte[] content);
 
         /// <summary>
-        /// Get Replay Page<br/>
-        /// Returns an HLS VOD media playlist (.m3u8) for a specific page of a session replay.
+        /// Get a Download<br/>
+        /// Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream).
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="pageId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<byte[]> SessionsGetReplayPageAsync(
-            global::System.Guid id,
-            string pageId,
+        public async global::System.Threading.Tasks.Task<byte[]> DownloadsGetAsBytesAsync(
+            string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await SessionsGetReplayPageAsResponseAsync(
+            var __response = await DownloadsGetAsBytesAsResponseAsync(
                 id: id,
-                pageId: pageId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -68,32 +63,29 @@ namespace Browserbase
             return __response.Body;
         }
         /// <summary>
-        /// Get Replay Page<br/>
-        /// Returns an HLS VOD media playlist (.m3u8) for a specific page of a session replay.
+        /// Get a Download<br/>
+        /// Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream).
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="pageId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::System.IO.Stream> SessionsGetReplayPageAsStreamAsync(
-            global::System.Guid id,
-            string pageId,
+        public async global::System.Threading.Tasks.Task<global::System.IO.Stream> DownloadsGetAsBytesAsStreamAsync(
+            string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareSessionsGetReplayPageArguments(
+            PrepareDownloadsGetAsBytesArguments(
                 httpClient: HttpClient,
-                id: ref id,
-                pageId: ref pageId);
+                id: ref id);
 
 
             var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_SessionsGetReplayPageSecurityRequirements,
-                operationName: "SessionsGetReplayPageAsync");
+                securityRequirements: s_DownloadsGetAsBytesSecurityRequirements,
+                operationName: "DownloadsGetAsBytesAsync");
 
             using var __timeoutCancellationTokenSource = global::Browserbase.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -113,7 +105,7 @@ namespace Browserbase
             {
 
                             var __pathBuilder = new global::Browserbase.PathBuilder(
-                                path: $"/v1/sessions/{id}/replays/{pageId}",
+                                path: $"/v1/downloads/{id}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -127,6 +119,10 @@ namespace Browserbase
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
+
+                __httpRequest.Headers.TryAddWithoutValidation(
+                    "Accept",
+                    "application/octet-stream");
 
             foreach (var __authorization in __authorizations)
             {
@@ -152,11 +148,10 @@ namespace Browserbase
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareSessionsGetReplayPageRequest(
+                PrepareDownloadsGetAsBytesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id!,
-                    pageId: pageId!);
+                    id: id!);
 
                 return __httpRequest;
             }
@@ -173,9 +168,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -207,9 +202,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -248,9 +243,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -288,7 +283,7 @@ namespace Browserbase
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessSessionsGetReplayPageResponse(
+                ProcessDownloadsGetAsBytesResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -296,9 +291,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -318,9 +313,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -387,32 +382,29 @@ namespace Browserbase
             }
         }
         /// <summary>
-        /// Get Replay Page<br/>
-        /// Returns an HLS VOD media playlist (.m3u8) for a specific page of a session replay.
+        /// Get a Download<br/>
+        /// Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream).
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="pageId"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<byte[]>> SessionsGetReplayPageAsResponseAsync(
-            global::System.Guid id,
-            string pageId,
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<byte[]>> DownloadsGetAsBytesAsResponseAsync(
+            string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             PrepareArguments(
                 client: HttpClient);
-            PrepareSessionsGetReplayPageArguments(
+            PrepareDownloadsGetAsBytesArguments(
                 httpClient: HttpClient,
-                id: ref id,
-                pageId: ref pageId);
+                id: ref id);
 
 
             var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_SessionsGetReplayPageSecurityRequirements,
-                operationName: "SessionsGetReplayPageAsync");
+                securityRequirements: s_DownloadsGetAsBytesSecurityRequirements,
+                operationName: "DownloadsGetAsBytesAsync");
 
             using var __timeoutCancellationTokenSource = global::Browserbase.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -432,7 +424,7 @@ namespace Browserbase
             {
 
                             var __pathBuilder = new global::Browserbase.PathBuilder(
-                                path: $"/v1/sessions/{id}/replays/{pageId}",
+                                path: $"/v1/downloads/{id}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -446,6 +438,10 @@ namespace Browserbase
                 __httpRequest.Version = global::System.Net.HttpVersion.Version11;
                 __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
+
+                __httpRequest.Headers.TryAddWithoutValidation(
+                    "Accept",
+                    "application/octet-stream");
 
             foreach (var __authorization in __authorizations)
             {
@@ -471,11 +467,10 @@ namespace Browserbase
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareSessionsGetReplayPageRequest(
+                PrepareDownloadsGetAsBytesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id!,
-                    pageId: pageId!);
+                    id: id!);
 
                 return __httpRequest;
             }
@@ -492,9 +487,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -526,9 +521,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -567,9 +562,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -607,7 +602,7 @@ namespace Browserbase
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessSessionsGetReplayPageResponse(
+                ProcessDownloadsGetAsBytesResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -615,9 +610,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -637,9 +632,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "SessionsGetReplayPage",
-                                methodName: "SessionsGetReplayPageAsync",
-                                pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
+                                operationId: "DownloadsGetAsBytes",
+                                methodName: "DownloadsGetAsBytesAsync",
+                                pathTemplate: "$\"/v1/downloads/{id}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -663,7 +658,7 @@ namespace Browserbase
                 #endif
                                 ).ConfigureAwait(false);
 
-                                ProcessSessionsGetReplayPageResponseContent(
+                                ProcessDownloadsGetAsBytesResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
