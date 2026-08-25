@@ -28,6 +28,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(ContextsGetCommandApiCommand.Create());
                          command.Subcommands.Add(DownloadsDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(DownloadsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(DownloadsGetAsBytesCommandApiCommand.Create());
                          command.Subcommands.Add(DownloadsListCommandApiCommand.Create());
                          command.Subcommands.Add(ExtensionsDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(ExtensionsGetCommandApiCommand.Create());

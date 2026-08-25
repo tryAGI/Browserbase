@@ -5,39 +5,30 @@ using System.CommandLine;
 
 namespace Browserbase.CLI.Commands;
 
-internal static partial class SessionsGetReplayPageCommandApiCommand
+internal static partial class DownloadsGetAsBytesCommandApiCommand
 {
-    private static Argument<global::System.Guid> Id { get; } = new(
+    private static Argument<string> Id { get; } = new(
         name: @"id")
     {
-        Description = @"Session ID",
-    };
-
-    private static Argument<string> PageId { get; } = new(
-        name: @"page-id")
-    {
-        Description = @"",
+        Description = @"The download ID.",
     };
 
     public static Command Create()
     {
-        var command = new Command(@"sessions-get-replay-page", @"Get Replay Page
-Returns an HLS VOD media playlist (.m3u8) for a specific page of a session replay.");
+        var command = new Command(@"downloads-get-as-bytes", @"Get a Download
+Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream).");
                         command.Arguments.Add(Id);
-                        command.Arguments.Add(PageId);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var id = parseResult.GetRequiredValue(Id);
-                        var pageId = parseResult.GetRequiredValue(PageId);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.SessionsGetReplayPageAsync(
+                                var response = await client.DownloadsGetAsBytesAsync(
                                     id: id,
-                                    pageId: pageId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
