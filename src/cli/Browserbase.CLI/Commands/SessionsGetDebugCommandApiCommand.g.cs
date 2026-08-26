@@ -13,12 +13,6 @@ internal static partial class SessionsGetDebugCommandApiCommand
         Description = @"",
     };
 
-    private static Option<int?> ExpiresIn { get; } = new(
-        name: @"--expires-in")
-    {
-        Description = @"Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs expire with the session, up to a maximum of 21600 seconds (6 hours).",
-    };
-
                     private static string FormatResponse(ParseResult parseResult, global::Browserbase.SessionLiveUrls value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -43,20 +37,17 @@ internal static partial class SessionsGetDebugCommandApiCommand
     {
         var command = new Command(@"sessions-get-debug", @"Session Live URLs");
                         command.Arguments.Add(Id);
-                        command.Options.Add(ExpiresIn);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var id = parseResult.GetRequiredValue(Id);
-                        var expiresIn = parseResult.GetValue(ExpiresIn);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.SessionsGetDebugAsync(
                                     id: id,
-                                    expiresIn: expiresIn,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
