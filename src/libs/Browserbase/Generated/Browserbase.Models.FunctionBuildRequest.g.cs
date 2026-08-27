@@ -4,19 +4,19 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FunctionBuildRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("entrypoint")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Entrypoint { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("functionNames")]
         public global::System.Collections.Generic.IList<string>? FunctionNames { get; set; }

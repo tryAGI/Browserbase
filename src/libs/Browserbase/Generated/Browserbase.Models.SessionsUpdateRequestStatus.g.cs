@@ -9,7 +9,7 @@ namespace Browserbase
     public enum SessionsUpdateRequestStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RequestRelease,
     }

@@ -9,7 +9,7 @@ namespace Browserbase
     public sealed partial class AgentRunsMessagesResponseDataItemMessage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AgentRunsMessagesResponseDataItemMessageRoleJsonConverter))]

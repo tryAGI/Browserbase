@@ -4,12 +4,12 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FunctionsInvokeRequestSessionCreateParamsBrowserSettings
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsContext? Context { get; set; }
@@ -21,7 +21,7 @@ namespace Browserbase
         public string? ExtensionId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("viewport")]
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport? Viewport { get; set; }

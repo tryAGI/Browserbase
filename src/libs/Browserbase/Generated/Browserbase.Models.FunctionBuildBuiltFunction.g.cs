@@ -4,12 +4,12 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FunctionBuildBuiltFunction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("createdVersion")]
         [global::System.Text.Json.Serialization.JsonRequired]

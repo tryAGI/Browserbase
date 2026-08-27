@@ -20,7 +20,7 @@ namespace Browserbase.JsonConverters
                     {
                         return global::Browserbase.NoneProxyConfigTypeExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

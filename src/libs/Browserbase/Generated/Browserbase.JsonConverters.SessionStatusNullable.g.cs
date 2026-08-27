@@ -20,7 +20,7 @@ namespace Browserbase.JsonConverters
                     {
                         return global::Browserbase.SessionStatusExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -4,16 +4,16 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BrowserEvents,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Onepassword,
     }

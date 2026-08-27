@@ -4,7 +4,7 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SessionLogRequest
     {
@@ -15,14 +15,14 @@ namespace Browserbase
         public long? Timestamp { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("params")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required object Params { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rawBody")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -4,19 +4,19 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ProjectUsage
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("browserMinutes")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int BrowserMinutes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxyBytes")]
         [global::System.Text.Json.Serialization.JsonRequired]
