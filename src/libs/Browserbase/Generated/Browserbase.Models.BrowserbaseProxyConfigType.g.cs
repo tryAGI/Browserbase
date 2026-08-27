@@ -9,7 +9,7 @@ namespace Browserbase
     public enum BrowserbaseProxyConfigType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Browserbase,
     }

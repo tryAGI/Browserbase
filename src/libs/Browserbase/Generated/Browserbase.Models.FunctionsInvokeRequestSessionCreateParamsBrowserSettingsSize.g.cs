@@ -10,15 +10,15 @@ namespace Browserbase
     public enum FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Large,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Medium,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Small,
     }

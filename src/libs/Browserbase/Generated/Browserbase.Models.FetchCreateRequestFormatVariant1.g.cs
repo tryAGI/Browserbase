@@ -4,12 +4,12 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FetchCreateRequestFormatVariant1
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Raw,
     }

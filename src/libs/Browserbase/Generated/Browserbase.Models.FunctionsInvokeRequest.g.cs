@@ -4,7 +4,7 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class FunctionsInvokeRequest
     {
@@ -15,7 +15,7 @@ namespace Browserbase
         public object? Params { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sessionCreateParams")]
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParams? SessionCreateParams { get; set; }

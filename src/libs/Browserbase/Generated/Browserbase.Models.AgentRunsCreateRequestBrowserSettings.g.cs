@@ -9,7 +9,7 @@ namespace Browserbase
     public sealed partial class AgentRunsCreateRequestBrowserSettings
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("context")]
         public global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext? Context { get; set; }

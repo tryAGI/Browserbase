@@ -4,12 +4,12 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FetchCreateRequestFormatVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
     }

@@ -4,33 +4,33 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SessionLiveUrls
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("debuggerFullscreenUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string DebuggerFullscreenUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("debuggerUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string DebuggerUrl { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::Browserbase.SessionLiveUrlsPage> Pages { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wsUrl")]
         [global::System.Text.Json.Serialization.JsonRequired]

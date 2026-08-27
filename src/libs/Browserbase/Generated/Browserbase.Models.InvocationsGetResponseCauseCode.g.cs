@@ -4,20 +4,20 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum InvocationsGetResponseCauseCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InternalError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WorkloadError,
     }

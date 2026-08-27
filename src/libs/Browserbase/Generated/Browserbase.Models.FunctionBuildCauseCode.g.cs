@@ -4,28 +4,28 @@
 namespace Browserbase
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FunctionBuildCauseCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidSessionCreateParams,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ManifestTooLarge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoManifestsFound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TimedOut,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TooManyManifests,
     }

@@ -10,19 +10,19 @@ namespace Browserbase
     public enum SessionsCreateRequestRegion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApSoutheast1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EuCentral1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsEast1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UsWest2,
     }
