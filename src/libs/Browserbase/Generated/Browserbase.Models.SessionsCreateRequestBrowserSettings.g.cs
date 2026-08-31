@@ -89,7 +89,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
 
         /// <summary>
-        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
         public bool? IgnoreCertificateErrors { get; set; }
@@ -140,7 +140,7 @@ namespace Browserbase
         /// Default Value: []
         /// </param>
         /// <param name="ignoreCertificateErrors">
-        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

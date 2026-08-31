@@ -1788,7 +1788,7 @@ paths:
                             type: string
                           default: []
                         ignoreCertificateErrors:
-                          description: Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+                          description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
                           type: boolean
                     proxies:
                       description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
@@ -2108,7 +2108,7 @@ paths:
                         type: string
                       default: []
                     ignoreCertificateErrors:
-                      description: Enable or disable ignoring of certificate errors in the browser. Defaults to `true`.
+                      description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
                       type: boolean
                 timeout:
                   description: "Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours)."
