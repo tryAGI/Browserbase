@@ -54,7 +54,6 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(SessionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetDebugCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetLogsCommandApiCommand.Create());
-                         command.Subcommands.Add(SessionsGetRecordingCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetReplayCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetReplayPageCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsListCommandApiCommand.Create());

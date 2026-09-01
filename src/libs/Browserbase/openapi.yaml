@@ -2349,25 +2349,6 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SessionLog"
-  "/v1/sessions/{id}/recording":
-    get:
-      operationId: Sessions_getRecording
-      summary: Session Recording
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: The request has succeeded.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/SessionRecording"
   "/v1/sessions/{id}/recording/downloads":
     post:
       operationId: Sessions_createRecordingDownloads
@@ -3432,26 +3413,6 @@ components:
         - method
         - pageId
         - sessionId
-    SessionRecording:
-      type: object
-      properties:
-        data:
-          description: "See [rrweb documentation](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/dive-into-event.md)."
-          type: object
-          additionalProperties: true
-          properties: {}
-        sessionId:
-          type: string
-        timestamp:
-          description: milliseconds that have elapsed since the UNIX epoch
-          type: integer
-        type:
-          type: integer
-      required:
-        - data
-        - sessionId
-        - timestamp
-        - type
   securitySchemes:
     BrowserbaseAuth:
       type: apiKey
