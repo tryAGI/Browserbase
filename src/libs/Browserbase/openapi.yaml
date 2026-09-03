@@ -1810,7 +1810,6 @@ paths:
                           type: array
                           items:
                             format: uuid
-                            description: The TLS certificate ID to trust.
                             type: string
                           default: []
                     userMetadata:
@@ -2140,7 +2139,6 @@ paths:
                       type: array
                       items:
                         format: uuid
-                        description: The TLS certificate ID to trust.
                         type: string
                       default: []
                 region:
