@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace Browserbase
@@ -51,9 +53,10 @@ namespace Browserbase
         public bool? LogSession { get; set; }
 
         /// <summary>
-        /// Advanced Browser Stealth Mode
+        /// Advanced Browser Stealth Mode. Deprecated: use `verified` instead.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("advancedStealth")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? AdvancedStealth { get; set; }
 
         /// <summary>
@@ -120,9 +123,6 @@ namespace Browserbase
         /// <param name="logSession">
         /// Enable or disable session logging. Defaults to `true`.
         /// </param>
-        /// <param name="advancedStealth">
-        /// Advanced Browser Stealth Mode
-        /// </param>
         /// <param name="verified">
         /// Verified Browser Mode
         /// </param>
@@ -153,7 +153,6 @@ namespace Browserbase
             bool? solveCaptchas,
             bool? recordSession,
             bool? logSession,
-            bool? advancedStealth,
             bool? verified,
             string? captchaImageSelector,
             string? captchaInputSelector,
@@ -168,7 +167,6 @@ namespace Browserbase
             this.SolveCaptchas = solveCaptchas;
             this.RecordSession = recordSession;
             this.LogSession = logSession;
-            this.AdvancedStealth = advancedStealth;
             this.Verified = verified;
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;

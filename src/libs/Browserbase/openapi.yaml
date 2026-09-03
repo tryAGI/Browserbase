@@ -1738,8 +1738,9 @@ paths:
                           description: Enable or disable session logging. Defaults to `true`.
                           type: boolean
                         advancedStealth:
-                          description: Advanced Browser Stealth Mode
+                          description: "Advanced Browser Stealth Mode. Deprecated: use `verified` instead."
                           type: boolean
+                          deprecated: true
                         verified:
                           description: Verified Browser Mode
                           type: boolean
@@ -2081,8 +2082,9 @@ paths:
                       description: Enable or disable session logging. Defaults to `true`.
                       type: boolean
                     advancedStealth:
-                      description: Advanced Browser Stealth Mode
+                      description: "Advanced Browser Stealth Mode. Deprecated: use `verified` instead."
                       type: boolean
+                      deprecated: true
                     verified:
                       description: Verified Browser Mode
                       type: boolean
@@ -2208,6 +2210,7 @@ paths:
 
 
 
+
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
@@ -2244,6 +2247,7 @@ paths:
         - lang: Java
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
+
 
 
 
