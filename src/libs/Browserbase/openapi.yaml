@@ -2823,11 +2823,13 @@ components:
               type: string
               maxLength: 2
               minLength: 2
+              pattern: "^[A-Za-z]{2}$"
             country:
               description: Country code in ISO 3166-1 alpha-2 format
               type: string
               maxLength: 2
               minLength: 2
+              pattern: "^[A-Za-z]{2}$"
           required:
             - country
         domainPattern:
