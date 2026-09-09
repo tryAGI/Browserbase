@@ -53,6 +53,10 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.SessionRegionNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.WebhookEventTypeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.WebhookEventTypeNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant1JsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FetchCreateRequestFormatVariant1NullableJsonConverter),
@@ -88,6 +92,14 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.SessionsUpdateRequestStatusJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionsUpdateRequestStatusNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.WebhooksCreateRequestEventTypeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.WebhooksCreateRequestEventTypeNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.WebhooksUpdateRequestEventTypeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.WebhooksUpdateRequestEventTypeNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.AgentRunsListStatusJsonConverter),
 
@@ -132,6 +144,8 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>),
 
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>),
+
+            typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Webhook, global::Browserbase.WebhooksCreateResponse2>),
 
             typeof(global::Browserbase.JsonConverters.UnixTimestampJsonConverter),
         })]
@@ -190,6 +204,9 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLog))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLogResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Webhook))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.WebhookEventType>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhookEventType), TypeInfoPropertyName = "WebhookEventType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsCreateRequestBrowserSettings))]
@@ -231,6 +248,13 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequestStatus), TypeInfoPropertyName = "SessionsUpdateRequestStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUploadFileRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.WebhooksCreateRequestEventType>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksCreateRequestEventType), TypeInfoPropertyName = "WebhooksCreateRequestEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksUpdateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.WebhooksUpdateRequestEventType>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksUpdateRequestEventType), TypeInfoPropertyName = "WebhooksUpdateRequestEventType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksRotateSecretRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentRunsListStatus), TypeInfoPropertyName = "AgentRunsListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsListStatus), TypeInfoPropertyName = "SessionsListStatus2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AgentsListResponse))]
@@ -302,14 +326,22 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsGetReplayResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUploadFileResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AllOf<global::Browserbase.Webhook, global::Browserbase.WebhooksCreateResponse2>), TypeInfoPropertyName = "AllOfWebhookWebhooksCreateResponse22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksCreateResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksListResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Webhook>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksRotateSecretResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AllOf<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.List<object>, object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLiveUrlsPage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhookEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Guid>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhooksCreateRequestEventType>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhooksUpdateRequestEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Agent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRun>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AgentRunsMessagesResponseDataItem>))]
@@ -329,6 +361,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLog>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.RecordingDownload>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.ReplayPage>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Webhook>))]
     public sealed partial class SourceGenerationContext : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }

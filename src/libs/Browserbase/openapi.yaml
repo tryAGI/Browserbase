@@ -2695,6 +2695,441 @@ paths:
                     type: string
                 required:
                   - message
+  /v1/webhooks:
+    post:
+      operationId: Webhooks_create
+      summary: Create a Webhook
+      description: "Register an HTTPS endpoint to receive events for this project. The response includes the signing secret, which is shown only here and when the secret is rotated. Store it before discarding the response. An endpoint may only be registered once per project."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  description: HTTPS URL that event deliveries are POSTed to. Must be publicly reachable.
+                  type: string
+                  format: uri
+                  maxLength: 2048
+                  pattern: "^https://[^/?#]+"
+                eventTypes:
+                  description: Event types this webhook subscribes to. Unknown types are rejected.
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - functions.builds.running
+                      - functions.builds.completed
+                      - functions.builds.failed
+                      - functions.invocations.pending
+                      - functions.invocations.running
+                      - functions.invocations.completed
+                      - functions.invocations.failed
+                  minItems: 1
+                  uniqueItems: true
+              additionalProperties: false
+              required:
+                - endpoint
+                - eventTypes
+      responses:
+        "201":
+          description: The webhook has been created.
+          content:
+            application/json:
+              schema:
+                description: "The created webhook, including its signing secret."
+                allOf:
+                  - $ref: "#/components/schemas/Webhook"
+                  - type: object
+                    properties:
+                      secret:
+                        description: "HMAC-SHA256 signing secret, prefixed `whsec_`. Shown once here; store it now. Use it to verify the signature on every delivery."
+                        type: string
+                    required:
+                      - secret
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const webhook = await bb.webhooks.create({
+              endpoint: "https://example.com/browserbase/events",
+              eventTypes: ["functions.invocations.completed"],
+            });
+
+            console.log(webhook.secret);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            webhook = bb.webhooks.create(
+                endpoint="https://example.com/browserbase/events",
+                event_types=["functions.invocations.completed"],
+            )
+
+            print(webhook.secret)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request POST \
+              --url https://api.browserbase.com/v1/webhooks \
+              --header 'Content-Type: application/json' \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \
+              --data '{
+                "endpoint": "https://example.com/browserbase/events",
+                "eventTypes": ["functions.invocations.completed"]
+              }'
+    get:
+      operationId: Webhooks_list
+      summary: List Webhooks
+      description: "List the project's webhooks, newest first. Signing secrets are not included. Page by passing the previous response's `nextCursor` as `cursor`; a null `nextCursor` means there are no further pages."
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of results to return.
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+            minimum: 1
+        - name: cursor
+          in: query
+          description: Cursor from a previous response's `nextCursor`. Omit for the first page.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A page of webhooks.
+          content:
+            application/json:
+              schema:
+                description: A page of webhooks. Signing secrets are not included.
+                type: object
+                properties:
+                  data:
+                    description: "The page of webhooks, newest first."
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Webhook"
+                  limit:
+                    description: The maximum number of results returned in this page.
+                    type: integer
+                  nextCursor:
+                    description: Cursor for the next page. Pass it back as `cursor` to continue paging. null when there are no more results.
+                    anyOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - data
+                  - limit
+                  - nextCursor
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const { data } = await bb.webhooks.list();
+
+            console.log(data);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            page = bb.webhooks.list()
+
+            print(page.data)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request GET \
+              --url https://api.browserbase.com/v1/webhooks \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+  "/v1/webhooks/{id}":
+    get:
+      operationId: Webhooks_get
+      summary: Get a Webhook
+      description: Retrieve a single webhook by ID. The signing secret is not included; it is only ever returned on create and rotate.
+      parameters:
+        - name: id
+          in: path
+          description: The webhook ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: The webhook.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Webhook"
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const webhook = await bb.webhooks.retrieve("<webhook-id>");
+
+            console.log(webhook);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            webhook = bb.webhooks.retrieve("<webhook-id>")
+
+            print(webhook)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request GET \
+              --url https://api.browserbase.com/v1/webhooks/<webhook-id> \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+    patch:
+      operationId: Webhooks_update
+      summary: Update a Webhook
+      description: "Update a webhook's endpoint URL, its subscribed event types, or both. Omitted fields are left unchanged. `eventTypes` replaces the existing subscription rather than adding to it. The signing secret is unaffected."
+      parameters:
+        - name: id
+          in: path
+          description: The webhook ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  description: HTTPS URL that event deliveries are POSTed to. Must be publicly reachable.
+                  type: string
+                  format: uri
+                  maxLength: 2048
+                  pattern: "^https://[^/?#]+"
+                eventTypes:
+                  description: Event types this webhook subscribes to. Unknown types are rejected.
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - functions.builds.running
+                      - functions.builds.completed
+                      - functions.builds.failed
+                      - functions.invocations.pending
+                      - functions.invocations.running
+                      - functions.invocations.completed
+                      - functions.invocations.failed
+                  minItems: 1
+                  uniqueItems: true
+              additionalProperties: false
+              minProperties: 1
+      responses:
+        "200":
+          description: The webhook after the update.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Webhook"
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const webhook = await bb.webhooks.update("<webhook-id>", {
+              eventTypes: [
+                "functions.invocations.completed",
+                "functions.invocations.failed",
+              ],
+            });
+
+            console.log(webhook);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            webhook = bb.webhooks.update(
+                "<webhook-id>",
+                event_types=[
+                    "functions.invocations.completed",
+                    "functions.invocations.failed",
+                ],
+            )
+
+            print(webhook)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request PATCH \
+              --url https://api.browserbase.com/v1/webhooks/<webhook-id> \
+              --header 'Content-Type: application/json' \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \
+              --data '{
+                "eventTypes": [
+                  "functions.invocations.completed",
+                  "functions.invocations.failed"
+                ]
+              }'
+    delete:
+      operationId: Webhooks_delete
+      summary: Delete a Webhook
+      description: Delete a webhook. Deliveries stop immediately and the signing secret is retired. Events that occurred before the delete are not replayed if the endpoint is registered again.
+      parameters:
+        - name: id
+          in: path
+          description: The webhook ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The webhook has been deleted.
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            await bb.webhooks.delete("<webhook-id>");
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            bb.webhooks.delete("<webhook-id>")
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request DELETE \
+              --url https://api.browserbase.com/v1/webhooks/<webhook-id> \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+  "/v1/webhooks/{id}/secret":
+    post:
+      operationId: Webhooks_rotateSecret
+      summary: Rotate a Webhook signing secret
+      description: Issue a new signing secret for a webhook. By default the previous secret keeps verifying for 24 hours so a receiver can be updated without dropping deliveries; pass `revokeImmediately` to end that window at once. The new secret is returned only here.
+      parameters:
+        - name: id
+          in: path
+          description: The webhook ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                revokeImmediately:
+                  description: Expire the old secret at once instead of honouring it for 24 hours. Use when responding to a leak; deliveries signed with the old secret stop verifying immediately.
+                  type: boolean
+                  default: false
+              additionalProperties: false
+      responses:
+        "200":
+          description: The new signing secret.
+          content:
+            application/json:
+              schema:
+                description: The new signing secret. Shown once; store it now.
+                type: object
+                properties:
+                  secret:
+                    description: "The new signing secret, prefixed `whsec_`."
+                    type: string
+                required:
+                  - secret
+        "429":
+          description: "Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`."
+          content:
+            application/json:
+              schema:
+                description: "Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`."
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const { secret } = await bb.webhooks.rotateSecret("<webhook-id>");
+
+            console.log(secret);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            rotated = bb.webhooks.rotate_secret("<webhook-id>")
+
+            print(rotated.secret)
+        - lang: bash
+          label: cURL
+          source: 'curl --request POST https://api.browserbase.com/v1/webhooks/<webhook-id>/secret --header "X-BB-API-Key: $BROWSERBASE_API_KEY"'
 components:
   schemas:
     Agent:
@@ -3417,6 +3852,50 @@ components:
         - method
         - pageId
         - sessionId
+    Webhook:
+      description: A delivery endpoint for a project. Browserbase POSTs a signed event to it whenever one of its subscribed event types occurs. The signing secret is returned only when it is created or rotated.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the webhook.
+          type: string
+        projectId:
+          description: The project the webhook belongs to.
+          type: string
+        endpoint:
+          description: HTTPS URL that event deliveries are POSTed to. Must be publicly reachable.
+          type: string
+          format: uri
+          maxLength: 2048
+          pattern: "^https://[^/?#]+"
+        eventTypes:
+          description: Event types this webhook subscribes to. Unknown types are rejected.
+          type: array
+          items:
+            type: string
+            enum:
+              - functions.builds.running
+              - functions.builds.completed
+              - functions.builds.failed
+              - functions.invocations.pending
+              - functions.invocations.running
+              - functions.invocations.completed
+              - functions.invocations.failed
+          minItems: 1
+          uniqueItems: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - endpoint
+        - eventTypes
+        - createdAt
+        - updatedAt
   securitySchemes:
     BrowserbaseAuth:
       type: apiKey
