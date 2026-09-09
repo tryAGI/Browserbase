@@ -60,6 +60,12 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(SessionsListRecordingDownloadsCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUploadFileCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksGetCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksListCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksRotateSecretCommandApiCommand.Create());
+                         command.Subcommands.Add(WebhooksUpdateCommandApiCommand.Create());
         return command;
     }
 }
