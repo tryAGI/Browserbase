@@ -34,8 +34,8 @@ namespace Browserbase
             ref double? maxSize,
             ref global::System.DateTime? createdAfter,
             ref global::System.DateTime? createdBefore,
-            ref double? limit,
-            ref double? offset);
+            ref int? limit,
+            ref int? offset);
         partial void PrepareDownloadsListRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
@@ -46,8 +46,8 @@ namespace Browserbase
             double? maxSize,
             global::System.DateTime? createdAfter,
             global::System.DateTime? createdBefore,
-            double? limit,
-            double? offset);
+            int? limit,
+            int? offset);
         partial void ProcessDownloadsListResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -85,8 +85,8 @@ namespace Browserbase
             double? maxSize = default,
             global::System.DateTime? createdAfter = default,
             global::System.DateTime? createdBefore = default,
-            double? limit = default,
-            double? offset = default,
+            int? limit = default,
+            int? offset = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -134,8 +134,8 @@ namespace Browserbase
             double? maxSize = default,
             global::System.DateTime? createdAfter = default,
             global::System.DateTime? createdBefore = default,
-            double? limit = default,
-            double? offset = default,
+            int? limit = default,
+            int? offset = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {

@@ -49,7 +49,7 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.DownloadsGetResponse> DownloadsGetAsync(
+        public async global::System.Threading.Tasks.Task<global::Browserbase.Download> DownloadsGetAsync(
             string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -70,7 +70,7 @@ namespace Browserbase
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsGetResponse>> DownloadsGetAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.Download>> DownloadsGetAsResponseAsync(
             string id,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -352,9 +352,9 @@ namespace Browserbase
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::Browserbase.DownloadsGetResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::Browserbase.Download.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsGetResponse>(
+                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.Download>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Browserbase.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -384,9 +384,9 @@ namespace Browserbase
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::Browserbase.DownloadsGetResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::Browserbase.Download.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.DownloadsGetResponse>(
+                                    return new global::Browserbase.AutoSDKHttpResponse<global::Browserbase.Download>(
                                         statusCode: __response.StatusCode,
                                         headers: global::Browserbase.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,

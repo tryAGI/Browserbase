@@ -992,7 +992,7 @@ paths:
           description: Maximum number of results to return.
           required: false
           schema:
-            type: number
+            type: integer
             default: 20
             maximum: 100
             minimum: 1
@@ -1001,7 +1001,7 @@ paths:
           description: Number of results to skip for pagination.
           required: false
           schema:
-            type: number
+            type: integer
             default: 0
             minimum: 0
       responses:
@@ -1015,45 +1015,15 @@ paths:
                   downloads:
                     type: array
                     items:
-                      type: object
-                      properties:
-                        id:
-                          description: Unique identifier for the download.
-                          type: string
-                        sessionId:
-                          description: The Session ID this download belongs to.
-                          type: string
-                        filename:
-                          description: The filename of the downloaded file.
-                          type: string
-                        mimeType:
-                          description: The MIME type of the file.
-                          type: string
-                        size:
-                          description: File size in bytes.
-                          type: number
-                        checksum:
-                          description: SHA256 checksum of the file.
-                          type: string
-                        createdAt:
-                          description: Timestamp when the file was downloaded.
-                          type: string
-                          format: date-time
-                      required:
-                        - id
-                        - sessionId
-                        - filename
-                        - mimeType
-                        - size
-                        - checksum
-                        - createdAt
+                      $ref: "#/components/schemas/Download"
                   total:
                     description: Total count of matching downloads.
-                    type: number
+                    type: integer
+                    minimum: 0
                   limit:
-                    type: number
+                    type: integer
                   offset:
-                    type: number
+                    type: integer
                 required:
                   - downloads
                   - total
@@ -1077,38 +1047,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  id:
-                    description: Unique identifier for the download.
-                    type: string
-                  sessionId:
-                    description: The Session ID this download belongs to.
-                    type: string
-                  filename:
-                    description: The filename of the downloaded file.
-                    type: string
-                  mimeType:
-                    description: The MIME type of the file.
-                    type: string
-                  size:
-                    description: File size in bytes.
-                    type: number
-                  checksum:
-                    description: SHA256 checksum of the file.
-                    type: string
-                  createdAt:
-                    description: Timestamp when the file was downloaded.
-                    type: string
-                    format: date-time
-                required:
-                  - id
-                  - sessionId
-                  - filename
-                  - mimeType
-                  - size
-                  - checksum
-                  - createdAt
+                $ref: "#/components/schemas/Download"
             application/octet-stream:
               schema:
                 type: string
@@ -3315,6 +3254,39 @@ components:
         - createdAt
         - updatedAt
         - projectId
+    Download:
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the download.
+          type: string
+        sessionId:
+          description: The Session ID this download belongs to.
+          type: string
+        filename:
+          description: The filename of the downloaded file.
+          type: string
+        mimeType:
+          description: The MIME type of the file.
+          type: string
+        size:
+          description: File size in bytes.
+          type: number
+        checksum:
+          description: SHA256 checksum of the file.
+          type: string
+        createdAt:
+          description: Timestamp when the file was downloaded.
+          type: string
+          format: date-time
+      required:
+        - id
+        - sessionId
+        - filename
+        - mimeType
+        - size
+        - checksum
+        - createdAt
     Extension:
       type: object
       properties:

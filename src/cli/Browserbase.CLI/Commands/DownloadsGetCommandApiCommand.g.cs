@@ -13,7 +13,7 @@ internal static partial class DownloadsGetCommandApiCommand
         Description = @"The download ID.",
     };
 
-                    private static string FormatResponse(ParseResult parseResult, global::Browserbase.DownloadsGetResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    private static string FormatResponse(ParseResult parseResult, global::Browserbase.Download value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
                         CustomizeResponseText(parseResult, value, ref text);
@@ -29,7 +29,7 @@ internal static partial class DownloadsGetCommandApiCommand
                         return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
                     }
 
-                    static partial void CustomizeResponseText(ParseResult parseResult, global::Browserbase.DownloadsGetResponse value, ref string? text);
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Browserbase.Download value, ref string? text);
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
