@@ -32,8 +32,8 @@ namespace Browserbase
             double? maxSize = default,
             global::System.DateTime? createdAfter = default,
             global::System.DateTime? createdBefore = default,
-            double? limit = default,
-            double? offset = default,
+            int? limit = default,
+            int? offset = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -64,8 +64,8 @@ namespace Browserbase
             double? maxSize = default,
             global::System.DateTime? createdAfter = default,
             global::System.DateTime? createdBefore = default,
-            double? limit = default,
-            double? offset = default,
+            int? limit = default,
+            int? offset = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

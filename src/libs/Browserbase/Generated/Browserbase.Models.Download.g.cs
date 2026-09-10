@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class DownloadsGetResponse
+    public sealed partial class Download
     {
         /// <summary>
         /// Unique identifier for the download.
@@ -64,7 +64,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DownloadsGetResponse" /> class.
+        /// Initializes a new instance of the <see cref="Download" /> class.
         /// </summary>
         /// <param name="id">
         /// Unique identifier for the download.
@@ -90,7 +90,7 @@ namespace Browserbase
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public DownloadsGetResponse(
+        public Download(
             string id,
             string sessionId,
             string filename,
@@ -109,9 +109,9 @@ namespace Browserbase
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DownloadsGetResponse" /> class.
+        /// Initializes a new instance of the <see cref="Download" /> class.
         /// </summary>
-        public DownloadsGetResponse()
+        public Download()
         {
         }
 

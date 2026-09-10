@@ -50,13 +50,13 @@ internal static partial class DownloadsListCommandApiCommand
         Description = @"Filter downloads created on or before this timestamp.",
     };
 
-    private static Option<double?> Limit { get; } = new(
+    private static Option<int?> Limit { get; } = new(
         name: @"--limit")
     {
         Description = @"Maximum number of results to return.",
     };
 
-    private static Option<double?> Offset { get; } = new(
+    private static Option<int?> Offset { get; } = new(
         name: @"--offset")
     {
         Description = @"Number of results to skip for pagination.",
