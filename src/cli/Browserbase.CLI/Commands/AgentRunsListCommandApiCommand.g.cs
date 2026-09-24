@@ -28,13 +28,13 @@ internal static partial class AgentRunsListCommandApiCommand
     private static Option<global::System.DateTime?> StartAt { get; } = new(
         name: @"--start-at")
     {
-        Description = @"Only return runs created on or after this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-19T00:00:00Z.",
+        Description = @"Only return runs created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.",
     };
 
     private static Option<global::System.DateTime?> EndAt { get; } = new(
         name: @"--end-at")
     {
-        Description = @"Only return runs created on or before this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-20T00:00:00Z.",
+        Description = @"Only return runs created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.",
     };
 
     private static Option<int?> Limit { get; } = new(

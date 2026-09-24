@@ -93,14 +93,14 @@ paths:
       parameters:
         - name: startAt
           in: query
-          description: "Only return agents created on or after this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: "Only return agents created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return agents created on or before this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: "Only return agents created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
           required: false
           schema:
             type: string
@@ -330,14 +330,14 @@ paths:
             type: string
         - name: startAt
           in: query
-          description: "Only return runs created on or after this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: "Only return runs created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return runs created on or before this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: "Only return runs created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
           required: false
           schema:
             type: string
@@ -1918,7 +1918,7 @@ paths:
                           description: Author of the content if available
                           type: string
                         publishedDate:
-                          description: Publication date in ISO 8601 format
+                          description: Publication date in RFC 3339 format
                           type: string
                           format: date-time
                         image:
