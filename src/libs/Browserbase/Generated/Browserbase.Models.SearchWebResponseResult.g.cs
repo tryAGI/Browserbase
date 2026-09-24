@@ -36,7 +36,7 @@ namespace Browserbase
         public string? Author { get; set; }
 
         /// <summary>
-        /// Publication date in ISO 8601 format
+        /// Publication date in RFC 3339 format
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("publishedDate")]
         public global::System.DateTime? PublishedDate { get; set; }
@@ -75,7 +75,7 @@ namespace Browserbase
         /// Author of the content if available
         /// </param>
         /// <param name="publishedDate">
-        /// Publication date in ISO 8601 format
+        /// Publication date in RFC 3339 format
         /// </param>
         /// <param name="image">
         /// Image URL if available
