@@ -10,7 +10,8 @@ namespace Browserbase
     /// - `COMPLETED` - agent has finished running<br/>
     /// - `FAILED` - agent has failed the run<br/>
     /// - `STOPPED` - run was stopped by the user<br/>
-    /// - `TIMED_OUT` - run exceeded maximum time
+    /// - `TIMED_OUT` - run exceeded maximum time<br/>
+    /// - `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages
     /// </summary>
     public enum AgentRunStatus
     {
@@ -22,6 +23,10 @@ namespace Browserbase
         ///
         /// </summary>
         Failed,
+        /// <summary>
+        ///
+        /// </summary>
+        Paused,
         /// <summary>
         ///
         /// </summary>
@@ -54,6 +59,7 @@ namespace Browserbase
             {
                 AgentRunStatus.Completed => "COMPLETED",
                 AgentRunStatus.Failed => "FAILED",
+                AgentRunStatus.Paused => "PAUSED",
                 AgentRunStatus.Pending => "PENDING",
                 AgentRunStatus.Running => "RUNNING",
                 AgentRunStatus.Stopped => "STOPPED",
@@ -70,6 +76,7 @@ namespace Browserbase
             {
                 "COMPLETED" => AgentRunStatus.Completed,
                 "FAILED" => AgentRunStatus.Failed,
+                "PAUSED" => AgentRunStatus.Paused,
                 "PENDING" => AgentRunStatus.Pending,
                 "RUNNING" => AgentRunStatus.Running,
                 "STOPPED" => AgentRunStatus.Stopped,

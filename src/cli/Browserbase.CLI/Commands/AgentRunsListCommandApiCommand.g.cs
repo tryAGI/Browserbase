@@ -16,7 +16,8 @@ internal static partial class AgentRunsListCommandApiCommand
 - `COMPLETED` - agent has finished running
 - `FAILED` - agent has failed the run
 - `STOPPED` - run was stopped by the user
-- `TIMED_OUT` - run exceeded maximum time",
+- `TIMED_OUT` - run exceeded maximum time
+- `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages",
     };
 
     private static Option<string?> AgentId { get; } = new(

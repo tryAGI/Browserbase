@@ -245,6 +245,10 @@ paths:
                         type: string
                     required:
                       - value
+                pauseWhen:
+                  description: "Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint."
+                  type: string
+                  minLength: 1
               additionalProperties: false
               required:
                 - task
@@ -312,6 +316,7 @@ paths:
             - `FAILED` - agent has failed the run
             - `STOPPED` - run was stopped by the user
             - `TIMED_OUT` - run exceeded maximum time
+            - `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages
           required: false
           schema:
             type: string
@@ -322,6 +327,7 @@ paths:
               - FAILED
               - STOPPED
               - TIMED_OUT
+              - PAUSED
         - name: agentId
           in: query
           description: Only return runs that reference this agent ID.
@@ -609,6 +615,63 @@ paths:
               --get \
               --data-urlencode 'limit=20' \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+  "/v1/agents/runs/{runId}/resume":
+    post:
+      operationId: AgentRuns_resume
+      summary: Resume a Run
+      description: "Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict."
+      parameters:
+        - name: runId
+          in: path
+          description: The run ID.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                task:
+                  description: "Additional input for the agent: the reply to its request for input, which is the trailing `pause` tool call in the run's messages (e.g. an answer or an approval). Delivered to the agent as the result of that pause call."
+                  type: string
+                  minLength: 1
+                variables:
+                  description: "Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted."
+                  type: object
+                  additionalProperties:
+                    additionalProperties: false
+                    type: object
+                    properties:
+                      value:
+                        description: The value the placeholder resolves to when the agent uses it.
+                        type: string
+                      description:
+                        description: Optional hint to the agent describing what this variable represents and when to use it.
+                        type: string
+                    required:
+                      - value
+              additionalProperties: false
+      responses:
+        "202":
+          description: The resume has been accepted and the run is `RUNNING` again. Poll the run for its next state.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AgentRun"
+      x-codeSamples:
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request POST \
+              --url https://api.browserbase.com/v1/agents/runs/run-id/resume \
+              --header 'Content-Type: application/json' \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \
+              --data '{
+                "task": "The code is %code%",
+                "variables": { "code": { "value": "123456" } }
+              }'
   "/v1/agents/runs/{runId}/stop":
     post:
       operationId: AgentRuns_stop
@@ -3122,6 +3185,7 @@ components:
             - `FAILED` - agent has failed the run
             - `STOPPED` - run was stopped by the user
             - `TIMED_OUT` - run exceeded maximum time
+            - `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages
           type: string
           enum:
             - PENDING
@@ -3130,6 +3194,7 @@ components:
             - FAILED
             - STOPPED
             - TIMED_OUT
+            - PAUSED
         sessionId:
           description: The Browserbase session ID powering this run.
           type: string
