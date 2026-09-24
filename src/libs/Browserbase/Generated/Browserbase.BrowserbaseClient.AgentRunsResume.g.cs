@@ -7,7 +7,7 @@ namespace Browserbase
     {
 
 
-        private static readonly global::Browserbase.EndPointSecurityRequirement s_AgentRunsCreateSecurityRequirement0 =
+        private static readonly global::Browserbase.EndPointSecurityRequirement s_AgentRunsResumeSecurityRequirement0 =
             new global::Browserbase.EndPointSecurityRequirement
             {
                 Authorizations = new global::Browserbase.EndPointAuthorizationRequirement[]
@@ -21,52 +21,56 @@ namespace Browserbase
                     },
                 },
             };
-        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_AgentRunsCreateSecurityRequirements =
+        private static readonly global::Browserbase.EndPointSecurityRequirement[] s_AgentRunsResumeSecurityRequirements =
             new global::Browserbase.EndPointSecurityRequirement[]
-            {                s_AgentRunsCreateSecurityRequirement0,
+            {                s_AgentRunsResumeSecurityRequirement0,
             };
-        partial void PrepareAgentRunsCreateArguments(
+        partial void PrepareAgentRunsResumeArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::Browserbase.AgentRunsCreateRequest request);
-        partial void PrepareAgentRunsCreateRequest(
+            ref string runId,
+            global::Browserbase.AgentRunsResumeRequest request);
+        partial void PrepareAgentRunsResumeRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::Browserbase.AgentRunsCreateRequest request);
-        partial void ProcessAgentRunsCreateResponse(
+            string runId,
+            global::Browserbase.AgentRunsResumeRequest request);
+        partial void ProcessAgentRunsResumeResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessAgentRunsCreateResponseContent(
+        partial void ProcessAgentRunsResumeResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Run an Agent<br/>
-        /// Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.
+        /// Resume a Run<br/>
+        /// Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.
         /// </summary>
+        /// <param name="runId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         /// <remarks>
-        /// import Browserbase from "@browserbasehq/sdk";<br/>
-        /// const bb = new Browserbase({<br/>
-        ///   apiKey: process.env.BROWSERBASE_API_KEY,<br/>
-        /// });<br/>
-        /// const run = await bb.agents.runs.create({<br/>
-        ///   agentId: "agent-id",<br/>
-        ///   task: "Find the pricing page on example.com.",<br/>
-        /// });<br/>
-        /// console.log(run);
+        /// curl --request POST \<br/>
+        ///   --url https://api.browserbase.com/v1/agents/runs/run-id/resume \<br/>
+        ///   --header 'Content-Type: application/json' \<br/>
+        ///   --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \<br/>
+        ///   --data '{<br/>
+        ///     "task": "The code is %code%",<br/>
+        ///     "variables": { "code": { "value": "123456" } }<br/>
+        ///   }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AgentRun> AgentRunsCreateAsync(
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AgentRun> AgentRunsResumeAsync(
+            string runId,
 
-            global::Browserbase.AgentRunsCreateRequest request,
+            global::Browserbase.AgentRunsResumeRequest request,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await AgentRunsCreateAsResponseAsync(
+            var __response = await AgentRunsResumeAsResponseAsync(
+                runId: runId,
 
                 request: request,
                 requestOptions: requestOptions,
@@ -76,27 +80,28 @@ namespace Browserbase
             return __response.Body;
         }
         /// <summary>
-        /// Run an Agent<br/>
-        /// Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.
+        /// Resume a Run<br/>
+        /// Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.
         /// </summary>
+        /// <param name="runId"></param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         /// <remarks>
-        /// import Browserbase from "@browserbasehq/sdk";<br/>
-        /// const bb = new Browserbase({<br/>
-        ///   apiKey: process.env.BROWSERBASE_API_KEY,<br/>
-        /// });<br/>
-        /// const run = await bb.agents.runs.create({<br/>
-        ///   agentId: "agent-id",<br/>
-        ///   task: "Find the pricing page on example.com.",<br/>
-        /// });<br/>
-        /// console.log(run);
+        /// curl --request POST \<br/>
+        ///   --url https://api.browserbase.com/v1/agents/runs/run-id/resume \<br/>
+        ///   --header 'Content-Type: application/json' \<br/>
+        ///   --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \<br/>
+        ///   --data '{<br/>
+        ///     "task": "The code is %code%",<br/>
+        ///     "variables": { "code": { "value": "123456" } }<br/>
+        ///   }'
         /// </remarks>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.AgentRun>> AgentRunsCreateAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.AgentRun>> AgentRunsResumeAsResponseAsync(
+            string runId,
 
-            global::Browserbase.AgentRunsCreateRequest request,
+            global::Browserbase.AgentRunsResumeRequest request,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -104,15 +109,16 @@ namespace Browserbase
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareAgentRunsCreateArguments(
+            PrepareAgentRunsResumeArguments(
                 httpClient: HttpClient,
+                runId: ref runId,
                 request: request);
 
 
             var __authorizations = global::Browserbase.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_AgentRunsCreateSecurityRequirements,
-                operationName: "AgentRunsCreateAsync");
+                securityRequirements: s_AgentRunsResumeSecurityRequirements,
+                operationName: "AgentRunsResumeAsync");
 
             using var __timeoutCancellationTokenSource = global::Browserbase.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -132,7 +138,7 @@ namespace Browserbase
             {
 
                             var __pathBuilder = new global::Browserbase.PathBuilder(
-                                path: "/v1/agents/runs",
+                                path: $"/v1/agents/runs/{runId}/resume",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -177,9 +183,10 @@ namespace Browserbase
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareAgentRunsCreateRequest(
+                PrepareAgentRunsResumeRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    runId: runId!,
                     request: request);
 
                 return __httpRequest;
@@ -197,9 +204,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentRunsCreate",
-                                methodName: "AgentRunsCreateAsync",
-                                pathTemplate: "\"/v1/agents/runs\"",
+                                operationId: "AgentRunsResume",
+                                methodName: "AgentRunsResumeAsync",
+                                pathTemplate: "$\"/v1/agents/runs/{runId}/resume\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -231,9 +238,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentRunsCreate",
-                                methodName: "AgentRunsCreateAsync",
-                                pathTemplate: "\"/v1/agents/runs\"",
+                                operationId: "AgentRunsResume",
+                                methodName: "AgentRunsResumeAsync",
+                                pathTemplate: "$\"/v1/agents/runs/{runId}/resume\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -272,9 +279,9 @@ namespace Browserbase
                         await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentRunsCreate",
-                                methodName: "AgentRunsCreateAsync",
-                                pathTemplate: "\"/v1/agents/runs\"",
+                                operationId: "AgentRunsResume",
+                                methodName: "AgentRunsResumeAsync",
+                                pathTemplate: "$\"/v1/agents/runs/{runId}/resume\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -312,7 +319,7 @@ namespace Browserbase
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessAgentRunsCreateResponse(
+                ProcessAgentRunsResumeResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -320,9 +327,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentRunsCreate",
-                                methodName: "AgentRunsCreateAsync",
-                                pathTemplate: "\"/v1/agents/runs\"",
+                                operationId: "AgentRunsResume",
+                                methodName: "AgentRunsResumeAsync",
+                                pathTemplate: "$\"/v1/agents/runs/{runId}/resume\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -342,9 +349,9 @@ namespace Browserbase
                     await global::Browserbase.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::Browserbase.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "AgentRunsCreate",
-                                methodName: "AgentRunsCreateAsync",
-                                pathTemplate: "\"/v1/agents/runs\"",
+                                operationId: "AgentRunsResume",
+                                methodName: "AgentRunsResumeAsync",
+                                pathTemplate: "$\"/v1/agents/runs/{runId}/resume\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -372,7 +379,7 @@ namespace Browserbase
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessAgentRunsCreateResponseContent(
+                                ProcessAgentRunsResumeResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -456,51 +463,34 @@ namespace Browserbase
             }
         }
         /// <summary>
-        /// Run an Agent<br/>
-        /// Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.
+        /// Resume a Run<br/>
+        /// Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.
         /// </summary>
-        /// <param name="agentId">
-        /// Optionally run a specific [custom agent](/reference/api/create-an-agent) you've created by ID. The run will use the agent's `systemPrompt` and `resultSchema` unless overridden.
-        /// </param>
+        /// <param name="runId"></param>
         /// <param name="task">
-        /// A natural language description of the task the agent should accomplish.
-        /// </param>
-        /// <param name="resultSchema">
-        /// An optional [JSON Schema](https://json-schema.org/specification) object. If provided, the agent will aim to return a `result` that conforms to this schema when the run completes. Overrides the referenced agent's default `resultSchema` for this run only.
-        /// </param>
-        /// <param name="browserSettings">
-        /// Browser configuration for the agent's session. When omitted, runner defaults apply.
+        /// Additional input for the agent: the reply to its request for input, which is the trailing `pause` tool call in the run's messages (e.g. an answer or an approval). Delivered to the agent as the result of that pause call.
         /// </param>
         /// <param name="variables">
         /// Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted.
         /// </param>
-        /// <param name="pauseWhen">
-        /// Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint.
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::Browserbase.AgentRun> AgentRunsCreateAsync(
-            string task,
-            string? agentId = default,
-            object? resultSchema = default,
-            global::Browserbase.AgentRunsCreateRequestBrowserSettings? browserSettings = default,
-            global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsCreateRequestVariables2>? variables = default,
-            string? pauseWhen = default,
+        public async global::System.Threading.Tasks.Task<global::Browserbase.AgentRun> AgentRunsResumeAsync(
+            string runId,
+            string? task = default,
+            global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsResumeRequestVariables2>? variables = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::Browserbase.AgentRunsCreateRequest
+            var __request = new global::Browserbase.AgentRunsResumeRequest
             {
-                AgentId = agentId,
                 Task = task,
-                ResultSchema = resultSchema,
-                BrowserSettings = browserSettings,
                 Variables = variables,
-                PauseWhen = pauseWhen,
             };
 
-            return await AgentRunsCreateAsync(
+            return await AgentRunsResumeAsync(
+                runId: runId,
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

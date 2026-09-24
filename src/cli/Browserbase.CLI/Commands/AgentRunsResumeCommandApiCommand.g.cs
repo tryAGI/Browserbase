@@ -5,43 +5,24 @@ using System.CommandLine;
 
 namespace Browserbase.CLI.Commands;
 
-internal static partial class AgentRunsCreateCommandApiCommand
+internal static partial class AgentRunsResumeCommandApiCommand
 {
-    private static Option<string?> AgentId { get; } = new(
-        name: @"--agent-id")
+    private static Argument<string> RunId { get; } = new(
+        name: @"run-id")
     {
-        Description = @"Optionally run a specific [custom agent](/reference/api/create-an-agent) you've created by ID. The run will use the agent's `systemPrompt` and `resultSchema` unless overridden.",
+        Description = @"The run ID.",
     };
 
-    private static Option<string> Task { get; } = new(
+    private static Option<string?> Task { get; } = new(
         name: @"--task")
     {
-        Description = @"A natural language description of the task the agent should accomplish.",
-        Required = true,
+        Description = @"Additional input for the agent: the reply to its request for input, which is the trailing `pause` tool call in the run's messages (e.g. an answer or an approval). Delivered to the agent as the result of that pause call.",
     };
 
-    private static Option<object?> ResultSchema { get; } = new(
-        name: @"--result-schema")
-    {
-        Description = @"An optional [JSON Schema](https://json-schema.org/specification) object. If provided, the agent will aim to return a `result` that conforms to this schema when the run completes. Overrides the referenced agent's default `resultSchema` for this run only.",
-    };
-
-    private static Option<global::Browserbase.AgentRunsCreateRequestBrowserSettings?> BrowserSettings { get; } = new(
-        name: @"--browser-settings")
-    {
-        Description = @"Browser configuration for the agent's session. When omitted, runner defaults apply.",
-    };
-
-    private static Option<global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsCreateRequestVariables2>?> Variables { get; } = new(
+    private static Option<global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsResumeRequestVariables2>?> Variables { get; } = new(
         name: @"--variables")
     {
         Description = @"Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted.",
-    };
-
-    private static Option<string?> PauseWhen { get; } = new(
-        name: @"--pause-when")
-    {
-        Description = @"Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {
@@ -82,14 +63,11 @@ internal static partial class AgentRunsCreateCommandApiCommand
 
     public static Command Create()
     {
-        var command = new Command(@"agent-runs-create", @"Run an Agent
-Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.");
-                        command.Options.Add(AgentId);
+        var command = new Command(@"agent-runs-resume", @"Resume a Run
+Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.");
+                        command.Arguments.Add(RunId);
                         command.Options.Add(Task);
-                        command.Options.Add(ResultSchema);
-                        command.Options.Add(BrowserSettings);
                         command.Options.Add(Variables);
-                        command.Options.Add(PauseWhen);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -108,29 +86,23 @@ Run a browser agent to complete the `task` by using web search and browser tooli
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
-                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Browserbase.AgentRunsCreateRequest>(
+                        var __requestBase = await CliRuntime.ReadRequestOrDefaultAsync<global::Browserbase.AgentRunsResumeRequest>(
                             parseResult,
                             Input,
                             RequestJson,
                             RequestFile,
                             global::Browserbase.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
-                        var agentId = CliRuntime.WasSpecified(parseResult, AgentId) ? parseResult.GetValue(AgentId) : (__requestBase is { } __AgentIdBaseValue ? __AgentIdBaseValue.AgentId : default);
-                        var task = parseResult.GetRequiredValue(Task);
-                        var resultSchema = CliRuntime.WasSpecified(parseResult, ResultSchema) ? parseResult.GetValue(ResultSchema) : (__requestBase is { } __ResultSchemaBaseValue ? __ResultSchemaBaseValue.ResultSchema : default);
-                        var browserSettings = CliRuntime.WasSpecified(parseResult, BrowserSettings) ? parseResult.GetValue(BrowserSettings) : (__requestBase is { } __BrowserSettingsBaseValue ? __BrowserSettingsBaseValue.BrowserSettings : default);
+                        var runId = parseResult.GetRequiredValue(RunId);
+                        var task = CliRuntime.WasSpecified(parseResult, Task) ? parseResult.GetValue(Task) : (__requestBase is { } __TaskBaseValue ? __TaskBaseValue.Task : default);
                         var variables = CliRuntime.WasSpecified(parseResult, Variables) ? parseResult.GetValue(Variables) : (__requestBase is { } __VariablesBaseValue ? __VariablesBaseValue.Variables : default);
-                        var pauseWhen = CliRuntime.WasSpecified(parseResult, PauseWhen) ? parseResult.GetValue(PauseWhen) : (__requestBase is { } __PauseWhenBaseValue ? __PauseWhenBaseValue.PauseWhen : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
-                                var response = await client.AgentRunsCreateAsync(
-                                    agentId: agentId,
+                                var response = await client.AgentRunsResumeAsync(
+                                    runId: runId,
                                     task: task,
-                                    resultSchema: resultSchema,
-                                    browserSettings: browserSettings,
                                     variables: variables,
-                                    pauseWhen: pauseWhen,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 

@@ -35,7 +35,8 @@ namespace Browserbase
         /// - `COMPLETED` - agent has finished running<br/>
         /// - `FAILED` - agent has failed the run<br/>
         /// - `STOPPED` - run was stopped by the user<br/>
-        /// - `TIMED_OUT` - run exceeded maximum time
+        /// - `TIMED_OUT` - run exceeded maximum time<br/>
+        /// - `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AgentRunStatusJsonConverter))]
@@ -120,7 +121,8 @@ namespace Browserbase
         /// - `COMPLETED` - agent has finished running<br/>
         /// - `FAILED` - agent has failed the run<br/>
         /// - `STOPPED` - run was stopped by the user<br/>
-        /// - `TIMED_OUT` - run exceeded maximum time
+        /// - `TIMED_OUT` - run exceeded maximum time<br/>
+        /// - `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages
         /// </param>
         /// <param name="createdAt"></param>
         /// <param name="updatedAt"></param>
