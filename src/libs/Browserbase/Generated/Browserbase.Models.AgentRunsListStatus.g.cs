@@ -19,6 +19,10 @@ namespace Browserbase
         /// <summary>
         ///
         /// </summary>
+        Paused,
+        /// <summary>
+        ///
+        /// </summary>
         Pending,
         /// <summary>
         ///
@@ -48,6 +52,7 @@ namespace Browserbase
             {
                 AgentRunsListStatus.Completed => "COMPLETED",
                 AgentRunsListStatus.Failed => "FAILED",
+                AgentRunsListStatus.Paused => "PAUSED",
                 AgentRunsListStatus.Pending => "PENDING",
                 AgentRunsListStatus.Running => "RUNNING",
                 AgentRunsListStatus.Stopped => "STOPPED",
@@ -64,6 +69,7 @@ namespace Browserbase
             {
                 "COMPLETED" => AgentRunsListStatus.Completed,
                 "FAILED" => AgentRunsListStatus.Failed,
+                "PAUSED" => AgentRunsListStatus.Paused,
                 "PENDING" => AgentRunsListStatus.Pending,
                 "RUNNING" => AgentRunsListStatus.Running,
                 "STOPPED" => AgentRunsListStatus.Stopped,

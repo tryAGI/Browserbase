@@ -16,7 +16,8 @@ internal static partial class AgentRunsListCommandApiCommand
 - `COMPLETED` - agent has finished running
 - `FAILED` - agent has failed the run
 - `STOPPED` - run was stopped by the user
-- `TIMED_OUT` - run exceeded maximum time",
+- `TIMED_OUT` - run exceeded maximum time
+- `PAUSED` - run is paused awaiting input from the caller; the agent's request is the trailing `pause` tool call in the run's messages",
     };
 
     private static Option<string?> AgentId { get; } = new(
@@ -28,13 +29,13 @@ internal static partial class AgentRunsListCommandApiCommand
     private static Option<global::System.DateTime?> StartAt { get; } = new(
         name: @"--start-at")
     {
-        Description = @"Only return runs created on or after this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-19T00:00:00Z.",
+        Description = @"Only return runs created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.",
     };
 
     private static Option<global::System.DateTime?> EndAt { get; } = new(
         name: @"--end-at")
     {
-        Description = @"Only return runs created on or before this timestamp (inclusive). ISO 8601 / RFC 3339, e.g. 2026-01-20T00:00:00Z.",
+        Description = @"Only return runs created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.",
     };
 
     private static Option<int?> Limit { get; } = new(

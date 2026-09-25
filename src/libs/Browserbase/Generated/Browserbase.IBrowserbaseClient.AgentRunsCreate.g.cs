@@ -71,6 +71,9 @@ namespace Browserbase
         /// <param name="variables">
         /// Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted.
         /// </param>
+        /// <param name="pauseWhen">
+        /// Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -80,6 +83,7 @@ namespace Browserbase
             object? resultSchema = default,
             global::Browserbase.AgentRunsCreateRequestBrowserSettings? browserSettings = default,
             global::System.Collections.Generic.Dictionary<string, global::Browserbase.AgentRunsCreateRequestVariables2>? variables = default,
+            string? pauseWhen = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
