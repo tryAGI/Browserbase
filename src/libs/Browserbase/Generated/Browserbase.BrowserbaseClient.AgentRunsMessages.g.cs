@@ -209,7 +209,7 @@ namespace Browserbase
                     since: since,
                     limit: limit,
                     all: all,
-                    runId: runId!);
+                    runId: runId);
 
                 return __httpRequest;
             }
@@ -231,7 +231,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/agents/runs/{runId}/messages\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -265,7 +265,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/agents/runs/{runId}/messages\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -306,7 +306,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/agents/runs/{runId}/messages\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -354,7 +354,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/agents/runs/{runId}/messages\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -376,7 +376,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/agents/runs/{runId}/messages\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

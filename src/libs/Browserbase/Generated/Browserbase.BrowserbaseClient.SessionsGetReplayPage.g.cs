@@ -155,8 +155,8 @@ namespace Browserbase
                 PrepareSessionsGetReplayPageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id!,
-                    pageId: pageId!);
+                    id: id,
+                    pageId: pageId);
 
                 return __httpRequest;
             }
@@ -178,7 +178,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -212,7 +212,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -253,7 +253,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -301,7 +301,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -323,7 +323,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -474,8 +474,8 @@ namespace Browserbase
                 PrepareSessionsGetReplayPageRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    id: id!,
-                    pageId: pageId!);
+                    id: id,
+                    pageId: pageId);
 
                 return __httpRequest;
             }
@@ -497,7 +497,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -531,7 +531,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -572,7 +572,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -620,7 +620,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -642,7 +642,7 @@ namespace Browserbase
                                 pathTemplate: "$\"/v1/sessions/{id}/replays/{pageId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
