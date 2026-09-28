@@ -33,6 +33,8 @@ internal static partial class WebhooksGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhooks-get", @"Get a Webhook
@@ -67,6 +69,7 @@ Retrieve a single webhook by ID. The signing secret is not included; it is only 
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

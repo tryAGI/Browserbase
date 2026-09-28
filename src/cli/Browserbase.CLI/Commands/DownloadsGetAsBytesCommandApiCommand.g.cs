@@ -13,6 +13,8 @@ internal static partial class DownloadsGetAsBytesCommandApiCommand
         Description = @"The download ID.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"downloads-get-as-bytes", @"Get a Download
@@ -33,6 +35,7 @@ Get download metadata (Accept: application/json) or file content (Accept: applic
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

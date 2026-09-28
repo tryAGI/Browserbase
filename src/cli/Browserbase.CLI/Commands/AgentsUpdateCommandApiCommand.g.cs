@@ -67,6 +67,8 @@ internal static partial class AgentsUpdateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agents-update", @"Update an Agent
@@ -122,6 +124,7 @@ Update an existing agent. Only the fields provided in the body are modified; omi
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

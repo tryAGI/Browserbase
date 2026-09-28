@@ -33,6 +33,8 @@ internal static partial class AgentRunsStopCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agent-runs-stop", @"Stop a Run
@@ -59,6 +61,7 @@ Request that an in-progress run stop. The run winds down and transitions to `STO
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

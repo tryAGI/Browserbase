@@ -47,6 +47,8 @@ internal static partial class SessionsUploadFileCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-upload-file", @"Create Session Uploads");
@@ -78,6 +80,7 @@ internal static partial class SessionsUploadFileCommandApiCommand
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

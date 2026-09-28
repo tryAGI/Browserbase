@@ -53,6 +53,8 @@ internal static partial class WebhooksRotateSecretCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhooks-rotate-secret", @"Rotate a Webhook signing secret
@@ -102,6 +104,7 @@ Issue a new signing secret for a webhook. By default the previous secret keeps v
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

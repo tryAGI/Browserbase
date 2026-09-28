@@ -73,6 +73,8 @@ internal static partial class FetchCreateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"fetch-create", @"Fetch a Page
@@ -134,6 +136,7 @@ Fetch a page and return its content, headers, and metadata.");
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

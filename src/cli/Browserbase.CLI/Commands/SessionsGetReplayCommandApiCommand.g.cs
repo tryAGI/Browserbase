@@ -33,6 +33,8 @@ internal static partial class SessionsGetReplayCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-get-replay", @"Get Session Replay
@@ -67,6 +69,7 @@ Returns page metadata for a session replay, including timing information and the
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

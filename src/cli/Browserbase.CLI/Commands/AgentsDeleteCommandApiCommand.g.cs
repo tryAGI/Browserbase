@@ -13,6 +13,8 @@ internal static partial class AgentsDeleteCommandApiCommand
         Description = @"The agent ID.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agents-delete", @"Delete an Agent
@@ -33,6 +35,7 @@ Delete an agent. Runs that already referenced this agent are unaffected.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

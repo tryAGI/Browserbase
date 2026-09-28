@@ -33,6 +33,8 @@ internal static partial class DownloadsGetCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"downloads-get", @"Get a Download
@@ -59,6 +61,7 @@ Get download metadata (Accept: application/json) or file content (Accept: applic
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

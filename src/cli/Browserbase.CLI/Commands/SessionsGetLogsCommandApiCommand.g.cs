@@ -33,6 +33,8 @@ internal static partial class SessionsGetLogsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-get-logs", @"Session Logs");
@@ -66,6 +68,7 @@ internal static partial class SessionsGetLogsCommandApiCommand
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
