@@ -51,6 +51,8 @@ internal static partial class FunctionVersionsListInvocationsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"function-versions-list-invocations", @"List Invocations for a Function Version");
@@ -93,6 +95,7 @@ internal static partial class FunctionVersionsListInvocationsCommandApiCommand
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

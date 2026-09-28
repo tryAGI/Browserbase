@@ -61,6 +61,8 @@ internal static partial class AgentsCreateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agents-create", @"Create an Agent
@@ -113,6 +115,7 @@ Create a reusable agent. An agent defines a `systemPrompt` and `resultSchema` th
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

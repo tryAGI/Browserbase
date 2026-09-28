@@ -4,8 +4,10 @@ using System.CommandLine;
 
 namespace Browserbase.CLI.Commands;
 
-internal static class DefaultApiGroupCommand
+internal static partial class DefaultApiGroupCommand
 {
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"default", @"default endpoint commands.");
@@ -67,6 +69,7 @@ internal static class DefaultApiGroupCommand
                          command.Subcommands.Add(WebhooksListCommandApiCommand.Create());
                          command.Subcommands.Add(WebhooksRotateSecretCommandApiCommand.Create());
                          command.Subcommands.Add(WebhooksUpdateCommandApiCommand.Create());
+        CustomizeCommand(ref command);
         return command;
     }
 }

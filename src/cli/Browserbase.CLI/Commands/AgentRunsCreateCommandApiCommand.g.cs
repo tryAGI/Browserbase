@@ -80,6 +80,8 @@ internal static partial class AgentRunsCreateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agent-runs-create", @"Run an Agent
@@ -141,6 +143,7 @@ Run a browser agent to complete the `task` by using web search and browser tooli
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

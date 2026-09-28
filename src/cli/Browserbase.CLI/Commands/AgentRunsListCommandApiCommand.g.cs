@@ -70,6 +70,8 @@ internal static partial class AgentRunsListCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agent-runs-list", @"List Runs
@@ -119,6 +121,7 @@ List runs across your account. Supports filtering by status, by the agent they r
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -61,6 +61,8 @@ internal static partial class AgentRunsResumeCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agent-runs-resume", @"Resume a Run
@@ -113,6 +115,7 @@ Resume a `PAUSED` run with additional input. The reply in `task` is delivered to
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -41,6 +41,8 @@ internal static partial class WebhooksCreateCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhooks-create", @"Create a Webhook
@@ -70,6 +72,7 @@ Register an HTTPS endpoint to receive events for this project. The response incl
                                     FormatResponse,
                                     cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -13,6 +13,8 @@ internal static partial class DownloadsDeleteCommandApiCommand
         Description = @"The download ID to delete.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"downloads-delete", @"Delete a Download
@@ -33,6 +35,7 @@ Delete a download file from storage and mark as deleted.");
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class SessionsListRecordingDownloadsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-list-recording-downloads", @"List Session Recording Downloads
@@ -67,6 +69,7 @@ Returns the per-page download status for a session, with a short-lived signed UR
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

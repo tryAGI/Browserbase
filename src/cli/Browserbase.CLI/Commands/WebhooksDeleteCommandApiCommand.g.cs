@@ -13,6 +13,8 @@ internal static partial class WebhooksDeleteCommandApiCommand
         Description = @"The webhook ID.",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"webhooks-delete", @"Delete a Webhook
@@ -33,6 +35,7 @@ Delete a webhook. Deliveries stop immediately and the signing secret is retired.
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

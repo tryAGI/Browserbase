@@ -19,6 +19,8 @@ internal static partial class SessionsGetReplayPageCommandApiCommand
         Description = @"",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-get-replay-page", @"Get Replay Page
@@ -42,6 +44,7 @@ Returns an HLS VOD media playlist (.m3u8) for a specific page of a session repla
 
                                 await CliRuntime.WriteBinaryAsync(parseResult, response, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -49,6 +49,8 @@ internal static partial class AgentRunsMessagesCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"agent-runs-messages", @"List Run Messages
@@ -94,6 +96,7 @@ Messages conform to the [AI SDK UIMessage format](https://ai-sdk.dev/docs/refere
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

@@ -33,6 +33,8 @@ internal static partial class SessionsCreateRecordingDownloadsCommandApiCommand
                     static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
 
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"sessions-create-recording-downloads", @"Create Session Recording Downloads
@@ -67,6 +69,7 @@ Requests one downloadable MP4 per recorded page of a session. Assembly runs asyn
                                     cancellationToken).ConfigureAwait(false);
                                 }
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }

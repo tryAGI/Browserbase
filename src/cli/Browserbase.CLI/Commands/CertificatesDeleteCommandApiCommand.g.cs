@@ -13,6 +13,8 @@ internal static partial class CertificatesDeleteCommandApiCommand
         Description = @"",
     };
 
+    static partial void CustomizeCommand(ref Command command);
+
     public static Command Create()
     {
         var command = new Command(@"certificates-delete", @"Delete a Certificate");
@@ -32,6 +34,7 @@ internal static partial class CertificatesDeleteCommandApiCommand
 
                                 await CliRuntime.WriteSuccessAsync(parseResult, cancellationToken).ConfigureAwait(false);
             }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
         return command;
     }
 }
