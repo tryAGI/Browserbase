@@ -97,9 +97,9 @@ internal static partial class SessionsCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-create", @"Create a Session");
+        var command = new Command(commandName ?? @"sessions-create", @"Create a Session");
                         command.Options.Add(ProjectId);
                         command.Options.Add(ExtensionId);
                         command.Options.Add(BrowserSettings);

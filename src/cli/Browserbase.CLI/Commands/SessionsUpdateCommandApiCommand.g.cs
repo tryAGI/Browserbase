@@ -57,9 +57,9 @@ internal static partial class SessionsUpdateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-update", @"Update a Session");
+        var command = new Command(commandName ?? @"sessions-update", @"Update a Session");
                         command.Arguments.Add(Id);
                         command.Options.Add(Status);
           command.Options.Add(Input);

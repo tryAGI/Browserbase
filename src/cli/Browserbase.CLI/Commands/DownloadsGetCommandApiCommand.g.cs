@@ -35,9 +35,9 @@ internal static partial class DownloadsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"downloads-get", @"Get a Download
+        var command = new Command(commandName ?? @"downloads-get", @"Get a Download
 Get download metadata (Accept: application/json) or file content (Accept: application/octet-stream).");
                         command.Arguments.Add(Id);
 

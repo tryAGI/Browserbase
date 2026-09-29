@@ -63,9 +63,9 @@ internal static partial class FunctionsInvokeCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"functions-invoke", @"Invoke a Function");
+        var command = new Command(commandName ?? @"functions-invoke", @"Invoke a Function");
                         command.Arguments.Add(Id);
                         command.Options.Add(Params);
                         command.Options.Add(SessionCreateParams);

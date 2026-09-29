@@ -84,9 +84,9 @@ internal static partial class DownloadsListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"downloads-list", @"List Downloads
+        var command = new Command(commandName ?? @"downloads-list", @"List Downloads
 List all downloads for a session with optional filtering and pagination.");
                         command.Options.Add(SessionId);
                         command.Options.Add(Filename);

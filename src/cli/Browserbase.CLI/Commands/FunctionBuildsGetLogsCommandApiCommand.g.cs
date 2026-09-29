@@ -35,9 +35,9 @@ internal static partial class FunctionBuildsGetLogsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"function-builds-get-logs", @"Get Function Build Logs");
+        var command = new Command(commandName ?? @"function-builds-get-logs", @"Get Function Build Logs");
                         command.Arguments.Add(Id);
 
 

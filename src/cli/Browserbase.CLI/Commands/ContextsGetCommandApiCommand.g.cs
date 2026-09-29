@@ -35,9 +35,9 @@ internal static partial class ContextsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"contexts-get", @"Get a Context");
+        var command = new Command(commandName ?? @"contexts-get", @"Get a Context");
                         command.Arguments.Add(Id);
 
 

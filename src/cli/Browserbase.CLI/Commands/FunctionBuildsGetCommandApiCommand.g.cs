@@ -35,9 +35,9 @@ internal static partial class FunctionBuildsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"function-builds-get", @"Get a Function Build");
+        var command = new Command(commandName ?? @"function-builds-get", @"Get a Function Build");
                         command.Arguments.Add(Id);
 
 

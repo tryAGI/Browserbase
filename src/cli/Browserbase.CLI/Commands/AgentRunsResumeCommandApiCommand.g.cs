@@ -63,9 +63,9 @@ internal static partial class AgentRunsResumeCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-resume", @"Resume a Run
+        var command = new Command(commandName ?? @"agent-runs-resume", @"Resume a Run
 Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.");
                         command.Arguments.Add(RunId);
                         command.Options.Add(Task);

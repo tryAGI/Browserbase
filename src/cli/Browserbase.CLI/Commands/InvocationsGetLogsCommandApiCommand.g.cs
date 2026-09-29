@@ -35,9 +35,9 @@ internal static partial class InvocationsGetLogsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"invocations-get-logs", @"Get Invocation Logs");
+        var command = new Command(commandName ?? @"invocations-get-logs", @"Get Invocation Logs");
                         command.Arguments.Add(Id);
 
 

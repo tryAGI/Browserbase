@@ -43,9 +43,9 @@ internal static partial class CertificatesUploadCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"certificates-upload", @"Upload a Certificate");
+        var command = new Command(commandName ?? @"certificates-upload", @"Upload a Certificate");
                         command.Options.Add(File);
                         command.Options.Add(Filename);
 

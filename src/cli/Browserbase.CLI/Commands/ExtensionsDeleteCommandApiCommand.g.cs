@@ -15,9 +15,9 @@ internal static partial class ExtensionsDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"extensions-delete", @"Delete an Extension");
+        var command = new Command(commandName ?? @"extensions-delete", @"Delete an Extension");
                         command.Arguments.Add(Id);
 
 

@@ -57,9 +57,9 @@ internal static partial class ContextsCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"contexts-create", @"Create a Context");
+        var command = new Command(commandName ?? @"contexts-create", @"Create a Context");
                         command.Options.Add(ProjectId);
                         command.Options.Add(NameOption);
           command.Options.Add(Input);

@@ -35,9 +35,9 @@ internal static partial class WebhooksGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-get", @"Get a Webhook
+        var command = new Command(commandName ?? @"webhooks-get", @"Get a Webhook
 Retrieve a single webhook by ID. The signing secret is not included; it is only ever returned on create and rotate.");
                         command.Arguments.Add(Id);
 

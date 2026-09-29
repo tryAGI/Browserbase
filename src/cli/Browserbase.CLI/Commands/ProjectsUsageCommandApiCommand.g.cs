@@ -35,9 +35,9 @@ internal static partial class ProjectsUsageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"projects-usage", @"Get Project Usage");
+        var command = new Command(commandName ?? @"projects-usage", @"Get Project Usage");
                         command.Arguments.Add(Id);
 
 

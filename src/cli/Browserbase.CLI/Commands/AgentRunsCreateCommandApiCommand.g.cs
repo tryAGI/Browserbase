@@ -82,9 +82,9 @@ internal static partial class AgentRunsCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-create", @"Run an Agent
+        var command = new Command(commandName ?? @"agent-runs-create", @"Run an Agent
 Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.");
                         command.Options.Add(AgentId);
                         command.Options.Add(Task);

@@ -43,9 +43,9 @@ internal static partial class WebhooksCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-create", @"Create a Webhook
+        var command = new Command(commandName ?? @"webhooks-create", @"Create a Webhook
 Register an HTTPS endpoint to receive events for this project. The response includes the signing secret, which is shown only here and when the secret is rotated. Store it before discarding the response. An endpoint may only be registered once per project.");
                         command.Options.Add(Endpoint);
                         command.Options.Add(EventTypes);

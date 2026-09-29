@@ -35,9 +35,9 @@ internal static partial class AgentRunsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-get", @"Get a Run
+        var command = new Command(commandName ?? @"agent-runs-get", @"Get a Run
 Retrieve the current status and details of a run, including its result and associated session information. To fetch the run's messages, use [List Run Messages](/reference/api/list-run-messages).");
                         command.Arguments.Add(RunId);
 

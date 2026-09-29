@@ -15,9 +15,9 @@ internal static partial class ContextsDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"contexts-delete", @"Delete a Context");
+        var command = new Command(commandName ?? @"contexts-delete", @"Delete a Context");
                         command.Arguments.Add(Id);
 
 

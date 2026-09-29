@@ -15,9 +15,9 @@ internal static partial class WebhooksDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-delete", @"Delete a Webhook
+        var command = new Command(commandName ?? @"webhooks-delete", @"Delete a Webhook
 Delete a webhook. Deliveries stop immediately and the signing secret is retired. Events that occurred before the delete are not replayed if the endpoint is registered again.");
                         command.Arguments.Add(Id);
 

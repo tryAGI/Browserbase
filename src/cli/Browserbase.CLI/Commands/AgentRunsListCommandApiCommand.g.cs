@@ -72,9 +72,9 @@ internal static partial class AgentRunsListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-list", @"List Runs
+        var command = new Command(commandName ?? @"agent-runs-list", @"List Runs
 List runs across your account. Supports filtering by status, by the agent they reference, and by creation time.");
                         command.Options.Add(Status);
                         command.Options.Add(AgentId);

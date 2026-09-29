@@ -63,9 +63,9 @@ internal static partial class AgentsCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agents-create", @"Create an Agent
+        var command = new Command(commandName ?? @"agents-create", @"Create an Agent
 Create a reusable agent. An agent defines a `systemPrompt` and `resultSchema` that guide its behavior for every run. Only `name` is required; an agent created with no `systemPrompt` behaves like an unconfigured run.");
                         command.Arguments.Add(NameOption);
                         command.Options.Add(SystemPrompt);

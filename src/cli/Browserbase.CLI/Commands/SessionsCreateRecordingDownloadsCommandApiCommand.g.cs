@@ -35,9 +35,9 @@ internal static partial class SessionsCreateRecordingDownloadsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-create-recording-downloads", @"Create Session Recording Downloads
+        var command = new Command(commandName ?? @"sessions-create-recording-downloads", @"Create Session Recording Downloads
 Requests one downloadable MP4 per recorded page of a session. Assembly runs asynchronously and every page returns as `PENDING`. Re-posting re-enqueues all pages and retries any that failed. Poll the GET endpoint for per-page status and, on standard (non-BYOS) projects, download URLs.");
                         command.Arguments.Add(Id);
 

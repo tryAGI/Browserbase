@@ -53,9 +53,9 @@ internal static partial class AgentsListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agents-list", @"List Agents
+        var command = new Command(commandName ?? @"agents-list", @"List Agents
 List agents across your account. Supports filtering by creation time.");
                         command.Options.Add(StartAt);
                         command.Options.Add(EndAt);

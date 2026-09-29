@@ -53,9 +53,9 @@ internal static partial class FunctionVersionsListInvocationsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"function-versions-list-invocations", @"List Invocations for a Function Version");
+        var command = new Command(commandName ?? @"function-versions-list-invocations", @"List Invocations for a Function Version");
                         command.Arguments.Add(Id);
                         command.Options.Add(Offset);
                         command.Options.Add(Limit);

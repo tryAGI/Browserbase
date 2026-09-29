@@ -35,9 +35,9 @@ internal static partial class CertificatesGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"certificates-get", @"Get a Certificate");
+        var command = new Command(commandName ?? @"certificates-get", @"Get a Certificate");
                         command.Arguments.Add(Id);
 
 
