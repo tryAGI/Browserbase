@@ -58,9 +58,9 @@ internal static partial class SearchWebCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"search-web", @"Web Search
+        var command = new Command(commandName ?? @"search-web", @"Web Search
 Perform a web search and return structured results.");
                         command.Options.Add(Query);
                         command.Options.Add(NumResults);

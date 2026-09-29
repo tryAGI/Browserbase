@@ -69,9 +69,9 @@ internal static partial class AgentsUpdateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agents-update", @"Update an Agent
+        var command = new Command(commandName ?? @"agents-update", @"Update an Agent
 Update an existing agent. Only the fields provided in the body are modified; omitted fields are left unchanged.");
                         command.Arguments.Add(AgentId);
                         command.Options.Add(NameOption);

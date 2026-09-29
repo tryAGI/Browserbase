@@ -75,9 +75,9 @@ internal static partial class FetchCreateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"fetch-create", @"Fetch a Page
+        var command = new Command(commandName ?? @"fetch-create", @"Fetch a Page
 Fetch a page and return its content, headers, and metadata.");
                         command.Arguments.Add(Url);
                         command.Options.Add(AllowRedirects);

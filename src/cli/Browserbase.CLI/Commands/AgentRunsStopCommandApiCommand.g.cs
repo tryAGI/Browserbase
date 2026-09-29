@@ -35,9 +35,9 @@ internal static partial class AgentRunsStopCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-stop", @"Stop a Run
+        var command = new Command(commandName ?? @"agent-runs-stop", @"Stop a Run
 Request that an in-progress run stop. The run winds down and transitions to `STOPPED`. Stopping a run that has already finished returns a conflict.");
                         command.Arguments.Add(RunId);
 

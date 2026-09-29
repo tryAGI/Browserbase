@@ -21,9 +21,9 @@ internal static partial class SessionsGetReplayPageCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-get-replay-page", @"Get Replay Page
+        var command = new Command(commandName ?? @"sessions-get-replay-page", @"Get Replay Page
 Returns an HLS VOD media playlist (.m3u8) for a specific page of a session replay.");
                         command.Arguments.Add(Id);
                         command.Arguments.Add(PageId);

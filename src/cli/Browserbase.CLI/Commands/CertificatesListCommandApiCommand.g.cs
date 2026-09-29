@@ -31,9 +31,9 @@ internal static partial class CertificatesListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"certificates-list", @"List Certificates");
+        var command = new Command(commandName ?? @"certificates-list", @"List Certificates");
 
 
 

@@ -47,9 +47,9 @@ internal static partial class FunctionBuildsListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"function-builds-list", @"List Function Builds");
+        var command = new Command(commandName ?? @"function-builds-list", @"List Function Builds");
                         command.Options.Add(Offset);
                         command.Options.Add(Limit);
                         command.Options.Add(Status);

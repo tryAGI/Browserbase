@@ -55,9 +55,9 @@ internal static partial class WebhooksRotateSecretCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-rotate-secret", @"Rotate a Webhook signing secret
+        var command = new Command(commandName ?? @"webhooks-rotate-secret", @"Rotate a Webhook signing secret
 Issue a new signing secret for a webhook. By default the previous secret keeps verifying for 24 hours so a receiver can be updated without dropping deliveries; pass `revokeImmediately` to end that window at once. The new secret is returned only here.");
                         command.Arguments.Add(Id);
                         command.Options.Add(RevokeImmediately);

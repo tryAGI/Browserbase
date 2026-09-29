@@ -41,9 +41,9 @@ internal static partial class WebhooksListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-list", @"List Webhooks
+        var command = new Command(commandName ?? @"webhooks-list", @"List Webhooks
 List the project's webhooks, newest first. Signing secrets are not included. Page by passing the previous response's `nextCursor` as `cursor`; a null `nextCursor` means there are no further pages.");
                         command.Options.Add(Limit);
                         command.Options.Add(Cursor);

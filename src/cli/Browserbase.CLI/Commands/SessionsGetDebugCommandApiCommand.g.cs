@@ -41,9 +41,9 @@ internal static partial class SessionsGetDebugCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-get-debug", @"Session Live URLs");
+        var command = new Command(commandName ?? @"sessions-get-debug", @"Session Live URLs");
                         command.Arguments.Add(Id);
                         command.Options.Add(ExpiresIn);
 

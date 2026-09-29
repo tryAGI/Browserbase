@@ -51,9 +51,9 @@ internal static partial class AgentRunsMessagesCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"agent-runs-messages", @"List Run Messages
+        var command = new Command(commandName ?? @"agent-runs-messages", @"List Run Messages
 Returns a paginated list of messages produced by a run, in chronological order, with the oldest messages first.
 
 Messages conform to the [AI SDK UIMessage format](https://ai-sdk.dev/docs/reference/ai-sdk-core/ui-message).");

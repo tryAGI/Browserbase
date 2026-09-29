@@ -35,9 +35,9 @@ internal static partial class FunctionsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"functions-get", @"Get a Function");
+        var command = new Command(commandName ?? @"functions-get", @"Get a Function");
                         command.Arguments.Add(Id);
 
 

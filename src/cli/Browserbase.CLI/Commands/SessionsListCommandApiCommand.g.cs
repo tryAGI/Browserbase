@@ -41,9 +41,9 @@ internal static partial class SessionsListCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-list", @"List Sessions");
+        var command = new Command(commandName ?? @"sessions-list", @"List Sessions");
                         command.Options.Add(Status);
                         command.Options.Add(Q);
 

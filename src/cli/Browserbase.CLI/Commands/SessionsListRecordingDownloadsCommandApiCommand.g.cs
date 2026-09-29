@@ -35,9 +35,9 @@ internal static partial class SessionsListRecordingDownloadsCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-list-recording-downloads", @"List Session Recording Downloads
+        var command = new Command(commandName ?? @"sessions-list-recording-downloads", @"List Session Recording Downloads
 Returns the per-page download status for a session, with a short-lived signed URL for each completed page on standard (non-BYOS) projects.");
                         command.Arguments.Add(Id);
 

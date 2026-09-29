@@ -35,9 +35,9 @@ internal static partial class SessionsGetReplayCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-get-replay", @"Get Session Replay
+        var command = new Command(commandName ?? @"sessions-get-replay", @"Get Session Replay
 Returns page metadata for a session replay, including timing information and the URL of each page's HLS playlist.");
                         command.Arguments.Add(Id);
 

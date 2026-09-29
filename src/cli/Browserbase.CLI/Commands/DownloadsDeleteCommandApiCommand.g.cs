@@ -15,9 +15,9 @@ internal static partial class DownloadsDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"downloads-delete", @"Delete a Download
+        var command = new Command(commandName ?? @"downloads-delete", @"Delete a Download
 Delete a download file from storage and mark as deleted.");
                         command.Arguments.Add(Id);
 

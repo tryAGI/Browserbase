@@ -15,9 +15,9 @@ internal static partial class CertificatesDeleteCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"certificates-delete", @"Delete a Certificate");
+        var command = new Command(commandName ?? @"certificates-delete", @"Delete a Certificate");
                         command.Arguments.Add(Id);
 
 

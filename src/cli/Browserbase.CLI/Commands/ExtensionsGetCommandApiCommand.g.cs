@@ -35,9 +35,9 @@ internal static partial class ExtensionsGetCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"extensions-get", @"Get an Extension");
+        var command = new Command(commandName ?? @"extensions-get", @"Get an Extension");
                         command.Arguments.Add(Id);
 
 

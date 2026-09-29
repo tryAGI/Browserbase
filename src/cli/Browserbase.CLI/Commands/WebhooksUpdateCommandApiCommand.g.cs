@@ -63,9 +63,9 @@ internal static partial class WebhooksUpdateCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"webhooks-update", @"Update a Webhook
+        var command = new Command(commandName ?? @"webhooks-update", @"Update a Webhook
 Update a webhook's endpoint URL, its subscribed event types, or both. Omitted fields are left unchanged. `eventTypes` replaces the existing subscription rather than adding to it. The signing secret is unaffected.");
                         command.Arguments.Add(Id);
                         command.Options.Add(Endpoint);

@@ -49,9 +49,9 @@ internal static partial class SessionsUploadFileCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"sessions-upload-file", @"Create Session Uploads");
+        var command = new Command(commandName ?? @"sessions-upload-file", @"Create Session Uploads");
                         command.Arguments.Add(Id);
                         command.Options.Add(File);
                         command.Options.Add(Filename);

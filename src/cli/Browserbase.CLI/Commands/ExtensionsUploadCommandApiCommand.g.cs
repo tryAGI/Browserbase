@@ -43,9 +43,9 @@ internal static partial class ExtensionsUploadCommandApiCommand
 
     static partial void CustomizeCommand(ref Command command);
 
-    public static Command Create()
+    public static Command Create(string? commandName = null)
     {
-        var command = new Command(@"extensions-upload", @"Upload an Extension");
+        var command = new Command(commandName ?? @"extensions-upload", @"Upload an Extension");
                         command.Options.Add(File);
                         command.Options.Add(Filename);
 
