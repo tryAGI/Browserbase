@@ -1,0 +1,102 @@
+#nullable enable
+#pragma warning disable CS0618
+
+using System.CommandLine;
+
+namespace Browserbase.CLI.Commands;
+
+internal static partial class SecretsListCommandApiCommand
+{
+    private static Option<global::System.DateTime?> StartAt { get; } = new(
+        name: @"--start-at")
+    {
+        Description = @"Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.",
+    };
+
+    private static Option<global::System.DateTime?> EndAt { get; } = new(
+        name: @"--end-at")
+    {
+        Description = @"Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.",
+    };
+
+    private static Option<int?> Limit { get; } = new(
+        name: @"--limit")
+    {
+        Description = @"Maximum number of results to return.",
+    };
+
+    private static Option<string?> Cursor { get; } = new(
+        name: @"--cursor")
+    {
+        Description = @"Pagination cursor. Pass the nextCursor from the previous response to fetch the next page. Omit to start from the first page.",
+    };
+
+                    private static string FormatResponse(ParseResult parseResult, global::Browserbase.SecretsListResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    {
+                        string? text = null;
+                        CustomizeResponseText(parseResult, value, ref text);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            return text;
+                        }
+
+                        var hints = new Dictionary<string, CliFormatHint>(StringComparer.OrdinalIgnoreCase)
+                        {
+                        };
+                        CustomizeResponseFormatHints(hints);
+                        return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
+                    }
+
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Browserbase.SecretsListResponse value, ref string? text);
+                    static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
+
+
+    static partial void CustomizeCommand(ref Command command);
+
+    public static Command Create(string? commandName = null)
+    {
+        var command = new Command(commandName ?? @"secrets-list", @"List Secrets
+List project secrets. Supports filtering by creation time.");
+                        command.Options.Add(StartAt);
+                        command.Options.Add(EndAt);
+                        command.Options.Add(Limit);
+                        command.Options.Add(Cursor);
+
+
+        command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+            await CliRuntime.RunAsync(async () =>
+            {
+                        var startAt = parseResult.GetValue(StartAt);
+                        var endAt = parseResult.GetValue(EndAt);
+                        var limit = parseResult.GetValue(Limit);
+                        var cursor = parseResult.GetValue(Cursor);
+                using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
+
+
+                                var response = await client.SecretsListAsync(
+                                    startAt: startAt,
+                                    endAt: endAt,
+                                    limit: limit,
+                                    cursor: cursor,
+                                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Browserbase.SourceGenerationContext.Default,
+                                        @"Data",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
+                                await CliRuntime.WriteResponseAsync(
+                                    parseResult,
+                                    response,
+                                    global::Browserbase.SourceGenerationContext.Default,
+                                    FormatResponse,
+                                    cancellationToken).ConfigureAwait(false);
+                                }
+            }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
+        return command;
+    }
+}

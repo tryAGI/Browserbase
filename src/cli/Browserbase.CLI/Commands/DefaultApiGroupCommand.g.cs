@@ -42,9 +42,12 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(FunctionBuildsListCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionVersionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionVersionsListInvocationsCommandApiCommand.Create());
+                         command.Subcommands.Add(FunctionsAttachSecretCommandApiCommand.Create());
+                         command.Subcommands.Add(FunctionsDetachSecretCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionsGetCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionsInvokeCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionsListCommandApiCommand.Create());
+                         command.Subcommands.Add(FunctionsListSecretsCommandApiCommand.Create());
                          command.Subcommands.Add(FunctionsListVersionsCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetLogsCommandApiCommand.Create());
@@ -52,6 +55,12 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(ProjectsListCommandApiCommand.Create());
                          command.Subcommands.Add(ProjectsUsageCommandApiCommand.Create());
                          command.Subcommands.Add(SearchWebCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsGetCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsGetKeypairCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsListCommandApiCommand.Create());
+                         command.Subcommands.Add(SecretsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsCreateCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsCreateRecordingDownloadsCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsGetCommandApiCommand.Create());
