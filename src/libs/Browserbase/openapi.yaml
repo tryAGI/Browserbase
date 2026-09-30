@@ -1832,6 +1832,241 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Invocation"
+  "/v1/functions/{id}/secrets":
+    get:
+      operationId: Functions_listSecrets
+      summary: List Function Secrets
+      description: List secrets attached to a function. Supports filtering by secret creation time. Returns metadata only.
+      parameters:
+        - name: startAt
+          in: query
+          description: "Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: endAt
+          in: query
+          description: "Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          description: Maximum number of results to return.
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 1000
+            minimum: 1
+        - name: cursor
+          in: query
+          description: Pagination cursor. Pass the nextCursor from the previous response to fetch the next page. Keep the same filters across pages. Omit to start from the first page.
+          required: false
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: The page of matching secrets.
+          content:
+            application/json:
+              schema:
+                description: A page of secrets.
+                type: object
+                properties:
+                  data:
+                    description: The page of matching secrets.
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Secret"
+                  limit:
+                    description: The maximum number of results returned in this page.
+                    type: integer
+                  nextCursor:
+                    description: Cursor for the next page. Pass it back as `cursor` on the next request to continue paging. null when there are no more results.
+                    anyOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - data
+                  - limit
+                  - nextCursor
+        "400":
+          description: "Invalid Function ID, query parameters, or cursor, or startAt is after endAt."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The Function does not exist in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+    post:
+      operationId: Functions_attachSecret
+      summary: Attach a Secret to a Function
+      description: "Attach a secret to a Function, taking effect on the Function's next invocation. Note: Attaching a secret that is already attached succeeds to support idempotency."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secretId:
+                  description: "The id of the project secret to attach (the `id` returned by POST /v1/secrets). Idempotent: re-attaching an already-attached secret succeeds."
+                  type: string
+                  format: uuid
+              required:
+                - secretId
+      responses:
+        "204":
+          description: The secret was attached to the function.
+        "400":
+          description: Invalid request. The Function ID and secret ID must be UUIDs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The Function or secret does not exist in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+  "/v1/functions/{id}/secrets/{secretId}":
+    delete:
+      operationId: Functions_detachSecret
+      summary: Detach a Secret from a Function
+      description: "Detach a secret from a Function, taking effect on the Function's next invocation. Note: Detaching a secret that is not attached succeeds to support idempotency."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: secretId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The secret was detached from the function.
+        "400":
+          description: Invalid request. The Function ID and secret ID must be UUIDs.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The Function does not exist in the project. Detaching a secret that is not attached succeeds.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
   "/v1/functions/{id}/versions":
     get:
       operationId: Functions_listVersions
@@ -1998,6 +2233,356 @@ paths:
                   - requestId
                   - query
                   - results
+  /v1/secrets:
+    get:
+      operationId: Secrets_list
+      summary: List Secrets
+      description: List project secrets. Supports filtering by creation time.
+      parameters:
+        - name: startAt
+          in: query
+          description: "Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: endAt
+          in: query
+          description: "Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: limit
+          in: query
+          description: Maximum number of results to return.
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 1000
+            minimum: 1
+        - name: cursor
+          in: query
+          description: Pagination cursor. Pass the nextCursor from the previous response to fetch the next page. Omit to start from the first page.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: The page of matching secrets.
+          content:
+            application/json:
+              schema:
+                description: A page of secrets.
+                type: object
+                properties:
+                  data:
+                    description: The page of matching secrets.
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Secret"
+                  limit:
+                    description: The maximum number of results returned in this page.
+                    type: integer
+                  nextCursor:
+                    description: Cursor for the next page. Pass it back as `cursor` on the next request to continue paging. null when there are no more results.
+                    anyOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - data
+                  - limit
+                  - nextCursor
+        "400":
+          description: "Invalid query parameters or cursor, or startAt is after endAt."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+    post:
+      operationId: Secrets_create
+      summary: Create a Secret
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                secretKey:
+                  description: The name to store the secret value under.
+                  type: string
+                sealedSecretValue:
+                  description: "The secret value encrypted with HPKE. To seal the secret value before sending, get the project's public key from GET /v1/secrets/keypair. Decode the publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data (AAD) to an empty byte string. Then, create a new sender context using the public key and these settings, and encrypt the secret value as one message. Put the 32-byte encapsulated key before the ciphertext and keep the authentication tag at the end of the ciphertext. Encode the combined bytes with standard base64. Send the result as sealedSecretValue: base64(enc || ciphertext)"
+                  type: string
+                keypairId:
+                  description: "The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation."
+                  type: string
+              required:
+                - secretKey
+                - sealedSecretValue
+                - keypairId
+      responses:
+        "201":
+          description: The request has succeeded and a new resource was created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Secret"
+        "400":
+          description: "Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "409":
+          description: A secret with this name already exists in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+  /v1/secrets/keypair:
+    get:
+      operationId: Secrets_getKeypair
+      summary: Get a Keypair
+      responses:
+        "200":
+          description: The request has succeeded.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SecretsKeypair"
+  "/v1/secrets/{id}":
+    get:
+      operationId: Secrets_get
+      summary: Get a Secret
+      parameters:
+        - name: id
+          in: path
+          description: The id of the project secret to retrieve.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: The secret metadata.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Secret"
+        "400":
+          description: Invalid secret ID. The ID must be a UUID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The secret does not exist in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+    delete:
+      operationId: Secrets_delete
+      summary: Delete a Secret
+      parameters:
+        - name: id
+          in: path
+          description: The id of the project secret to delete.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The secret has been deleted.
+        "400":
+          description: Invalid secret ID. The ID must be a UUID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The secret does not exist in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+    patch:
+      operationId: Secrets_update
+      summary: Update a Secret
+      description: "Replace a secret's value. The name cannot be changed; to rename, create a new secret and delete the old one."
+      parameters:
+        - name: id
+          in: path
+          description: The id of the project secret to update.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sealedSecretValue:
+                  description: "The new secret value encrypted with HPKE. To seal the secret value before sending, get the project's public key from GET /v1/secrets/keypair. Decode the publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data (AAD) to an empty byte string. Then, create a new sender context using the public key and these settings, and encrypt the secret value as one message. Put the 32-byte encapsulated key before the ciphertext and keep the authentication tag at the end of the ciphertext. Encode the combined bytes with standard base64. Send the result as sealedSecretValue: base64(enc || ciphertext)"
+                  type: string
+                keypairId:
+                  description: "The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation."
+                  type: string
+              required:
+                - sealedSecretValue
+                - keypairId
+      responses:
+        "200":
+          description: The updated secret.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Secret"
+        "400":
+          description: "Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The secret does not exist in the project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code
+                    type: integer
+                  error:
+                    description: HTTP error name
+                    type: string
+                  message:
+                    description: Human-readable error message
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
   /v1/sessions:
     get:
       operationId: Sessions_list
@@ -3738,6 +4323,30 @@ components:
         - url
         - startTimeMs
         - endTimeMs
+    Secret:
+      type: object
+      properties:
+        id:
+          description: Unique identifier of the secret.
+          type: string
+        secretKey:
+          description: The name the secret value is stored under.
+          type: string
+      required:
+        - id
+        - secretKey
+    SecretsKeypair:
+      type: object
+      properties:
+        id:
+          description: "Identifier of the keypair the public key was minted from. Pass this back when creating a secret so the ciphertext records which keypair sealed it, which keeps decryption correct across keypair rotation."
+          type: string
+        publicKey:
+          description: "The project's HPKE public encryption key, base64-encoded. Encrypt secret values with this key before creating a secret."
+          type: string
+      required:
+        - id
+        - publicKey
     Session:
       type: object
       properties:
