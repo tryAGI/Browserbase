@@ -3843,6 +3843,10 @@ components:
           type: string
           enum:
             - browserbase
+        proxyId:
+          description: ID of a managed static proxy assigned to your organization. Cannot be combined with geolocation.
+          type: string
+          format: uuid
         geolocation:
           description: Geographic location for the proxy. Optional.
           type: object
@@ -3867,6 +3871,10 @@ components:
         domainPattern:
           description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
           type: string
+      not:
+        required:
+          - proxyId
+          - geolocation
       required:
         - type
     Certificate:

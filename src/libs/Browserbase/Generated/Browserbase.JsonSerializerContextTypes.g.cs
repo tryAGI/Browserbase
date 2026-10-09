@@ -69,43 +69,43 @@ namespace Browserbase
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.BrowserbaseProxyConfigGeolocation? Type9 { get; set; }
+        public global::System.Guid? Type9 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.Certificate? Type10 { get; set; }
+        public global::Browserbase.BrowserbaseProxyConfigGeolocation? Type10 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.Context? Type11 { get; set; }
+        public global::Browserbase.Certificate? Type11 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.Download? Type12 { get; set; }
+        public global::Browserbase.Context? Type12 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public double? Type13 { get; set; }
+        public global::Browserbase.Download? Type13 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.Extension? Type14 { get; set; }
+        public double? Type14 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.ExternalProxyConfig? Type15 { get; set; }
+        public global::Browserbase.Extension? Type15 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.ExternalProxyConfigType? Type16 { get; set; }
+        public global::Browserbase.ExternalProxyConfig? Type16 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.Function? Type17 { get; set; }
+        public global::Browserbase.ExternalProxyConfigType? Type17 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Guid? Type18 { get; set; }
+        public global::Browserbase.Function? Type18 { get; set; }
         /// <summary>
         ///
         /// </summary>
