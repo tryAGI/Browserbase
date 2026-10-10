@@ -16,12 +16,6 @@ namespace Browserbase
         public global::Browserbase.BrowserbaseProxyConfigType Type { get; set; }
 
         /// <summary>
-        /// ID of a managed static proxy assigned to your organization. Cannot be combined with geolocation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("proxyId")]
-        public global::System.Guid? ProxyId { get; set; }
-
-        /// <summary>
         /// Geographic location for the proxy. Optional.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("geolocation")]
@@ -45,9 +39,6 @@ namespace Browserbase
         /// <param name="type">
         /// Type of proxy. Always use 'browserbase' for the Browserbase managed proxy network.
         /// </param>
-        /// <param name="proxyId">
-        /// ID of a managed static proxy assigned to your organization. Cannot be combined with geolocation.
-        /// </param>
         /// <param name="geolocation">
         /// Geographic location for the proxy. Optional.
         /// </param>
@@ -59,12 +50,10 @@ namespace Browserbase
 #endif
         public BrowserbaseProxyConfig(
             global::Browserbase.BrowserbaseProxyConfigType type,
-            global::System.Guid? proxyId,
             global::Browserbase.BrowserbaseProxyConfigGeolocation? geolocation,
             string? domainPattern)
         {
             this.Type = type;
-            this.ProxyId = proxyId;
             this.Geolocation = geolocation;
             this.DomainPattern = domainPattern;
         }
