@@ -2181,6 +2181,51 @@ paths:
                   default: 10
                   maximum: 25
                   minimum: 1
+                provider:
+                  description: Search provider to serve this request. Omit to use the default provider for your project.
+                  default: parallel
+                  anyOf:
+                    - type: string
+                      enum:
+                        - parallel
+                    - type: string
+                      enum:
+                        - exa
+                mode:
+                  description: "The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults."
+                  anyOf:
+                    - type: string
+                      enum:
+                        - fast
+                    - type: string
+                      enum:
+                        - advanced
+              oneOf:
+                - type: object
+                  properties:
+                    provider:
+                      type: string
+                      enum:
+                        - parallel
+                    mode:
+                      anyOf:
+                        - type: string
+                          enum:
+                            - fast
+                        - type: string
+                          enum:
+                            - advanced
+                  required:
+                    - provider
+                - not:
+                    required:
+                      - mode
+                  type: object
+                  properties:
+                    provider:
+                      type: string
+                      enum:
+                        - exa
               required:
                 - query
       responses:
@@ -2796,6 +2841,7 @@ paths:
 
 
 
+
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
@@ -2832,6 +2878,7 @@ paths:
         - lang: Java
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
+
 
 
 

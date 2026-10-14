@@ -19,6 +19,18 @@ internal static partial class SearchWebCommandApiCommand
     {
         Description = @"Number of results to return (1-25)",
     };
+
+    private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>?> Provider { get; } = new(
+        name: @"--provider")
+    {
+        Description = @"Search provider to serve this request. Omit to use the default provider for your project.",
+    };
+
+    private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?>?> Mode { get; } = new(
+        name: @"--mode")
+    {
+        Description = @"The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -64,6 +76,8 @@ internal static partial class SearchWebCommandApiCommand
 Perform a web search and return structured results.");
                         command.Options.Add(Query);
                         command.Options.Add(NumResults);
+                        command.Options.Add(Provider);
+                        command.Options.Add(Mode);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -91,12 +105,16 @@ Perform a web search and return structured results.");
                             cancellationToken).ConfigureAwait(false);
                         var query = parseResult.GetRequiredValue(Query);
                         var numResults = CliRuntime.WasSpecified(parseResult, NumResults) ? parseResult.GetValue(NumResults) : (__requestBase is { } __NumResultsBaseValue ? __NumResultsBaseValue.NumResults : default);
+                        var provider = CliRuntime.WasSpecified(parseResult, Provider) ? parseResult.GetValue(Provider) : (__requestBase is { } __ProviderBaseValue ? __ProviderBaseValue.Provider : default);
+                        var mode = CliRuntime.WasSpecified(parseResult, Mode) ? parseResult.GetValue(Mode) : (__requestBase is { } __ModeBaseValue ? __ModeBaseValue.Mode : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.SearchWebAsync(
                                     query: query,
                                     numResults: numResults,
+                                    provider: provider,
+                                    mode: mode,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
