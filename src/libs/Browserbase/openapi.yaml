@@ -1296,11 +1296,11 @@ paths:
               schema:
                 description: Free plan quota exceeded for the requested format.
         "403":
-          description: Project is not enabled for the requested format. Only `raw` is available without enablement.
+          description: Access to the requested resource is forbidden.
           content:
             application/json:
               schema:
-                description: Project is not enabled for the requested format. Only `raw` is available without enablement.
+                description: Access to the requested resource is forbidden.
         "429":
           description: Concurrent fetch request limit exceeded.
           content:
