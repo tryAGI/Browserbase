@@ -411,7 +411,7 @@ namespace Browserbase
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Project is not enabled for the requested format. Only `raw` is available without enablement.
+                            // Access to the requested resource is forbidden.
                             if ((int)__response.StatusCode == 403)
                             {
                                 string? __content_403 = null;

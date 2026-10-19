@@ -4,7 +4,7 @@
 namespace Browserbase
 {
     /// <summary>
-    /// Project is not enabled for the requested format. Only `raw` is available without enablement.
+    /// Access to the requested resource is forbidden.
     /// </summary>
     public sealed partial class FetchCreateResponse4
     {
