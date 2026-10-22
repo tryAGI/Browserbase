@@ -26,7 +26,7 @@ internal static partial class SearchWebCommandApiCommand
         Description = @"Search provider to serve this request. Omit to use the default provider for your project.",
     };
 
-    private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?>?> Mode { get; } = new(
+    private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>?> Mode { get; } = new(
         name: @"--mode")
     {
         Description = @"The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.",

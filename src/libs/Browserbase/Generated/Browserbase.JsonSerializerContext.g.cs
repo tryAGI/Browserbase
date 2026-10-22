@@ -95,6 +95,14 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.SearchWebRequestModeVariant2NullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestModeVariant3JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestModeVariant3NullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestModeVariant4JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestModeVariant4NullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant1ProviderJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant1ProviderNullableJsonConverter),
@@ -110,6 +118,18 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ProviderJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ProviderNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant1JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant1NullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant2JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant2NullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant3JsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebRequestVariant2ModeVariant3NullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsOsJsonConverter),
 
@@ -163,9 +183,11 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>),
 
-            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?>),
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>),
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestVariant1ModeVariant1?, global::Browserbase.SearchWebRequestVariant1ModeVariant2?>),
+
+            typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestVariant2ModeVariant1?, global::Browserbase.SearchWebRequestVariant2ModeVariant2?, global::Browserbase.SearchWebRequestVariant2ModeVariant3?>),
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>),
 
@@ -285,9 +307,11 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>), TypeInfoPropertyName = "AnyOfSearchWebRequestProviderVariant1SearchWebRequestProviderVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestProviderVariant1), TypeInfoPropertyName = "SearchWebRequestProviderVariant12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestProviderVariant2), TypeInfoPropertyName = "SearchWebRequestProviderVariant22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?>), TypeInfoPropertyName = "AnyOfSearchWebRequestModeVariant1SearchWebRequestModeVariant22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>), TypeInfoPropertyName = "AnyOfSearchWebRequestModeVariant1SearchWebRequestModeVariant2SearchWebRequestModeVariant3SearchWebRequestModeVariant42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestModeVariant1), TypeInfoPropertyName = "SearchWebRequestModeVariant12")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestModeVariant2), TypeInfoPropertyName = "SearchWebRequestModeVariant22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestModeVariant3), TypeInfoPropertyName = "SearchWebRequestModeVariant32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestModeVariant4), TypeInfoPropertyName = "SearchWebRequestModeVariant42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant1Provider), TypeInfoPropertyName = "SearchWebRequestVariant1Provider2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestVariant1ModeVariant1?, global::Browserbase.SearchWebRequestVariant1ModeVariant2?>), TypeInfoPropertyName = "AnyOfSearchWebRequestVariant1ModeVariant1SearchWebRequestVariant1ModeVariant22")]
@@ -295,6 +319,11 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant1ModeVariant2), TypeInfoPropertyName = "SearchWebRequestVariant1ModeVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant2Provider), TypeInfoPropertyName = "SearchWebRequestVariant2Provider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestVariant2ModeVariant1?, global::Browserbase.SearchWebRequestVariant2ModeVariant2?, global::Browserbase.SearchWebRequestVariant2ModeVariant3?>), TypeInfoPropertyName = "AnyOfSearchWebRequestVariant2ModeVariant1SearchWebRequestVariant2ModeVariant2SearchWebRequestVariant2ModeVariant32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant2ModeVariant1), TypeInfoPropertyName = "SearchWebRequestVariant2ModeVariant12")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant2ModeVariant2), TypeInfoPropertyName = "SearchWebRequestVariant2ModeVariant22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant2ModeVariant3), TypeInfoPropertyName = "SearchWebRequestVariant2ModeVariant32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestVariant3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SecretsCreateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SecretsUpdateRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequest))]
@@ -406,6 +435,8 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksListResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Webhook>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.WebhooksRotateSecretResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>?), TypeInfoPropertyName = "SearchWebRequestModeVariant4_86504cc185ed1f50")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestVariant2ModeVariant1?, global::Browserbase.SearchWebRequestVariant2ModeVariant2?, global::Browserbase.SearchWebRequestVariant2ModeVariant3?>?), TypeInfoPropertyName = "SearchWebRequestVariant2ModeVariant3_04dff689842cca62")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AllOf<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.List<object>, object>))]

@@ -2200,6 +2200,12 @@ paths:
                     - type: string
                       enum:
                         - advanced
+                    - type: string
+                      enum:
+                        - deep-lite
+                    - type: string
+                      enum:
+                        - deep
               oneOf:
                 - type: object
                   properties:
@@ -2217,15 +2223,32 @@ paths:
                             - advanced
                   required:
                     - provider
+                - type: object
+                  properties:
+                    provider:
+                      type: string
+                      enum:
+                        - exa
+                    mode:
+                      anyOf:
+                        - type: string
+                          enum:
+                            - fast
+                        - type: string
+                          enum:
+                            - deep-lite
+                        - type: string
+                          enum:
+                            - deep
+                  required:
+                    - provider
                 - not:
                     required:
                       - mode
                   type: object
                   properties:
                     provider:
-                      type: string
-                      enum:
-                        - exa
+                      not: {}
               required:
                 - query
       responses:
