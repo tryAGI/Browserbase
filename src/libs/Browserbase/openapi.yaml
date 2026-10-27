@@ -1226,6 +1226,10 @@ paths:
                   description: JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
                   type: object
                   additionalProperties: {}
+                contextId:
+                  description: ID of a context whose persisted cookies are sent with the request.
+                  type: string
+                  format: uuid
               required:
                 - url
       responses:

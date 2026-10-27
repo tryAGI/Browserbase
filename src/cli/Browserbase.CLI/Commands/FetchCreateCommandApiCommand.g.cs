@@ -36,6 +36,12 @@ internal static partial class FetchCreateCommandApiCommand
     {
         Description = @"JSON Schema describing the desired structure of the response. Only used when `format` is `json`.",
     };
+
+    private static Option<global::System.Guid?> ContextId { get; } = new(
+        name: @"--context-id")
+    {
+        Description = @"ID of a context whose persisted cookies are sent with the request.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -85,6 +91,7 @@ Fetch a page and return its content, headers, and metadata.");
                         command.Options.Add(Proxies);
                         command.Options.Add(Format);
                         command.Options.Add(Schema);
+                        command.Options.Add(ContextId);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -116,6 +123,7 @@ Fetch a page and return its content, headers, and metadata.");
                         var proxies = CliRuntime.WasSpecified(parseResult, Proxies) ? parseResult.GetValue(Proxies) : (__requestBase is { } __ProxiesBaseValue ? __ProxiesBaseValue.Proxies : default);
                         var format = CliRuntime.WasSpecified(parseResult, Format) ? parseResult.GetValue(Format) : (__requestBase is { } __FormatBaseValue ? __FormatBaseValue.Format : default);
                         var schema = CliRuntime.WasSpecified(parseResult, Schema) ? parseResult.GetValue(Schema) : (__requestBase is { } __SchemaBaseValue ? __SchemaBaseValue.Schema : default);
+                        var contextId = CliRuntime.WasSpecified(parseResult, ContextId) ? parseResult.GetValue(ContextId) : (__requestBase is { } __ContextIdBaseValue ? __ContextIdBaseValue.ContextId : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -126,6 +134,7 @@ Fetch a page and return its content, headers, and metadata.");
                                     proxies: proxies,
                                     format: format,
                                     schema: schema,
+                                    contextId: contextId,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
