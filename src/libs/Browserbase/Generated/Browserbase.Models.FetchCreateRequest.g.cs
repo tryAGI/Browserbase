@@ -51,6 +51,12 @@ namespace Browserbase
         public object? Schema { get; set; }
 
         /// <summary>
+        /// ID of a context whose persisted cookies are sent with the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contextId")]
+        public global::System.Guid? ContextId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +87,9 @@ namespace Browserbase
         /// <param name="schema">
         /// JSON Schema describing the desired structure of the response. Only used when `format` is `json`.
         /// </param>
+        /// <param name="contextId">
+        /// ID of a context whose persisted cookies are sent with the request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,7 +99,8 @@ namespace Browserbase
             bool? allowInsecureSsl,
             bool? proxies,
             global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? format,
-            object? schema)
+            object? schema,
+            global::System.Guid? contextId)
         {
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.AllowRedirects = allowRedirects;
@@ -98,6 +108,7 @@ namespace Browserbase
             this.Proxies = proxies;
             this.Format = format;
             this.Schema = schema;
+            this.ContextId = contextId;
         }
 
         /// <summary>
