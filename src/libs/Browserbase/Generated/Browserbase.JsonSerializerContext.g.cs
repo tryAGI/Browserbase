@@ -71,10 +71,6 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsNullableJsonConverter),
 
-            typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeJsonConverter),
-
-            typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeNullableJsonConverter),
-
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionNullableJsonConverter),
@@ -298,7 +294,6 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings))]

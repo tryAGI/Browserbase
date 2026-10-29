@@ -1765,14 +1765,6 @@ paths:
                             - linux
                             - mobile
                             - tablet
-                        size:
-                          description: "[NOT IN DOCS] Resource size of the browser."
-                          type: string
-                          default: small
-                          enum:
-                            - small
-                            - medium
-                            - large
                         enableNativeSelectPolyfill:
                           description: "[NOT IN DOCS] Enable native select polyfill. This gives support a break-glass option to disable the polyfill."
                           type: boolean
