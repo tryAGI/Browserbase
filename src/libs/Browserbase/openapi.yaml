@@ -2861,6 +2861,7 @@ paths:
 
 
 
+
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
@@ -2897,6 +2898,7 @@ paths:
         - lang: Java
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
+
 
 
 
