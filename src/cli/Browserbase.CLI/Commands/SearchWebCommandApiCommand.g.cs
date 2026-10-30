@@ -23,13 +23,13 @@ internal static partial class SearchWebCommandApiCommand
     private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>?> Provider { get; } = new(
         name: @"--provider")
     {
-        Description = @"Search provider to serve this request. Omit to use the default provider for your project.",
+        Description = @"Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.",
     };
 
     private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>?> Mode { get; } = new(
         name: @"--mode")
     {
-        Description = @"The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.",
+        Description = @"The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes.",
     };
       private static Option<string?> Input { get; } = new(@"--input")
       {

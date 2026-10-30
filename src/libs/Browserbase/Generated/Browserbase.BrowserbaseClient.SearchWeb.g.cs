@@ -445,11 +445,11 @@ namespace Browserbase
         /// Default Value: 10
         /// </param>
         /// <param name="provider">
-        /// Search provider to serve this request. Omit to use the default provider for your project.<br/>
+        /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.<br/>
         /// Default Value: parallel
         /// </param>
         /// <param name="mode">
-        /// The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.
+        /// The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -23,7 +23,7 @@ namespace Browserbase
         public int? NumResults { get; set; }
 
         /// <summary>
-        /// Search provider to serve this request. Omit to use the default provider for your project.<br/>
+        /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.<br/>
         /// Default Value: parallel
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
@@ -31,7 +31,7 @@ namespace Browserbase
         public global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>? Provider { get; set; }
 
         /// <summary>
-        /// The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.
+        /// The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>))]
@@ -54,11 +54,11 @@ namespace Browserbase
         /// Default Value: 10
         /// </param>
         /// <param name="provider">
-        /// Search provider to serve this request. Omit to use the default provider for your project.<br/>
+        /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.<br/>
         /// Default Value: parallel
         /// </param>
         /// <param name="mode">
-        /// The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults.
+        /// The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
