@@ -35,6 +35,26 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.InvocationStatusNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyDefaultDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyDefaultDecisionNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyAllowedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyAllowedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyBlockedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyBlockedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyUnknownDomainBehaviorJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyUnknownDomainBehaviorNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyDomainOverrideDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPolicyDomainOverrideDecisionNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.NoneProxyConfigTypeJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.NoneProxyConfigTypeNullableJsonConverter),
@@ -74,6 +94,46 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestDefaultDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestDefaultDecisionNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestAllowedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestAllowedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestBlockedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestBlockedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestUnknownDomainBehaviorJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestUnknownDomainBehaviorNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestDomainOverrideDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesCreateRequestDomainOverrideDecisionNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestDefaultDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestDefaultDecisionNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestAllowedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestAllowedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestBlockedCategorieJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestBlockedCategorieNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestUnknownDomainBehaviorJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestUnknownDomainBehaviorNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestDomainOverrideDecisionJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.NavigationPoliciesUpdateRequestDomainOverrideDecisionNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SearchWebRequestProviderVariant1JsonConverter),
 
@@ -243,6 +303,16 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(bool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<object>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.InvocationLog))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicy))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyDefaultDecision), TypeInfoPropertyName = "NavigationPolicyDefaultDecision2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicyAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyAllowedCategorie), TypeInfoPropertyName = "NavigationPolicyAllowedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicyBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyBlockedCategorie), TypeInfoPropertyName = "NavigationPolicyBlockedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyUnknownDomainBehavior), TypeInfoPropertyName = "NavigationPolicyUnknownDomainBehavior2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicyDomainOverride>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyDomainOverride))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPolicyDomainOverrideDecision), TypeInfoPropertyName = "NavigationPolicyDomainOverrideDecision2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NoneProxyConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NoneProxyConfigType), TypeInfoPropertyName = "NoneProxyConfigType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Project))]
@@ -299,6 +369,26 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::System.Guid>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsAttachSecretRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestDefaultDecision), TypeInfoPropertyName = "NavigationPoliciesCreateRequestDefaultDecision2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesCreateRequestAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestAllowedCategorie), TypeInfoPropertyName = "NavigationPoliciesCreateRequestAllowedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesCreateRequestBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestBlockedCategorie), TypeInfoPropertyName = "NavigationPoliciesCreateRequestBlockedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestUnknownDomainBehavior), TypeInfoPropertyName = "NavigationPoliciesCreateRequestUnknownDomainBehavior2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesCreateRequestDomainOverride>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestDomainOverride))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesCreateRequestDomainOverrideDecision), TypeInfoPropertyName = "NavigationPoliciesCreateRequestDomainOverrideDecision2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestDefaultDecision), TypeInfoPropertyName = "NavigationPoliciesUpdateRequestDefaultDecision2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesUpdateRequestAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestAllowedCategorie), TypeInfoPropertyName = "NavigationPoliciesUpdateRequestAllowedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorie), TypeInfoPropertyName = "NavigationPoliciesUpdateRequestBlockedCategorie2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestUnknownDomainBehavior), TypeInfoPropertyName = "NavigationPoliciesUpdateRequestUnknownDomainBehavior2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPoliciesUpdateRequestDomainOverride>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestDomainOverride))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesUpdateRequestDomainOverrideDecision), TypeInfoPropertyName = "NavigationPoliciesUpdateRequestDomainOverrideDecision2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>), TypeInfoPropertyName = "AnyOfSearchWebRequestProviderVariant1SearchWebRequestProviderVariant22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebRequestProviderVariant1), TypeInfoPropertyName = "SearchWebRequestProviderVariant12")]
@@ -390,6 +480,8 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsDetachSecretResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsListVersionsResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.FunctionVersion>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.NavigationPoliciesListResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicy>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Project>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>))]
@@ -436,12 +528,21 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<string>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AllOf<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<string, double?, bool?, global::System.Collections.Generic.List<object>, object>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPolicyAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPolicyBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPolicyDomainOverride>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SessionLiveUrlsPage>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhookEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.AnyOf<global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::System.Guid>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesCreateRequestAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesCreateRequestBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesCreateRequestDomainOverride>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesUpdateRequestAllowedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorie>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPoliciesUpdateRequestDomainOverride>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhooksCreateRequestEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.WebhooksUpdateRequestEventType>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Agent>))]
@@ -458,6 +559,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Invocation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Secret>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.FunctionVersion>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.NavigationPolicy>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Project>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.SearchWebResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Browserbase.Session>))]

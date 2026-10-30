@@ -117,6 +117,12 @@ namespace Browserbase
         public bool? IgnoreCertificateErrors { get; set; }
 
         /// <summary>
+        /// Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("riskPolicyId")]
+        public global::System.Guid? RiskPolicyId { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -171,6 +177,9 @@ namespace Browserbase
         /// <param name="ignoreCertificateErrors">
         /// Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
         /// </param>
+        /// <param name="riskPolicyId">
+        /// Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -190,7 +199,8 @@ namespace Browserbase
             bool? enablePdfViewer,
             global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? extensions,
             global::System.Collections.Generic.IList<string>? allowedDomains,
-            bool? ignoreCertificateErrors)
+            bool? ignoreCertificateErrors,
+            global::System.Guid? riskPolicyId)
         {
             this.Context = context;
             this.ExtensionId = extensionId;
@@ -208,6 +218,7 @@ namespace Browserbase
             this.Extensions = extensions;
             this.AllowedDomains = allowedDomains;
             this.IgnoreCertificateErrors = ignoreCertificateErrors;
+            this.RiskPolicyId = riskPolicyId;
         }
 
         /// <summary>
