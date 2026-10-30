@@ -1789,6 +1789,10 @@ paths:
                         ignoreCertificateErrors:
                           description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
                           type: boolean
+                        riskPolicyId:
+                          description: Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
+                          type: string
+                          format: uuid
                     proxies:
                       description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
                       anyOf:
@@ -2107,6 +2111,588 @@ paths:
                 required:
                   - results
                   - total
+  /v1/navigation-policies:
+    post:
+      operationId: NavigationPolicies_create
+      summary: Create a Navigation Policy
+      description: "Create a navigation policy for this project. Omitted fields take the defaults: enabled, block by default, block unknown domains, no category rules, and no overrides. Bind the policy to a session with `browserSettings.riskPolicyId`."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: "Display name. A policy's id identifies it, not its name."
+                  type: string
+                  maxLength: 128
+                  minLength: 1
+                description:
+                  description: Free-form notes about the policy.
+                  type: string
+                  maxLength: 1024
+                enabled:
+                  description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
+                  type: boolean
+                defaultDecision:
+                  description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                allowedCategories:
+                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - adult
+                      - ai-tools
+                      - alcohol-tobacco
+                      - business
+                      - child-abuse
+                      - communication
+                      - dating
+                      - drugs
+                      - education
+                      - entertainment
+                      - finance
+                      - gambling
+                      - games
+                      - government-military
+                      - hacking
+                      - hate
+                      - health
+                      - illegal-activity
+                      - infrastructure
+                      - kids
+                      - lifestyle
+                      - malware
+                      - newly-registered
+                      - news
+                      - parked-inactive
+                      - phishing-scams
+                      - piracy
+                      - proxy-anonymizer
+                      - search-portal
+                      - self-harm
+                      - shopping
+                      - social-media
+                      - society-culture
+                      - sports
+                      - technology
+                      - terrorism-extremism
+                      - travel
+                      - url-shortener
+                      - violence
+                      - weapons
+                  uniqueItems: true
+                blockedCategories:
+                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - adult
+                      - ai-tools
+                      - alcohol-tobacco
+                      - business
+                      - child-abuse
+                      - communication
+                      - dating
+                      - drugs
+                      - education
+                      - entertainment
+                      - finance
+                      - gambling
+                      - games
+                      - government-military
+                      - hacking
+                      - hate
+                      - health
+                      - illegal-activity
+                      - infrastructure
+                      - kids
+                      - lifestyle
+                      - malware
+                      - newly-registered
+                      - news
+                      - parked-inactive
+                      - phishing-scams
+                      - piracy
+                      - proxy-anonymizer
+                      - search-portal
+                      - self-harm
+                      - shopping
+                      - social-media
+                      - society-culture
+                      - sports
+                      - technology
+                      - terrorism-extremism
+                      - travel
+                      - url-shortener
+                      - violence
+                      - weapons
+                  uniqueItems: true
+                unknownDomainBehavior:
+                  description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                domainOverrides:
+                  description: Per-host decisions that take precedence over category rules and the default. Each host may appear once.
+                  type: array
+                  items:
+                    additionalProperties: false
+                    type: object
+                    properties:
+                      domain:
+                        description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                        type: string
+                        format: hostname
+                        maxLength: 253
+                        minLength: 1
+                      decision:
+                        description: Decision for navigations to this host.
+                        type: string
+                        enum:
+                          - allow
+                          - block
+                    required:
+                      - domain
+                      - decision
+                  maxItems: 500
+              additionalProperties: false
+              required:
+                - name
+      responses:
+        "201":
+          description: The navigation policy has been created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NavigationPolicy"
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const policy = await bb.navigationPolicies.create({
+              name: "Research agents",
+              defaultDecision: "allow",
+              blockedCategories: ["gambling", "adult", "malware"],
+              domainOverrides: [
+                { domain: "internal.example.com", decision: "block" },
+              ],
+            });
+
+            console.log(policy.id);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            policy = bb.navigation_policies.create(
+                name="Research agents",
+                default_decision="allow",
+                blocked_categories=["gambling", "adult", "malware"],
+                domain_overrides=[
+                    {"domain": "internal.example.com", "decision": "block"},
+                ],
+            )
+
+            print(policy.id)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request POST \
+              --url https://api.browserbase.com/v1/navigation-policies \
+              --header 'Content-Type: application/json' \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \
+              --data '{
+                "name": "Research agents",
+                "defaultDecision": "allow",
+                "blockedCategories": ["gambling", "adult", "malware"],
+                "domainOverrides": [
+                  { "domain": "internal.example.com", "decision": "block" }
+                ]
+              }'
+    get:
+      operationId: NavigationPolicies_list
+      summary: List Navigation Policies
+      description: "List the project's navigation policies, ordered by name."
+      responses:
+        "200":
+          description: The project's navigation policies.
+          content:
+            application/json:
+              schema:
+                description: The project's navigation policies.
+                type: object
+                properties:
+                  data:
+                    description: "The project's navigation policies, ordered by name."
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/NavigationPolicy"
+                required:
+                  - data
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const { data: policies } = await bb.navigationPolicies.list();
+
+            for (const policy of policies) {
+              console.log(policy.id, policy.name);
+            }
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            policies = bb.navigation_policies.list().data
+
+            for policy in policies:
+                print(policy.id, policy.name)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request GET \
+              --url https://api.browserbase.com/v1/navigation-policies \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+  "/v1/navigation-policies/{id}":
+    get:
+      operationId: NavigationPolicies_get
+      summary: Get a Navigation Policy
+      description: Retrieve a single navigation policy by ID.
+      parameters:
+        - name: id
+          in: path
+          description: The navigation policy ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: The navigation policy.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NavigationPolicy"
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const policy = await bb.navigationPolicies.retrieve("<policy-id>");
+
+            console.log(policy.domainOverrides);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            policy = bb.navigation_policies.retrieve("<policy-id>")
+
+            print(policy.domain_overrides)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request GET \
+              https://api.browserbase.com/v1/navigation-policies/<policy-id> \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
+    patch:
+      operationId: NavigationPolicies_update
+      summary: Update a Navigation Policy
+      description: Update a navigation policy. Omitted fields keep their values; a supplied list replaces the stored list rather than adding to it. The change applies to sessions that start afterwards; running sessions keep the policy they started with.
+      parameters:
+        - name: id
+          in: path
+          description: The navigation policy ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: "Display name. A policy's id identifies it, not its name."
+                  type: string
+                  maxLength: 128
+                  minLength: 1
+                description:
+                  description: Free-form notes about the policy.
+                  type: string
+                  maxLength: 1024
+                enabled:
+                  description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
+                  type: boolean
+                defaultDecision:
+                  description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                allowedCategories:
+                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - adult
+                      - ai-tools
+                      - alcohol-tobacco
+                      - business
+                      - child-abuse
+                      - communication
+                      - dating
+                      - drugs
+                      - education
+                      - entertainment
+                      - finance
+                      - gambling
+                      - games
+                      - government-military
+                      - hacking
+                      - hate
+                      - health
+                      - illegal-activity
+                      - infrastructure
+                      - kids
+                      - lifestyle
+                      - malware
+                      - newly-registered
+                      - news
+                      - parked-inactive
+                      - phishing-scams
+                      - piracy
+                      - proxy-anonymizer
+                      - search-portal
+                      - self-harm
+                      - shopping
+                      - social-media
+                      - society-culture
+                      - sports
+                      - technology
+                      - terrorism-extremism
+                      - travel
+                      - url-shortener
+                      - violence
+                      - weapons
+                  uniqueItems: true
+                blockedCategories:
+                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - adult
+                      - ai-tools
+                      - alcohol-tobacco
+                      - business
+                      - child-abuse
+                      - communication
+                      - dating
+                      - drugs
+                      - education
+                      - entertainment
+                      - finance
+                      - gambling
+                      - games
+                      - government-military
+                      - hacking
+                      - hate
+                      - health
+                      - illegal-activity
+                      - infrastructure
+                      - kids
+                      - lifestyle
+                      - malware
+                      - newly-registered
+                      - news
+                      - parked-inactive
+                      - phishing-scams
+                      - piracy
+                      - proxy-anonymizer
+                      - search-portal
+                      - self-harm
+                      - shopping
+                      - social-media
+                      - society-culture
+                      - sports
+                      - technology
+                      - terrorism-extremism
+                      - travel
+                      - url-shortener
+                      - violence
+                      - weapons
+                  uniqueItems: true
+                unknownDomainBehavior:
+                  description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+                  type: string
+                  enum:
+                    - allow
+                    - block
+                domainOverrides:
+                  description: Per-host decisions that take precedence over category rules and the default. Each host may appear once.
+                  type: array
+                  items:
+                    additionalProperties: false
+                    type: object
+                    properties:
+                      domain:
+                        description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                        type: string
+                        format: hostname
+                        maxLength: 253
+                        minLength: 1
+                      decision:
+                        description: Decision for navigations to this host.
+                        type: string
+                        enum:
+                          - allow
+                          - block
+                    required:
+                      - domain
+                      - decision
+                  maxItems: 500
+              additionalProperties: false
+              minProperties: 1
+      responses:
+        "200":
+          description: The navigation policy after the update.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NavigationPolicy"
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            const policy = await bb.navigationPolicies.update("<policy-id>", {
+              domainOverrides: [
+                { domain: "internal.example.com", decision: "block" },
+                { domain: "partner.example.net", decision: "allow" },
+              ],
+            });
+
+            console.log(policy.domainOverrides);
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            policy = bb.navigation_policies.update(
+                "<policy-id>",
+                domain_overrides=[
+                    {"domain": "internal.example.com", "decision": "block"},
+                    {"domain": "partner.example.net", "decision": "allow"},
+                ],
+            )
+
+            print(policy.domain_overrides)
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request PATCH \
+              https://api.browserbase.com/v1/navigation-policies/<policy-id> \
+              --header 'Content-Type: application/json' \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY" \
+              --data '{
+                "domainOverrides": [
+                  { "domain": "internal.example.com", "decision": "block" },
+                  { "domain": "partner.example.net", "decision": "allow" }
+                ]
+              }'
+    delete:
+      operationId: NavigationPolicies_delete
+      summary: Delete a Navigation Policy
+      description: Delete a navigation policy. New sessions can no longer bind to it; running sessions keep the policy they started with.
+      parameters:
+        - name: id
+          in: path
+          description: The navigation policy ID.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The navigation policy has been deleted.
+      x-codeSamples:
+        - lang: javascript
+          label: Node.js
+          source: |-
+            import Browserbase from "@browserbasehq/sdk";
+
+            const bb = new Browserbase({
+              apiKey: process.env.BROWSERBASE_API_KEY,
+            });
+
+            await bb.navigationPolicies.delete("<policy-id>");
+        - lang: python
+          label: Python
+          source: |-
+            import os
+
+            from browserbase import Browserbase
+
+            bb = Browserbase(api_key=os.environ["BROWSERBASE_API_KEY"])
+
+            bb.navigation_policies.delete("<policy-id>")
+        - lang: bash
+          label: cURL
+          source: |-
+            curl --request DELETE \
+              https://api.browserbase.com/v1/navigation-policies/<policy-id> \
+              --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
   /v1/projects:
     get:
       operationId: Projects_list
@@ -2762,6 +3348,10 @@ paths:
                     ignoreCertificateErrors:
                       description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
                       type: boolean
+                    riskPolicyId:
+                      description: Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
+                      type: string
+                      format: uuid
                 timeout:
                   description: "Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours)."
                   type: integer
@@ -4292,6 +4882,176 @@ components:
       required:
         - message
         - timestamp
+    NavigationPolicy:
+      description: "Rules for which domains a browser session may navigate to. Bind a policy to a session with `browserSettings.riskPolicyId`; Browserbase then allows or blocks each navigation by the policy's overrides, its category rules, and finally its default decision. A session keeps the policy as it was when the session started: edits, disables, and deletes apply to sessions that start afterwards. A policy checks navigations: page loads, iframes, popups, and each redirect. It doesn't check requests a page makes itself, such as scripts, images, and `fetch` calls. In a session that loads a Context, pages skip their service workers so that the policy checks every navigation."
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the navigation policy.
+          type: string
+        projectId:
+          description: The project the policy belongs to.
+          type: string
+        name:
+          description: "Display name. A policy's id identifies it, not its name."
+          type: string
+          maxLength: 128
+          minLength: 1
+        description:
+          description: Free-form notes about the policy.
+          type: string
+          maxLength: 1024
+        enabled:
+          description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
+          type: boolean
+        defaultDecision:
+          description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+          type: string
+          enum:
+            - allow
+            - block
+        allowedCategories:
+          description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+          type: array
+          items:
+            type: string
+            enum:
+              - adult
+              - ai-tools
+              - alcohol-tobacco
+              - business
+              - child-abuse
+              - communication
+              - dating
+              - drugs
+              - education
+              - entertainment
+              - finance
+              - gambling
+              - games
+              - government-military
+              - hacking
+              - hate
+              - health
+              - illegal-activity
+              - infrastructure
+              - kids
+              - lifestyle
+              - malware
+              - newly-registered
+              - news
+              - parked-inactive
+              - phishing-scams
+              - piracy
+              - proxy-anonymizer
+              - search-portal
+              - self-harm
+              - shopping
+              - social-media
+              - society-culture
+              - sports
+              - technology
+              - terrorism-extremism
+              - travel
+              - url-shortener
+              - violence
+              - weapons
+          uniqueItems: true
+        blockedCategories:
+          description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+          type: array
+          items:
+            type: string
+            enum:
+              - adult
+              - ai-tools
+              - alcohol-tobacco
+              - business
+              - child-abuse
+              - communication
+              - dating
+              - drugs
+              - education
+              - entertainment
+              - finance
+              - gambling
+              - games
+              - government-military
+              - hacking
+              - hate
+              - health
+              - illegal-activity
+              - infrastructure
+              - kids
+              - lifestyle
+              - malware
+              - newly-registered
+              - news
+              - parked-inactive
+              - phishing-scams
+              - piracy
+              - proxy-anonymizer
+              - search-portal
+              - self-harm
+              - shopping
+              - social-media
+              - society-culture
+              - sports
+              - technology
+              - terrorism-extremism
+              - travel
+              - url-shortener
+              - violence
+              - weapons
+          uniqueItems: true
+        unknownDomainBehavior:
+          description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+          type: string
+          enum:
+            - allow
+            - block
+        domainOverrides:
+          description: Per-host decisions that take precedence over category rules and the default. Each host may appear once.
+          type: array
+          items:
+            additionalProperties: false
+            type: object
+            properties:
+              domain:
+                description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                type: string
+                format: hostname
+                maxLength: 253
+                minLength: 1
+              decision:
+                description: Decision for navigations to this host.
+                type: string
+                enum:
+                  - allow
+                  - block
+            required:
+              - domain
+              - decision
+          maxItems: 500
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - name
+        - description
+        - enabled
+        - defaultDecision
+        - allowedCategories
+        - blockedCategories
+        - unknownDomainBehavior
+        - domainOverrides
+        - createdAt
+        - updatedAt
     NoneProxyConfig:
       type: object
       properties:

@@ -51,6 +51,11 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(FunctionsListVersionsCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetLogsCommandApiCommand.Create());
+                         command.Subcommands.Add(NavigationPoliciesCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(NavigationPoliciesDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(NavigationPoliciesGetCommandApiCommand.Create());
+                         command.Subcommands.Add(NavigationPoliciesListCommandApiCommand.Create());
+                         command.Subcommands.Add(NavigationPoliciesUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(ProjectsGetCommandApiCommand.Create());
                          command.Subcommands.Add(ProjectsListCommandApiCommand.Create());
                          command.Subcommands.Add(ProjectsUsageCommandApiCommand.Create());
