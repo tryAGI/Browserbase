@@ -2764,7 +2764,7 @@ paths:
                   maximum: 25
                   minimum: 1
                 provider:
-                  description: Search provider to serve this request. Omit to use the default provider for your project.
+                  description: "Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set."
                   default: parallel
                   anyOf:
                     - type: string
@@ -2774,7 +2774,7 @@ paths:
                       enum:
                         - exa
                 mode:
-                  description: "The search mode used by the underlying provider. [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes and defaults."
+                  description: "The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes."
                   anyOf:
                     - type: string
                       enum:
@@ -5160,6 +5160,14 @@ components:
         secretKey:
           description: The name the secret value is stored under.
           type: string
+        createdAt:
+          description: "Time at which the secret was created, in UTC, using RFC 3339 format, e.g. 2026-01-19T00:00:00.000Z."
+          type: string
+          format: date-time
+        updatedAt:
+          description: "Time at which the secret's value was last set, in UTC, using RFC 3339 format, e.g. 2026-01-20T00:00:00.000Z."
+          type: string
+          format: date-time
       required:
         - id
         - secretKey
