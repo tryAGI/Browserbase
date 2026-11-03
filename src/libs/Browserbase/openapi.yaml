@@ -4,7 +4,7 @@ info:
   description: Browserbase API for 3rd party developers
   version: v1
 servers:
-  - url: "https://api.browserbase.com"
+  - url: https://api.browserbase.com
     description: Public endpoint
     variables: {}
 paths:
@@ -30,7 +30,7 @@ paths:
                   type: string
                   minLength: 1
                 resultSchema:
-                  description: "An optional [JSON Schema](https://json-schema.org/specification) object. If provided, runs that reference this agent will aim to return a `result` that conforms to this schema when they complete. Can be overridden per run by passing `resultSchema` on the run request."
+                  description: An optional [JSON Schema](https://json-schema.org/specification) object. If provided, runs that reference this agent will aim to return a `result` that conforms to this schema when they complete. Can be overridden per run by passing `resultSchema` on the run request.
                   type: object
                   additionalProperties: true
                   properties: {}
@@ -93,14 +93,14 @@ paths:
       parameters:
         - name: startAt
           in: query
-          description: "Only return agents created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: Only return agents created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return agents created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: Only return agents created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.
           required: false
           schema:
             type: string
@@ -180,7 +180,7 @@ paths:
     post:
       operationId: AgentRuns_create
       summary: Run an Agent
-      description: "Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created."
+      description: Run a browser agent to complete the `task` by using web search and browser tooling. Optionally pass `agentId` to run a [custom agent](/reference/api/create-an-agent) you've created.
       requestBody:
         required: true
         content:
@@ -189,19 +189,19 @@ paths:
               type: object
               properties:
                 agentId:
-                  description: "Optionally run a specific [custom agent](/reference/api/create-an-agent) you've created by ID. The run will use the agent's `systemPrompt` and `resultSchema` unless overridden."
+                  description: Optionally run a specific [custom agent](/reference/api/create-an-agent) you've created by ID. The run will use the agent's `systemPrompt` and `resultSchema` unless overridden.
                   type: string
                 task:
                   description: A natural language description of the task the agent should accomplish.
                   type: string
                   minLength: 1
                 resultSchema:
-                  description: "An optional [JSON Schema](https://json-schema.org/specification) object. If provided, the agent will aim to return a `result` that conforms to this schema when the run completes. Overrides the referenced agent's default `resultSchema` for this run only."
+                  description: An optional [JSON Schema](https://json-schema.org/specification) object. If provided, the agent will aim to return a `result` that conforms to this schema when the run completes. Overrides the referenced agent's default `resultSchema` for this run only.
                   type: object
                   additionalProperties: true
                   properties: {}
                 browserSettings:
-                  description: "Browser configuration for the agent's session. When omitted, runner defaults apply."
+                  description: Browser configuration for the agent's session. When omitted, runner defaults apply.
                   type: object
                   additionalProperties: false
                   properties:
@@ -218,7 +218,7 @@ paths:
                       required:
                         - id
                     proxies:
-                      description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                      description: Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
                       anyOf:
                         - type: array
                           items:
@@ -231,11 +231,13 @@ paths:
                       description: Set true to enable Browserbase Verified for the session.
                       type: boolean
                 variables:
-                  description: "Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted."
+                  description: Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted.
                   type: object
                   additionalProperties:
                     additionalProperties: false
                     type: object
+                    required:
+                      - value
                     properties:
                       value:
                         description: The value the placeholder resolves to when the agent uses it.
@@ -243,10 +245,8 @@ paths:
                       description:
                         description: Optional hint to the agent describing what this variable represents and when to use it.
                         type: string
-                    required:
-                      - value
                 pauseWhen:
-                  description: "Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint."
+                  description: Optional description of when the agent should pause and wait for input from your application (e.g. a verification code, an approval, or an answer from another system). When set, the agent is given a `pause` tool; calling it transitions the run to `PAUSED` (the agent's request is the trailing `pause` tool call in the run's messages) until it is resumed via the resume endpoint.
                   type: string
                   minLength: 1
               additionalProperties: false
@@ -304,7 +304,7 @@ paths:
     get:
       operationId: AgentRuns_list
       summary: List Runs
-      description: "List runs across your account. Supports filtering by status, by the agent they reference, and by creation time."
+      description: List runs across your account. Supports filtering by status, by the agent they reference, and by creation time.
       parameters:
         - name: status
           in: query
@@ -336,14 +336,14 @@ paths:
             type: string
         - name: startAt
           in: query
-          description: "Only return runs created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: Only return runs created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return runs created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: Only return runs created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.
           required: false
           schema:
             type: string
@@ -425,11 +425,11 @@ paths:
               --data-urlencode 'status=COMPLETED' \
               --data-urlencode 'limit=20' \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/agents/runs/{runId}":
+  /v1/agents/runs/{runId}:
     get:
       operationId: AgentRuns_get
       summary: Get a Run
-      description: "Retrieve the current status and details of a run, including its result and associated session information. To fetch the run's messages, use [List Run Messages](/reference/api/list-run-messages)."
+      description: Retrieve the current status and details of a run, including its result and associated session information. To fetch the run's messages, use [List Run Messages](/reference/api/list-run-messages).
       parameters:
         - name: runId
           in: path
@@ -474,7 +474,7 @@ paths:
             curl --request GET \
               --url https://api.browserbase.com/v1/agents/runs/run-id \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/agents/runs/{runId}/messages":
+  /v1/agents/runs/{runId}/messages:
     get:
       operationId: AgentRuns_messages
       summary: List Run Messages
@@ -485,7 +485,7 @@ paths:
       parameters:
         - name: since
           in: query
-          description: "The `id` of the last message you've already received. The response will contain messages produced after that one, in chronological order. Omit on the first call. Pass the previous response's `nextSince` value to continue paging or to poll for new messages."
+          description: The `id` of the last message you've already received. The response will contain messages produced after that one, in chronological order. Omit on the first call. Pass the previous response's `nextSince` value to continue paging or to poll for new messages.
           required: false
           schema:
             type: string
@@ -500,7 +500,7 @@ paths:
             minimum: 1
         - name: all
           in: query
-          description: "Return every message after `since` in one response, ignoring `limit`."
+          description: Return every message after `since` in one response, ignoring `limit`.
           required: false
           schema:
             type: boolean
@@ -514,14 +514,14 @@ paths:
             format: uuid
       responses:
         "200":
-          description: "The page of messages, in chronological order, with the oldest messages first."
+          description: The page of messages, in chronological order, with the oldest messages first.
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   data:
-                    description: "The page of messages, in chronological order, with the oldest messages first."
+                    description: The page of messages, in chronological order, with the oldest messages first.
                     type: array
                     items:
                       type: object
@@ -575,7 +575,7 @@ paths:
                             - role
                             - content
                   nextSince:
-                    description: "The `id` of the last message in `data`. Pass it back as `since` on the next request to continue paging, or to poll for new messages. `null` only when the run has no messages yet; in that case, omit `since` and retry."
+                    description: The `id` of the last message in `data`. Pass it back as `since` on the next request to continue paging, or to poll for new messages. `null` only when the run has no messages yet; in that case, omit `since` and retry.
                     type: string
                     nullable: true
                 required:
@@ -615,11 +615,11 @@ paths:
               --get \
               --data-urlencode 'limit=20' \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/agents/runs/{runId}/resume":
+  /v1/agents/runs/{runId}/resume:
     post:
       operationId: AgentRuns_resume
       summary: Resume a Run
-      description: "Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict."
+      description: Resume a `PAUSED` run with additional input. The reply in `task` is delivered to the agent as the answer to its pause request (the trailing `pause` tool call in the run's messages), and `variables` merge over the run's original variables. Resuming a run that is not paused returns a conflict.
       parameters:
         - name: runId
           in: path
@@ -638,11 +638,13 @@ paths:
                   type: string
                   minLength: 1
                 variables:
-                  description: "Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted."
+                  description: Optional named variables the agent can reference as placeholders, i.e. `%variable%`. Each entry pairs a `value` the placeholder resolves to with an optional `description` that hints to the agent when it should be used. Values are not persisted.
                   type: object
                   additionalProperties:
                     additionalProperties: false
                     type: object
+                    required:
+                      - value
                     properties:
                       value:
                         description: The value the placeholder resolves to when the agent uses it.
@@ -650,8 +652,6 @@ paths:
                       description:
                         description: Optional hint to the agent describing what this variable represents and when to use it.
                         type: string
-                    required:
-                      - value
               additionalProperties: false
       responses:
         "202":
@@ -672,7 +672,7 @@ paths:
                 "task": "The code is %code%",
                 "variables": { "code": { "value": "123456" } }
               }'
-  "/v1/agents/runs/{runId}/stop":
+  /v1/agents/runs/{runId}/stop:
     post:
       operationId: AgentRuns_stop
       summary: Stop a Run
@@ -698,7 +698,7 @@ paths:
             curl --request POST \
               --url https://api.browserbase.com/v1/agents/runs/run-id/stop \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/agents/{agentId}":
+  /v1/agents/{agentId}:
     get:
       operationId: Agents_get
       summary: Get an Agent
@@ -774,7 +774,7 @@ paths:
                   type: string
                   minLength: 1
                 resultSchema:
-                  description: "An optional [JSON Schema](https://json-schema.org/specification) object. If provided, runs that reference this agent will aim to return a `result` that conforms to this schema when they complete. Can be overridden per run by passing `resultSchema` on the run request."
+                  description: An optional [JSON Schema](https://json-schema.org/specification) object. If provided, runs that reference this agent will aim to return a `result` that conforms to this schema when they complete. Can be overridden per run by passing `resultSchema` on the run request.
                   type: object
                   additionalProperties: true
                   properties: {}
@@ -895,7 +895,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Certificate"
-  "/v1/certificates/{id}":
+  /v1/certificates/{id}:
     get:
       operationId: Certificates_get
       summary: Get a Certificate
@@ -923,7 +923,7 @@ paths:
             type: string
       responses:
         "204":
-          description: "There is no content to send for this request, but the headers may be useful."
+          description: There is no content to send for this request, but the headers may be useful.
   /v1/contexts:
     post:
       operationId: Contexts_create
@@ -935,10 +935,10 @@ paths:
               type: object
               properties:
                 projectId:
-                  description: "The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key."
+                  description: The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
                   type: string
                 name:
-                  description: "Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively."
+                  description: Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively.
                   type: string
                   maxLength: 128
                   minLength: 1
@@ -959,7 +959,7 @@ paths:
                     description: The cipher algorithm used to encrypt the user-data-directory. AES-256-CBC is currently the only supported algorithm.
                     type: string
                   initializationVectorSize:
-                    description: "The initialization vector size used to encrypt the user-data-directory. [Read more about how to use it](/features/contexts)."
+                    description: The initialization vector size used to encrypt the user-data-directory. [Read more about how to use it](/features/contexts).
                     type: integer
                     format: uint8
                 required:
@@ -967,7 +967,7 @@ paths:
                   - publicKey
                   - cipherAlgorithm
                   - initializationVectorSize
-  "/v1/contexts/{id}":
+  /v1/contexts/{id}:
     get:
       operationId: Contexts_get
       summary: Get a Context
@@ -995,7 +995,7 @@ paths:
             type: string
       responses:
         "204":
-          description: "There is no content to send for this request, but the headers may be useful."
+          description: There is no content to send for this request, but the headers may be useful.
   /v1/downloads:
     get:
       operationId: Downloads_list
@@ -1092,7 +1092,7 @@ paths:
                   - total
                   - limit
                   - offset
-  "/v1/downloads/{id}":
+  /v1/downloads/{id}:
     get:
       operationId: Downloads_get
       summary: Get a Download
@@ -1152,7 +1152,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Extension"
-  "/v1/extensions/{id}":
+  /v1/extensions/{id}:
     get:
       operationId: Extensions_get
       summary: Get an Extension
@@ -1180,12 +1180,12 @@ paths:
             type: string
       responses:
         "204":
-          description: "There is no content to send for this request, but the headers may be useful."
+          description: There is no content to send for this request, but the headers may be useful.
   /v1/fetch:
     post:
       operationId: Fetch_create
       summary: Fetch a Page
-      description: "Fetch a page and return its content, headers, and metadata."
+      description: Fetch a page and return its content, headers, and metadata.
       requestBody:
         required: true
         content:
@@ -1271,7 +1271,7 @@ paths:
                   - contentType
                   - encoding
         "400":
-          description: "Invalid request body, or the requested `format` is not supported for the fetched response's content type."
+          description: Invalid request body, or the requested `format` is not supported for the fetched response's content type.
           content:
             application/json:
               schema:
@@ -1481,7 +1481,7 @@ paths:
                 required:
                   - data
                   - total
-  "/v1/functions/builds/{id}":
+  /v1/functions/builds/{id}:
     get:
       operationId: FunctionBuilds_get
       summary: Get a Function Build
@@ -1499,7 +1499,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FunctionBuild"
-  "/v1/functions/builds/{id}/logs":
+  /v1/functions/builds/{id}/logs:
     get:
       operationId: FunctionBuilds_getLogs
       summary: Get Function Build Logs
@@ -1528,7 +1528,7 @@ paths:
                 required:
                   - logs
                   - total
-  "/v1/functions/invocations/{id}":
+  /v1/functions/invocations/{id}:
     get:
       operationId: Invocations_get
       summary: Get an Invocation
@@ -1563,7 +1563,7 @@ paths:
                             minLength: 1
                         required:
                           - code
-  "/v1/functions/invocations/{id}/logs":
+  /v1/functions/invocations/{id}/logs:
     get:
       operationId: Invocations_getLogs
       summary: Get Invocation Logs
@@ -1592,7 +1592,7 @@ paths:
                 required:
                   - logs
                   - total
-  "/v1/functions/versions/{id}":
+  /v1/functions/versions/{id}:
     get:
       operationId: FunctionVersions_get
       summary: Get a Function Version
@@ -1610,7 +1610,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/FunctionVersion"
-  "/v1/functions/versions/{id}/invocations":
+  /v1/functions/versions/{id}/invocations:
     get:
       operationId: FunctionVersions_listInvocations
       summary: List Invocations for a Function Version
@@ -1659,7 +1659,7 @@ paths:
                 required:
                   - results
                   - total
-  "/v1/functions/{id}":
+  /v1/functions/{id}:
     get:
       operationId: Functions_get
       summary: Get a Function
@@ -1677,7 +1677,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Function"
-  "/v1/functions/{id}/invoke":
+  /v1/functions/{id}/invoke:
     post:
       operationId: Functions_invoke
       summary: Invoke a Function
@@ -1703,7 +1703,7 @@ paths:
                   type: object
                   properties:
                     extensionId:
-                      description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                      description: The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
                       type: string
                     browserSettings:
                       type: object
@@ -1720,7 +1720,7 @@ paths:
                           required:
                             - id
                         extensionId:
-                          description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                          description: The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
                           type: string
                         viewport:
                           type: object
@@ -1751,10 +1751,10 @@ paths:
                           description: Verified Browser Mode
                           type: boolean
                         captchaImageSelector:
-                          description: "Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                          description: Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
                           type: string
                         captchaInputSelector:
-                          description: "Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                          description: Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
                           type: string
                         os:
                           description: "Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet"
@@ -1781,20 +1781,20 @@ paths:
                               - browser-events
                           default: []
                         allowedDomains:
-                          description: "An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.)."
+                          description: An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).
                           type: array
                           items:
                             type: string
                           default: []
                         ignoreCertificateErrors:
-                          description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
+                          description: Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
                           type: boolean
                         riskPolicyId:
                           description: Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
                           type: string
                           format: uuid
                     proxies:
-                      description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                      description: Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
                       anyOf:
                         - type: array
                           items:
@@ -1815,7 +1815,7 @@ paths:
                             type: string
                           default: []
                     userMetadata:
-                      description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+                      description: Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
                       type: object
                       additionalProperties: true
                       properties: {}
@@ -1827,12 +1827,12 @@ paths:
                       minimum: 60
       responses:
         "202":
-          description: "The request has been accepted for processing, but processing has not yet completed."
+          description: The request has been accepted for processing, but processing has not yet completed.
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/Invocation"
-  "/v1/functions/{id}/secrets":
+  /v1/functions/{id}/secrets:
     get:
       operationId: Functions_listSecrets
       summary: List Function Secrets
@@ -1840,14 +1840,14 @@ paths:
       parameters:
         - name: startAt
           in: query
-          description: "Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.
           required: false
           schema:
             type: string
@@ -1900,7 +1900,7 @@ paths:
                   - limit
                   - nextCursor
         "400":
-          description: "Invalid Function ID, query parameters, or cursor, or startAt is after endAt."
+          description: Invalid Function ID, query parameters, or cursor, or startAt is after endAt.
           content:
             application/json:
               schema:
@@ -2006,7 +2006,7 @@ paths:
                   - statusCode
                   - error
                   - message
-  "/v1/functions/{id}/secrets/{secretId}":
+  /v1/functions/{id}/secrets/{secretId}:
     delete:
       operationId: Functions_detachSecret
       summary: Detach a Secret from a Function
@@ -2067,7 +2067,7 @@ paths:
                   - statusCode
                   - error
                   - message
-  "/v1/functions/{id}/versions":
+  /v1/functions/{id}/versions:
     get:
       operationId: Functions_listVersions
       summary: List Function Versions
@@ -2124,7 +2124,7 @@ paths:
               type: object
               properties:
                 name:
-                  description: "Display name. A policy's id identifies it, not its name."
+                  description: Display name. A policy's id identifies it, not its name.
                   type: string
                   maxLength: 128
                   minLength: 1
@@ -2136,13 +2136,13 @@ paths:
                   description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
                   type: boolean
                 defaultDecision:
-                  description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+                  description: Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence.
                   type: string
                   enum:
                     - allow
                     - block
                 allowedCategories:
-                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
                   type: array
                   items:
                     type: string
@@ -2189,7 +2189,7 @@ paths:
                       - weapons
                   uniqueItems: true
                 blockedCategories:
-                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
                   type: array
                   items:
                     type: string
@@ -2236,7 +2236,7 @@ paths:
                       - weapons
                   uniqueItems: true
                 unknownDomainBehavior:
-                  description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+                  description: Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies.
                   type: string
                   enum:
                     - allow
@@ -2247,9 +2247,12 @@ paths:
                   items:
                     additionalProperties: false
                     type: object
+                    required:
+                      - domain
+                      - decision
                     properties:
                       domain:
-                        description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                        description: Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains.
                         type: string
                         format: hostname
                         maxLength: 253
@@ -2260,9 +2263,6 @@ paths:
                         enum:
                           - allow
                           - block
-                    required:
-                      - domain
-                      - decision
                   maxItems: 500
               additionalProperties: false
               required:
@@ -2331,7 +2331,7 @@ paths:
     get:
       operationId: NavigationPolicies_list
       summary: List Navigation Policies
-      description: "List the project's navigation policies, ordered by name."
+      description: List the project's navigation policies, ordered by name.
       responses:
         "200":
           description: The project's navigation policies.
@@ -2342,7 +2342,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    description: "The project's navigation policies, ordered by name."
+                    description: The project's navigation policies, ordered by name.
                     type: array
                     items:
                       $ref: "#/components/schemas/NavigationPolicy"
@@ -2382,7 +2382,7 @@ paths:
             curl --request GET \
               --url https://api.browserbase.com/v1/navigation-policies \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/navigation-policies/{id}":
+  /v1/navigation-policies/{id}:
     get:
       operationId: NavigationPolicies_get
       summary: Get a Navigation Policy
@@ -2453,7 +2453,7 @@ paths:
               type: object
               properties:
                 name:
-                  description: "Display name. A policy's id identifies it, not its name."
+                  description: Display name. A policy's id identifies it, not its name.
                   type: string
                   maxLength: 128
                   minLength: 1
@@ -2465,13 +2465,13 @@ paths:
                   description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
                   type: boolean
                 defaultDecision:
-                  description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+                  description: Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence.
                   type: string
                   enum:
                     - allow
                     - block
                 allowedCategories:
-                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
                   type: array
                   items:
                     type: string
@@ -2518,7 +2518,7 @@ paths:
                       - weapons
                   uniqueItems: true
                 blockedCategories:
-                  description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+                  description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
                   type: array
                   items:
                     type: string
@@ -2565,7 +2565,7 @@ paths:
                       - weapons
                   uniqueItems: true
                 unknownDomainBehavior:
-                  description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+                  description: Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies.
                   type: string
                   enum:
                     - allow
@@ -2576,9 +2576,12 @@ paths:
                   items:
                     additionalProperties: false
                     type: object
+                    required:
+                      - domain
+                      - decision
                     properties:
                       domain:
-                        description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                        description: Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains.
                         type: string
                         format: hostname
                         maxLength: 253
@@ -2589,9 +2592,6 @@ paths:
                         enum:
                           - allow
                           - block
-                    required:
-                      - domain
-                      - decision
                   maxItems: 500
               additionalProperties: false
               minProperties: 1
@@ -2706,7 +2706,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Project"
-  "/v1/projects/{id}":
+  /v1/projects/{id}:
     get:
       operationId: Projects_get
       summary: Get a Project
@@ -2723,7 +2723,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Project"
-  "/v1/projects/{id}/usage":
+  /v1/projects/{id}/usage:
     get:
       operationId: Projects_usage
       summary: Get Project Usage
@@ -2764,7 +2764,7 @@ paths:
                   maximum: 25
                   minimum: 1
                 provider:
-                  description: "Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set."
+                  description: Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.
                   default: parallel
                   anyOf:
                     - type: string
@@ -2774,7 +2774,7 @@ paths:
                       enum:
                         - exa
                 mode:
-                  description: "The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes."
+                  description: The search mode used by the underlying provider. Defaults to `advanced` for `parallel` and `fast` for `exa`. See the [Search docs](https://docs.browserbase.com/platform/search/overview) for the available modes.
                   anyOf:
                     - type: string
                       enum:
@@ -2790,6 +2790,8 @@ paths:
                         - deep
               oneOf:
                 - type: object
+                  required:
+                    - provider
                   properties:
                     provider:
                       type: string
@@ -2803,9 +2805,9 @@ paths:
                         - type: string
                           enum:
                             - advanced
+                - type: object
                   required:
                     - provider
-                - type: object
                   properties:
                     provider:
                       type: string
@@ -2822,8 +2824,6 @@ paths:
                         - type: string
                           enum:
                             - deep
-                  required:
-                    - provider
                 - not:
                     required:
                       - mode
@@ -2852,6 +2852,10 @@ paths:
                     type: array
                     items:
                       type: object
+                      required:
+                        - id
+                        - url
+                        - title
                       properties:
                         id:
                           description: Unique identifier for the result
@@ -2875,10 +2879,6 @@ paths:
                         favicon:
                           description: Favicon URL
                           type: string
-                      required:
-                        - id
-                        - url
-                        - title
                 required:
                   - requestId
                   - query
@@ -2891,14 +2891,14 @@ paths:
       parameters:
         - name: startAt
           in: query
-          description: "Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z."
+          description: Only return secrets created on or after this timestamp (inclusive). RFC 3339, e.g. 2026-01-19T00:00:00Z.
           required: false
           schema:
             type: string
             format: date-time
         - name: endAt
           in: query
-          description: "Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z."
+          description: Only return secrets created on or before this timestamp (inclusive). RFC 3339, e.g. 2026-01-20T00:00:00Z.
           required: false
           schema:
             type: string
@@ -2945,7 +2945,7 @@ paths:
                   - limit
                   - nextCursor
         "400":
-          description: "Invalid query parameters or cursor, or startAt is after endAt."
+          description: Invalid query parameters or cursor, or startAt is after endAt.
           content:
             application/json:
               schema:
@@ -2981,7 +2981,7 @@ paths:
                   description: "The secret value encrypted with HPKE. To seal the secret value before sending, get the project's public key from GET /v1/secrets/keypair. Decode the publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data (AAD) to an empty byte string. Then, create a new sender context using the public key and these settings, and encrypt the secret value as one message. Put the 32-byte encapsulated key before the ciphertext and keep the authentication tag at the end of the ciphertext. Encode the combined bytes with standard base64. Send the result as sealedSecretValue: base64(enc || ciphertext)"
                   type: string
                 keypairId:
-                  description: "The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation."
+                  description: The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation.
                   type: string
               required:
                 - secretKey
@@ -2995,7 +2995,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Secret"
         "400":
-          description: "Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry."
+          description: Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry.
           content:
             application/json:
               schema:
@@ -3045,7 +3045,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SecretsKeypair"
-  "/v1/secrets/{id}":
+  /v1/secrets/{id}:
     get:
       operationId: Secrets_get
       summary: Get a Secret
@@ -3161,7 +3161,7 @@ paths:
     patch:
       operationId: Secrets_update
       summary: Update a Secret
-      description: "Replace a secret's value. The name cannot be changed; to rename, create a new secret and delete the old one."
+      description: Replace a secret's value. The name cannot be changed; to rename, create a new secret and delete the old one.
       parameters:
         - name: id
           in: path
@@ -3181,7 +3181,7 @@ paths:
                   description: "The new secret value encrypted with HPKE. To seal the secret value before sending, get the project's public key from GET /v1/secrets/keypair. Decode the publicKey using base64 into the raw 32-byte public key. Then, use HPKE Base mode (RFC 9180) with the following algorithm suite: DHKEM(X25519, HKDF-SHA256), HKDF-SHA256, and AES-256-GCM. Set both info and additional authenticated data (AAD) to an empty byte string. Then, create a new sender context using the public key and these settings, and encrypt the secret value as one message. Put the 32-byte encapsulated key before the ciphertext and keep the authentication tag at the end of the ciphertext. Encode the combined bytes with standard base64. Send the result as sealedSecretValue: base64(enc || ciphertext)"
                   type: string
                 keypairId:
-                  description: "The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation."
+                  description: The `id` returned by GET /v1/secrets/keypair, identifying the keypair whose public key encrypted the value. Recorded with the secret so decryption stays correct across keypair rotation.
                   type: string
               required:
                 - sealedSecretValue
@@ -3194,7 +3194,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Secret"
         "400":
-          description: "Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry."
+          description: Invalid request, or keypairId does not identify an active keypair in the project. If the keypair is no longer active, fetch GET /v1/secrets/keypair, seal the value again, and retry.
           content:
             application/json:
               schema:
@@ -3251,7 +3251,7 @@ paths:
               - COMPLETED
         - name: q
           in: query
-          description: "Query sessions by user metadata. See [Querying Sessions by User Metadata](/features/sessions#querying-sessions-by-user-metadata) for the schema of this query."
+          description: Query sessions by user metadata. See [Querying Sessions by User Metadata](/features/sessions#querying-sessions-by-user-metadata) for the schema of this query.
           required: false
           schema:
             type: string
@@ -3274,10 +3274,10 @@ paths:
               type: object
               properties:
                 projectId:
-                  description: "The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key."
+                  description: The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
                   type: string
                 extensionId:
-                  description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                  description: The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
                   type: string
                 browserSettings:
                   type: object
@@ -3294,7 +3294,7 @@ paths:
                       required:
                         - id
                     extensionId:
-                      description: "The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension)."
+                      description: The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
                       type: string
                     viewport:
                       type: object
@@ -3325,10 +3325,10 @@ paths:
                       description: Verified Browser Mode
                       type: boolean
                     captchaImageSelector:
-                      description: "Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                      description: Custom selector for captcha image. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
                       type: string
                     captchaInputSelector:
-                      description: "Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)"
+                      description: Custom selector for captcha input. See [Custom Captcha Solving](/features/stealth-mode#custom-captcha-solving)
                       type: string
                     os:
                       description: "Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet"
@@ -3340,20 +3340,20 @@ paths:
                         - mobile
                         - tablet
                     allowedDomains:
-                      description: "An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.)."
+                      description: An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).
                       type: array
                       items:
                         type: string
                       default: []
                     ignoreCertificateErrors:
-                      description: "Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates)."
+                      description: Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
                       type: boolean
                     riskPolicyId:
                       description: Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
                       type: string
                       format: uuid
                 timeout:
-                  description: "Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours)."
+                  description: Duration in seconds after which the session will automatically end. Defaults to the Project's `defaultTimeout`. Minimum 60 seconds, maximum 21600 seconds (6 hours).
                   type: integer
                   maximum: 21600
                   minimum: 60
@@ -3362,7 +3362,7 @@ paths:
                   description: Set to true to keep the session alive even after disconnections. Available on the Hobby Plan and above.
                   type: boolean
                 proxies:
-                  description: "Proxy configuration. Can be true for default proxy, or an array of proxy configurations."
+                  description: Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
                   anyOf:
                     - type: array
                       items:
@@ -3392,7 +3392,7 @@ paths:
                     - eu-central-1
                     - ap-southeast-1
                 userMetadata:
-                  description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+                  description: Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
                   type: object
                   additionalProperties: true
                   properties: {}
@@ -3445,13 +3445,6 @@ paths:
             url = "https://api.browserbase.com/v1/sessions"
             payload = {}
             headers = {
-
-
-
-
-
-
-
                 "X-BB-API-Key": "<api-key>",
                 "Content-Type": "application/json"
             }
@@ -3484,22 +3477,44 @@ paths:
               echo $response;
             }
         - lang: Go
-          source: "package main\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\t\"net/http\"\n\t\"io/ioutil\"\n)\n\nfunc main() {\n\n\turl := \"https://api.browserbase.com/v1/sessions\"\n\n\tpayload := strings.NewReader(\"{}\")\n\n\treq, _ := http.NewRequest(\"POST\", url, payload)\n\n\treq.Header.Add(\"X-BB-API-Key\", \"<api-key>\")\n\treq.Header.Add(\"Content-Type\", \"application/json\")\n\n\tres, _ := http.DefaultClient.Do(req)\n\n\tdefer res.Body.Close()\n\tbody, _ := ioutil.ReadAll(res.Body)\n\n\tfmt.Println(res)\n\tfmt.Println(string(body))\n\n}"
+          source: |-
+            package main
+
+            import (
+            	"fmt"
+            	"strings"
+            	"net/http"
+            	"io/ioutil"
+            )
+
+            func main() {
+
+            	url := "https://api.browserbase.com/v1/sessions"
+
+            	payload := strings.NewReader("{}")
+
+            	req, _ := http.NewRequest("POST", url, payload)
+
+            	req.Header.Add("X-BB-API-Key", "<api-key>")
+            	req.Header.Add("Content-Type", "application/json")
+
+            	res, _ := http.DefaultClient.Do(req)
+
+            	defer res.Body.Close()
+            	body, _ := ioutil.ReadAll(res.Body)
+
+            	fmt.Println(res)
+            	fmt.Println(string(body))
+
+            }
         - lang: Java
           source: |-
             HttpResponse<String> response = Unirest.post("https://api.browserbase.com/v1/sessions")
-
-
-
-
-
-
-
               .header("X-BB-API-Key", "<api-key>")
               .header("Content-Type", "application/json")
               .body("{}")
               .asString();
-  "/v1/sessions/{id}":
+  /v1/sessions/{id}:
     get:
       operationId: Sessions_get
       summary: Get a Session
@@ -3560,14 +3575,14 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Session"
-  "/v1/sessions/{id}/debug":
+  /v1/sessions/{id}/debug:
     get:
       operationId: Sessions_getDebug
       summary: Session Live URLs
       parameters:
         - name: expiresIn
           in: query
-          description: "Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs expire with the session, up to a maximum of 21600 seconds (6 hours)."
+          description: Time-to-live of the generated live view URLs, in seconds. If omitted, the URLs expire with the session, up to a maximum of 21600 seconds (6 hours).
           required: false
           schema:
             type: integer
@@ -3585,7 +3600,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SessionLiveUrls"
-  "/v1/sessions/{id}/logs":
+  /v1/sessions/{id}/logs:
     get:
       operationId: Sessions_getLogs
       summary: Session Logs
@@ -3604,11 +3619,11 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/SessionLog"
-  "/v1/sessions/{id}/recording/downloads":
+  /v1/sessions/{id}/recording/downloads:
     post:
       operationId: Sessions_createRecordingDownloads
       summary: Create Session Recording Downloads
-      description: "Requests one downloadable MP4 per recorded page of a session. Assembly runs asynchronously and every page returns as `PENDING`. Re-posting re-enqueues all pages and retries any that failed. Poll the GET endpoint for per-page status and, on standard (non-BYOS) projects, download URLs."
+      description: Requests one downloadable MP4 per recorded page of a session. Assembly runs asynchronously and every page returns as `PENDING`. Re-posting re-enqueues all pages and retries any that failed. Poll the GET endpoint for per-page status and, on standard (non-BYOS) projects, download URLs.
       parameters:
         - name: id
           in: path
@@ -3632,7 +3647,7 @@ paths:
                 required:
                   - downloads
         "404":
-          description: "The session was not found, or it has no recording."
+          description: The session was not found, or it has no recording.
           content:
             application/json:
               schema:
@@ -3734,7 +3749,7 @@ paths:
     get:
       operationId: Sessions_listRecordingDownloads
       summary: List Session Recording Downloads
-      description: "Returns the per-page download status for a session, with a short-lived signed URL for each completed page on standard (non-BYOS) projects."
+      description: Returns the per-page download status for a session, with a short-lived signed URL for each completed page on standard (non-BYOS) projects.
       parameters:
         - name: id
           in: path
@@ -3758,7 +3773,7 @@ paths:
                 required:
                   - downloads
         "404":
-          description: "The session was not found, or it has no recording."
+          description: The session was not found, or it has no recording.
           content:
             application/json:
               schema:
@@ -3857,11 +3872,11 @@ paths:
                   - statusCode
                   - error
                   - message
-  "/v1/sessions/{id}/replays":
+  /v1/sessions/{id}/replays:
     get:
       operationId: Sessions_getReplay
       summary: Get Session Replay
-      description: "Returns page metadata for a session replay, including timing information and the URL of each page's HLS playlist."
+      description: Returns page metadata for a session replay, including timing information and the URL of each page's HLS playlist.
       parameters:
         - name: id
           in: path
@@ -3887,7 +3902,7 @@ paths:
                 required:
                   - pages
                   - pageCount
-  "/v1/sessions/{id}/replays/{pageId}":
+  /v1/sessions/{id}/replays/{pageId}:
     get:
       operationId: Sessions_getReplayPage
       summary: Get Replay Page
@@ -3914,7 +3929,7 @@ paths:
             application/vnd.apple.mpegurl:
               schema:
                 type: string
-  "/v1/sessions/{id}/uploads":
+  /v1/sessions/{id}/uploads:
     post:
       operationId: Sessions_uploadFile
       summary: Create Session Uploads
@@ -3952,7 +3967,7 @@ paths:
     post:
       operationId: Webhooks_create
       summary: Create a Webhook
-      description: "Register an HTTPS endpoint to receive events for this project. The response includes the signing secret, which is shown only here and when the secret is rotated. Store it before discarding the response. An endpoint may only be registered once per project."
+      description: Register an HTTPS endpoint to receive events for this project. The response includes the signing secret, which is shown only here and when the secret is rotated. Store it before discarding the response. An endpoint may only be registered once per project.
       requestBody:
         required: true
         content:
@@ -3965,7 +3980,7 @@ paths:
                   type: string
                   format: uri
                   maxLength: 2048
-                  pattern: "^https://[^/?#]+"
+                  pattern: ^https://[^/?#]+
                 eventTypes:
                   description: Event types this webhook subscribes to. Unknown types are rejected.
                   type: array
@@ -3991,16 +4006,16 @@ paths:
           content:
             application/json:
               schema:
-                description: "The created webhook, including its signing secret."
+                description: The created webhook, including its signing secret.
                 allOf:
                   - $ref: "#/components/schemas/Webhook"
                   - type: object
-                    properties:
-                      secret:
-                        description: "HMAC-SHA256 signing secret, prefixed `whsec_`. Shown once here; store it now. Use it to verify the signature on every delivery."
-                        type: string
                     required:
                       - secret
+                    properties:
+                      secret:
+                        description: HMAC-SHA256 signing secret, prefixed `whsec_`. Shown once here; store it now. Use it to verify the signature on every delivery.
+                        type: string
       x-codeSamples:
         - lang: javascript
           label: Node.js
@@ -4046,7 +4061,7 @@ paths:
     get:
       operationId: Webhooks_list
       summary: List Webhooks
-      description: "List the project's webhooks, newest first. Signing secrets are not included. Page by passing the previous response's `nextCursor` as `cursor`; a null `nextCursor` means there are no further pages."
+      description: List the project's webhooks, newest first. Signing secrets are not included. Page by passing the previous response's `nextCursor` as `cursor`; a null `nextCursor` means there are no further pages.
       parameters:
         - name: limit
           in: query
@@ -4073,7 +4088,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    description: "The page of webhooks, newest first."
+                    description: The page of webhooks, newest first.
                     type: array
                     items:
                       $ref: "#/components/schemas/Webhook"
@@ -4120,7 +4135,7 @@ paths:
             curl --request GET \
               --url https://api.browserbase.com/v1/webhooks \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/webhooks/{id}":
+  /v1/webhooks/{id}:
     get:
       operationId: Webhooks_get
       summary: Get a Webhook
@@ -4174,7 +4189,7 @@ paths:
     patch:
       operationId: Webhooks_update
       summary: Update a Webhook
-      description: "Update a webhook's endpoint URL, its subscribed event types, or both. Omitted fields are left unchanged. `eventTypes` replaces the existing subscription rather than adding to it. The signing secret is unaffected."
+      description: Update a webhook's endpoint URL, its subscribed event types, or both. Omitted fields are left unchanged. `eventTypes` replaces the existing subscription rather than adding to it. The signing secret is unaffected.
       parameters:
         - name: id
           in: path
@@ -4195,7 +4210,7 @@ paths:
                   type: string
                   format: uri
                   maxLength: 2048
-                  pattern: "^https://[^/?#]+"
+                  pattern: ^https://[^/?#]+
                 eventTypes:
                   description: Event types this webhook subscribes to. Unknown types are rejected.
                   type: array
@@ -4311,7 +4326,7 @@ paths:
             curl --request DELETE \
               --url https://api.browserbase.com/v1/webhooks/<webhook-id> \
               --header "X-BB-API-Key: $BROWSERBASE_API_KEY"
-  "/v1/webhooks/{id}/secret":
+  /v1/webhooks/{id}/secret:
     post:
       operationId: Webhooks_rotateSecret
       summary: Rotate a Webhook signing secret
@@ -4345,16 +4360,16 @@ paths:
                 type: object
                 properties:
                   secret:
-                    description: "The new signing secret, prefixed `whsec_`."
+                    description: The new signing secret, prefixed `whsec_`.
                     type: string
                 required:
                   - secret
         "429":
-          description: "Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`."
+          description: Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`.
           content:
             application/json:
               schema:
-                description: "Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`."
+                description: Too many previous secrets are still inside their grace window. Wait for one to expire, or retry with `revokeImmediately`.
       x-codeSamples:
         - lang: javascript
           label: Node.js
@@ -4422,7 +4437,7 @@ components:
           description: Unique identifier for the run.
           type: string
         agentId:
-          description: "The ID of the agent applied to this run, if any. Omitted for ad-hoc runs."
+          description: The ID of the agent applied to this run, if any. Omitted for ad-hoc runs.
           type: string
         task:
           description: The original task description.
@@ -4453,12 +4468,12 @@ components:
           description: External sandbox identifier assigned by the runner. Optional.
           type: string
         resultSchema:
-          description: "Per-run [JSON Schema](https://json-schema.org/specification) override for the result shape. When unset, the agent's default `resultSchema` applies."
+          description: Per-run [JSON Schema](https://json-schema.org/specification) override for the result shape. When unset, the agent's default `resultSchema` applies.
           type: object
           additionalProperties: true
           properties: {}
         result:
-          description: "The agent's structured result for the run. Only present when the run has finished and output is available. The result conforms to the provided [JSON Schema](https://json-schema.org/specification) when one is set."
+          description: The agent's structured result for the run. Only present when the run has finished and output is available. The result conforms to the provided [JSON Schema](https://json-schema.org/specification) when one is set.
           type: object
           additionalProperties: true
           properties: {}
@@ -4466,7 +4481,7 @@ components:
           type: object
           properties:
             code:
-              description: "Structured failure code (e.g., RUNNER_HEARTBEAT_LOST)."
+              description: Structured failure code (e.g., RUNNER_HEARTBEAT_LOST).
               type: string
               maxLength: 64
             message:
@@ -4513,17 +4528,17 @@ components:
               type: string
               maxLength: 2
               minLength: 2
-              pattern: "^[A-Za-z]{2}$"
+              pattern: ^[A-Za-z]{2}$
             country:
               description: Country code in ISO 3166-1 alpha-2 format
               type: string
               maxLength: 2
               minLength: 2
-              pattern: "^[A-Za-z]{2}$"
+              pattern: ^[A-Za-z]{2}$
           required:
             - country
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional.
           type: string
       required:
         - type
@@ -4561,7 +4576,7 @@ components:
           description: The Project ID linked to the uploaded Context.
           type: string
         name:
-          description: "Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively."
+          description: Optional user-defined name for the Context. Leading and trailing whitespace is trimmed before storage. Names are unique within the project among active Contexts, compared case-insensitively.
           type: string
           maxLength: 128
           minLength: 1
@@ -4638,7 +4653,7 @@ components:
           description: Server URL for external proxy. Required.
           type: string
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional.
           type: string
         username:
           description: Username for external proxy authentication. Optional.
@@ -4723,11 +4738,11 @@ components:
             allOf:
               - $ref: "#/components/schemas/Function"
               - type: object
+                required:
+                  - createdVersion
                 properties:
                   createdVersion:
                     $ref: "#/components/schemas/FunctionVersion"
-                required:
-                  - createdVersion
         cause:
           type: object
           properties:
@@ -4893,7 +4908,7 @@ components:
           description: The project the policy belongs to.
           type: string
         name:
-          description: "Display name. A policy's id identifies it, not its name."
+          description: Display name. A policy's id identifies it, not its name.
           type: string
           maxLength: 128
           minLength: 1
@@ -4905,13 +4920,13 @@ components:
           description: Whether the policy can be bound to new sessions. Running sessions keep the policy they started with. A disabled policy stays editable and can be re-enabled.
           type: boolean
         defaultDecision:
-          description: "Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence."
+          description: Decision for each of a domain's categories that has no category rule. The strictest of a domain's category decisions applies, and overrides take precedence.
           type: string
           enum:
             - allow
             - block
         allowedCategories:
-          description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+          description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
           type: array
           items:
             type: string
@@ -4958,7 +4973,7 @@ components:
               - weapons
           uniqueItems: true
         blockedCategories:
-          description: "Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one."
+          description: Navigation categories. Browserbase blocks a domain in any blocked category, even if it is also in an allowed one.
           type: array
           items:
             type: string
@@ -5005,7 +5020,7 @@ components:
               - weapons
           uniqueItems: true
         unknownDomainBehavior:
-          description: "Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies."
+          description: Decision for a domain, or one of its categories, that Browserbase can't classify. It counts as one of the domain's category decisions, so the strictest still applies.
           type: string
           enum:
             - allow
@@ -5016,9 +5031,12 @@ components:
           items:
             additionalProperties: false
             type: object
+            required:
+              - domain
+              - decision
             properties:
               domain:
-                description: "Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains."
+                description: Host the override applies to, for example `example.com`. Matching is case-insensitive and covers subdomains.
                 type: string
                 format: hostname
                 maxLength: 253
@@ -5029,9 +5047,6 @@ components:
                 enum:
                   - allow
                   - block
-            required:
-              - domain
-              - decision
           maxItems: 500
         createdAt:
           type: string
@@ -5061,7 +5076,7 @@ components:
           enum:
             - none
         domainPattern:
-          description: "Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional."
+          description: Domain pattern for which this proxy should be used. If omitted, defaults to all domains. Optional.
           type: string
       required:
         - type
@@ -5113,12 +5128,12 @@ components:
       type: object
       properties:
         pageId:
-          description: 'Recorded page (tab) within the session, e.g. "0", "1".'
+          description: Recorded page (tab) within the session, e.g. "0", "1".
           type: string
         status:
           $ref: "#/components/schemas/RecordingDownloadStatus"
         downloadUrl:
-          description: "Short-lived signed CDN URL, re-minted each GET. Present only when COMPLETED on a standard (non-BYOS) project."
+          description: Short-lived signed CDN URL, re-minted each GET. Present only when COMPLETED on a standard (non-BYOS) project.
           type: string
         completedAt:
           description: When the MP4 was created. Present only when COMPLETED on a standard (non-BYOS) project.
@@ -5161,11 +5176,11 @@ components:
           description: The name the secret value is stored under.
           type: string
         createdAt:
-          description: "Time at which the secret was created, in UTC, using RFC 3339 format, e.g. 2026-01-19T00:00:00.000Z."
+          description: Time at which the secret was created, in UTC, using RFC 3339 format, e.g. 2026-01-19T00:00:00.000Z.
           type: string
           format: date-time
         updatedAt:
-          description: "Time at which the secret's value was last set, in UTC, using RFC 3339 format, e.g. 2026-01-20T00:00:00.000Z."
+          description: Time at which the secret's value was last set, in UTC, using RFC 3339 format, e.g. 2026-01-20T00:00:00.000Z.
           type: string
           format: date-time
       required:
@@ -5175,10 +5190,10 @@ components:
       type: object
       properties:
         id:
-          description: "Identifier of the keypair the public key was minted from. Pass this back when creating a secret so the ciphertext records which keypair sealed it, which keeps decryption correct across keypair rotation."
+          description: Identifier of the keypair the public key was minted from. Pass this back when creating a secret so the ciphertext records which keypair sealed it, which keeps decryption correct across keypair rotation.
           type: string
         publicKey:
-          description: "The project's HPKE public encryption key, base64-encoded. Encrypt secret values with this key before creating a secret."
+          description: The project's HPKE public encryption key, base64-encoded. Encrypt secret values with this key before creating a secret.
           type: string
       required:
         - id
@@ -5215,7 +5230,7 @@ components:
             - TIMED_OUT
             - COMPLETED
         proxyBytes:
-          description: "Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)"
+          description: Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
           type: integer
         keepAlive:
           description: Indicates if the Session was created to be kept alive upon disconnections
@@ -5232,7 +5247,7 @@ components:
             - eu-central-1
             - ap-southeast-1
         userMetadata:
-          description: "Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata)."
+          description: Arbitrary user metadata to attach to the session. To learn more about user metadata, see [User Metadata](/features/sessions#user-metadata).
           type: object
           additionalProperties: true
           properties: {}
@@ -5260,6 +5275,13 @@ components:
           type: array
           items:
             type: object
+            required:
+              - id
+              - url
+              - faviconUrl
+              - title
+              - debuggerUrl
+              - debuggerFullscreenUrl
             properties:
               id:
                 type: string
@@ -5277,13 +5299,6 @@ components:
               debuggerFullscreenUrl:
                 type: string
                 format: uri
-            required:
-              - id
-              - url
-              - faviconUrl
-              - title
-              - debuggerUrl
-              - debuggerFullscreenUrl
         wsUrl:
           type: string
           format: uri
@@ -5357,7 +5372,7 @@ components:
           type: string
           format: uri
           maxLength: 2048
-          pattern: "^https://[^/?#]+"
+          pattern: ^https://[^/?#]+
         eventTypes:
           description: Event types this webhook subscribes to. Unknown types are rejected.
           type: array
@@ -5391,7 +5406,7 @@ components:
       type: apiKey
       in: header
       name: X-BB-API-Key
-      description: "Your [Browserbase API Key](https://www.browserbase.com/settings)."
+      description: Your [Browserbase API Key](https://www.browserbase.com/settings).
 tags: []
 security:
   - BrowserbaseAuth: []
