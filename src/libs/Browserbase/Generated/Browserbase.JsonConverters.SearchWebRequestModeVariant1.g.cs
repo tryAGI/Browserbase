@@ -18,7 +18,7 @@ namespace Browserbase.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Browserbase.SearchWebRequestModeVariant1Extensions.ToEnum(stringValue) ?? default;
+                        return global::Browserbase.SearchWebRequestModeVariant1Extensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Browserbase.SearchWebRequestModeVariant1.");
                     }
 
                     break;

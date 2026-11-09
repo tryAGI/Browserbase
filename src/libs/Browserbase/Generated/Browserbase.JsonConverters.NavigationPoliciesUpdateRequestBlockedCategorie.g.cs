@@ -18,7 +18,7 @@ namespace Browserbase.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorieExtensions.ToEnum(stringValue) ?? default;
+                        return global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorieExtensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Browserbase.NavigationPoliciesUpdateRequestBlockedCategorie.");
                     }
 
                     break;
