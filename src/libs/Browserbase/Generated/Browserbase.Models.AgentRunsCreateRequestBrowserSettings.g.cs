@@ -28,6 +28,18 @@ namespace Browserbase
         public bool? Verified { get; set; }
 
         /// <summary>
+        /// Enable or disable session recording. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("recordSession")]
+        public bool? RecordSession { get; set; }
+
+        /// <summary>
+        /// Enable or disable session logging. Defaults to `true`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("logSession")]
+        public bool? LogSession { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -43,17 +55,27 @@ namespace Browserbase
         /// <param name="verified">
         /// Set true to enable Browserbase Verified for the session.
         /// </param>
+        /// <param name="recordSession">
+        /// Enable or disable session recording. Defaults to `true`.
+        /// </param>
+        /// <param name="logSession">
+        /// Enable or disable session logging. Defaults to `true`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentRunsCreateRequestBrowserSettings(
             global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext? context,
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies,
-            bool? verified)
+            bool? verified,
+            bool? recordSession,
+            bool? logSession)
         {
             this.Context = context;
             this.Proxies = proxies;
             this.Verified = verified;
+            this.RecordSession = recordSession;
+            this.LogSession = logSession;
         }
 
         /// <summary>
