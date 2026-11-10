@@ -448,6 +448,9 @@ namespace Browserbase
         /// <summary>
         /// Create a Session
         /// </summary>
+        /// <param name="labels">
+        /// Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.
+        /// </param>
         /// <param name="projectId">
         /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
         /// </param>
@@ -478,6 +481,7 @@ namespace Browserbase
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>> SessionsCreateAsync(
+            global::System.Collections.Generic.IList<string>? labels = default,
             string? projectId = default,
             string? extensionId = default,
             global::Browserbase.SessionsCreateRequestBrowserSettings? browserSettings = default,
@@ -492,6 +496,7 @@ namespace Browserbase
         {
             var __request = new global::Browserbase.SessionsCreateRequest
             {
+                Labels = labels,
                 ProjectId = projectId,
                 ExtensionId = extensionId,
                 BrowserSettings = browserSettings,

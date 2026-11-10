@@ -1,0 +1,85 @@
+#nullable enable
+#pragma warning disable CS0618
+
+using System.CommandLine;
+
+namespace Browserbase.CLI.Commands;
+
+internal static partial class SessionsSetLabelsCommandApiCommand
+{
+    private static Argument<global::System.Guid> Id { get; } = new(
+        name: @"id")
+    {
+        Description = @"",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>> Labels { get; } = new(
+        name: @"--labels")
+    {
+        Description = @"Complete replacement set of label names. Empty clears assignments; missing names create labels.",
+        Required = true,
+    };
+
+                    private static string FormatResponse(ParseResult parseResult, global::Browserbase.SessionsSetLabelsResponse value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
+                    {
+                        string? text = null;
+                        CustomizeResponseText(parseResult, value, ref text);
+                        if (!string.IsNullOrWhiteSpace(text))
+                        {
+                            return text;
+                        }
+
+                        var hints = new Dictionary<string, CliFormatHint>(StringComparer.OrdinalIgnoreCase)
+                        {
+                        };
+                        CustomizeResponseFormatHints(hints);
+                        return CliRuntime.FormatHumanReadable(value, context, truncateLongStrings, hints);
+                    }
+
+                    static partial void CustomizeResponseText(ParseResult parseResult, global::Browserbase.SessionsSetLabelsResponse value, ref string? text);
+                    static partial void CustomizeResponseFormatHints(Dictionary<string, CliFormatHint> hints);
+
+
+    static partial void CustomizeCommand(ref Command command);
+
+    public static Command Create(string? commandName = null)
+    {
+        var command = new Command(commandName ?? @"sessions-set-labels", @"Set Session Labels
+Atomically replace a session's labels. Returns the response after the assignment commits.");
+                        command.Arguments.Add(Id);
+                        command.Options.Add(Labels);
+
+
+        command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
+            await CliRuntime.RunAsync(async () =>
+            {
+                        var id = parseResult.GetRequiredValue(Id);
+                        var labels = parseResult.GetRequiredValue(Labels);
+                using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
+
+
+                                var response = await client.SessionsSetLabelsAsync(
+                                    id: id,
+                                    labels: labels,
+                                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+
+                                if (!await CliRuntime.TryWriteOutputDirectoryAsync(
+                                        parseResult,
+                                        response,
+                                        global::Browserbase.SourceGenerationContext.Default,
+                                        @"Labels",
+                                        cancellationToken).ConfigureAwait(false))
+                                {
+                                await CliRuntime.WriteResponseAsync(
+                                    parseResult,
+                                    response,
+                                    global::Browserbase.SourceGenerationContext.Default,
+                                    FormatResponse,
+                                    cancellationToken).ConfigureAwait(false);
+                                }
+            }, cancellationToken).ConfigureAwait(false));
+        CustomizeCommand(ref command);
+        return command;
+    }
+}

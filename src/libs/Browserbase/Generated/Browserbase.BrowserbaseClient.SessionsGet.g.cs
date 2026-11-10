@@ -27,10 +27,12 @@ namespace Browserbase
             };
         partial void PrepareSessionsGetArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref bool? includeLabels,
             ref string id);
         partial void PrepareSessionsGetRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            bool? includeLabels,
             string id);
         partial void ProcessSessionsGetResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -44,17 +46,22 @@ namespace Browserbase
         /// <summary>
         /// Get a Session
         /// </summary>
+        /// <param name="includeLabels">
+        /// Default Value: false
+        /// </param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>> SessionsGetAsync(
             string id,
+            bool? includeLabels = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await SessionsGetAsResponseAsync(
                 id: id,
+                includeLabels: includeLabels,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -64,12 +71,16 @@ namespace Browserbase
         /// <summary>
         /// Get a Session
         /// </summary>
+        /// <param name="includeLabels">
+        /// Default Value: false
+        /// </param>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Browserbase.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::Browserbase.AutoSDKHttpResponse<global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>>> SessionsGetAsResponseAsync(
             string id,
+            bool? includeLabels = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -77,6 +88,7 @@ namespace Browserbase
                 client: HttpClient);
             PrepareSessionsGetArguments(
                 httpClient: HttpClient,
+                includeLabels: ref includeLabels,
                 id: ref id);
 
 
@@ -105,6 +117,9 @@ namespace Browserbase
                             var __pathBuilder = new global::Browserbase.PathBuilder(
                                 path: $"/v1/sessions/{id}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("includeLabels", includeLabels?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::Browserbase.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -145,6 +160,7 @@ namespace Browserbase
                 PrepareSessionsGetRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    includeLabels: includeLabels,
                     id: id);
 
                 return __httpRequest;

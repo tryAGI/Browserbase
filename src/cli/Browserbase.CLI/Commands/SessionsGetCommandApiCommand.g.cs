@@ -13,6 +13,10 @@ internal static partial class SessionsGetCommandApiCommand
         Description = @"",
     };
 
+    private static Option<bool?> IncludeLabels { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--include-labels",
+        description: @"Include the session's label IDs and current names.");
+
                     private static string FormatResponse(ParseResult parseResult, global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2> value, global::System.Text.Json.Serialization.JsonSerializerContext context, bool truncateLongStrings)
                     {
                         string? text = null;
@@ -39,17 +43,20 @@ internal static partial class SessionsGetCommandApiCommand
     {
         var command = new Command(commandName ?? @"sessions-get", @"Get a Session");
                         command.Arguments.Add(Id);
+                        command.Options.Add(IncludeLabels);
 
 
         command.SetAction(async (ParseResult parseResult, CancellationToken cancellationToken) =>
             await CliRuntime.RunAsync(async () =>
             {
                         var id = parseResult.GetRequiredValue(Id);
+                        var includeLabels = parseResult.GetValue(IncludeLabels);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
                                 var response = await client.SessionsGetAsync(
                                     id: id,
+                                    includeLabels: includeLabels,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
