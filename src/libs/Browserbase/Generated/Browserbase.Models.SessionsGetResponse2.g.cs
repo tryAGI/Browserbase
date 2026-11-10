@@ -9,6 +9,12 @@ namespace Browserbase
     public sealed partial class SessionsGetResponse2
     {
         /// <summary>
+        /// Browserbase returns label IDs and current names only when includeLabels is true. An empty array means the session has no labels.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionsGetResponseLabel>? Labels { get; set; }
+
+        /// <summary>
         /// WebSocket URL to connect to the Session.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("connectUrl")]
@@ -35,6 +41,9 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionsGetResponse2" /> class.
         /// </summary>
+        /// <param name="labels">
+        /// Browserbase returns label IDs and current names only when includeLabels is true. An empty array means the session has no labels.
+        /// </param>
         /// <param name="connectUrl">
         /// WebSocket URL to connect to the Session.
         /// </param>
@@ -48,10 +57,12 @@ namespace Browserbase
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SessionsGetResponse2(
+            global::System.Collections.Generic.IList<global::Browserbase.SessionsGetResponseLabel>? labels,
             string? connectUrl,
             string? seleniumRemoteUrl,
             string? signingKey)
         {
+            this.Labels = labels;
             this.ConnectUrl = connectUrl;
             this.SeleniumRemoteUrl = seleniumRemoteUrl;
             this.SigningKey = signingKey;

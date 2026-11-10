@@ -9,6 +9,12 @@ namespace Browserbase
     public sealed partial class SessionsCreateRequest
     {
         /// <summary>
+        /// Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("labels")]
+        public global::System.Collections.Generic.IList<string>? Labels { get; set; }
+
+        /// <summary>
         /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("projectId")]
@@ -74,6 +80,9 @@ namespace Browserbase
         /// <summary>
         /// Initializes a new instance of the <see cref="SessionsCreateRequest" /> class.
         /// </summary>
+        /// <param name="labels">
+        /// Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.
+        /// </param>
         /// <param name="projectId">
         /// The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
         /// </param>
@@ -104,6 +113,7 @@ namespace Browserbase
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SessionsCreateRequest(
+            global::System.Collections.Generic.IList<string>? labels,
             string? projectId,
             string? extensionId,
             global::Browserbase.SessionsCreateRequestBrowserSettings? browserSettings,
@@ -114,6 +124,7 @@ namespace Browserbase
             global::Browserbase.SessionsCreateRequestRegion? region,
             object? userMetadata)
         {
+            this.Labels = labels;
             this.ProjectId = projectId;
             this.ExtensionId = extensionId;
             this.BrowserSettings = browserSettings;

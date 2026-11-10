@@ -51,6 +51,9 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(FunctionsListVersionsCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetCommandApiCommand.Create());
                          command.Subcommands.Add(InvocationsGetLogsCommandApiCommand.Create());
+                         command.Subcommands.Add(LabelsCreateCommandApiCommand.Create());
+                         command.Subcommands.Add(LabelsDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(LabelsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(NavigationPoliciesCreateCommandApiCommand.Create());
                          command.Subcommands.Add(NavigationPoliciesDeleteCommandApiCommand.Create());
                          command.Subcommands.Add(NavigationPoliciesGetCommandApiCommand.Create());
@@ -75,6 +78,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(SessionsGetReplayPageCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsListCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsListRecordingDownloadsCommandApiCommand.Create());
+                         command.Subcommands.Add(SessionsSetLabelsCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(SessionsUploadFileCommandApiCommand.Create());
                          command.Subcommands.Add(WebhooksCreateCommandApiCommand.Create());

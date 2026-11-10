@@ -1708,6 +1708,12 @@ paths:
                 sessionCreateParams:
                   type: object
                   properties:
+                    labels:
+                      description: Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.
+                      type: array
+                      items:
+                        type: string
+                      maxItems: 1000
                     extensionId:
                       description: The uploaded Extension ID. See [Upload Extension](/reference/api/upload-an-extension).
                       type: string
@@ -2117,6 +2123,239 @@ paths:
                 required:
                   - results
                   - total
+  /v1/labels:
+    post:
+      operationId: Labels_create
+      summary: Create a Label
+      description: Create a project-owned label.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Label name. Browserbase trims surrounding Unicode whitespace and preserves display capitalization. The trimmed name must contain 1–128 Unicode characters and no NUL characters. Names are unique ignoring case within the project.
+                  type: string
+              additionalProperties: false
+              required:
+                - name
+      responses:
+        "201":
+          description: The created label.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Label"
+        "400":
+          description: Invalid request parameters or label name.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "409":
+          description: A label with this name already exists in the project (case-insensitive).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "422":
+          description: Creating this label would exceed the project's label allowance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "429":
+          description: Your requests exceed the API rate limit.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+  /v1/labels/{labelId}:
+    patch:
+      operationId: Labels_update
+      summary: Update a Label
+      description: Rename a label, preserving its ID, creation time, and session assignments.
+      parameters:
+        - name: labelId
+          in: path
+          description: The label's identifier.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  description: Label name. Browserbase trims surrounding Unicode whitespace and preserves display capitalization. The trimmed name must contain 1–128 Unicode characters and no NUL characters. Names are unique ignoring case within the project.
+                  type: string
+              additionalProperties: false
+              required:
+                - name
+      responses:
+        "200":
+          description: The renamed label.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Label"
+        "400":
+          description: Invalid request parameters or label name.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The label does not exist in this project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "409":
+          description: A label with this name already exists in the project (case-insensitive).
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+    delete:
+      operationId: Labels_delete
+      summary: Delete a Label
+      description: Delete a label and its session assignments, preserving the sessions. Missing and other-project labels are successful no-ops.
+      parameters:
+        - name: labelId
+          in: path
+          description: The label's identifier.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: The label is absent from the project.
+        "400":
+          description: Invalid label identifier.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
   /v1/navigation-policies:
     post:
       operationId: NavigationPolicies_create
@@ -3279,6 +3518,12 @@ paths:
             schema:
               type: object
               properties:
+                labels:
+                  description: Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.
+                  type: array
+                  items:
+                    type: string
+                  maxItems: 1000
                 projectId:
                   description: The Project ID. Can be found in [Settings](https://www.browserbase.com/settings). Optional - if not provided, the project will be inferred from the API key.
                   type: string
@@ -3525,6 +3770,13 @@ paths:
       operationId: Sessions_get
       summary: Get a Session
       parameters:
+        - name: includeLabels
+          in: query
+          description: Include the session's label IDs and current names.
+          required: false
+          schema:
+            type: boolean
+            default: false
         - name: id
           in: path
           required: true
@@ -3540,6 +3792,23 @@ paths:
                   - $ref: "#/components/schemas/Session"
                   - type: object
                     properties:
+                      labels:
+                        description: Browserbase returns label IDs and current names only when includeLabels is true. An empty array means the session has no labels.
+                        type: array
+                        items:
+                          description: A project-owned session label.
+                          type: object
+                          required:
+                            - id
+                            - name
+                          properties:
+                            id:
+                              description: Stable identifier of the label.
+                              type: string
+                              format: uuid
+                            name:
+                              description: Display name, unique ignoring case within the project.
+                              type: string
                       connectUrl:
                         description: WebSocket URL to connect to the Session.
                         type: string
@@ -3606,6 +3875,128 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SessionLiveUrls"
+  /v1/sessions/{id}/labels:
+    put:
+      operationId: Sessions_setLabels
+      summary: Set Session Labels
+      description: Atomically replace a session's labels. Returns the response after the assignment commits.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                labels:
+                  description: Complete replacement set of label names. Empty clears assignments; missing names create labels.
+                  type: array
+                  items:
+                    type: string
+                  maxItems: 1000
+              additionalProperties: false
+              required:
+                - labels
+      responses:
+        "200":
+          description: The session's labels after the assignment commits.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  labels:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Label"
+                required:
+                  - labels
+        "400":
+          description: Invalid request parameters or label names.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "404":
+          description: The session does not exist in this project.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "422":
+          description: Creating missing labels would exceed the project's label allowance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
+        "429":
+          description: Your requests exceed the API rate limit.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
   /v1/sessions/{id}/logs:
     get:
       operationId: Sessions_getLogs
@@ -4911,6 +5302,35 @@ components:
       required:
         - message
         - timestamp
+    Label:
+      description: A project-owned session label.
+      type: object
+      properties:
+        id:
+          description: Stable identifier of the label.
+          type: string
+          format: uuid
+        projectId:
+          description: The project that owns the label.
+          type: string
+          format: uuid
+        name:
+          description: Display name, unique ignoring case within the project.
+          type: string
+        createdAt:
+          description: UTC timestamp when the label was created.
+          type: string
+          format: date-time
+        updatedAt:
+          description: UTC timestamp when the label was last renamed.
+          type: string
+          format: date-time
+      required:
+        - id
+        - projectId
+        - name
+        - createdAt
+        - updatedAt
     NavigationPolicy:
       description: "Rules for which domains a browser session may navigate to. Bind a policy to a session with `browserSettings.riskPolicyId`; Browserbase then allows or blocks each navigation by the policy's overrides, its category rules, and finally its default decision. A session keeps the policy as it was when the session started: edits, disables, and deletes apply to sessions that start afterwards. A policy checks navigations: page loads, iframes, popups, and each redirect. It doesn't check requests a page makes itself, such as scripts, images, and `fetch` calls. In a session that loads a Context, pages skip their service workers so that the policy checks every navigation."
       type: object

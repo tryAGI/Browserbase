@@ -7,6 +7,12 @@ namespace Browserbase.CLI.Commands;
 
 internal static partial class SessionsCreateCommandApiCommand
 {
+    private static Option<global::System.Collections.Generic.IList<string>?> Labels { get; } = new(
+        name: @"--labels")
+    {
+        Description = @"Label names to assign after creation. Creates missing labels automatically. Assignment is best-effort and does not delay or fail session creation.",
+    };
+
     private static Option<string?> ProjectId { get; } = new(
         name: @"--project-id")
     {
@@ -100,6 +106,7 @@ internal static partial class SessionsCreateCommandApiCommand
     public static Command Create(string? commandName = null)
     {
         var command = new Command(commandName ?? @"sessions-create", @"Create a Session");
+                        command.Options.Add(Labels);
                         command.Options.Add(ProjectId);
                         command.Options.Add(ExtensionId);
                         command.Options.Add(BrowserSettings);
@@ -134,6 +141,7 @@ internal static partial class SessionsCreateCommandApiCommand
                             RequestFile,
                             global::Browserbase.SourceGenerationContext.Default,
                             cancellationToken).ConfigureAwait(false);
+                        var labels = CliRuntime.WasSpecified(parseResult, Labels) ? parseResult.GetValue(Labels) : (__requestBase is { } __LabelsBaseValue ? __LabelsBaseValue.Labels : default);
                         var projectId = CliRuntime.WasSpecified(parseResult, ProjectId) ? parseResult.GetValue(ProjectId) : (__requestBase is { } __ProjectIdBaseValue ? __ProjectIdBaseValue.ProjectId : default);
                         var extensionId = CliRuntime.WasSpecified(parseResult, ExtensionId) ? parseResult.GetValue(ExtensionId) : (__requestBase is { } __ExtensionIdBaseValue ? __ExtensionIdBaseValue.ExtensionId : default);
                         var browserSettings = CliRuntime.WasSpecified(parseResult, BrowserSettings) ? parseResult.GetValue(BrowserSettings) : (__requestBase is { } __BrowserSettingsBaseValue ? __BrowserSettingsBaseValue.BrowserSettings : default);
@@ -147,6 +155,7 @@ internal static partial class SessionsCreateCommandApiCommand
 
 
                                 var response = await client.SessionsCreateAsync(
+                                    labels: labels,
                                     projectId: projectId,
                                     extensionId: extensionId,
                                     browserSettings: browserSettings,
