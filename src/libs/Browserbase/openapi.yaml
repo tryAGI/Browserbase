@@ -2124,6 +2124,72 @@ paths:
                   - results
                   - total
   /v1/labels:
+    get:
+      operationId: Labels_list
+      summary: List Labels
+      description: List the project's labels, newest first. Page by passing the previous response's `nextCursor` as `cursor`; a null `nextCursor` means there are no further pages.
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of results to return.
+          required: false
+          schema:
+            type: integer
+            default: 20
+            maximum: 1000
+            minimum: 1
+        - name: cursor
+          in: query
+          description: Pagination cursor. Pass the nextCursor from the previous response to fetch the next page. Omit to start from the first page.
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A page of labels.
+          content:
+            application/json:
+              schema:
+                description: A page of labels.
+                type: object
+                properties:
+                  data:
+                    description: The page of matching labels.
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Label"
+                  limit:
+                    description: The maximum number of results returned in this page.
+                    type: integer
+                  nextCursor:
+                    description: Cursor for the next page. Pass it back as `cursor` on the next request to continue paging. null when there are no more results.
+                    anyOf:
+                      - type: string
+                    nullable: true
+                required:
+                  - data
+                  - limit
+                  - nextCursor
+        "400":
+          description: Invalid query parameters or cursor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    description: HTTP status code.
+                    type: integer
+                  error:
+                    description: HTTP error name.
+                    type: string
+                  message:
+                    description: Human-readable error message.
+                    type: string
+                required:
+                  - statusCode
+                  - error
+                  - message
     post:
       operationId: Labels_create
       summary: Create a Label
