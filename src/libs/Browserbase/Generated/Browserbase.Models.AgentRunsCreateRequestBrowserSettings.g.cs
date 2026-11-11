@@ -22,6 +22,24 @@ namespace Browserbase
         public global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? Proxies { get; set; }
 
         /// <summary>
+        /// Proxy settings for the browser session. Optional.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("proxySettings")]
+        public global::Browserbase.AgentRunsCreateRequestBrowserSettingsProxySettings? ProxySettings { get; set; }
+
+        /// <summary>
+        /// Domains the browser session may navigate to, including their subdomains. Restricts top-level navigations only. Omit or pass an empty list to allow every domain.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowedDomains")]
+        public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
+
+        /// <summary>
+        /// Set `true` to ignore TLS certificate errors in the browser session. When omitted, your project's default applies.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
+        public bool? IgnoreCertificateErrors { get; set; }
+
+        /// <summary>
         /// Set true to enable Browserbase Verified for the session.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("verified")]
@@ -52,6 +70,15 @@ namespace Browserbase
         /// <param name="proxies">
         /// Proxy configuration. Can be true for default proxy, or an array of proxy configurations.
         /// </param>
+        /// <param name="proxySettings">
+        /// Proxy settings for the browser session. Optional.
+        /// </param>
+        /// <param name="allowedDomains">
+        /// Domains the browser session may navigate to, including their subdomains. Restricts top-level navigations only. Omit or pass an empty list to allow every domain.
+        /// </param>
+        /// <param name="ignoreCertificateErrors">
+        /// Set `true` to ignore TLS certificate errors in the browser session. When omitted, your project's default applies.
+        /// </param>
         /// <param name="verified">
         /// Set true to enable Browserbase Verified for the session.
         /// </param>
@@ -67,12 +94,18 @@ namespace Browserbase
         public AgentRunsCreateRequestBrowserSettings(
             global::Browserbase.AgentRunsCreateRequestBrowserSettingsContext? context,
             global::Browserbase.AnyOf<global::System.Collections.Generic.IList<global::Browserbase.AnyOf<global::Browserbase.BrowserbaseProxyConfig, global::Browserbase.ExternalProxyConfig, global::Browserbase.NoneProxyConfig>>, bool?>? proxies,
+            global::Browserbase.AgentRunsCreateRequestBrowserSettingsProxySettings? proxySettings,
+            global::System.Collections.Generic.IList<string>? allowedDomains,
+            bool? ignoreCertificateErrors,
             bool? verified,
             bool? recordSession,
             bool? logSession)
         {
             this.Context = context;
             this.Proxies = proxies;
+            this.ProxySettings = proxySettings;
+            this.AllowedDomains = allowedDomains;
+            this.IgnoreCertificateErrors = ignoreCertificateErrors;
             this.Verified = verified;
             this.RecordSession = recordSession;
             this.LogSession = logSession;

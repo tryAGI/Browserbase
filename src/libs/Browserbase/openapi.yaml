@@ -227,6 +227,25 @@ paths:
                               - $ref: "#/components/schemas/ExternalProxyConfig"
                               - $ref: "#/components/schemas/NoneProxyConfig"
                         - type: boolean
+                    proxySettings:
+                      description: Proxy settings for the browser session. Optional.
+                      type: object
+                      additionalProperties: false
+                      properties:
+                        caCertificates:
+                          description: The TLS certificate IDs to trust. Optional.
+                          type: array
+                          items:
+                            format: uuid
+                            type: string
+                    allowedDomains:
+                      description: Domains the browser session may navigate to, including their subdomains. Restricts top-level navigations only. Omit or pass an empty list to allow every domain.
+                      type: array
+                      items:
+                        type: string
+                    ignoreCertificateErrors:
+                      description: Set `true` to ignore TLS certificate errors in the browser session. When omitted, your project's default applies.
+                      type: boolean
                     verified:
                       description: Set true to enable Browserbase Verified for the session.
                       type: boolean
