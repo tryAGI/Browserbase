@@ -53,6 +53,7 @@ internal static partial class DefaultApiGroupCommand
                          command.Subcommands.Add(InvocationsGetLogsCommandApiCommand.Create());
                          command.Subcommands.Add(LabelsCreateCommandApiCommand.Create());
                          command.Subcommands.Add(LabelsDeleteCommandApiCommand.Create());
+                         command.Subcommands.Add(LabelsListCommandApiCommand.Create());
                          command.Subcommands.Add(LabelsUpdateCommandApiCommand.Create());
                          command.Subcommands.Add(NavigationPoliciesCreateCommandApiCommand.Create());
                          command.Subcommands.Add(NavigationPoliciesDeleteCommandApiCommand.Create());
