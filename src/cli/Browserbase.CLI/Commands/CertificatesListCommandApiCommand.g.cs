@@ -33,7 +33,8 @@ internal static partial class CertificatesListCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"certificates-list", @"List Certificates");
+        var command = new Command(commandName ?? @"certificates-list", @"List Certificates
+List the certificates uploaded to your project.");
 
 
 

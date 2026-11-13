@@ -889,6 +889,7 @@ paths:
     post:
       operationId: Certificates_upload
       summary: Upload a Certificate
+      description: Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
       requestBody:
         required: true
         content:
@@ -911,6 +912,7 @@ paths:
     get:
       operationId: Certificates_list
       summary: List Certificates
+      description: List the certificates uploaded to your project.
       responses:
         "200":
           description: The request has succeeded.
@@ -924,6 +926,7 @@ paths:
     get:
       operationId: Certificates_get
       summary: Get a Certificate
+      description: Retrieve metadata for an uploaded certificate by its ID, including its project ID and timestamps. The PEM content is not returned.
       parameters:
         - name: id
           in: path
@@ -940,6 +943,7 @@ paths:
     delete:
       operationId: Certificates_delete
       summary: Delete a Certificate
+      description: Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.
       parameters:
         - name: id
           in: path

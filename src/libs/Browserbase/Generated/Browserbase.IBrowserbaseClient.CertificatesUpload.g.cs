@@ -5,7 +5,8 @@ namespace Browserbase
     public partial interface IBrowserbaseClient
     {
         /// <summary>
-        /// Upload a Certificate
+        /// Upload a Certificate<br/>
+        /// Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -17,7 +18,8 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Upload a Certificate
+        /// Upload a Certificate<br/>
+        /// Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,7 +31,8 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Upload a Certificate
+        /// Upload a Certificate<br/>
+        /// Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
         /// </summary>
         /// <param name="file"></param>
         /// <param name="filename"></param>
@@ -43,7 +46,8 @@ namespace Browserbase
             global::System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Upload a Certificate
+        /// Upload a Certificate<br/>
+        /// Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
         /// </summary>
         /// <param name="file">
         /// The stream to send as the multipart 'file' file part.
@@ -58,7 +62,8 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Upload a Certificate
+        /// Upload a Certificate<br/>
+        /// Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.
         /// </summary>
         /// <param name="file">
         /// The stream to send as the multipart 'file' file part.

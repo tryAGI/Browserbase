@@ -5,7 +5,8 @@ namespace Browserbase
     public partial interface IBrowserbaseClient
     {
         /// <summary>
-        /// Get a Certificate
+        /// Get a Certificate<br/>
+        /// Retrieve metadata for an uploaded certificate by its ID, including its project ID and timestamps. The PEM content is not returned.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -16,7 +17,8 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get a Certificate
+        /// Get a Certificate<br/>
+        /// Retrieve metadata for an uploaded certificate by its ID, including its project ID and timestamps. The PEM content is not returned.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
