@@ -17,8 +17,24 @@ internal static partial class SearchWebCommandApiCommand
     private static Option<int?> NumResults { get; } = new(
         name: @"--num-results")
     {
-        Description = @"Number of results to return (1-25)",
+        Description = @"Number of results to return",
     };
+
+    private static Option<string?> Objective { get; } = new(
+        name: @"--objective")
+    {
+        Description = @"The task intent and soft preferences for the search, in natural language. Adds context to query without replacing it.",
+    };
+
+    private static Option<int?> MaxAgeHours { get; } = new(
+        name: @"--max-age-hours")
+    {
+        Description = @"Refetch a page when the cached copy is older than this many hours. Omit to use the provider default. A provider can return an older cached copy when a live fetch fails.",
+    };
+
+    private static Option<bool?> Excerpts { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--excerpts",
+        description: @"Return the passages of each page most relevant to the query. Defaults to false.");
 
     private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>?> Provider { get; } = new(
         name: @"--provider")
@@ -76,6 +92,9 @@ internal static partial class SearchWebCommandApiCommand
 Perform a web search and return structured results.");
                         command.Options.Add(Query);
                         command.Options.Add(NumResults);
+                        command.Options.Add(Objective);
+                        command.Options.Add(MaxAgeHours);
+                        command.Options.Add(Excerpts);
                         command.Options.Add(Provider);
                         command.Options.Add(Mode);
           command.Options.Add(Input);
@@ -105,6 +124,9 @@ Perform a web search and return structured results.");
                             cancellationToken).ConfigureAwait(false);
                         var query = parseResult.GetRequiredValue(Query);
                         var numResults = CliRuntime.WasSpecified(parseResult, NumResults) ? parseResult.GetValue(NumResults) : (__requestBase is { } __NumResultsBaseValue ? __NumResultsBaseValue.NumResults : default);
+                        var objective = CliRuntime.WasSpecified(parseResult, Objective) ? parseResult.GetValue(Objective) : (__requestBase is { } __ObjectiveBaseValue ? __ObjectiveBaseValue.Objective : default);
+                        var maxAgeHours = CliRuntime.WasSpecified(parseResult, MaxAgeHours) ? parseResult.GetValue(MaxAgeHours) : (__requestBase is { } __MaxAgeHoursBaseValue ? __MaxAgeHoursBaseValue.MaxAgeHours : default);
+                        var excerpts = CliRuntime.WasSpecified(parseResult, Excerpts) ? parseResult.GetValue(Excerpts) : (__requestBase is { } __ExcerptsBaseValue ? __ExcerptsBaseValue.Excerpts : default);
                         var provider = CliRuntime.WasSpecified(parseResult, Provider) ? parseResult.GetValue(Provider) : (__requestBase is { } __ProviderBaseValue ? __ProviderBaseValue.Provider : default);
                         var mode = CliRuntime.WasSpecified(parseResult, Mode) ? parseResult.GetValue(Mode) : (__requestBase is { } __ModeBaseValue ? __ModeBaseValue.Mode : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
@@ -113,6 +135,9 @@ Perform a web search and return structured results.");
                                 var response = await client.SearchWebAsync(
                                     query: query,
                                     numResults: numResults,
+                                    objective: objective,
+                                    maxAgeHours: maxAgeHours,
+                                    excerpts: excerpts,
                                     provider: provider,
                                     mode: mode,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);

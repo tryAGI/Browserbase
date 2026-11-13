@@ -223,6 +223,14 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.InvocationsGetResponseCauseCodeNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.SearchWebResponseProviderJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebResponseProviderNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebResponseModeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SearchWebResponseModeNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.AllOfJsonConverter<global::Browserbase.Function, global::Browserbase.FunctionBuildBuiltFunction>),
 
             typeof(global::Browserbase.JsonConverters.AnyOfJsonConverter<string, double?, bool?, global::System.Collections.Generic.IList<object>, object>),
@@ -500,6 +508,8 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicy>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.Project>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebResponseProvider), TypeInfoPropertyName = "SearchWebResponseProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebResponseMode), TypeInfoPropertyName = "SearchWebResponseMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SearchWebResponseResult))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SecretsListResponse))]

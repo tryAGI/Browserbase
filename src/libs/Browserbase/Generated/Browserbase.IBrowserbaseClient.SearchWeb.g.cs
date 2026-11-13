@@ -38,8 +38,17 @@ namespace Browserbase
         /// The search query string
         /// </param>
         /// <param name="numResults">
-        /// Number of results to return (1-25)<br/>
+        /// Number of results to return<br/>
         /// Default Value: 10
+        /// </param>
+        /// <param name="objective">
+        /// The task intent and soft preferences for the search, in natural language. Adds context to query without replacing it.
+        /// </param>
+        /// <param name="maxAgeHours">
+        /// Refetch a page when the cached copy is older than this many hours. Omit to use the provider default. A provider can return an older cached copy when a live fetch fails.
+        /// </param>
+        /// <param name="excerpts">
+        /// Return the passages of each page most relevant to the query. Defaults to false.
         /// </param>
         /// <param name="provider">
         /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.<br/>
@@ -54,6 +63,9 @@ namespace Browserbase
         global::System.Threading.Tasks.Task<global::Browserbase.SearchWebResponse> SearchWebAsync(
             string query,
             int? numResults = default,
+            string? objective = default,
+            int? maxAgeHours = default,
+            bool? excerpts = default,
             global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>? provider = default,
             global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>? mode = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,

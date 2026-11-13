@@ -23,6 +23,20 @@ namespace Browserbase
         public required string Query { get; set; }
 
         /// <summary>
+        /// The search provider that served the request. Can differ from the documented default when the project or the filters select another provider.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.SearchWebResponseProviderJsonConverter))]
+        public global::Browserbase.SearchWebResponseProvider? Provider { get; set; }
+
+        /// <summary>
+        /// The search mode that served the request.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("mode")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.SearchWebResponseModeJsonConverter))]
+        public global::Browserbase.SearchWebResponseMode? Mode { get; set; }
+
+        /// <summary>
         /// List of search results
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("results")]
@@ -47,16 +61,26 @@ namespace Browserbase
         /// <param name="results">
         /// List of search results
         /// </param>
+        /// <param name="provider">
+        /// The search provider that served the request. Can differ from the documented default when the project or the filters select another provider.
+        /// </param>
+        /// <param name="mode">
+        /// The search mode that served the request.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SearchWebResponse(
             string requestId,
             string query,
-            global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult> results)
+            global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult> results,
+            global::Browserbase.SearchWebResponseProvider? provider,
+            global::Browserbase.SearchWebResponseMode? mode)
         {
             this.RequestId = requestId ?? throw new global::System.ArgumentNullException(nameof(requestId));
             this.Query = query ?? throw new global::System.ArgumentNullException(nameof(query));
+            this.Provider = provider;
+            this.Mode = mode;
             this.Results = results ?? throw new global::System.ArgumentNullException(nameof(results));
         }
 

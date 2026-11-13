@@ -3092,11 +3092,25 @@ paths:
                   maxLength: 200
                   minLength: 1
                 numResults:
-                  description: Number of results to return (1-25)
+                  description: Number of results to return
                   type: integer
                   default: 10
                   maximum: 25
                   minimum: 1
+                objective:
+                  description: The task intent and soft preferences for the search, in natural language. Adds context to query without replacing it.
+                  type: string
+                  maxLength: 4096
+                  minLength: 1
+                  pattern: \S
+                maxAgeHours:
+                  description: Refetch a page when the cached copy is older than this many hours. Omit to use the provider default. A provider can return an older cached copy when a live fetch fails.
+                  type: integer
+                  maximum: 720
+                  minimum: 1
+                excerpts:
+                  description: Return the passages of each page most relevant to the query. Defaults to false.
+                  type: boolean
                 provider:
                   description: Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.
                   default: parallel
@@ -3181,6 +3195,20 @@ paths:
                   query:
                     description: The search query that was executed
                     type: string
+                  provider:
+                    description: The search provider that served the request. Can differ from the documented default when the project or the filters select another provider.
+                    type: string
+                    enum:
+                      - parallel
+                      - exa
+                  mode:
+                    description: The search mode that served the request.
+                    type: string
+                    enum:
+                      - fast
+                      - advanced
+                      - deep-lite
+                      - deep
                   results:
                     description: List of search results
                     type: array
@@ -3213,6 +3241,11 @@ paths:
                         favicon:
                           description: Favicon URL
                           type: string
+                        excerpts:
+                          description: Passages from the page most relevant to the query. Only set when the request asks for excerpts.
+                          type: array
+                          items:
+                            type: string
                 required:
                   - requestId
                   - query
