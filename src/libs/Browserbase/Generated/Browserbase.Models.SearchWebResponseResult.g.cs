@@ -54,6 +54,12 @@ namespace Browserbase
         public string? Favicon { get; set; }
 
         /// <summary>
+        /// Passages from the page most relevant to the query. Only set when the request asks for excerpts.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("excerpts")]
+        public global::System.Collections.Generic.IList<string>? Excerpts { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +89,9 @@ namespace Browserbase
         /// <param name="favicon">
         /// Favicon URL
         /// </param>
+        /// <param name="excerpts">
+        /// Passages from the page most relevant to the query. Only set when the request asks for excerpts.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -93,7 +102,8 @@ namespace Browserbase
             string? author,
             global::System.DateTime? publishedDate,
             string? image,
-            string? favicon)
+            string? favicon,
+            global::System.Collections.Generic.IList<string>? excerpts)
         {
             this.Id = id ?? throw new global::System.ArgumentNullException(nameof(id));
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
@@ -102,6 +112,7 @@ namespace Browserbase
             this.PublishedDate = publishedDate;
             this.Image = image;
             this.Favicon = favicon;
+            this.Excerpts = excerpts;
         }
 
         /// <summary>
