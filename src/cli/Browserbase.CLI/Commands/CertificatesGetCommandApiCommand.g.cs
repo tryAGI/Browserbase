@@ -37,7 +37,8 @@ internal static partial class CertificatesGetCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"certificates-get", @"Get a Certificate");
+        var command = new Command(commandName ?? @"certificates-get", @"Get a Certificate
+Retrieve metadata for an uploaded certificate by its ID, including its project ID and timestamps. The PEM content is not returned.");
                         command.Arguments.Add(Id);
 
 

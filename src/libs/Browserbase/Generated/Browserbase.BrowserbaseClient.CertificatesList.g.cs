@@ -40,7 +40,8 @@ namespace Browserbase
             ref string content);
 
         /// <summary>
-        /// List Certificates
+        /// List Certificates<br/>
+        /// List the certificates uploaded to your project.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -57,7 +58,8 @@ namespace Browserbase
             return __response.Body;
         }
         /// <summary>
-        /// List Certificates
+        /// List Certificates<br/>
+        /// List the certificates uploaded to your project.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

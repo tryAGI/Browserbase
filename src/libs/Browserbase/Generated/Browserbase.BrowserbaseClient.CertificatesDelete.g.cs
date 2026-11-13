@@ -37,7 +37,8 @@ namespace Browserbase
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete a Certificate
+        /// Delete a Certificate<br/>
+        /// Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -55,7 +56,8 @@ namespace Browserbase
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a Certificate
+        /// Delete a Certificate<br/>
+        /// Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

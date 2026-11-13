@@ -5,7 +5,8 @@ namespace Browserbase
     public partial interface IBrowserbaseClient
     {
         /// <summary>
-        /// Delete a Certificate
+        /// Delete a Certificate<br/>
+        /// Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -16,7 +17,8 @@ namespace Browserbase
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete a Certificate
+        /// Delete a Certificate<br/>
+        /// Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

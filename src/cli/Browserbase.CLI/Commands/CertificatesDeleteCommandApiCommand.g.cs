@@ -17,7 +17,8 @@ internal static partial class CertificatesDeleteCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"certificates-delete", @"Delete a Certificate");
+        var command = new Command(commandName ?? @"certificates-delete", @"Delete a Certificate
+Delete an uploaded certificate from your project by its ID. Session creation requests that still reference this ID in `proxySettings.caCertificates` fail with HTTP 400.");
                         command.Arguments.Add(Id);
 
 

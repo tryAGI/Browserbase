@@ -45,7 +45,8 @@ internal static partial class CertificatesUploadCommandApiCommand
 
     public static Command Create(string? commandName = null)
     {
-        var command = new Command(commandName ?? @"certificates-upload", @"Upload a Certificate");
+        var command = new Command(commandName ?? @"certificates-upload", @"Upload a Certificate
+Upload a PEM file with one or more CA certificates (up to 100 MB). Pass the returned ID in `proxySettings.caCertificates` when creating a session so the browser trusts these certificates.");
                         command.Options.Add(File);
                         command.Options.Add(Filename);
 
