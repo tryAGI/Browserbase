@@ -370,19 +370,19 @@ namespace Browserbase
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Browserbase.FunctionsDetachSecretResponse2? __value_404 = null;
+                                global::Browserbase.FunctionsDetachSecretResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Browserbase.FunctionsDetachSecretResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.FunctionsDetachSecretResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Browserbase.FunctionsDetachSecretResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.FunctionsDetachSecretResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -391,7 +391,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.FunctionsDetachSecretResponse2>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.FunctionsDetachSecretResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,

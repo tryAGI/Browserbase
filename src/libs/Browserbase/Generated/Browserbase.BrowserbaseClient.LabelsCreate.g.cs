@@ -379,19 +379,19 @@ namespace Browserbase
                             {
                                 string? __content_409 = null;
                                 global::System.Exception? __exception_409 = null;
-                                global::Browserbase.LabelsCreateResponse2? __value_409 = null;
+                                global::Browserbase.LabelsCreateResponse? __value_409 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_409 = global::Browserbase.LabelsCreateResponse2.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Browserbase.LabelsCreateResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_409 = global::Browserbase.LabelsCreateResponse2.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Browserbase.LabelsCreateResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -400,7 +400,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse2>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_409,
@@ -416,19 +416,19 @@ namespace Browserbase
                             {
                                 string? __content_422 = null;
                                 global::System.Exception? __exception_422 = null;
-                                global::Browserbase.LabelsCreateResponse3? __value_422 = null;
+                                global::Browserbase.LabelsCreateResponse? __value_422 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::Browserbase.LabelsCreateResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::Browserbase.LabelsCreateResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::Browserbase.LabelsCreateResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::Browserbase.LabelsCreateResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -437,7 +437,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse3>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
@@ -453,19 +453,19 @@ namespace Browserbase
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::Browserbase.LabelsCreateResponse4? __value_429 = null;
+                                global::Browserbase.LabelsCreateResponse? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::Browserbase.LabelsCreateResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Browserbase.LabelsCreateResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::Browserbase.LabelsCreateResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::Browserbase.LabelsCreateResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -474,7 +474,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse4>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.LabelsCreateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,

@@ -388,19 +388,19 @@ namespace Browserbase
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Browserbase.SecretsUpdateResponse2? __value_404 = null;
+                                global::Browserbase.SecretsUpdateResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Browserbase.SecretsUpdateResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.SecretsUpdateResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Browserbase.SecretsUpdateResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.SecretsUpdateResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -409,7 +409,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.SecretsUpdateResponse2>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.SecretsUpdateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,

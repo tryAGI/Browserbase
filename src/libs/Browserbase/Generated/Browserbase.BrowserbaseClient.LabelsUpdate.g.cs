@@ -388,19 +388,19 @@ namespace Browserbase
                             {
                                 string? __content_404 = null;
                                 global::System.Exception? __exception_404 = null;
-                                global::Browserbase.LabelsUpdateResponse2? __value_404 = null;
+                                global::Browserbase.LabelsUpdateResponse? __value_404 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Browserbase.LabelsUpdateResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.LabelsUpdateResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Browserbase.LabelsUpdateResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = global::Browserbase.LabelsUpdateResponse.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -409,7 +409,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.LabelsUpdateResponse2>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.LabelsUpdateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
@@ -425,19 +425,19 @@ namespace Browserbase
                             {
                                 string? __content_409 = null;
                                 global::System.Exception? __exception_409 = null;
-                                global::Browserbase.LabelsUpdateResponse3? __value_409 = null;
+                                global::Browserbase.LabelsUpdateResponse? __value_409 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_409 = global::Browserbase.LabelsUpdateResponse3.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Browserbase.LabelsUpdateResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_409 = global::Browserbase.LabelsUpdateResponse3.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = global::Browserbase.LabelsUpdateResponse.FromJson(__content_409, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -446,7 +446,7 @@ namespace Browserbase
                                 }
 
 
-                                throw global::Browserbase.ApiException<global::Browserbase.LabelsUpdateResponse3>.Create(
+                                throw global::Browserbase.ApiException<global::Browserbase.LabelsUpdateResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_409,
