@@ -882,275 +882,231 @@ namespace Browserbase
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.FunctionsAttachSecretResponse2? Type211 { get; set; }
+        public global::Browserbase.FunctionsDetachSecretResponse? Type211 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.FunctionsDetachSecretResponse? Type212 { get; set; }
+        public global::Browserbase.FunctionsListVersionsResponse? Type212 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.FunctionsDetachSecretResponse2? Type213 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.FunctionVersion>? Type213 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.FunctionsListVersionsResponse? Type214 { get; set; }
+        public global::Browserbase.LabelsListResponse? Type214 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.FunctionVersion>? Type215 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Label>? Type215 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsListResponse? Type216 { get; set; }
+        public global::Browserbase.LabelsListResponse2? Type216 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Label>? Type217 { get; set; }
+        public global::Browserbase.LabelsCreateResponse? Type217 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsListResponse2? Type218 { get; set; }
+        public global::Browserbase.LabelsUpdateResponse? Type218 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsCreateResponse? Type219 { get; set; }
+        public global::Browserbase.LabelsDeleteResponse? Type219 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsCreateResponse2? Type220 { get; set; }
+        public global::Browserbase.NavigationPoliciesListResponse? Type220 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsCreateResponse3? Type221 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicy>? Type221 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsCreateResponse4? Type222 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Project>? Type222 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsUpdateResponse? Type223 { get; set; }
+        public global::Browserbase.SearchWebResponse? Type223 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsUpdateResponse2? Type224 { get; set; }
+        public global::Browserbase.SearchWebResponseProvider? Type224 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsUpdateResponse3? Type225 { get; set; }
+        public global::Browserbase.SearchWebResponseMode? Type225 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.LabelsDeleteResponse? Type226 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>? Type226 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.NavigationPoliciesListResponse? Type227 { get; set; }
+        public global::Browserbase.SearchWebResponseResult? Type227 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.NavigationPolicy>? Type228 { get; set; }
+        public global::Browserbase.SecretsListResponse? Type228 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Project>? Type229 { get; set; }
+        public global::Browserbase.SecretsListResponse2? Type229 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebResponse? Type230 { get; set; }
+        public global::Browserbase.SecretsCreateResponse? Type230 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebResponseProvider? Type231 { get; set; }
+        public global::Browserbase.SecretsGetResponse? Type231 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebResponseMode? Type232 { get; set; }
+        public global::Browserbase.SecretsDeleteResponse? Type232 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SearchWebResponseResult>? Type233 { get; set; }
+        public global::Browserbase.SecretsUpdateResponse? Type233 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebResponseResult? Type234 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Session>? Type234 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsListResponse? Type235 { get; set; }
+        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>? Type235 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsListResponse2? Type236 { get; set; }
+        public global::Browserbase.SessionsCreateResponse2? Type236 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsCreateResponse? Type237 { get; set; }
+        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>? Type237 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsCreateResponse2? Type238 { get; set; }
+        public global::Browserbase.SessionsGetResponse2? Type238 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsGetResponse? Type239 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionsGetResponseLabel>? Type239 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsGetResponse2? Type240 { get; set; }
+        public global::Browserbase.SessionsGetResponseLabel? Type240 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsDeleteResponse? Type241 { get; set; }
+        public global::Browserbase.SessionsSetLabelsResponse? Type241 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsDeleteResponse2? Type242 { get; set; }
+        public global::Browserbase.SessionsSetLabelsResponse2? Type242 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsUpdateResponse? Type243 { get; set; }
+        public global::Browserbase.SessionsSetLabelsResponse3? Type243 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SecretsUpdateResponse2? Type244 { get; set; }
+        public global::Browserbase.SessionsSetLabelsResponse4? Type244 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Session>? Type245 { get; set; }
+        public global::Browserbase.SessionsSetLabelsResponse5? Type245 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsCreateResponse2>? Type246 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.SessionLog>? Type246 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateResponse2? Type247 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse? Type247 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Session, global::Browserbase.SessionsGetResponse2>? Type248 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.RecordingDownload>? Type248 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsGetResponse2? Type249 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse2? Type249 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionsGetResponseLabel>? Type250 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse3? Type250 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsGetResponseLabel? Type251 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse4? Type251 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsSetLabelsResponse? Type252 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse5? Type252 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsSetLabelsResponse2? Type253 { get; set; }
+        public global::Browserbase.SessionsCreateRecordingDownloadsResponse6? Type253 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsSetLabelsResponse3? Type254 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse? Type254 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsSetLabelsResponse4? Type255 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse2? Type255 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsSetLabelsResponse5? Type256 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse3? Type256 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.SessionLog>? Type257 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse4? Type257 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse? Type258 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse5? Type258 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.RecordingDownload>? Type259 { get; set; }
+        public global::Browserbase.SessionsListRecordingDownloadsResponse6? Type259 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse2? Type260 { get; set; }
+        public global::Browserbase.SessionsGetReplayResponse? Type260 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse3? Type261 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>? Type261 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse4? Type262 { get; set; }
+        public global::Browserbase.SessionsUploadFileResponse? Type262 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse5? Type263 { get; set; }
+        public global::Browserbase.AllOf<global::Browserbase.Webhook, global::Browserbase.WebhooksCreateResponse2>? Type263 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsCreateRecordingDownloadsResponse6? Type264 { get; set; }
+        public global::Browserbase.WebhooksCreateResponse2? Type264 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse? Type265 { get; set; }
+        public global::Browserbase.WebhooksListResponse? Type265 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse2? Type266 { get; set; }
+        public global::System.Collections.Generic.IList<global::Browserbase.Webhook>? Type266 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse3? Type267 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse4? Type268 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse5? Type269 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.SessionsListRecordingDownloadsResponse6? Type270 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.SessionsGetReplayResponse? Type271 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.ReplayPage>? Type272 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.SessionsUploadFileResponse? Type273 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.AllOf<global::Browserbase.Webhook, global::Browserbase.WebhooksCreateResponse2>? Type274 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.WebhooksCreateResponse2? Type275 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.WebhooksListResponse? Type276 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::System.Collections.Generic.IList<global::Browserbase.Webhook>? Type277 { get; set; }
-        /// <summary>
-        ///
-        /// </summary>
-        public global::Browserbase.WebhooksRotateSecretResponse? Type278 { get; set; }
+        public global::Browserbase.WebhooksRotateSecretResponse? Type267 { get; set; }
 
         /// <summary>
         ///
