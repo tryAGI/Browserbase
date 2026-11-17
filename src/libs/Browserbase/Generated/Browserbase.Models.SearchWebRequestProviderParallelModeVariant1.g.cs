@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public enum SearchWebRequestVariant1ModeVariant1
+    public enum SearchWebRequestProviderParallelModeVariant1
     {
         /// <summary>
         ///
@@ -17,27 +17,27 @@ namespace Browserbase
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class SearchWebRequestVariant1ModeVariant1Extensions
+    public static class SearchWebRequestProviderParallelModeVariant1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this SearchWebRequestVariant1ModeVariant1 value)
+        public static string ToValueString(this SearchWebRequestProviderParallelModeVariant1 value)
         {
             return value switch
             {
-                SearchWebRequestVariant1ModeVariant1.Fast => "fast",
+                SearchWebRequestProviderParallelModeVariant1.Fast => "fast",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static SearchWebRequestVariant1ModeVariant1? ToEnum(string value)
+        public static SearchWebRequestProviderParallelModeVariant1? ToEnum(string value)
         {
             return value switch
             {
-                "fast" => SearchWebRequestVariant1ModeVariant1.Fast,
+                "fast" => SearchWebRequestProviderParallelModeVariant1.Fast,
                 _ => null,
             };
         }

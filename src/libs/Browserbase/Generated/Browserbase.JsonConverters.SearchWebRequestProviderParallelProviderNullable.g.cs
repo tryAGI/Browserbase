@@ -3,10 +3,10 @@
 namespace Browserbase.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class SearchWebRequestVariant1ModeVariant1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Browserbase.SearchWebRequestVariant1ModeVariant1?>
+    public sealed class SearchWebRequestProviderParallelProviderNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Browserbase.SearchWebRequestProviderParallelProvider?>
     {
         /// <inheritdoc />
-        public override global::Browserbase.SearchWebRequestVariant1ModeVariant1? Read(
+        public override global::Browserbase.SearchWebRequestProviderParallelProvider? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Browserbase.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Browserbase.SearchWebRequestVariant1ModeVariant1Extensions.ToEnum(stringValue);
+                        return global::Browserbase.SearchWebRequestProviderParallelProviderExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Browserbase.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Browserbase.SearchWebRequestVariant1ModeVariant1)numValue;
+                    return (global::Browserbase.SearchWebRequestProviderParallelProvider)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Browserbase.SearchWebRequestVariant1ModeVariant1?);
+                    return default(global::Browserbase.SearchWebRequestProviderParallelProvider?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace Browserbase.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Browserbase.SearchWebRequestVariant1ModeVariant1? value,
+            global::Browserbase.SearchWebRequestProviderParallelProvider? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace Browserbase.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::Browserbase.SearchWebRequestVariant1ModeVariant1Extensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::Browserbase.SearchWebRequestProviderParallelProviderExtensions.ToValueString(value.Value));
             }
         }
     }

@@ -337,13 +337,13 @@ namespace Browserbase
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_404 = global::Browserbase.SessionsListRecordingDownloadsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse2.FromJson(__content_404, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_404 = global::Browserbase.SessionsListRecordingDownloadsResponse2.FromJson(__content_404, JsonSerializerContext);
+                                        __value_404 = __content_404 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse2.FromJson(__content_404, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -354,7 +354,7 @@ namespace Browserbase
 
                                 throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse2>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_404 is { Length: > 0 } ? __content_404 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_404,
                                     responseBody: __content_404,
                                     responseObject: __value_404,
@@ -374,13 +374,13 @@ namespace Browserbase
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_409 = global::Browserbase.SessionsListRecordingDownloadsResponse3.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = __content_409 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse3.FromJson(__content_409, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_409 = global::Browserbase.SessionsListRecordingDownloadsResponse3.FromJson(__content_409, JsonSerializerContext);
+                                        __value_409 = __content_409 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse3.FromJson(__content_409, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -391,7 +391,7 @@ namespace Browserbase
 
                                 throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse3>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_409 is { Length: > 0 } ? __content_409 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_409,
                                     responseBody: __content_409,
                                     responseObject: __value_409,
@@ -411,13 +411,13 @@ namespace Browserbase
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_410 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_410 = global::Browserbase.SessionsListRecordingDownloadsResponse4.FromJson(__content_410, JsonSerializerContext);
+                                        __value_410 = __content_410 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse4.FromJson(__content_410, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_410 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_410 = global::Browserbase.SessionsListRecordingDownloadsResponse4.FromJson(__content_410, JsonSerializerContext);
+                                        __value_410 = __content_410 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse4.FromJson(__content_410, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -428,7 +428,7 @@ namespace Browserbase
 
                                 throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse4>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_410 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_410 is { Length: > 0 } ? __content_410 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_410,
                                     responseBody: __content_410,
                                     responseObject: __value_410,
@@ -448,13 +448,13 @@ namespace Browserbase
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = __content_422 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = __content_422 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse5.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -465,7 +465,7 @@ namespace Browserbase
 
                                 throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse5>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_422 is { Length: > 0 } ? __content_422 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
                                     responseBody: __content_422,
                                     responseObject: __value_422,
@@ -485,13 +485,13 @@ namespace Browserbase
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = __content_502 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_502 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_502 = global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
+                                        __value_502 = __content_502 is not { Length: > 0 } ? null : global::Browserbase.SessionsListRecordingDownloadsResponse6.FromJson(__content_502, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -502,7 +502,7 @@ namespace Browserbase
 
                                 throw global::Browserbase.ApiException<global::Browserbase.SessionsListRecordingDownloadsResponse6>.Create(
                                     statusCode: __response.StatusCode,
-                                    message: __content_502 ?? __response.ReasonPhrase ?? string.Empty,
+                                    message: __content_502 is { Length: > 0 } ? __content_502 : __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_502,
                                     responseBody: __content_502,
                                     responseObject: __value_502,
@@ -545,7 +545,7 @@ namespace Browserbase
                                 {
                                     throw global::Browserbase.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(
@@ -590,7 +590,7 @@ namespace Browserbase
 
                                     throw global::Browserbase.ApiException.Create(
                                         statusCode: __response.StatusCode,
-                                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                                        message: __content is { Length: > 0 } ? __content : __response.ReasonPhrase ?? string.Empty,
                                         innerException: __ex,
                                         responseBody: __content,
                                         responseHeaders: global::System.Linq.Enumerable.ToDictionary(

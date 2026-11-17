@@ -3,10 +3,10 @@
 namespace Browserbase.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class SearchWebRequestVariant2ModeVariant1NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Browserbase.SearchWebRequestVariant2ModeVariant1?>
+    public sealed class SearchWebRequestProviderExaModeVariant2JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::Browserbase.SearchWebRequestProviderExaModeVariant2>
     {
         /// <inheritdoc />
-        public override global::Browserbase.SearchWebRequestVariant2ModeVariant1? Read(
+        public override global::Browserbase.SearchWebRequestProviderExaModeVariant2 Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace Browserbase.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::Browserbase.SearchWebRequestVariant2ModeVariant1Extensions.ToEnum(stringValue);
+                        return global::Browserbase.SearchWebRequestProviderExaModeVariant2Extensions.ToEnum(stringValue) ?? throw new global::System.Text.Json.JsonException($"Unknown value '{stringValue}' for global::Browserbase.SearchWebRequestProviderExaModeVariant2.");
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace Browserbase.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::Browserbase.SearchWebRequestVariant2ModeVariant1)numValue;
+                    return (global::Browserbase.SearchWebRequestProviderExaModeVariant2)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::Browserbase.SearchWebRequestVariant2ModeVariant1?);
+                    return default(global::Browserbase.SearchWebRequestProviderExaModeVariant2);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace Browserbase.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::Browserbase.SearchWebRequestVariant2ModeVariant1? value,
+            global::Browserbase.SearchWebRequestProviderExaModeVariant2 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::Browserbase.SearchWebRequestVariant2ModeVariant1Extensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::Browserbase.SearchWebRequestProviderExaModeVariant2Extensions.ToValueString(value));
         }
     }
 }

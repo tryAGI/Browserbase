@@ -574,47 +574,47 @@ namespace Browserbase
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant1? Type134 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderParallel? Type134 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant1Provider? Type135 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderParallelProvider? Type135 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestVariant1ModeVariant1?, global::Browserbase.SearchWebRequestVariant1ModeVariant2?>? Type136 { get; set; }
+        public global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderParallelModeVariant1?, global::Browserbase.SearchWebRequestProviderParallelModeVariant2?>? Type136 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant1ModeVariant1? Type137 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderParallelModeVariant1? Type137 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant1ModeVariant2? Type138 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderParallelModeVariant2? Type138 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant2? Type139 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderExa? Type139 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant2Provider? Type140 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderExaProvider? Type140 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant2ModeVariant1? Type141 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderExaModeVariant1? Type141 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant2ModeVariant2? Type142 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderExaModeVariant2? Type142 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant2ModeVariant3? Type143 { get; set; }
+        public global::Browserbase.SearchWebRequestProviderExaModeVariant3? Type143 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::Browserbase.SearchWebRequestVariant3? Type144 { get; set; }
+        public global::Browserbase.SearchWebRequestDefaultProvider? Type144 { get; set; }
         /// <summary>
         ///
         /// </summary>

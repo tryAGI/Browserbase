@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class SearchWebRequestVariant3
+    public sealed partial class SearchWebRequestDefaultProvider
     {
         /// <summary>
         ///
@@ -21,22 +21,22 @@ namespace Browserbase
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchWebRequestVariant3" /> class.
+        /// Initializes a new instance of the <see cref="SearchWebRequestDefaultProvider" /> class.
         /// </summary>
         /// <param name="provider"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public SearchWebRequestVariant3(
+        public SearchWebRequestDefaultProvider(
             object? provider)
         {
             this.Provider = provider;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchWebRequestVariant3" /> class.
+        /// Initializes a new instance of the <see cref="SearchWebRequestDefaultProvider" /> class.
         /// </summary>
-        public SearchWebRequestVariant3()
+        public SearchWebRequestDefaultProvider()
         {
         }
 
