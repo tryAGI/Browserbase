@@ -444,6 +444,27 @@ namespace Browserbase
         /// Number of results to return<br/>
         /// Default Value: 10
         /// </param>
+        /// <param name="includeDomains">
+        /// Only return results from these domains. Entries can be a hostname (example.com), a hostname with a path prefix (example.com/docs), or a wildcard subdomain (*.example.com). The `parallel` provider allows one list, not both, with at most 200 domains and no scheme, port, query string, or fragment.
+        /// </param>
+        /// <param name="excludeDomains">
+        /// Never return results from these domains. Accepts the same entry formats as includeDomains. Not supported with the people category.
+        /// </param>
+        /// <param name="startPublishedDate">
+        /// Only return results published after this date-time (RFC 3339, for example 2026-01-01T00:00:00Z). The `parallel` provider rounds it up to a whole UTC day. Not supported with the company or people categories.
+        /// </param>
+        /// <param name="endPublishedDate">
+        /// Only return results published before this date-time (RFC 3339, for example 2026-01-01T00:00:00Z). Only the `exa` provider supports this filter. Not supported with the company or people categories.
+        /// </param>
+        /// <param name="category">
+        /// Focus the search on a category of content. Only the `exa` provider supports this filter.
+        /// </param>
+        /// <param name="userLocation">
+        /// Two-letter ISO 3166-1 country code of the end user. Localizes ranking without restricting results to sources from that country. The `parallel` provider supports only [some countries](https://docs.browserbase.com/platform/search/overview#appendix-supported-countries).
+        /// </param>
+        /// <param name="moderation">
+        /// Filter unsafe content from the results. Defaults to `false`. Only the `exa` provider supports `true`.
+        /// </param>
         /// <param name="objective">
         /// The task intent and soft preferences for the search, in natural language. Adds context to query without replacing it.
         /// </param>
@@ -454,7 +475,7 @@ namespace Browserbase
         /// Return the passages of each page most relevant to the query. Defaults to false.
         /// </param>
         /// <param name="provider">
-        /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.<br/>
+        /// Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set. If you omit it and `parallel` can't apply one of your filters, `exa` serves the request at `exa` pricing. The response `provider` field shows which one served it.<br/>
         /// Default Value: parallel
         /// </param>
         /// <param name="mode">
@@ -466,6 +487,13 @@ namespace Browserbase
         public async global::System.Threading.Tasks.Task<global::Browserbase.SearchWebResponse> SearchWebAsync(
             string query,
             int? numResults = default,
+            global::System.Collections.Generic.IList<string>? includeDomains = default,
+            global::System.Collections.Generic.IList<string>? excludeDomains = default,
+            global::System.DateTime? startPublishedDate = default,
+            global::System.DateTime? endPublishedDate = default,
+            global::Browserbase.SearchWebRequestCategory? category = default,
+            string? userLocation = default,
+            bool? moderation = default,
             string? objective = default,
             int? maxAgeHours = default,
             bool? excerpts = default,
@@ -478,6 +506,13 @@ namespace Browserbase
             {
                 Query = query,
                 NumResults = numResults,
+                IncludeDomains = includeDomains,
+                ExcludeDomains = excludeDomains,
+                StartPublishedDate = startPublishedDate,
+                EndPublishedDate = endPublishedDate,
+                Category = category,
+                UserLocation = userLocation,
+                Moderation = moderation,
                 Objective = objective,
                 MaxAgeHours = maxAgeHours,
                 Excerpts = excerpts,

@@ -6,38 +6,38 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public enum SearchWebRequestProviderExaModeVariant3
+    public enum SearchWebRequestEnumModeVariant1
     {
         /// <summary>
         ///
         /// </summary>
-        Deep,
+        Fast,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class SearchWebRequestProviderExaModeVariant3Extensions
+    public static class SearchWebRequestEnumModeVariant1Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this SearchWebRequestProviderExaModeVariant3 value)
+        public static string ToValueString(this SearchWebRequestEnumModeVariant1 value)
         {
             return value switch
             {
-                SearchWebRequestProviderExaModeVariant3.Deep => "deep",
+                SearchWebRequestEnumModeVariant1.Fast => "fast",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static SearchWebRequestProviderExaModeVariant3? ToEnum(string value)
+        public static SearchWebRequestEnumModeVariant1? ToEnum(string value)
         {
             return value switch
             {
-                "deep" => SearchWebRequestProviderExaModeVariant3.Deep,
+                "fast" => SearchWebRequestEnumModeVariant1.Fast,
                 _ => null,
             };
         }

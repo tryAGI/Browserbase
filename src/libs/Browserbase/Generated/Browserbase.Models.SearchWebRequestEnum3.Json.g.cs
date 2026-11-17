@@ -2,7 +2,7 @@
 
 namespace Browserbase
 {
-    public sealed partial class SearchWebRequestProviderParallel
+    public sealed partial class SearchWebRequestEnum3
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace Browserbase
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::Browserbase.SearchWebRequestProviderParallel? FromJson(
+        public static global::Browserbase.SearchWebRequestEnum3? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::Browserbase.SearchWebRequestProviderParallel),
-                jsonSerializerContext) as global::Browserbase.SearchWebRequestProviderParallel;
+                typeof(global::Browserbase.SearchWebRequestEnum3),
+                jsonSerializerContext) as global::Browserbase.SearchWebRequestEnum3;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::Browserbase.SearchWebRequestProviderParallel? FromJson(
+        public static global::Browserbase.SearchWebRequestEnum3? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace Browserbase
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::Browserbase.SearchWebRequestProviderParallel? FromJson(
+        public static global::Browserbase.SearchWebRequestEnum3? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Browserbase
                     global::Browserbase.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::Browserbase.SearchWebRequestProviderParallel>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::Browserbase.SearchWebRequestEnum3>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace Browserbase
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestProviderParallel?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestEnum3?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::Browserbase.SearchWebRequestProviderParallel),
-                jsonSerializerContext).ConfigureAwait(false)) as global::Browserbase.SearchWebRequestProviderParallel;
+                typeof(global::Browserbase.SearchWebRequestEnum3),
+                jsonSerializerContext).ConfigureAwait(false)) as global::Browserbase.SearchWebRequestEnum3;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestProviderParallel?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestEnum3?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace Browserbase
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestProviderParallel?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::Browserbase.SearchWebRequestEnum3?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace Browserbase
                     global::Browserbase.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Browserbase.SearchWebRequestProviderParallel?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::Browserbase.SearchWebRequestEnum3?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

@@ -6,7 +6,7 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class SearchWebRequestDefaultProviderProvider
+    public sealed partial class SearchWebRequestEnumProvider3
     {
 
         /// <summary>

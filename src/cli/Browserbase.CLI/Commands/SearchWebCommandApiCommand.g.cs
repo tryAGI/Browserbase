@@ -20,6 +20,46 @@ internal static partial class SearchWebCommandApiCommand
         Description = @"Number of results to return",
     };
 
+    private static Option<global::System.Collections.Generic.IList<string>?> IncludeDomains { get; } = new(
+        name: @"--include-domains")
+    {
+        Description = @"Only return results from these domains. Entries can be a hostname (example.com), a hostname with a path prefix (example.com/docs), or a wildcard subdomain (*.example.com). The `parallel` provider allows one list, not both, with at most 200 domains and no scheme, port, query string, or fragment.",
+    };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> ExcludeDomains { get; } = new(
+        name: @"--exclude-domains")
+    {
+        Description = @"Never return results from these domains. Accepts the same entry formats as includeDomains. Not supported with the people category.",
+    };
+
+    private static Option<global::System.DateTime?> StartPublishedDate { get; } = new(
+        name: @"--start-published-date")
+    {
+        Description = @"Only return results published after this date-time (RFC 3339, for example 2026-01-01T00:00:00Z). The `parallel` provider rounds it up to a whole UTC day. Not supported with the company or people categories.",
+    };
+
+    private static Option<global::System.DateTime?> EndPublishedDate { get; } = new(
+        name: @"--end-published-date")
+    {
+        Description = @"Only return results published before this date-time (RFC 3339, for example 2026-01-01T00:00:00Z). Only the `exa` provider supports this filter. Not supported with the company or people categories.",
+    };
+
+    private static Option<global::Browserbase.SearchWebRequestCategory?> Category { get; } = new(
+        name: @"--category")
+    {
+        Description = @"Focus the search on a category of content. Only the `exa` provider supports this filter.",
+    };
+
+    private static Option<string?> UserLocation { get; } = new(
+        name: @"--user-location")
+    {
+        Description = @"Two-letter ISO 3166-1 country code of the end user. Localizes ranking without restricting results to sources from that country. The `parallel` provider supports only [some countries](https://docs.browserbase.com/platform/search/overview#appendix-supported-countries).",
+    };
+
+    private static Option<bool?> Moderation { get; } = CliRuntime.CreateNullableBoolOption(
+        name: @"--moderation",
+        description: @"Filter unsafe content from the results. Defaults to `false`. Only the `exa` provider supports `true`.");
+
     private static Option<string?> Objective { get; } = new(
         name: @"--objective")
     {
@@ -39,7 +79,7 @@ internal static partial class SearchWebCommandApiCommand
     private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestProviderVariant1?, global::Browserbase.SearchWebRequestProviderVariant2?>?> Provider { get; } = new(
         name: @"--provider")
     {
-        Description = @"Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set.",
+        Description = @"Search provider to serve this request. Defaults to `parallel`, which uses `advanced` mode unless `mode` is set. If you omit it and `parallel` can't apply one of your filters, `exa` serves the request at `exa` pricing. The response `provider` field shows which one served it.",
     };
 
     private static Option<global::Browserbase.AnyOf<global::Browserbase.SearchWebRequestModeVariant1?, global::Browserbase.SearchWebRequestModeVariant2?, global::Browserbase.SearchWebRequestModeVariant3?, global::Browserbase.SearchWebRequestModeVariant4?>?> Mode { get; } = new(
@@ -92,6 +132,13 @@ internal static partial class SearchWebCommandApiCommand
 Perform a web search and return structured results.");
                         command.Options.Add(Query);
                         command.Options.Add(NumResults);
+                        command.Options.Add(IncludeDomains);
+                        command.Options.Add(ExcludeDomains);
+                        command.Options.Add(StartPublishedDate);
+                        command.Options.Add(EndPublishedDate);
+                        command.Options.Add(Category);
+                        command.Options.Add(UserLocation);
+                        command.Options.Add(Moderation);
                         command.Options.Add(Objective);
                         command.Options.Add(MaxAgeHours);
                         command.Options.Add(Excerpts);
@@ -124,6 +171,13 @@ Perform a web search and return structured results.");
                             cancellationToken).ConfigureAwait(false);
                         var query = parseResult.GetRequiredValue(Query);
                         var numResults = CliRuntime.WasSpecified(parseResult, NumResults) ? parseResult.GetValue(NumResults) : (__requestBase is { } __NumResultsBaseValue ? __NumResultsBaseValue.NumResults : default);
+                        var includeDomains = CliRuntime.WasSpecified(parseResult, IncludeDomains) ? parseResult.GetValue(IncludeDomains) : (__requestBase is { } __IncludeDomainsBaseValue ? __IncludeDomainsBaseValue.IncludeDomains : default);
+                        var excludeDomains = CliRuntime.WasSpecified(parseResult, ExcludeDomains) ? parseResult.GetValue(ExcludeDomains) : (__requestBase is { } __ExcludeDomainsBaseValue ? __ExcludeDomainsBaseValue.ExcludeDomains : default);
+                        var startPublishedDate = CliRuntime.WasSpecified(parseResult, StartPublishedDate) ? parseResult.GetValue(StartPublishedDate) : (__requestBase is { } __StartPublishedDateBaseValue ? __StartPublishedDateBaseValue.StartPublishedDate : default);
+                        var endPublishedDate = CliRuntime.WasSpecified(parseResult, EndPublishedDate) ? parseResult.GetValue(EndPublishedDate) : (__requestBase is { } __EndPublishedDateBaseValue ? __EndPublishedDateBaseValue.EndPublishedDate : default);
+                        var category = CliRuntime.WasSpecified(parseResult, Category) ? parseResult.GetValue(Category) : (__requestBase is { } __CategoryBaseValue ? __CategoryBaseValue.Category : default);
+                        var userLocation = CliRuntime.WasSpecified(parseResult, UserLocation) ? parseResult.GetValue(UserLocation) : (__requestBase is { } __UserLocationBaseValue ? __UserLocationBaseValue.UserLocation : default);
+                        var moderation = CliRuntime.WasSpecified(parseResult, Moderation) ? parseResult.GetValue(Moderation) : (__requestBase is { } __ModerationBaseValue ? __ModerationBaseValue.Moderation : default);
                         var objective = CliRuntime.WasSpecified(parseResult, Objective) ? parseResult.GetValue(Objective) : (__requestBase is { } __ObjectiveBaseValue ? __ObjectiveBaseValue.Objective : default);
                         var maxAgeHours = CliRuntime.WasSpecified(parseResult, MaxAgeHours) ? parseResult.GetValue(MaxAgeHours) : (__requestBase is { } __MaxAgeHoursBaseValue ? __MaxAgeHoursBaseValue.MaxAgeHours : default);
                         var excerpts = CliRuntime.WasSpecified(parseResult, Excerpts) ? parseResult.GetValue(Excerpts) : (__requestBase is { } __ExcerptsBaseValue ? __ExcerptsBaseValue.Excerpts : default);
@@ -135,6 +189,13 @@ Perform a web search and return structured results.");
                                 var response = await client.SearchWebAsync(
                                     query: query,
                                     numResults: numResults,
+                                    includeDomains: includeDomains,
+                                    excludeDomains: excludeDomains,
+                                    startPublishedDate: startPublishedDate,
+                                    endPublishedDate: endPublishedDate,
+                                    category: category,
+                                    userLocation: userLocation,
+                                    moderation: moderation,
                                     objective: objective,
                                     maxAgeHours: maxAgeHours,
                                     excerpts: excerpts,
