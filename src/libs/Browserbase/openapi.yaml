@@ -1225,7 +1225,6 @@ paths:
                 url:
                   description: The URL to fetch
                   type: string
-                  format: uri
                 allowRedirects:
                   description: Whether to follow HTTP redirects
                   type: boolean
@@ -3137,7 +3136,8 @@ paths:
                       enum:
                         - deep
               oneOf:
-                - type: object
+                - title: "Provider: parallel"
+                  type: object
                   required:
                     - provider
                   properties:
@@ -3153,7 +3153,8 @@ paths:
                         - type: string
                           enum:
                             - advanced
-                - type: object
+                - title: "Provider: exa"
+                  type: object
                   required:
                     - provider
                   properties:
@@ -3172,7 +3173,8 @@ paths:
                         - type: string
                           enum:
                             - deep
-                - not:
+                - title: Default provider
+                  not:
                     required:
                       - mode
                   type: object

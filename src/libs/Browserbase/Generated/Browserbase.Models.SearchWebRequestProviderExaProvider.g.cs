@@ -6,38 +6,38 @@ namespace Browserbase
     /// <summary>
     ///
     /// </summary>
-    public enum SearchWebRequestVariant1Provider
+    public enum SearchWebRequestProviderExaProvider
     {
         /// <summary>
         ///
         /// </summary>
-        Parallel,
+        Exa,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class SearchWebRequestVariant1ProviderExtensions
+    public static class SearchWebRequestProviderExaProviderExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this SearchWebRequestVariant1Provider value)
+        public static string ToValueString(this SearchWebRequestProviderExaProvider value)
         {
             return value switch
             {
-                SearchWebRequestVariant1Provider.Parallel => "parallel",
+                SearchWebRequestProviderExaProvider.Exa => "exa",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static SearchWebRequestVariant1Provider? ToEnum(string value)
+        public static SearchWebRequestProviderExaProvider? ToEnum(string value)
         {
             return value switch
             {
-                "parallel" => SearchWebRequestVariant1Provider.Parallel,
+                "exa" => SearchWebRequestProviderExaProvider.Exa,
                 _ => null,
             };
         }
