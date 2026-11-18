@@ -34,7 +34,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
 
         /// <summary>
-        /// Set `true` to ignore TLS certificate errors in the browser session. When omitted, your project's default applies.
+        /// Set `true` to ignore TLS certificate errors in the browser session (for example, to reach hosts with expired or self-signed certificates). When omitted, your project's default applies.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
         public bool? IgnoreCertificateErrors { get; set; }
@@ -77,7 +77,7 @@ namespace Browserbase
         /// Domains the browser session may navigate to, including their subdomains. Restricts top-level navigations only. Omit or pass an empty list to allow every domain.
         /// </param>
         /// <param name="ignoreCertificateErrors">
-        /// Set `true` to ignore TLS certificate errors in the browser session. When omitted, your project's default applies.
+        /// Set `true` to ignore TLS certificate errors in the browser session (for example, to reach hosts with expired or self-signed certificates). When omitted, your project's default applies.
         /// </param>
         /// <param name="verified">
         /// Set true to enable Browserbase Verified for the session.

@@ -111,7 +111,7 @@ namespace Browserbase
         public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
 
         /// <summary>
-        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
+        /// Set `true` to ignore TLS certificate errors in the browser session (for example, to reach hosts with expired or self-signed certificates). When omitted, your project's default applies.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ignoreCertificateErrors")]
         public bool? IgnoreCertificateErrors { get; set; }
@@ -175,7 +175,7 @@ namespace Browserbase
         /// Default Value: []
         /// </param>
         /// <param name="ignoreCertificateErrors">
-        /// Enable or disable ignoring of certificate errors in the browser. Defaults to `false`, so TLS certificate validation is enforced; set to `true` to ignore certificate errors (for example, to reach hosts with expired or self-signed certificates).
+        /// Set `true` to ignore TLS certificate errors in the browser session (for example, to reach hosts with expired or self-signed certificates). When omitted, your project's default applies.
         /// </param>
         /// <param name="riskPolicyId">
         /// Navigation policy to enforce for the session. Must belong to the session's project and be enabled. The session keeps the policy as it was when the session started; later edits apply to sessions that start afterwards. Browserbase enforces it only when navigation policy enforcement is enabled for the project.
