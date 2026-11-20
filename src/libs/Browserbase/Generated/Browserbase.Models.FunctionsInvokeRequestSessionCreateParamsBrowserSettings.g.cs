@@ -85,6 +85,14 @@ namespace Browserbase
         public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs? Os { get; set; }
 
         /// <summary>
+        /// Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.<br/>
+        /// Default Value: regular
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("size")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeJsonConverter))]
+        public global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize? Size { get; set; }
+
+        /// <summary>
         /// [NOT IN DOCS] Enable native select polyfill. This gives support a break-glass option to disable the polyfill.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enableNativeSelectPolyfill")]
@@ -160,6 +168,10 @@ namespace Browserbase
         /// <param name="os">
         /// Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet
         /// </param>
+        /// <param name="size">
+        /// Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.<br/>
+        /// Default Value: regular
+        /// </param>
         /// <param name="enableNativeSelectPolyfill">
         /// [NOT IN DOCS] Enable native select polyfill. This gives support a break-glass option to disable the polyfill.
         /// </param>
@@ -195,6 +207,7 @@ namespace Browserbase
             string? captchaImageSelector,
             string? captchaInputSelector,
             global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs? os,
+            global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize? size,
             bool? enableNativeSelectPolyfill,
             bool? enablePdfViewer,
             global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>? extensions,
@@ -213,6 +226,7 @@ namespace Browserbase
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;
             this.Os = os;
+            this.Size = size;
             this.EnableNativeSelectPolyfill = enableNativeSelectPolyfill;
             this.EnablePdfViewer = enablePdfViewer;
             this.Extensions = extensions;

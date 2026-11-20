@@ -67,6 +67,10 @@ namespace Browserbase
 
             typeof(global::Browserbase.JsonConverters.SessionStatusNullableJsonConverter),
 
+            typeof(global::Browserbase.JsonConverters.SessionSizeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SessionSizeNullableJsonConverter),
+
             typeof(global::Browserbase.JsonConverters.SessionRegionJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionRegionNullableJsonConverter),
@@ -90,6 +94,10 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOsNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSizeNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtensionJsonConverter),
 
@@ -190,6 +198,10 @@ namespace Browserbase
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsOsJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsOsNullableJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsSizeJsonConverter),
+
+            typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsSizeNullableJsonConverter),
 
             typeof(global::Browserbase.JsonConverters.SessionsCreateRequestRegionJsonConverter),
 
@@ -335,6 +347,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SecretsKeypair))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.Session))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionStatus), TypeInfoPropertyName = "SessionStatus2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionSize), TypeInfoPropertyName = "SessionSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionRegion), TypeInfoPropertyName = "SessionRegion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionLiveUrls))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.SessionLiveUrlsPage>))]
@@ -375,6 +388,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsViewport))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsOs2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension), TypeInfoPropertyName = "FunctionsInvokeRequestSessionCreateParamsBrowserSettingsExtension2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.FunctionsInvokeRequestSessionCreateParamsProxySettings))]
@@ -429,6 +443,7 @@ namespace Browserbase
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsContext))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsViewport))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsOs), TypeInfoPropertyName = "SessionsCreateRequestBrowserSettingsOs2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestBrowserSettingsSize), TypeInfoPropertyName = "SessionsCreateRequestBrowserSettingsSize2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestProxySettings))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsCreateRequestRegion), TypeInfoPropertyName = "SessionsCreateRequestRegion2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Browserbase.SessionsUpdateRequest))]
