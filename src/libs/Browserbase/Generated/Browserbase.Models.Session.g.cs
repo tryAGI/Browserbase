@@ -65,6 +65,13 @@ namespace Browserbase
         public required global::Browserbase.SessionStatus Status { get; set; }
 
         /// <summary>
+        /// Size of the browser used for the session.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("size")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.SessionSizeJsonConverter))]
+        public global::Browserbase.SessionSize? Size { get; set; }
+
+        /// <summary>
         /// Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("proxyBytes")]
@@ -126,6 +133,9 @@ namespace Browserbase
         /// The region where the Session is running.
         /// </param>
         /// <param name="endedAt"></param>
+        /// <param name="size">
+        /// Size of the browser used for the session.
+        /// </param>
         /// <param name="contextId">
         /// Optional. The Context linked to the Session.
         /// </param>
@@ -147,6 +157,7 @@ namespace Browserbase
             bool keepAlive,
             global::Browserbase.SessionRegion region,
             global::System.DateTime? endedAt,
+            global::Browserbase.SessionSize? size,
             string? contextId,
             object? userMetadata)
         {
@@ -158,6 +169,7 @@ namespace Browserbase
             this.EndedAt = endedAt;
             this.ExpiresAt = expiresAt;
             this.Status = status;
+            this.Size = size;
             this.ProxyBytes = proxyBytes;
             this.KeepAlive = keepAlive;
             this.ContextId = contextId;

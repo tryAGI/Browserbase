@@ -85,6 +85,14 @@ namespace Browserbase
         public global::Browserbase.SessionsCreateRequestBrowserSettingsOs? Os { get; set; }
 
         /// <summary>
+        /// Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.<br/>
+        /// Default Value: regular
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("size")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Browserbase.JsonConverters.SessionsCreateRequestBrowserSettingsSizeJsonConverter))]
+        public global::Browserbase.SessionsCreateRequestBrowserSettingsSize? Size { get; set; }
+
+        /// <summary>
         /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
         /// Default Value: []
         /// </summary>
@@ -141,6 +149,10 @@ namespace Browserbase
         /// <param name="os">
         /// Operating system for stealth mode. Valid values: windows, mac, linux, mobile, tablet
         /// </param>
+        /// <param name="size">
+        /// Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.<br/>
+        /// Default Value: regular
+        /// </param>
         /// <param name="allowedDomains">
         /// An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).<br/>
         /// Default Value: []
@@ -166,6 +178,7 @@ namespace Browserbase
             string? captchaImageSelector,
             string? captchaInputSelector,
             global::Browserbase.SessionsCreateRequestBrowserSettingsOs? os,
+            global::Browserbase.SessionsCreateRequestBrowserSettingsSize? size,
             global::System.Collections.Generic.IList<string>? allowedDomains,
             bool? ignoreCertificateErrors,
             global::System.Guid? riskPolicyId)
@@ -181,6 +194,7 @@ namespace Browserbase
             this.CaptchaImageSelector = captchaImageSelector;
             this.CaptchaInputSelector = captchaInputSelector;
             this.Os = os;
+            this.Size = size;
             this.AllowedDomains = allowedDomains;
             this.IgnoreCertificateErrors = ignoreCertificateErrors;
             this.RiskPolicyId = riskPolicyId;

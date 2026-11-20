@@ -1799,6 +1799,14 @@ paths:
                             - linux
                             - mobile
                             - tablet
+                        size:
+                          description: Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.
+                          type: string
+                          default: regular
+                          enum:
+                            - regular
+                            - large
+                            - xlarge
                         enableNativeSelectPolyfill:
                           description: "[NOT IN DOCS] Enable native select polyfill. This gives support a break-glass option to disable the polyfill."
                           type: boolean
@@ -3759,6 +3767,14 @@ paths:
                         - linux
                         - mobile
                         - tablet
+                    size:
+                      description: Size of the browser. Larger sizes provide more resources to improve performance for intensive tasks. Defaults to `regular`.
+                      type: string
+                      default: regular
+                      enum:
+                        - regular
+                        - large
+                        - xlarge
                     allowedDomains:
                       description: An optional list of allowed domains for the session. If you pass one or more domains, Browserbase restricts top-level (main-frame) page navigations to the listed domains and their subdomains. For example, `example.com` also permits `www.example.com` and `a.b.example.com`, but not `notexample.com`. Matching is domain-based, not full-URL. An empty list (the default) disables the restriction entirely. Browserbase enforces only main-frame navigations; it does not block iframe/subframe loads or other in-page resource requests (images, scripts, XHR, etc.).
                       type: array
@@ -5832,6 +5848,13 @@ components:
             - ERROR
             - TIMED_OUT
             - COMPLETED
+        size:
+          description: Size of the browser used for the session.
+          type: string
+          enum:
+            - regular
+            - large
+            - xlarge
         proxyBytes:
           description: Bytes used via the [Proxy](/features/stealth-mode#proxies-and-residential-ips)
           type: integer
