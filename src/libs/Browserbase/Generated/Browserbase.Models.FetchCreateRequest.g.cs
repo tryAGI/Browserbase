@@ -57,6 +57,13 @@ namespace Browserbase
         public global::System.Guid? ContextId { get; set; }
 
         /// <summary>
+        /// Domains the fetch may reach, up to 1000. A listed domain also permits its subdomains: `example.com` permits `www.example.com`. A URL on any other host is rejected with a 400 before it is fetched, and so is a redirect to one when `allowRedirects` is set, before it is followed. An empty list (the default) allows any host.<br/>
+        /// Default Value: []
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allowedDomains")]
+        public global::System.Collections.Generic.IList<string>? AllowedDomains { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -90,6 +97,10 @@ namespace Browserbase
         /// <param name="contextId">
         /// ID of a context whose persisted cookies are sent with the request.
         /// </param>
+        /// <param name="allowedDomains">
+        /// Domains the fetch may reach, up to 1000. A listed domain also permits its subdomains: `example.com` permits `www.example.com`. A URL on any other host is rejected with a 400 before it is fetched, and so is a redirect to one when `allowRedirects` is set, before it is followed. An empty list (the default) allows any host.<br/>
+        /// Default Value: []
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -100,7 +111,8 @@ namespace Browserbase
             bool? proxies,
             global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? format,
             object? schema,
-            global::System.Guid? contextId)
+            global::System.Guid? contextId,
+            global::System.Collections.Generic.IList<string>? allowedDomains)
         {
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.AllowRedirects = allowRedirects;
@@ -109,6 +121,7 @@ namespace Browserbase
             this.Format = format;
             this.Schema = schema;
             this.ContextId = contextId;
+            this.AllowedDomains = allowedDomains;
         }
 
         /// <summary>

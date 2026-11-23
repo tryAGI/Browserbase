@@ -1258,6 +1258,15 @@ paths:
                   description: ID of a context whose persisted cookies are sent with the request.
                   type: string
                   format: uuid
+                allowedDomains:
+                  description: "Domains the fetch may reach, up to 1000. A listed domain also permits its subdomains: `example.com` permits `www.example.com`. A URL on any other host is rejected with a 400 before it is fetched, and so is a redirect to one when `allowRedirects` is set, before it is followed. An empty list (the default) allows any host."
+                  type: array
+                  items:
+                    minLength: 1
+                    maxLength: 253
+                    type: string
+                  default: []
+                  maxItems: 1000
               required:
                 - url
       responses:

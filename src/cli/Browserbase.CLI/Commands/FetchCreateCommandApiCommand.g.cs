@@ -42,6 +42,12 @@ internal static partial class FetchCreateCommandApiCommand
     {
         Description = @"ID of a context whose persisted cookies are sent with the request.",
     };
+
+    private static Option<global::System.Collections.Generic.IList<string>?> AllowedDomains { get; } = new(
+        name: @"--allowed-domains")
+    {
+        Description = @"Domains the fetch may reach, up to 1000. A listed domain also permits its subdomains: `example.com` permits `www.example.com`. A URL on any other host is rejected with a 400 before it is fetched, and so is a redirect to one when `allowRedirects` is set, before it is followed. An empty list (the default) allows any host.",
+    };
       private static Option<string?> Input { get; } = new(@"--input")
       {
           Description = "Load request JSON from a file path, '-' for stdin, or an inline JSON object/array string.",
@@ -92,6 +98,7 @@ Fetch a page and return its content, headers, and metadata.");
                         command.Options.Add(Format);
                         command.Options.Add(Schema);
                         command.Options.Add(ContextId);
+                        command.Options.Add(AllowedDomains);
           command.Options.Add(Input);
           command.Options.Add(RequestJson);
           command.Options.Add(RequestFile);
@@ -124,6 +131,7 @@ Fetch a page and return its content, headers, and metadata.");
                         var format = CliRuntime.WasSpecified(parseResult, Format) ? parseResult.GetValue(Format) : (__requestBase is { } __FormatBaseValue ? __FormatBaseValue.Format : default);
                         var schema = CliRuntime.WasSpecified(parseResult, Schema) ? parseResult.GetValue(Schema) : (__requestBase is { } __SchemaBaseValue ? __SchemaBaseValue.Schema : default);
                         var contextId = CliRuntime.WasSpecified(parseResult, ContextId) ? parseResult.GetValue(ContextId) : (__requestBase is { } __ContextIdBaseValue ? __ContextIdBaseValue.ContextId : default);
+                        var allowedDomains = CliRuntime.WasSpecified(parseResult, AllowedDomains) ? parseResult.GetValue(AllowedDomains) : (__requestBase is { } __AllowedDomainsBaseValue ? __AllowedDomainsBaseValue.AllowedDomains : default);
                 using var client = await CliRuntime.CreateClientAsync(parseResult, cancellationToken).ConfigureAwait(false);
 
 
@@ -135,6 +143,7 @@ Fetch a page and return its content, headers, and metadata.");
                                     format: format,
                                     schema: schema,
                                     contextId: contextId,
+                                    allowedDomains: allowedDomains,
                                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
 
