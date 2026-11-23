@@ -59,6 +59,10 @@ namespace Browserbase
         /// <param name="contextId">
         /// ID of a context whose persisted cookies are sent with the request.
         /// </param>
+        /// <param name="allowedDomains">
+        /// Domains the fetch may reach, up to 1000. A listed domain also permits its subdomains: `example.com` permits `www.example.com`. A URL on any other host is rejected with a 400 before it is fetched, and so is a redirect to one when `allowRedirects` is set, before it is followed. An empty list (the default) allows any host.<br/>
+        /// Default Value: []
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -70,6 +74,7 @@ namespace Browserbase
             global::Browserbase.AnyOf<global::Browserbase.FetchCreateRequestFormatVariant1?, global::Browserbase.FetchCreateRequestFormatVariant2?, global::Browserbase.FetchCreateRequestFormatVariant3?>? format = default,
             object? schema = default,
             global::System.Guid? contextId = default,
+            global::System.Collections.Generic.IList<string>? allowedDomains = default,
             global::Browserbase.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
